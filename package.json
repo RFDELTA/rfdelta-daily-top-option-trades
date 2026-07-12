@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "Automated RFDELTA Top Option Trades generator, archive, Vercel site, and GoDaddy embeds.",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",

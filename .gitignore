@@ -13,3 +13,5 @@ coverage
 .server*.log
 data/local-lessons.json
 data/*.private.json
+
+.vercel
