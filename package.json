@@ -1,0 +1,40 @@
+{
+  "name": "rfdelta-daily-top-option-trades",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automated RFDELTA Top Option Trades generator, archive, Vercel site, and GoDaddy embeds.",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test:model": "tsx scripts/run-model-smoke-test.ts",
+    "test:discovery": "tsx scripts/test-candidate-discovery.ts",
+    "test:charts": "tsx scripts/test-charts.ts",
+    "test:workflow": "tsx scripts/test-workflow.ts",
+    "test": "npm run test:model && npm run test:discovery && npm run test:charts && npm run test:workflow",
+    "generate:daily": "tsx scripts/generate-daily.ts",
+    "generate:fixture": "tsx scripts/generate-fixture-report.ts",
+    "verify:reports": "tsx scripts/verify-reports.ts"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "next": "^16.2.10",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.2.10",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
+  }
+}

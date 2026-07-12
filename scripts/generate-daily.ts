@@ -1,0 +1,22 @@
+import { NoFreshMarketSessionError } from "../lib/market/types";
+import { generateAndPersist } from "../lib/report/generator";
+import { resolveReportDate } from "../lib/report/dates";
+
+async function main() {
+  const date = resolveReportDate(process.argv.slice(2), process.env.REPORT_DATE);
+  const force = process.argv.includes("--force");
+  console.log(`[options-report] start date=${date} force=${force}`);
+  const { report, skipped } = await generateAndPersist({ date, force });
+  console.log(`[options-report] ${skipped ? "kept existing edition" : "generated"} date=${report.runMetadata.reportDate} ideas=${report.topTrades.length} candidates=${report.marketContext.candidateCount}`);
+  console.log(`[options-report] source_timestamp=${report.runMetadata.dataAsOfUtc} top=${report.topTrades[0]?.symbol ?? "none"}`);
+  console.log(`[options-report] complete date=${date}`);
+}
+
+main().catch((error) => {
+  if (error instanceof NoFreshMarketSessionError) {
+    console.log(`[options-report] no fresh market session: ${error.message}`);
+    process.exit(75);
+  }
+  console.error(error instanceof Error ? error.message : error);
+  process.exit(1);
+});

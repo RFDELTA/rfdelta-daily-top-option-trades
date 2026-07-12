@@ -1,0 +1,113 @@
+name: Daily Top Option Trades
+
+on:
+  schedule:
+    - cron: "45 14 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      report_date:
+        description: "Optional YYYY-MM-DD override"
+        required: false
+      force:
+        description: "Replace an existing edition for the same date"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-top-option-trades
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    env:
+      TRADIER_ACCESS_TOKEN: ${{ secrets.TRADIER_ACCESS_TOKEN }}
+      TRADIER_BASE_URL: https://api.tradier.com/v1
+      MARKET_DATA_PUBLICATION_LICENSE_ACKNOWLEDGED: ${{ vars.MARKET_DATA_PUBLICATION_LICENSE_ACKNOWLEDGED }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Validate deterministic workflow
+        run: npm test
+      - name: Resolve New York report date
+        id: report
+        env:
+          INPUT_REPORT_DATE: ${{ inputs.report_date }}
+        run: |
+          if [ -n "$INPUT_REPORT_DATE" ]; then
+            report_date="$INPUT_REPORT_DATE"
+          else
+            report_date="$(TZ=America/New_York date +%F)"
+          fi
+          echo "date=$report_date" >> "$GITHUB_OUTPUT"
+      - name: Generate one authoritative daily edition
+        id: generate
+        env:
+          FORCE_RUN: ${{ inputs.force }}
+        run: |
+          args=(--date "${{ steps.report.outputs.date }}")
+          if [ "$FORCE_RUN" = "true" ]; then args+=(--force); fi
+          set +e
+          npm run generate:daily -- "${args[@]}"
+          code=$?
+          set -e
+          if [ "$code" -eq 75 ]; then
+            echo "generated=false" >> "$GITHUB_OUTPUT"
+            echo "No fresh session was available; the prior valid edition remains published."
+            exit 0
+          fi
+          if [ "$code" -ne 0 ]; then exit "$code"; fi
+          echo "generated=true" >> "$GITHUB_OUTPUT"
+      - name: Verify report archive
+        if: steps.generate.outputs.generated == 'true'
+        run: npm run verify:reports -- --date "${{ steps.report.outputs.date }}"
+      - name: Commit report and graphics
+        if: steps.generate.outputs.generated == 'true'
+        id: commit
+        run: |
+          git config user.name "RFDELTA LLC"
+          git config user.email "rfdeltax@gmail.com"
+          git add data/reports public/charts
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Add top option trades for ${{ steps.report.outputs.date }}"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Trigger Vercel deployment
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "$VERCEL_DEPLOY_HOOK_URL" ]; then
+            curl -fsS -X POST "$VERCEL_DEPLOY_HOOK_URL"
+          else
+            echo "Vercel Git integration will deploy the committed report."
+          fi
+      - name: Verify production publication
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          PRODUCTION_URL: ${{ vars.PRODUCTION_URL }}
+          EXPECTED_DATE: ${{ steps.report.outputs.date }}
+        run: |
+          base_url="${PRODUCTION_URL:-https://rfdelta-daily-top-option-trades.vercel.app}"
+          for attempt in $(seq 1 30); do
+            published_date="$(curl -fsS "$base_url/api/latest?attempt=$attempt" | node -e 'let d="";process.stdin.on("data",c=>d+=c);process.stdin.on("end",()=>{try{console.log(JSON.parse(d).runMetadata?.reportDate??"")}catch{console.log("")}})')" || true
+            if [ "$published_date" = "$EXPECTED_DATE" ]; then
+              echo "Published $published_date"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Production did not publish $EXPECTED_DATE within five minutes."
+          exit 1

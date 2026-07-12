@@ -1,0 +1,15 @@
+node_modules
+.next
+.vercel
+out
+dist
+.env
+.env.local
+.env.*.local
+.DS_Store
+coverage
+*.tsbuildinfo
+.devserver*.log
+.server*.log
+data/local-lessons.json
+data/*.private.json

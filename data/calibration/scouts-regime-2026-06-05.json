@@ -1,0 +1,20 @@
+{
+  "sourceRunId": "scouts_v2_sim_sim_ultra_futures_broad_market_agent_forest_2026-06-05T0233Z",
+  "sourceCreatedAtUtc": "2026-06-05T02:37:35+00:00",
+  "sourceSha256": "a907897afb6a12db94a41dea72e49458185decf55c6b674bf533b7a73bb66b26",
+  "regimeScores": {
+    "trendDown": 0.5403,
+    "meanReversionWatch": 0.598,
+    "volatilityExpansion": 0.8667,
+    "riskOffCrossAsset": 0.7614,
+    "liquidityDroughtRisk": 0.9161
+  },
+  "adversarialScenarios": [
+    "liquidity gap lower",
+    "technology-led beta shock",
+    "oversold relief rally",
+    "event-driven range whipsaw",
+    "false reclaim followed by trend continuation"
+  ],
+  "use": "Historical stress-regime calibration only. Account and execution-control fields from the source handoff are intentionally excluded."
+}

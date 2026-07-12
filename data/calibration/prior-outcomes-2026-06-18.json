@@ -1,0 +1,52 @@
+[
+  {
+    "tradeId": "spce-20260618-45-5-call-debit",
+    "name": "SPCE 6/18 4.5/5 Call Debit Spread",
+    "symbol": "SPCE",
+    "style": "call_debit",
+    "expiration": "2026-06-18",
+    "status": "loss",
+    "realizedPnlDollars": -6,
+    "read": "Expired below the long strike; the defined debit was the full loss."
+  },
+  {
+    "tradeId": "soun-20260618-7-75-call-debit",
+    "name": "SOUN 6/18 7/7.5 Call Debit Spread",
+    "symbol": "SOUN",
+    "style": "call_debit",
+    "expiration": "2026-06-18",
+    "status": "near_breakeven",
+    "realizedPnlDollars": -1,
+    "read": "Settled close to entry after reaching the lower strike."
+  },
+  {
+    "tradeId": "open-20260618-45-5-call-debit",
+    "name": "OPEN 6/18 4.5/5 Call Debit Spread",
+    "symbol": "OPEN",
+    "style": "call_debit",
+    "expiration": "2026-06-18",
+    "status": "loss",
+    "realizedPnlDollars": -12,
+    "read": "Expired just below the long strike and lost the debit."
+  },
+  {
+    "tradeId": "spce-20260618-4-45-call-debit",
+    "name": "SPCE 6/18 4/4.5 Call Debit Spread",
+    "symbol": "SPCE",
+    "style": "call_debit",
+    "expiration": "2026-06-18",
+    "status": "loss",
+    "realizedPnlDollars": -14,
+    "read": "Expired below the long strike and lost the debit."
+  },
+  {
+    "tradeId": "nvda-20260615-205-2025-put-credit",
+    "name": "NVDA 6/15 205/202.5 Put Credit Spread",
+    "symbol": "NVDA",
+    "style": "put_credit",
+    "expiration": "2026-06-15",
+    "status": "win",
+    "realizedPnlDollars": 83,
+    "read": "Expired out of the money; the full opening credit was retained."
+  }
+]

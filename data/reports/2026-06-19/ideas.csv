@@ -1,0 +1,6 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","MARA","MARA 7/3 13/12.5 Put Credit Spread","put_credit","2026-07-03","14","14.2174","Credit","0.11","0.708","-2.51","39","11","0.28","12.89","-9.34","55.7","0.8026","0.82"
+"2","SMCI","SMCI 7/3 28/27 Put Credit Spread","put_credit","2026-07-03","14","30.72","Credit","0.21","0.7042","-6.47","79","21","0.27","27.79","-9.54","47.42","0.785","0.84"
+"3","RGTI","RGTI 7/3 19.5/19 Put Credit Spread","put_credit","2026-07-03","14","21.23","Credit","0.12","0.6388","-5.44","38","12","0.32","19.38","-8.71","44.48","0.7824","1.03"
+"4","QUBT","QUBT 7/3 10.5/10 Put Debit Spread","put_debit","2026-07-03","14","10.7","Debit","0.26","0.4501","-3.41","26","24","0.92","10.24","-4.3","34.5","0.8095","1.02"
+"5","SOFI","SOFI 7/3 17.5/16.5 Put Debit Spread","put_debit","2026-07-03","14","17.8813","Debit","0.37","0.3626","-3.22","37","63","1.7","17.13","-4.2","33.16","0.7919","0.56"
