@@ -135,6 +135,7 @@ export function scoreCandidate(
     shortLeg: candidate.shortLeg,
     ...(candidate.sourceAsOfUtc ? { sourceAsOfUtc: candidate.sourceAsOfUtc } : {}),
     marketEvidence: candidate.marketEvidence ?? [],
+    historySessionCount: candidate.historySessionCount ?? 0,
     fiveDayReturn: round(candidate.fiveDayReturn ?? 0, 6),
     twentyDayReturn: round(candidate.twentyDayReturn ?? 0, 6),
     realizedVolatility: round(candidate.realizedVolatility ?? 0, 6),

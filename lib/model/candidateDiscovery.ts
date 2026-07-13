@@ -146,6 +146,7 @@ function buildCandidate(symbolData: MarketSymbolSnapshot, style: SpreadStyle, pa
     correlationBucket: profile.correlationBucket,
     sourceAsOfUtc,
     marketEvidence: evidence,
+    historySessionCount: symbolData.bars.length,
     fiveDayReturn: regime.fiveDayReturn,
     twentyDayReturn: regime.twentyDayReturn,
     realizedVolatility: regime.realizedVolatility

@@ -48,6 +48,7 @@ export type TradeCandidate = {
   correlationBucket?: string;
   sourceAsOfUtc?: string;
   marketEvidence?: string[];
+  historySessionCount?: number;
   fiveDayReturn?: number;
   twentyDayReturn?: number;
   realizedVolatility?: number;
@@ -88,6 +89,7 @@ export type TradeIdeaScore = {
   shortLeg: OptionLeg;
   sourceAsOfUtc?: string;
   marketEvidence: string[];
+  historySessionCount: number;
   fiveDayReturn: number;
   twentyDayReturn: number;
   realizedVolatility: number;

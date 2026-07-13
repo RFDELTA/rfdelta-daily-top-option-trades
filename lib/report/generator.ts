@@ -244,13 +244,21 @@ function buildExecutiveSummary(topTrades: PublishedTradeIdea[], snapshot: Market
   }
   const second = topTrades[1];
   const averageFiveDay = average(topTrades.map((idea) => idea.fiveDayReturn));
+  const minimumHistorySessions = Math.min(...topTrades.map((idea) => idea.historySessionCount));
+  const fullHistoryWindow = minimumHistorySessions >= 21;
+  const momentumRead = fullHistoryWindow
+    ? `the mean five-session move is ${signedPct(averageFiveDay)}`
+    : `the mean move across the available ${minimumHistorySessions}-session retained window is ${signedPct(averageFiveDay)}`;
+  const directionRead = fullHistoryWindow
+    ? "Direction comes from five- and twenty-session price structure rather than a headline guess."
+    : `Direction uses the available ${minimumHistorySessions}-session retained price window with a reduced conviction weight while the full twenty-session record builds.`;
   return {
     headline: `${topTrades.length} defined-risk option setups lead the ${formatDate(snapshot.reportDate)} board`,
     standfirst: `${top.name} ranks first with a ${top.score.toFixed(2)} score, ${pct(top.probabilityProfit)} modeled probability of profit and ${money(top.maxLossDollars)} maximum one-lot risk. The basket balances ${bullish} bullish and ${bearish} bearish expression${topTrades.length === 1 ? "" : "s"}.`,
     marketCommentary: [
-      `The option board is not rewarding indiscriminate beta. Across the published names, the mean five-session move is ${signedPct(averageFiveDay)}, while ${highVol} setup${highVol === 1 ? " carries" : "s carry"} realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.`,
+      `The option board is not rewarding indiscriminate beta. Across the published names, ${momentumRead}, while ${highVol} setup${highVol === 1 ? " carries" : "s carry"} realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.`,
       `The screen begins with ${snapshot.universe.length} liquid underlyings and accepts only same-session chains with two usable legs. It then forces every idea through the same conservative mark: pay the ask for the long option and receive the bid for the short. The resulting ranking is intentionally harsher than a midpoint screen, because a trade that only works at a theoretical fill is not a durable public idea.`,
-      `Direction comes from five- and twenty-session price structure rather than a headline guess. That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade.`
+      `${directionRead} That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade.`
     ],
     selectionCommentary: [
       `${top.symbol} wins the top slot because liquidity, directional alignment and bounded payoff reinforce one another. Its ${top.structureType.toLowerCase()} entry of ${top.entry.toFixed(2)} creates ${top.rewardToRisk.toFixed(2)} dollars of maximum reward for each dollar of maximum risk, with breakeven at ${money(top.breakeven)}.`,
@@ -282,10 +290,13 @@ function buildTradeCommentary(idea: TradeIdeaScore): TradeCommentary {
     : breakevenAboveSpot
       ? `sits ${moveMagnitude}% above the source mark, providing an upside cushion`
       : `requires a ${moveMagnitude}% decline from the source mark`;
+  const momentumSetup = idea.historySessionCount >= 21
+    ? `${signedPct(idea.fiveDayReturn)} five-session momentum and ${signedPct(idea.twentyDayReturn)} over twenty sessions`
+    : `${signedPct(idea.fiveDayReturn)} across the available ${idea.historySessionCount}-session retained window, with a reduced conviction weight until the full history builds`;
   return {
     convictionLabel,
     rankingRead: `The setup scores ${idea.score.toFixed(2)} on the common scale, supported by ${pct(idea.probabilityProfit)} modeled probability of profit, ${idea.liquidityScore.toFixed(2)} liquidity quality and ${evRead}.`,
-    setup: `${idea.symbol} enters with ${signedPct(idea.fiveDayReturn)} five-session momentum and ${signedPct(idea.twentyDayReturn)} over twenty sessions. Realized volatility is ${pct(idea.realizedVolatility)}, placing the underlying in a ${idea.regime.replaceAll("_", " ")} regime. The ${idea.direction} structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.`,
+    setup: `${idea.symbol} enters with ${momentumSetup}. Realized volatility is ${pct(idea.realizedVolatility)}, placing the underlying in a ${idea.regime.replaceAll("_", " ")} regime. The ${idea.direction} structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.`,
     execution: `${longAction} and ${shortAction}, both expiring ${formatDate(idea.expiration)}. The ${idea.structureType.toLowerCase()} mark of ${idea.entry.toFixed(2)} assumes the long ask and short bid, not a midpoint. ${entryDiscipline}`,
     risk: `Maximum one-lot loss is ${money(idea.maxLossDollars)}. Breakeven is ${money(idea.breakeven)} and ${moveRead}. Primary watch: ${risks}. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.`,
     payoffRead: `Maximum one-lot profit is ${money(idea.maxProfitDollars)}, or ${idea.rewardToRisk.toFixed(2)} times maximum risk. The simulation assigns ${pct(idea.probabilityNearMaxProfit)} probability to finishing near maximum profit and uses ${pct(idea.impliedVolUsed)} implied volatility across deterministic jump-stress paths.`

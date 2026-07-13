@@ -4,11 +4,11 @@
 
 TLT 7/24 85.5/85 Put Credit Spread ranks first with a 44.82 score, 42.7% modeled probability of profit and $17.00 maximum one-lot risk. The basket balances 1 bullish and 2 bearish expressions.
 
-The option board is not rewarding indiscriminate beta. Across the published names, the mean five-session move is -0.8%, while 0 setups carry realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.
+The option board is not rewarding indiscriminate beta. Across the published names, the mean move across the available 2-session retained window is -0.8%, while 0 setups carry realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.
 
 The screen begins with 18 liquid underlyings and accepts only same-session chains with two usable legs. It then forces every idea through the same conservative mark: pay the ask for the long option and receive the bid for the short. The resulting ranking is intentionally harsher than a midpoint screen, because a trade that only works at a theoretical fill is not a durable public idea.
 
-Direction comes from five- and twenty-session price structure rather than a headline guess. That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade.
+Direction uses the available 2-session retained price window with a reduced conviction weight while the full twenty-session record builds. That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade.
 
 TLT wins the top slot because liquidity, directional alignment and bounded payoff reinforce one another. Its credit entry of 0.33 creates 1.94 dollars of maximum reward for each dollar of maximum risk, with breakeven at $85.17.
 
@@ -28,7 +28,7 @@ IWM supplies the counterweight. Its put debit structure scores 38.43 and carries
 
 **Trigger-dependent setup.** The setup scores 44.82 on the common scale, supported by 42.7% modeled probability of profit, 0.85 liquidity quality and positive modeled expectancy of $3.80.
 
-TLT enters with +0.1% five-session momentum and +0.1% over twenty sessions. Realized volatility is 25.0%, placing the underlying in a risk on regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
+TLT enters with +0.1% across the available 2-session retained window, with a reduced conviction weight until the full history builds. Realized volatility is 25.0%, placing the underlying in a risk on regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
 **Execution:** Buy the 85 put and sell the 85.5 put, both expiring Jul 24, 2026. The credit mark of 0.33 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.33 of credit without rerunning the payoff.
 
@@ -40,7 +40,7 @@ TLT enters with +0.1% five-session momentum and +0.1% over twenty sessions. Real
 
 **Trigger-dependent setup.** The setup scores 38.43 on the common scale, supported by 43.7% modeled probability of profit, 0.82 liquidity quality and positive modeled expectancy of $15.96.
 
-IWM enters with -0.4% five-session momentum and -0.4% over twenty sessions. Realized volatility is 25.0%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
+IWM enters with -0.4% across the available 2-session retained window, with a reduced conviction weight until the full history builds. Realized volatility is 25.0%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
 **Execution:** Buy the 296 put and sell the 292.5 put, both expiring Jul 24, 2026. The debit mark of 1.31 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.31 for the spread without rerunning the payoff.
 
@@ -52,7 +52,7 @@ IWM enters with -0.4% five-session momentum and -0.4% over twenty sessions. Real
 
 **Trigger-dependent setup.** The setup scores 36.04 on the common scale, supported by 40.1% modeled probability of profit, 0.86 liquidity quality and positive modeled expectancy of $3.11.
 
-PLTR enters with -1.9% five-session momentum and -1.9% over twenty sessions. Realized volatility is 30.6%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
+PLTR enters with -1.9% across the available 2-session retained window, with a reduced conviction weight until the full history builds. Realized volatility is 30.6%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
 **Execution:** Buy the 125 put and sell the 120 put, both expiring Jul 24, 2026. The debit mark of 1.87 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.87 for the spread without rerunning the payoff.
 
