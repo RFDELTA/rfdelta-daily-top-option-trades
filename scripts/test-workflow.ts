@@ -24,6 +24,7 @@ async function main() {
   }
   assert.equal(workflow.match(/timezone: ["']America\/New_York["']/gu)?.length, 4);
   assert.match(workflow, /npm run collect:closes/u);
+  assert.match(workflow, /published_report_id.*expected_report_id/u);
   console.log(`[test:workflow] hash=${first.runMetadata.selectionHash.slice(0, 12)} ideas=${first.topTrades.length}`);
 }
 

@@ -139,15 +139,16 @@ jobs:
           EXPECTED_DATE: ${{ steps.report.outputs.date }}
         run: |
           base_url="${PRODUCTION_URL:-https://rfdelta-daily-top-option-trades.vercel.app}"
+          expected_report_id="$(node -e 'const fs=require("fs");const date=process.env.EXPECTED_DATE;console.log(JSON.parse(fs.readFileSync(`data/reports/${date}/report.json`,"utf8")).reportId)')"
           for attempt in $(seq 1 30); do
-            published_date="$(curl -fsS "$base_url/api/latest?attempt=$attempt" | node -e 'let d="";process.stdin.on("data",c=>d+=c);process.stdin.on("end",()=>{try{console.log(JSON.parse(d).runMetadata?.reportDate??"")}catch{console.log("")}})')" || true
-            if [ "$published_date" = "$EXPECTED_DATE" ]; then
-              echo "Published $published_date"
+            published_report_id="$(curl -fsS "$base_url/api/latest?attempt=$attempt" | node -e 'let d="";process.stdin.on("data",c=>d+=c);process.stdin.on("end",()=>{try{console.log(JSON.parse(d).reportId??"")}catch{console.log("")}})')" || true
+            if [ "$published_report_id" = "$expected_report_id" ]; then
+              echo "Published $EXPECTED_DATE with report identity $expected_report_id"
               exit 0
             fi
             sleep 10
           done
-          echo "Production did not publish $EXPECTED_DATE within five minutes."
+          echo "Production did not publish the expected $EXPECTED_DATE report identity within five minutes."
           exit 1
 
   closing-prints:

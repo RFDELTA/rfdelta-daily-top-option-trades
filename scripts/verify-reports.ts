@@ -73,6 +73,17 @@ async function main() {
         }
       }
     }
+    const underlyingDirectory = path.join(chartDirectory, "underlying");
+    const expectedCharts = report.topTrades
+      .map((idea) => path.basename(idea.underlyingChart?.assetPath ?? ""))
+      .filter(Boolean)
+      .sort();
+    const actualCharts = (await fs.readdir(underlyingDirectory))
+      .filter((file) => file.endsWith(".svg"))
+      .sort();
+    if (JSON.stringify(actualCharts) !== JSON.stringify(expectedCharts)) {
+      throw new Error("Underlying chart archive contains missing or stale assets.");
+    }
     const datasetDirectory = path.join(process.cwd(), "data", "datasets", report.runMetadata.reportDate, runId);
     const [manifest, features, candidates, policy] = await Promise.all([
       readJson(path.join(datasetDirectory, "manifest.json")),

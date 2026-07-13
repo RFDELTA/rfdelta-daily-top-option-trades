@@ -41,6 +41,7 @@ export async function persistReport(report: OptionsReport) {
   const chartDirectory = path.join(ROOT, "public", "charts", report.runMetadata.reportDate);
   const underlyingDirectory = path.join(chartDirectory, "underlying");
   await Promise.all([fs.mkdir(reportDirectory, { recursive: true }), fs.mkdir(chartDirectory, { recursive: true }), fs.mkdir(underlyingDirectory, { recursive: true })]);
+  await removeStaleUnderlyingCharts(underlyingDirectory, report);
   await Promise.all([
     writeJson(path.join(reportDirectory, "report.json"), report),
     fs.writeFile(path.join(reportDirectory, "report.md"), renderReportMarkdown(report), "utf8"),
@@ -59,6 +60,7 @@ export async function persistUpdatedReports(reports: OptionsReport[]) {
     const reportDirectory = path.join(REPORTS_ROOT, report.runMetadata.reportDate);
     const underlyingDirectory = path.join(ROOT, "public", "charts", report.runMetadata.reportDate, "underlying");
     await Promise.all([fs.mkdir(reportDirectory, { recursive: true }), fs.mkdir(underlyingDirectory, { recursive: true })]);
+    await removeStaleUnderlyingCharts(underlyingDirectory, report);
     await Promise.all([
       writeJson(path.join(reportDirectory, "report.json"), report),
       fs.writeFile(path.join(reportDirectory, "report.md"), renderReportMarkdown(report), "utf8"),
@@ -96,4 +98,15 @@ function chartFilePath(assetPath: string) {
     throw new Error("Underlying chart path is invalid.");
   }
   return path.join(ROOT, "public", assetPath.replace(/^\/+/, ""));
+}
+
+async function removeStaleUnderlyingCharts(directory: string, report: OptionsReport) {
+  const expected = new Set(report.topTrades
+    .map((idea) => idea.underlyingChart?.assetPath)
+    .filter((assetPath): assetPath is string => Boolean(assetPath))
+    .map((assetPath) => path.basename(assetPath)));
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+  await Promise.all(entries
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".svg") && !expected.has(entry.name))
+    .map((entry) => fs.rm(path.join(directory, entry.name))));
 }
