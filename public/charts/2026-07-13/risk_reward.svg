@@ -1,33 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="RFDELTA option trade risk and reward comparison">
-  <rect width="1200" height="420" fill="#071f1c"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628" role="img" aria-label="RFDELTA option trade risk and reward comparison">
+  <rect width="1200" height="628" fill="#071f1c"/>
   <style>.head{fill:#f4fff9;font:800 28px Georgia,serif}.sub{fill:#9fc4bb;font:14px Arial,sans-serif}.label,.ratio{fill:#f4fff9;font:700 16px Arial,sans-serif}.lossText{fill:#f2b17b;font:800 12px Arial,sans-serif}.profitText{fill:#7ce3f4;font:800 12px Arial,sans-serif}</style>
   <text x="34" y="42" class="head">Defined Risk Versus Maximum Payoff</text>
   <text x="34" y="68" class="sub">One contract per spread, excluding commissions and assignment costs.</text>
   <g>
-      <text x="34" y="100" class="label">1. NFLX Call Credit</text>
-      <text x="1166" y="100" class="ratio" text-anchor="end">0.38x reward/risk</text>
-      <text x="34" y="131" class="lossText">MAX LOSS $145</text>
-      <rect x="180" y="118" width="350.0" height="18" rx="3" fill="#f29e5b"/>
-      <text x="620" y="131" class="profitText">MAX PROFIT $55</text>
-      <rect x="800" y="118" width="132.8" height="18" rx="3" fill="#58d8ee"/>
+      <text x="34" y="100" class="label">1. BAC Put Credit</text>
+      <text x="1166" y="100" class="ratio" text-anchor="end">0.64x reward/risk</text>
+      <text x="34" y="131" class="lossText">MAX LOSS $61</text>
+      <rect x="180" y="118" width="47.2" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="131" class="profitText">MAX PROFIT $39</text>
+      <rect x="800" y="118" width="30.2" height="18" rx="3" fill="#58d8ee"/>
       <line x1="34" x2="1166" y1="162" y2="162" stroke="#1e4a43"/>
     </g>
 <g>
-      <text x="34" y="204" class="label">2. IWM Put Debit</text>
-      <text x="1166" y="204" class="ratio" text-anchor="end">1.47x reward/risk</text>
-      <text x="34" y="235" class="lossText">MAX LOSS $81</text>
-      <rect x="180" y="222" width="195.5" height="18" rx="3" fill="#f29e5b"/>
-      <text x="620" y="235" class="profitText">MAX PROFIT $119</text>
-      <rect x="800" y="222" width="287.2" height="18" rx="3" fill="#58d8ee"/>
+      <text x="34" y="204" class="label">2. NKE Put Credit</text>
+      <text x="1166" y="204" class="ratio" text-anchor="end">0.30x reward/risk</text>
+      <text x="34" y="235" class="lossText">MAX LOSS $77</text>
+      <rect x="180" y="222" width="59.6" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="235" class="profitText">MAX PROFIT $23</text>
+      <rect x="800" y="222" width="17.8" height="18" rx="3" fill="#58d8ee"/>
       <line x1="34" x2="1166" y1="266" y2="266" stroke="#1e4a43"/>
     </g>
 <g>
-      <text x="34" y="308" class="label">3. CMCSA Put Credit</text>
-      <text x="1166" y="308" class="ratio" text-anchor="end">0.41x reward/risk</text>
-      <text x="34" y="339" class="lossText">MAX LOSS $71</text>
-      <rect x="180" y="326" width="171.4" height="18" rx="3" fill="#f29e5b"/>
-      <text x="620" y="339" class="profitText">MAX PROFIT $29</text>
-      <rect x="800" y="326" width="70.0" height="18" rx="3" fill="#58d8ee"/>
+      <text x="34" y="308" class="label">3. ORCL Call Credit</text>
+      <text x="1166" y="308" class="ratio" text-anchor="end">0.25x reward/risk</text>
+      <text x="34" y="339" class="lossText">MAX LOSS $240</text>
+      <rect x="180" y="326" width="185.8" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="339" class="profitText">MAX PROFIT $60</text>
+      <rect x="800" y="326" width="46.5" height="18" rx="3" fill="#58d8ee"/>
       <line x1="34" x2="1166" y1="370" y2="370" stroke="#1e4a43"/>
+    </g>
+<g>
+      <text x="34" y="412" class="label">4. QQQ Put Debit</text>
+      <text x="1166" y="412" class="ratio" text-anchor="end">1.82x reward/risk</text>
+      <text x="34" y="443" class="lossText">MAX LOSS $248</text>
+      <rect x="180" y="430" width="192.0" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="443" class="profitText">MAX PROFIT $452</text>
+      <rect x="800" y="430" width="350.0" height="18" rx="3" fill="#58d8ee"/>
+      <line x1="34" x2="1166" y1="474" y2="474" stroke="#1e4a43"/>
+    </g>
+<g>
+      <text x="34" y="516" class="label">5. IWM Put Debit</text>
+      <text x="1166" y="516" class="ratio" text-anchor="end">1.68x reward/risk</text>
+      <text x="34" y="547" class="lossText">MAX LOSS $112</text>
+      <rect x="180" y="534" width="86.7" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="547" class="profitText">MAX PROFIT $188</text>
+      <rect x="800" y="534" width="145.6" height="18" rx="3" fill="#58d8ee"/>
+      <line x1="34" x2="1166" y1="578" y2="578" stroke="#1e4a43"/>
     </g>
   </svg>

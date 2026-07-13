@@ -1,4 +1,6 @@
 rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
-"1","NFLX","NFLX 7/24 78/80 Call Credit Spread","call_credit","2026-07-24","11","74.7799","Credit","0.55","0.68","-5.58","145","55","0.38","78.55","5.04","51.79","0.9755","0.6598"
-"2","IWM","IWM 7/24 294/292 Put Debit Spread","put_debit","2026-07-24","11","294.26","Debit","0.81","0.4474","6.96","81","119","1.47","293.19","-0.36","40.57","0.9184","0.1908"
-"3","CMCSA","CMCSA 7/24 24/23 Put Credit Spread","put_credit","2026-07-24","11","24.185","Credit","0.29","0.575","-9.8","71","29","0.41","23.71","-1.96","38.24","0.6578","0.5202"
+"1","BAC","BAC 7/24 59/58 Put Credit Spread","put_credit","2026-07-24","11","59.055","Credit","0.39","0.5527","-4.42","61","39","0.64","58.61","-0.75","49.91","0.8617","0.3159"
+"2","NKE","NKE 7/24 43/42 Put Credit Spread","put_credit","2026-07-24","11","44.25","Credit","0.23","0.7017","-3.59","77","23","0.3","42.77","-3.34","49.55","0.785","0.3669"
+"3","ORCL","ORCL 7/24 145/148 Call Credit Spread","call_credit","2026-07-24","11","136.66","Credit","0.6","0.7377","-13.25","240","60","0.25","145.6","6.54","45.85","0.8817","0.61"
+"4","QQQ","QQQ 7/24 715/708 Put Debit Spread","put_debit","2026-07-24","11","717.77","Debit","2.48","0.425","40.17","248","452","1.82","712.52","-0.73","42.58","0.9063","0.2422"
+"5","IWM","IWM 7/24 294/291 Put Debit Spread","put_debit","2026-07-24","11","294.51","Debit","1.12","0.4252","11.18","112","188","1.68","292.88","-0.55","40.89","0.9191","0.1936"

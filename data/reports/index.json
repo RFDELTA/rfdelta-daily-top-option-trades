@@ -3,12 +3,12 @@
   "reports": [
     {
       "date": "2026-07-13",
-      "title": "3 defined-risk option setups lead the Jul 13, 2026 board",
+      "title": "5 defined-risk option setups lead the Jul 13, 2026 board",
       "edition": "Daily market edition",
-      "dataAsOfUtc": "2026-07-13T15:23:50.977Z",
-      "topSymbol": "NFLX",
-      "ideaCount": 3,
-      "topScore": 51.79
+      "dataAsOfUtc": "2026-07-13T15:31:38.463Z",
+      "topSymbol": "BAC",
+      "ideaCount": 5,
+      "topScore": 49.91
     },
     {
       "date": "2026-07-10",
