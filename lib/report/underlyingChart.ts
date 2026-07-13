@@ -9,6 +9,10 @@ export function createUnderlyingTradeChart(snapshot: MarketSnapshot, idea: Trade
   return buildChart(idea, snapshot.reportDate, bars);
 }
 
+export function createUnderlyingTradeChartFromBars(reportDate: string, idea: PublishedTradeIdea, bars: DailyBar[]) {
+  return buildChart(idea, reportDate, bars);
+}
+
 export function attachCompletedUnderlyingCharts(
   report: OptionsReport,
   review: PostTradeReview,

@@ -29,6 +29,8 @@ PLTR supplies the counterweight. Its put debit structure scores 36.57 and carrie
 
 TLT enters with -1.1% five-session momentum and -0.4% over twenty sessions. Realized volatility is 10.6%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
+**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-10/underlying/01-tlt.svg) at $84.55.
+
 **Advanced metrics:** 260 retained sessions; RSI(14) 29.5; MACD spread -0.33%; ATR(14) 0.71%; realized volatility 10.6%; ATM implied volatility 8.1%; expected move 1.3%. Outcome-trained score adjustment: +0.00.
 
 **Execution:** Buy the 85 put and sell the 84.5 put, both expiring Jul 24, 2026. The debit mark of 0.29 assumes the long ask and short bid, not a midpoint. Do not pay more than 0.29 for the spread without rerunning the payoff.
@@ -42,6 +44,8 @@ TLT enters with -1.1% five-session momentum and -0.4% over twenty sessions. Real
 **Trigger-dependent setup.** The setup scores 36.57 on the common scale, supported by 40.1% modeled probability of profit, 0.86 liquidity quality and positive modeled expectancy of $3.11.
 
 PLTR enters with -2.1% five-session momentum and -2.8% over twenty sessions. Realized volatility is 58.1%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
+
+**Underlying chart:** [PLTR entry and open-position history](/charts/2026-07-10/underlying/02-pltr.svg) at $126.55.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 48.3; MACD spread 1.29%; ATR(14) 5.58%; realized volatility 58.1%; ATM implied volatility 49.1%; expected move 7.7%. Outcome-trained score adjustment: +0.00.
 

@@ -157,6 +157,373 @@
         "execution": "Buy the 85 put and sell the 84.5 put, both expiring Jul 24, 2026. The debit mark of 0.29 assumes the long ask and short bid, not a midpoint. Do not pay more than 0.29 for the spread without rerunning the payoff.",
         "risk": "Maximum one-lot loss is $29.00. Breakeven is $84.71 and sits 0.2% above the source mark, providing an upside cushion. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
         "payoffRead": "Maximum one-lot profit is $21.00, or 0.72 times maximum risk. The simulation assigns 48.3% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths."
+      },
+      "underlyingChart": {
+        "assetPath": "/charts/2026-07-10/underlying/01-tlt.svg",
+        "entryDate": "2026-07-10",
+        "entryPrice": 84.55,
+        "points": [
+          {
+            "date": "2026-03-03",
+            "close": 89.43
+          },
+          {
+            "date": "2026-03-04",
+            "close": 89.15
+          },
+          {
+            "date": "2026-03-05",
+            "close": 88.79
+          },
+          {
+            "date": "2026-03-06",
+            "close": 88.46
+          },
+          {
+            "date": "2026-03-09",
+            "close": 89.23
+          },
+          {
+            "date": "2026-03-10",
+            "close": 88.28
+          },
+          {
+            "date": "2026-03-11",
+            "close": 87.14
+          },
+          {
+            "date": "2026-03-12",
+            "close": 86.97
+          },
+          {
+            "date": "2026-03-13",
+            "close": 86.54
+          },
+          {
+            "date": "2026-03-16",
+            "close": 87.21
+          },
+          {
+            "date": "2026-03-17",
+            "close": 87.45
+          },
+          {
+            "date": "2026-03-18",
+            "close": 86.96
+          },
+          {
+            "date": "2026-03-19",
+            "close": 87.49
+          },
+          {
+            "date": "2026-03-20",
+            "close": 85.83
+          },
+          {
+            "date": "2026-03-23",
+            "close": 86.39
+          },
+          {
+            "date": "2026-03-24",
+            "close": 86.01
+          },
+          {
+            "date": "2026-03-25",
+            "close": 86.84
+          },
+          {
+            "date": "2026-03-26",
+            "close": 86.11
+          },
+          {
+            "date": "2026-03-27",
+            "close": 85.64
+          },
+          {
+            "date": "2026-03-30",
+            "close": 86.78
+          },
+          {
+            "date": "2026-03-31",
+            "close": 86.69
+          },
+          {
+            "date": "2026-04-01",
+            "close": 86.26
+          },
+          {
+            "date": "2026-04-02",
+            "close": 86.79
+          },
+          {
+            "date": "2026-04-06",
+            "close": 86.65
+          },
+          {
+            "date": "2026-04-07",
+            "close": 86.64
+          },
+          {
+            "date": "2026-04-08",
+            "close": 86.92
+          },
+          {
+            "date": "2026-04-09",
+            "close": 86.7
+          },
+          {
+            "date": "2026-04-10",
+            "close": 86.49
+          },
+          {
+            "date": "2026-04-13",
+            "close": 86.75
+          },
+          {
+            "date": "2026-04-14",
+            "close": 87.21
+          },
+          {
+            "date": "2026-04-15",
+            "close": 86.83
+          },
+          {
+            "date": "2026-04-16",
+            "close": 86.28
+          },
+          {
+            "date": "2026-04-17",
+            "close": 87.07
+          },
+          {
+            "date": "2026-04-20",
+            "close": 87.05
+          },
+          {
+            "date": "2026-04-21",
+            "close": 86.57
+          },
+          {
+            "date": "2026-04-22",
+            "close": 86.74
+          },
+          {
+            "date": "2026-04-23",
+            "close": 86.55
+          },
+          {
+            "date": "2026-04-24",
+            "close": 86.71
+          },
+          {
+            "date": "2026-04-27",
+            "close": 86.28
+          },
+          {
+            "date": "2026-04-28",
+            "close": 86.37
+          },
+          {
+            "date": "2026-04-29",
+            "close": 85.7
+          },
+          {
+            "date": "2026-04-30",
+            "close": 85.62
+          },
+          {
+            "date": "2026-05-01",
+            "close": 85.61
+          },
+          {
+            "date": "2026-05-04",
+            "close": 84.96
+          },
+          {
+            "date": "2026-05-05",
+            "close": 85.43
+          },
+          {
+            "date": "2026-05-06",
+            "close": 86.08
+          },
+          {
+            "date": "2026-05-07",
+            "close": 85.65
+          },
+          {
+            "date": "2026-05-08",
+            "close": 86.08
+          },
+          {
+            "date": "2026-05-11",
+            "close": 85.56
+          },
+          {
+            "date": "2026-05-12",
+            "close": 84.99
+          },
+          {
+            "date": "2026-05-13",
+            "close": 84.8
+          },
+          {
+            "date": "2026-05-14",
+            "close": 84.92
+          },
+          {
+            "date": "2026-05-15",
+            "close": 83.66
+          },
+          {
+            "date": "2026-05-18",
+            "close": 83.56
+          },
+          {
+            "date": "2026-05-19",
+            "close": 83.02
+          },
+          {
+            "date": "2026-05-20",
+            "close": 83.91
+          },
+          {
+            "date": "2026-05-21",
+            "close": 84.22
+          },
+          {
+            "date": "2026-05-22",
+            "close": 84.68
+          },
+          {
+            "date": "2026-05-26",
+            "close": 85.1
+          },
+          {
+            "date": "2026-05-27",
+            "close": 85.3
+          },
+          {
+            "date": "2026-05-28",
+            "close": 85.74
+          },
+          {
+            "date": "2026-05-29",
+            "close": 85.76
+          },
+          {
+            "date": "2026-06-01",
+            "close": 85.47
+          },
+          {
+            "date": "2026-06-02",
+            "close": 85.65
+          },
+          {
+            "date": "2026-06-03",
+            "close": 85.31
+          },
+          {
+            "date": "2026-06-04",
+            "close": 85.5
+          },
+          {
+            "date": "2026-06-05",
+            "close": 85.06
+          },
+          {
+            "date": "2026-06-08",
+            "close": 84.62
+          },
+          {
+            "date": "2026-06-09",
+            "close": 85.12
+          },
+          {
+            "date": "2026-06-10",
+            "close": 84.88
+          },
+          {
+            "date": "2026-06-11",
+            "close": 85.98
+          },
+          {
+            "date": "2026-06-12",
+            "close": 85.77
+          },
+          {
+            "date": "2026-06-15",
+            "close": 85.72
+          },
+          {
+            "date": "2026-06-16",
+            "close": 86.19
+          },
+          {
+            "date": "2026-06-17",
+            "close": 86.33
+          },
+          {
+            "date": "2026-06-18",
+            "close": 86.75
+          },
+          {
+            "date": "2026-06-22",
+            "close": 86.09
+          },
+          {
+            "date": "2026-06-23",
+            "close": 86.2
+          },
+          {
+            "date": "2026-06-24",
+            "close": 87.38
+          },
+          {
+            "date": "2026-06-25",
+            "close": 87.35
+          },
+          {
+            "date": "2026-06-26",
+            "close": 87.36
+          },
+          {
+            "date": "2026-06-29",
+            "close": 87.45
+          },
+          {
+            "date": "2026-06-30",
+            "close": 86.42
+          },
+          {
+            "date": "2026-07-01",
+            "close": 85.52
+          },
+          {
+            "date": "2026-07-02",
+            "close": 85.51
+          },
+          {
+            "date": "2026-07-06",
+            "close": 85.45
+          },
+          {
+            "date": "2026-07-07",
+            "close": 84.55
+          },
+          {
+            "date": "2026-07-08",
+            "close": 84.36
+          },
+          {
+            "date": "2026-07-09",
+            "close": 84.49
+          },
+          {
+            "date": "2026-07-10",
+            "close": 84.55
+          }
+        ]
       }
     },
     {
@@ -262,6 +629,373 @@
         "execution": "Buy the 125 put and sell the 120 put, both expiring Jul 24, 2026. The debit mark of 1.87 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.87 for the spread without rerunning the payoff.",
         "risk": "Maximum one-lot loss is $187.00. Breakeven is $123.13 and requires a 2.7% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
         "payoffRead": "Maximum one-lot profit is $313.00, or 1.67 times maximum risk. The simulation assigns 30.3% probability to finishing near maximum profit and uses 50.4% implied volatility across deterministic jump-stress paths."
+      },
+      "underlyingChart": {
+        "assetPath": "/charts/2026-07-10/underlying/02-pltr.svg",
+        "entryDate": "2026-07-10",
+        "entryPrice": 126.5502,
+        "points": [
+          {
+            "date": "2026-03-03",
+            "close": 147.22
+          },
+          {
+            "date": "2026-03-04",
+            "close": 153.19
+          },
+          {
+            "date": "2026-03-05",
+            "close": 152.67
+          },
+          {
+            "date": "2026-03-06",
+            "close": 157.16
+          },
+          {
+            "date": "2026-03-09",
+            "close": 156.43
+          },
+          {
+            "date": "2026-03-10",
+            "close": 151.14
+          },
+          {
+            "date": "2026-03-11",
+            "close": 151.6
+          },
+          {
+            "date": "2026-03-12",
+            "close": 153.5
+          },
+          {
+            "date": "2026-03-13",
+            "close": 150.95
+          },
+          {
+            "date": "2026-03-16",
+            "close": 152.72
+          },
+          {
+            "date": "2026-03-17",
+            "close": 155.08
+          },
+          {
+            "date": "2026-03-18",
+            "close": 152.77
+          },
+          {
+            "date": "2026-03-19",
+            "close": 155.68
+          },
+          {
+            "date": "2026-03-20",
+            "close": 150.68
+          },
+          {
+            "date": "2026-03-23",
+            "close": 160.84
+          },
+          {
+            "date": "2026-03-24",
+            "close": 154.78
+          },
+          {
+            "date": "2026-03-25",
+            "close": 154.96
+          },
+          {
+            "date": "2026-03-26",
+            "close": 147.56
+          },
+          {
+            "date": "2026-03-27",
+            "close": 143.06
+          },
+          {
+            "date": "2026-03-30",
+            "close": 137.55
+          },
+          {
+            "date": "2026-03-31",
+            "close": 146.28
+          },
+          {
+            "date": "2026-04-01",
+            "close": 146.49
+          },
+          {
+            "date": "2026-04-02",
+            "close": 148.46
+          },
+          {
+            "date": "2026-04-06",
+            "close": 147.93
+          },
+          {
+            "date": "2026-04-07",
+            "close": 150.07
+          },
+          {
+            "date": "2026-04-08",
+            "close": 140.76
+          },
+          {
+            "date": "2026-04-09",
+            "close": 130.49
+          },
+          {
+            "date": "2026-04-10",
+            "close": 128.06
+          },
+          {
+            "date": "2026-04-13",
+            "close": 132.37
+          },
+          {
+            "date": "2026-04-14",
+            "close": 135.7
+          },
+          {
+            "date": "2026-04-15",
+            "close": 142.15
+          },
+          {
+            "date": "2026-04-16",
+            "close": 142.76
+          },
+          {
+            "date": "2026-04-17",
+            "close": 146.39
+          },
+          {
+            "date": "2026-04-20",
+            "close": 145.89
+          },
+          {
+            "date": "2026-04-21",
+            "close": 145.97
+          },
+          {
+            "date": "2026-04-22",
+            "close": 152.62
+          },
+          {
+            "date": "2026-04-23",
+            "close": 141.57
+          },
+          {
+            "date": "2026-04-24",
+            "close": 143.09
+          },
+          {
+            "date": "2026-04-27",
+            "close": 143.1
+          },
+          {
+            "date": "2026-04-28",
+            "close": 141.18
+          },
+          {
+            "date": "2026-04-29",
+            "close": 137.97
+          },
+          {
+            "date": "2026-04-30",
+            "close": 139.11
+          },
+          {
+            "date": "2026-05-01",
+            "close": 144.07
+          },
+          {
+            "date": "2026-05-04",
+            "close": 146.03
+          },
+          {
+            "date": "2026-05-05",
+            "close": 135.91
+          },
+          {
+            "date": "2026-05-06",
+            "close": 133.79
+          },
+          {
+            "date": "2026-05-07",
+            "close": 137.05
+          },
+          {
+            "date": "2026-05-08",
+            "close": 137.8
+          },
+          {
+            "date": "2026-05-11",
+            "close": 136.89
+          },
+          {
+            "date": "2026-05-12",
+            "close": 136
+          },
+          {
+            "date": "2026-05-13",
+            "close": 130.05
+          },
+          {
+            "date": "2026-05-14",
+            "close": 133.73
+          },
+          {
+            "date": "2026-05-15",
+            "close": 133.99
+          },
+          {
+            "date": "2026-05-18",
+            "close": 135.14
+          },
+          {
+            "date": "2026-05-19",
+            "close": 135.26
+          },
+          {
+            "date": "2026-05-20",
+            "close": 137.15
+          },
+          {
+            "date": "2026-05-21",
+            "close": 137.415
+          },
+          {
+            "date": "2026-05-22",
+            "close": 136.88
+          },
+          {
+            "date": "2026-05-26",
+            "close": 136.6
+          },
+          {
+            "date": "2026-05-27",
+            "close": 132.51
+          },
+          {
+            "date": "2026-05-28",
+            "close": 143.34
+          },
+          {
+            "date": "2026-05-29",
+            "close": 156.54
+          },
+          {
+            "date": "2026-06-01",
+            "close": 160.65
+          },
+          {
+            "date": "2026-06-02",
+            "close": 152.17
+          },
+          {
+            "date": "2026-06-03",
+            "close": 142.2
+          },
+          {
+            "date": "2026-06-04",
+            "close": 141.7
+          },
+          {
+            "date": "2026-06-05",
+            "close": 135.53
+          },
+          {
+            "date": "2026-06-08",
+            "close": 136.47
+          },
+          {
+            "date": "2026-06-09",
+            "close": 132.07
+          },
+          {
+            "date": "2026-06-10",
+            "close": 130.21
+          },
+          {
+            "date": "2026-06-11",
+            "close": 131.08
+          },
+          {
+            "date": "2026-06-12",
+            "close": 127.99
+          },
+          {
+            "date": "2026-06-15",
+            "close": 134.71
+          },
+          {
+            "date": "2026-06-16",
+            "close": 133.25
+          },
+          {
+            "date": "2026-06-17",
+            "close": 130.63
+          },
+          {
+            "date": "2026-06-18",
+            "close": 128.47
+          },
+          {
+            "date": "2026-06-22",
+            "close": 119.5
+          },
+          {
+            "date": "2026-06-23",
+            "close": 116.7
+          },
+          {
+            "date": "2026-06-24",
+            "close": 113.5
+          },
+          {
+            "date": "2026-06-25",
+            "close": 107.27
+          },
+          {
+            "date": "2026-06-26",
+            "close": 112.93
+          },
+          {
+            "date": "2026-06-29",
+            "close": 115.7
+          },
+          {
+            "date": "2026-06-30",
+            "close": 116.67
+          },
+          {
+            "date": "2026-07-01",
+            "close": 125.73
+          },
+          {
+            "date": "2026-07-02",
+            "close": 129.3
+          },
+          {
+            "date": "2026-07-06",
+            "close": 132.54
+          },
+          {
+            "date": "2026-07-07",
+            "close": 134.37
+          },
+          {
+            "date": "2026-07-08",
+            "close": 132.22
+          },
+          {
+            "date": "2026-07-09",
+            "close": 129.04
+          },
+          {
+            "date": "2026-07-10",
+            "close": 126.5502
+          }
+        ]
       }
     }
   ],

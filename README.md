@@ -98,6 +98,12 @@ Replace an existing report for the same date after deliberately re-fetching the 
 npm run generate:daily -- 2026-07-13 force
 ```
 
+Add entry charts to an existing committed report without changing its market snapshot, ranking or option structures:
+
+```powershell
+npm run backfill:charts -- 2026-07-10
+```
+
 Generate the clearly labeled historical calibration edition without network credentials:
 
 ```powershell

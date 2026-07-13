@@ -23,6 +23,7 @@
     "test": "npm run test:model && npm run test:discovery && npm run test:charts && npm run test:workflow && npm run test:bridge && npm run test:history && npm run test:selection && npm run test:training",
     "smoke:bridge": "tsx scripts/smoke-bridge.ts",
     "smoke:history": "tsx scripts/smoke-public-history.ts",
+    "backfill:charts": "tsx scripts/backfill-underlying-charts.ts",
     "generate:daily": "tsx scripts/generate-daily.ts",
     "generate:fixture": "tsx scripts/generate-fixture-report.ts",
     "verify:reports": "tsx scripts/verify-reports.ts"
