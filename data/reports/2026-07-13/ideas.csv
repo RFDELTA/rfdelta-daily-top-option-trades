@@ -1,0 +1,5 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","IWM","IWM 7/24 295/290 Put Debit Spread","put_debit","2026-07-24","11","294.44","Debit","1.83","0.4421","24.92","183","317","1.73","293.17","-0.43","42.72","0.9239","0.1936"
+"2","CRM","CRM 7/24 165/162.5 Put Credit Spread","put_credit","2026-07-24","11","170.995","Credit","0.62","0.6681","-17","188","62","0.33","164.38","-3.87","41.82","0.7336","0.4846"
+"3","WFC","WFC 7/24 85/83 Put Credit Spread","put_credit","2026-07-24","11","86.54","Credit","0.53","0.6208","-17.41","147","53","0.36","84.47","-2.39","38.91","0.6846","0.4325"
+"4","PLTR","PLTR 7/24 127/122 Put Debit Spread","put_debit","2026-07-24","11","128.54","Debit","1.94","0.4027","-1.4","194","306","1.58","125.06","-2.71","35.04","0.8027","0.5601"

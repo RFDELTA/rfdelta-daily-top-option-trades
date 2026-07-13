@@ -1,0 +1,2033 @@
+{
+  "schemaVersion": "1.0",
+  "reportId": "rfdelta-options-2026-07-13-86bb39a369f8",
+  "runMetadata": {
+    "reportDate": "2026-07-13",
+    "marketSessionDate": "2026-07-13",
+    "generatedAtUtc": "2026-07-13T14:58:54.139Z",
+    "dataAsOfUtc": "2026-07-13T14:58:49.010Z",
+    "edition": "Daily market edition",
+    "methodologyVersion": "rfdelta-options-v2",
+    "selectionHash": "86bb39a369f839c9b085f5a76d36b40f3fb0d868411232ae0b391dd49cf14a4f",
+    "datasetRunId": "run-96a45565a9ab4f72",
+    "featureVersion": "rfdelta-market-features-v1",
+    "selectionPolicyVersion": "rfdelta-online-policy-v1",
+    "trainingSampleCount": 5
+  },
+  "executiveSummary": {
+    "headline": "4 defined-risk option setups lead the Jul 13, 2026 board",
+    "standfirst": "IWM 7/24 295/290 Put Debit Spread ranks first with a 42.72 score, 44.2% modeled probability of profit and $183.00 maximum one-lot risk. The basket balances 2 bullish and 2 bearish expressions.",
+    "marketCommentary": [
+      "The option board is not rewarding indiscriminate beta. Across the published names, the mean five-session move is -0.6%, while 0 setups carry realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.",
+      "The screen quotes 105 liquid underlyings and requests 40 option chains through its core, mover, volume and rotation sleeves. It accepts only same-session chains with two usable legs, then forces every idea through the same conservative mark: pay the ask for the long option and receive the bid for the short. The resulting ranking is intentionally harsher than a midpoint screen, because a trade that only works at a theoretical fill is not a durable public idea.",
+      "Direction comes from five- and twenty-session price structure rather than a headline guess. That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade."
+    ],
+    "selectionCommentary": [
+      "IWM wins the top slot because liquidity, directional alignment and bounded payoff reinforce one another. Its debit entry of 1.83 creates 1.73 dollars of maximum reward for each dollar of maximum risk, with breakeven at $293.17.",
+      "CRM supplies the counterweight. Its put credit structure scores 41.82 and carries $188.00 of one-lot maximum loss. The basket is therefore ranked as a portfolio of explicit risks, not as five unrelated ticker calls."
+    ],
+    "riskCommentary": "The basket's maximum losses are additive if every thesis fails. Quote slippage, early assignment and volatility repricing can also change the practical outcome before expiration, so the published entry is a ceiling for debits and a floor for credits, not an assurance of execution."
+  },
+  "marketContext": {
+    "providerAttribution": "RFDELTA normalized U.S. equity and options market data",
+    "universeCount": 105,
+    "quotedSymbolCount": 105,
+    "chainSymbolCount": 40,
+    "includedSymbolCount": 38,
+    "excludedSymbolCount": 37,
+    "candidateCount": 27,
+    "bullishCandidateCount": 17,
+    "bearishCandidateCount": 10,
+    "regimeCounts": {
+      "mean_reversion": 15,
+      "trend": 4,
+      "risk_off": 5,
+      "vol_expansion": 1,
+      "mixed": 2
+    }
+  },
+  "analytics": {
+    "publishedIdeaCount": 4,
+    "topScore": 42.72,
+    "averageProbabilityProfit": 0.533425,
+    "totalExpectedValueDollars": -10.89,
+    "totalMaxLossDollars": 712,
+    "totalMaxProfitDollars": 738,
+    "debitIdeaCount": 2,
+    "creditIdeaCount": 2
+  },
+  "topTrades": [
+    {
+      "rank": 1,
+      "id": "iwm-2026-07-24-put_debit-295-290",
+      "name": "IWM 7/24 295/290 Put Debit Spread",
+      "symbol": "IWM",
+      "underlyingMark": 294.44,
+      "expiration": "2026-07-24",
+      "daysToExpiry": 11,
+      "structureType": "Debit",
+      "style": "put_debit",
+      "direction": "bearish",
+      "theme": "small-cap breadth",
+      "regime": "mean_reversion",
+      "correlationBucket": "broad-market",
+      "bucket": "conditional",
+      "entry": 1.83,
+      "width": 5,
+      "maxLossDollars": 183,
+      "maxProfitDollars": 317,
+      "rewardToRisk": 1.73,
+      "breakeven": 293.17,
+      "requiredMovePctToBreakeven": -0.43,
+      "probabilityProfit": 0.4421,
+      "probabilityNearMaxProfit": 0.3207,
+      "expectedValueDollars": 24.92,
+      "blackScholesEdge": 0.2353,
+      "impliedVolUsed": 0.1936,
+      "liquidityScore": 0.9239,
+      "score": 42.72,
+      "riskFlags": [],
+      "thesis": "IWM is expressing a bearish mean reversion setup: -1.5% over five sessions and +1.4% over twenty, with +13.4% annualized realized volatility. The put debit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
+      "longLeg": {
+        "optionSymbol": "IWM   260724P00295000",
+        "right": "P",
+        "strike": 295,
+        "bid": 3.83,
+        "ask": 3.91,
+        "mid": 3.87,
+        "volume": 663,
+        "openInterest": 1662,
+        "quoteTimeUtc": "2026-07-13T14:57:26.908Z"
+      },
+      "shortLeg": {
+        "optionSymbol": "IWM   260724P00290000",
+        "right": "P",
+        "strike": 290,
+        "bid": 2.08,
+        "ask": 2.13,
+        "mid": 2.105,
+        "volume": 67,
+        "openInterest": 7537,
+        "quoteTimeUtc": "2026-07-13T14:57:27.480Z"
+      },
+      "sourceAsOfUtc": "2026-07-13T14:58:49.010Z",
+      "marketEvidence": [
+        "Underlying $294 at the source timestamp",
+        "-1.5% over five sessions and +1.4% over twenty, with +13.4% annualized realized volatility.",
+        "730 contracts of combined session volume and 9199 contracts of combined open interest across the two legs"
+      ],
+      "historySessionCount": 260,
+      "advancedMetrics": {
+        "symbol": "IWM",
+        "historySessions": 260,
+        "historyConfidence": 1,
+        "return1d": -0.005237,
+        "return5d": -0.014921,
+        "return20d": 0.013877,
+        "sma5Distance": -0.003479,
+        "sma20Distance": -0.006383,
+        "emaTrend": 0.002491,
+        "macdPct": -0.003075,
+        "rsi14": 42.774342,
+        "atr14Pct": 0.015437,
+        "bollingerZ20": -0.669449,
+        "realizedVol5": 0.144105,
+        "realizedVol20": 0.133509,
+        "downsideVol20": 0.040194,
+        "maxDrawdown20": -0.023199,
+        "trendEfficiency20": 0.093352,
+        "volumeZScore20": -2.310953,
+        "atmImpliedVol": 0.188486,
+        "putCallIvSkew": 0.011804,
+        "putCallVolumeRatio": 2.639229,
+        "putCallOpenInterestRatio": 2.243214,
+        "expectedMovePct": 0.026168,
+        "meanQuoteWidthPct": 2.826886,
+        "liquidContractRatio": 0.875,
+        "trendSignal": -0.113402,
+        "riskAdjustedMomentum": 0.370051
+      },
+      "trainingAdjustment": 0,
+      "trainingPolicyVersion": "rfdelta-online-policy-v1",
+      "fiveDayReturn": -0.014921,
+      "twentyDayReturn": 0.013877,
+      "realizedVolatility": 0.133509,
+      "lessonAdjustments": [],
+      "commentary": {
+        "convictionLabel": "Trigger-dependent setup",
+        "rankingRead": "The setup scores 42.72 on the common scale, supported by 44.2% modeled probability of profit, 0.92 liquidity quality and positive modeled expectancy of $24.92.",
+        "setup": "IWM enters with -1.5% five-session momentum and +1.4% over twenty sessions. Realized volatility is 13.4%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
+        "execution": "Buy the 295 put and sell the 290 put, both expiring Jul 24, 2026. The debit mark of 1.83 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.83 for the spread without rerunning the payoff.",
+        "risk": "Maximum one-lot loss is $183.00. Breakeven is $293.17 and requires a 0.4% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
+        "payoffRead": "Maximum one-lot profit is $317.00, or 1.73 times maximum risk. The simulation assigns 32.1% probability to finishing near maximum profit and uses 19.4% implied volatility across deterministic jump-stress paths."
+      },
+      "underlyingChart": {
+        "assetPath": "/charts/2026-07-13/underlying/01-iwm.svg",
+        "entryDate": "2026-07-13",
+        "entryPrice": 294.44,
+        "points": [
+          {
+            "date": "2026-03-04",
+            "close": 261.76
+          },
+          {
+            "date": "2026-03-05",
+            "close": 256.76
+          },
+          {
+            "date": "2026-03-06",
+            "close": 250.89
+          },
+          {
+            "date": "2026-03-09",
+            "close": 253.62
+          },
+          {
+            "date": "2026-03-10",
+            "close": 253.36
+          },
+          {
+            "date": "2026-03-11",
+            "close": 252.85
+          },
+          {
+            "date": "2026-03-12",
+            "close": 247.41
+          },
+          {
+            "date": "2026-03-13",
+            "close": 246.59
+          },
+          {
+            "date": "2026-03-16",
+            "close": 248.92
+          },
+          {
+            "date": "2026-03-17",
+            "close": 250.05
+          },
+          {
+            "date": "2026-03-18",
+            "close": 246.02
+          },
+          {
+            "date": "2026-03-19",
+            "close": 247.63
+          },
+          {
+            "date": "2026-03-20",
+            "close": 242.22
+          },
+          {
+            "date": "2026-03-23",
+            "close": 247.45
+          },
+          {
+            "date": "2026-03-24",
+            "close": 248.78
+          },
+          {
+            "date": "2026-03-25",
+            "close": 251.82
+          },
+          {
+            "date": "2026-03-26",
+            "close": 247.44
+          },
+          {
+            "date": "2026-03-27",
+            "close": 243.1
+          },
+          {
+            "date": "2026-03-30",
+            "close": 239.61
+          },
+          {
+            "date": "2026-03-31",
+            "close": 248
+          },
+          {
+            "date": "2026-04-01",
+            "close": 249.56
+          },
+          {
+            "date": "2026-04-02",
+            "close": 251.29
+          },
+          {
+            "date": "2026-04-06",
+            "close": 252.36
+          },
+          {
+            "date": "2026-04-07",
+            "close": 252.91
+          },
+          {
+            "date": "2026-04-08",
+            "close": 260.47
+          },
+          {
+            "date": "2026-04-09",
+            "close": 261.96
+          },
+          {
+            "date": "2026-04-10",
+            "close": 261.3
+          },
+          {
+            "date": "2026-04-13",
+            "close": 265.07
+          },
+          {
+            "date": "2026-04-14",
+            "close": 268.72
+          },
+          {
+            "date": "2026-04-15",
+            "close": 269.39
+          },
+          {
+            "date": "2026-04-16",
+            "close": 269.95
+          },
+          {
+            "date": "2026-04-17",
+            "close": 275.78
+          },
+          {
+            "date": "2026-04-20",
+            "close": 277.35
+          },
+          {
+            "date": "2026-04-21",
+            "close": 274.51
+          },
+          {
+            "date": "2026-04-22",
+            "close": 276.48
+          },
+          {
+            "date": "2026-04-23",
+            "close": 275.52
+          },
+          {
+            "date": "2026-04-24",
+            "close": 276.65
+          },
+          {
+            "date": "2026-04-27",
+            "close": 277.14
+          },
+          {
+            "date": "2026-04-28",
+            "close": 273.91
+          },
+          {
+            "date": "2026-04-29",
+            "close": 272.08
+          },
+          {
+            "date": "2026-04-30",
+            "close": 277.97
+          },
+          {
+            "date": "2026-05-01",
+            "close": 279.28
+          },
+          {
+            "date": "2026-05-04",
+            "close": 277.88
+          },
+          {
+            "date": "2026-05-05",
+            "close": 282.56
+          },
+          {
+            "date": "2026-05-06",
+            "close": 286.8
+          },
+          {
+            "date": "2026-05-07",
+            "close": 282.26
+          },
+          {
+            "date": "2026-05-08",
+            "close": 284.17
+          },
+          {
+            "date": "2026-05-11",
+            "close": 285.33
+          },
+          {
+            "date": "2026-05-12",
+            "close": 282.57
+          },
+          {
+            "date": "2026-05-13",
+            "close": 282.67
+          },
+          {
+            "date": "2026-05-14",
+            "close": 284.45
+          },
+          {
+            "date": "2026-05-15",
+            "close": 277.6
+          },
+          {
+            "date": "2026-05-18",
+            "close": 275.97
+          },
+          {
+            "date": "2026-05-19",
+            "close": 273
+          },
+          {
+            "date": "2026-05-20",
+            "close": 279.87
+          },
+          {
+            "date": "2026-05-21",
+            "close": 282.49
+          },
+          {
+            "date": "2026-05-22",
+            "close": 285.12
+          },
+          {
+            "date": "2026-05-26",
+            "close": 290.51
+          },
+          {
+            "date": "2026-05-27",
+            "close": 290.37
+          },
+          {
+            "date": "2026-05-28",
+            "close": 292.03
+          },
+          {
+            "date": "2026-05-29",
+            "close": 290.43
+          },
+          {
+            "date": "2026-06-01",
+            "close": 288.98
+          },
+          {
+            "date": "2026-06-02",
+            "close": 291.66
+          },
+          {
+            "date": "2026-06-03",
+            "close": 287.67
+          },
+          {
+            "date": "2026-06-04",
+            "close": 292.01
+          },
+          {
+            "date": "2026-06-05",
+            "close": 281.65
+          },
+          {
+            "date": "2026-06-08",
+            "close": 284.11
+          },
+          {
+            "date": "2026-06-09",
+            "close": 285.02
+          },
+          {
+            "date": "2026-06-10",
+            "close": 282.05
+          },
+          {
+            "date": "2026-06-11",
+            "close": 290.41
+          },
+          {
+            "date": "2026-06-12",
+            "close": 292.95
+          },
+          {
+            "date": "2026-06-15",
+            "close": 294.64
+          },
+          {
+            "date": "2026-06-16",
+            "close": 292.08
+          },
+          {
+            "date": "2026-06-17",
+            "close": 289.88
+          },
+          {
+            "date": "2026-06-18",
+            "close": 295.59
+          },
+          {
+            "date": "2026-06-22",
+            "close": 298.18
+          },
+          {
+            "date": "2026-06-23",
+            "close": 295.32
+          },
+          {
+            "date": "2026-06-24",
+            "close": 296.69
+          },
+          {
+            "date": "2026-06-25",
+            "close": 298.91
+          },
+          {
+            "date": "2026-06-26",
+            "close": 299.83
+          },
+          {
+            "date": "2026-06-29",
+            "close": 298.97
+          },
+          {
+            "date": "2026-06-30",
+            "close": 300.45
+          },
+          {
+            "date": "2026-07-01",
+            "close": 299.32
+          },
+          {
+            "date": "2026-07-02",
+            "close": 297.58
+          },
+          {
+            "date": "2026-07-06",
+            "close": 298.9
+          },
+          {
+            "date": "2026-07-07",
+            "close": 296.19
+          },
+          {
+            "date": "2026-07-08",
+            "close": 293.48
+          },
+          {
+            "date": "2026-07-09",
+            "close": 297.24
+          },
+          {
+            "date": "2026-07-10",
+            "close": 295.99
+          },
+          {
+            "date": "2026-07-13",
+            "close": 294.44
+          }
+        ]
+      }
+    },
+    {
+      "rank": 2,
+      "id": "crm-2026-07-24-put_credit-162.5-165",
+      "name": "CRM 7/24 165/162.5 Put Credit Spread",
+      "symbol": "CRM",
+      "underlyingMark": 170.995,
+      "expiration": "2026-07-24",
+      "daysToExpiry": 11,
+      "structureType": "Credit",
+      "style": "put_credit",
+      "direction": "bullish",
+      "theme": "technology and AI leadership",
+      "regime": "trend",
+      "correlationBucket": "large-cap-growth",
+      "bucket": "conditional",
+      "entry": 0.62,
+      "width": 2.5,
+      "maxLossDollars": 188,
+      "maxProfitDollars": 62,
+      "rewardToRisk": 0.33,
+      "breakeven": 164.38,
+      "requiredMovePctToBreakeven": -3.87,
+      "probabilityProfit": 0.6681,
+      "probabilityNearMaxProfit": 0.6523,
+      "expectedValueDollars": -17,
+      "blackScholesEdge": -0.1608,
+      "impliedVolUsed": 0.4846,
+      "liquidityScore": 0.7336,
+      "score": 41.82,
+      "riskFlags": [
+        "negative conservative BS edge"
+      ],
+      "thesis": "CRM is expressing a bullish trend setup: +3.2% over five sessions and +2.7% over twenty, with +39.8% annualized realized volatility. The put credit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
+      "longLeg": {
+        "optionSymbol": "CRM   260724P00162500",
+        "right": "P",
+        "strike": 162.5,
+        "bid": 2.2,
+        "ask": 2.38,
+        "mid": 2.29,
+        "volume": 59,
+        "openInterest": 107,
+        "quoteTimeUtc": "2026-07-13T14:56:52.295Z"
+      },
+      "shortLeg": {
+        "optionSymbol": "CRM   260724P00165000",
+        "right": "P",
+        "strike": 165,
+        "bid": 3,
+        "ask": 3.1,
+        "mid": 3.05,
+        "volume": 35,
+        "openInterest": 600,
+        "quoteTimeUtc": "2026-07-13T14:56:52.246Z"
+      },
+      "sourceAsOfUtc": "2026-07-13T14:58:49.010Z",
+      "marketEvidence": [
+        "Underlying $171 at the source timestamp",
+        "+3.2% over five sessions and +2.7% over twenty, with +39.8% annualized realized volatility.",
+        "94 contracts of combined session volume and 707 contracts of combined open interest across the two legs"
+      ],
+      "historySessionCount": 260,
+      "advancedMetrics": {
+        "symbol": "CRM",
+        "historySessions": 260,
+        "historyConfidence": 1,
+        "return1d": 0.046994,
+        "return5d": 0.032267,
+        "return20d": 0.027306,
+        "sma5Distance": 0.026485,
+        "sma20Distance": 0.066617,
+        "emaTrend": 0.008586,
+        "macdPct": 0.011086,
+        "rsi14": 72.831679,
+        "atr14Pct": 0.036559,
+        "bollingerZ20": 1.637551,
+        "realizedVol5": 0.461923,
+        "realizedVol20": 0.398126,
+        "downsideVol20": 0.179567,
+        "maxDrawdown20": -0.098108,
+        "trendEfficiency20": 0.073253,
+        "volumeZScore20": -1.161321,
+        "atmImpliedVol": 0.47928,
+        "putCallIvSkew": 0.001747,
+        "putCallVolumeRatio": 0.945804,
+        "putCallOpenInterestRatio": 0.610614,
+        "expectedMovePct": 0.066376,
+        "meanQuoteWidthPct": 18.884391,
+        "liquidContractRatio": 0.354167,
+        "trendSignal": 0.402483,
+        "riskAdjustedMomentum": 0.27434
+      },
+      "trainingAdjustment": 0,
+      "trainingPolicyVersion": "rfdelta-online-policy-v1",
+      "fiveDayReturn": 0.032267,
+      "twentyDayReturn": 0.027306,
+      "realizedVolatility": 0.398126,
+      "lessonAdjustments": [],
+      "commentary": {
+        "convictionLabel": "Trigger-dependent setup",
+        "rankingRead": "The setup scores 41.82 on the common scale, supported by 66.8% modeled probability of profit, 0.73 liquidity quality and a conservative modeled expectancy of -$17.00, which keeps sizing discipline central.",
+        "setup": "CRM enters with +3.2% five-session momentum and +2.7% over twenty sessions. Realized volatility is 39.8%, placing the underlying in a trend regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
+        "execution": "Buy the 162.5 put and sell the 165 put, both expiring Jul 24, 2026. The credit mark of 0.62 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.62 of credit without rerunning the payoff.",
+        "risk": "Maximum one-lot loss is $188.00. Breakeven is $164.38 and sits 3.9% below the source mark, providing a downside cushion. Primary watch: negative conservative BS edge. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
+        "payoffRead": "Maximum one-lot profit is $62.00, or 0.33 times maximum risk. The simulation assigns 65.2% probability to finishing near maximum profit and uses 48.5% implied volatility across deterministic jump-stress paths."
+      },
+      "underlyingChart": {
+        "assetPath": "/charts/2026-07-13/underlying/02-crm.svg",
+        "entryDate": "2026-07-13",
+        "entryPrice": 170.995,
+        "points": [
+          {
+            "date": "2026-03-04",
+            "close": 193.08
+          },
+          {
+            "date": "2026-03-05",
+            "close": 201.39
+          },
+          {
+            "date": "2026-03-06",
+            "close": 202.11
+          },
+          {
+            "date": "2026-03-09",
+            "close": 198.79
+          },
+          {
+            "date": "2026-03-10",
+            "close": 194.91
+          },
+          {
+            "date": "2026-03-11",
+            "close": 194.13
+          },
+          {
+            "date": "2026-03-12",
+            "close": 199.28
+          },
+          {
+            "date": "2026-03-13",
+            "close": 192.83
+          },
+          {
+            "date": "2026-03-16",
+            "close": 198.34
+          },
+          {
+            "date": "2026-03-17",
+            "close": 195.31
+          },
+          {
+            "date": "2026-03-18",
+            "close": 194.34
+          },
+          {
+            "date": "2026-03-19",
+            "close": 194.99
+          },
+          {
+            "date": "2026-03-20",
+            "close": 195.38
+          },
+          {
+            "date": "2026-03-23",
+            "close": 195.18
+          },
+          {
+            "date": "2026-03-24",
+            "close": 183.02
+          },
+          {
+            "date": "2026-03-25",
+            "close": 181.96
+          },
+          {
+            "date": "2026-03-26",
+            "close": 185.64
+          },
+          {
+            "date": "2026-03-27",
+            "close": 179.31
+          },
+          {
+            "date": "2026-03-30",
+            "close": 185.03
+          },
+          {
+            "date": "2026-03-31",
+            "close": 186.67
+          },
+          {
+            "date": "2026-04-01",
+            "close": 186.24
+          },
+          {
+            "date": "2026-04-02",
+            "close": 187.18
+          },
+          {
+            "date": "2026-04-06",
+            "close": 185.03
+          },
+          {
+            "date": "2026-04-07",
+            "close": 182.96
+          },
+          {
+            "date": "2026-04-08",
+            "close": 176.37
+          },
+          {
+            "date": "2026-04-09",
+            "close": 170.85
+          },
+          {
+            "date": "2026-04-10",
+            "close": 164.96
+          },
+          {
+            "date": "2026-04-13",
+            "close": 172.82
+          },
+          {
+            "date": "2026-04-14",
+            "close": 171.31
+          },
+          {
+            "date": "2026-04-15",
+            "close": 177.6
+          },
+          {
+            "date": "2026-04-16",
+            "close": 181.22
+          },
+          {
+            "date": "2026-04-17",
+            "close": 182.14
+          },
+          {
+            "date": "2026-04-20",
+            "close": 186.27
+          },
+          {
+            "date": "2026-04-21",
+            "close": 187.11
+          },
+          {
+            "date": "2026-04-22",
+            "close": 189.8
+          },
+          {
+            "date": "2026-04-23",
+            "close": 173.3
+          },
+          {
+            "date": "2026-04-24",
+            "close": 178.16
+          },
+          {
+            "date": "2026-04-27",
+            "close": 180.18
+          },
+          {
+            "date": "2026-04-28",
+            "close": 181.32
+          },
+          {
+            "date": "2026-04-29",
+            "close": 181.22
+          },
+          {
+            "date": "2026-04-30",
+            "close": 176.53
+          },
+          {
+            "date": "2026-05-01",
+            "close": 183.82
+          },
+          {
+            "date": "2026-05-04",
+            "close": 185.48
+          },
+          {
+            "date": "2026-05-05",
+            "close": 186.99
+          },
+          {
+            "date": "2026-05-06",
+            "close": 181.19
+          },
+          {
+            "date": "2026-05-07",
+            "close": 186.34
+          },
+          {
+            "date": "2026-05-08",
+            "close": 181.82
+          },
+          {
+            "date": "2026-05-11",
+            "close": 177.49
+          },
+          {
+            "date": "2026-05-12",
+            "close": 171.31
+          },
+          {
+            "date": "2026-05-13",
+            "close": 165.84
+          },
+          {
+            "date": "2026-05-14",
+            "close": 167.58
+          },
+          {
+            "date": "2026-05-15",
+            "close": 173.51
+          },
+          {
+            "date": "2026-05-18",
+            "close": 179.48
+          },
+          {
+            "date": "2026-05-19",
+            "close": 179.42
+          },
+          {
+            "date": "2026-05-20",
+            "close": 180.1
+          },
+          {
+            "date": "2026-05-21",
+            "close": 176.31
+          },
+          {
+            "date": "2026-05-22",
+            "close": 180.07
+          },
+          {
+            "date": "2026-05-26",
+            "close": 179.08
+          },
+          {
+            "date": "2026-05-27",
+            "close": 177.51
+          },
+          {
+            "date": "2026-05-28",
+            "close": 176.17
+          },
+          {
+            "date": "2026-05-29",
+            "close": 191.1
+          },
+          {
+            "date": "2026-06-01",
+            "close": 209.6
+          },
+          {
+            "date": "2026-06-02",
+            "close": 200.84
+          },
+          {
+            "date": "2026-06-03",
+            "close": 190.61
+          },
+          {
+            "date": "2026-06-04",
+            "close": 188.75
+          },
+          {
+            "date": "2026-06-05",
+            "close": 185.66
+          },
+          {
+            "date": "2026-06-08",
+            "close": 182.55
+          },
+          {
+            "date": "2026-06-09",
+            "close": 175.35
+          },
+          {
+            "date": "2026-06-10",
+            "close": 170.92
+          },
+          {
+            "date": "2026-06-11",
+            "close": 166.45
+          },
+          {
+            "date": "2026-06-12",
+            "close": 165.89
+          },
+          {
+            "date": "2026-06-15",
+            "close": 164.55
+          },
+          {
+            "date": "2026-06-16",
+            "close": 161.71
+          },
+          {
+            "date": "2026-06-17",
+            "close": 155.02
+          },
+          {
+            "date": "2026-06-18",
+            "close": 151.78
+          },
+          {
+            "date": "2026-06-22",
+            "close": 150.12
+          },
+          {
+            "date": "2026-06-23",
+            "close": 153.42
+          },
+          {
+            "date": "2026-06-24",
+            "close": 152.76
+          },
+          {
+            "date": "2026-06-25",
+            "close": 150.19
+          },
+          {
+            "date": "2026-06-26",
+            "close": 158.37
+          },
+          {
+            "date": "2026-06-29",
+            "close": 157.93
+          },
+          {
+            "date": "2026-06-30",
+            "close": 156.66
+          },
+          {
+            "date": "2026-07-01",
+            "close": 163.23
+          },
+          {
+            "date": "2026-07-02",
+            "close": 166.11
+          },
+          {
+            "date": "2026-07-06",
+            "close": 165.65
+          },
+          {
+            "date": "2026-07-07",
+            "close": 169.52
+          },
+          {
+            "date": "2026-07-08",
+            "close": 166.58
+          },
+          {
+            "date": "2026-07-09",
+            "close": 162.5
+          },
+          {
+            "date": "2026-07-10",
+            "close": 163.32
+          },
+          {
+            "date": "2026-07-13",
+            "close": 170.995
+          }
+        ]
+      }
+    },
+    {
+      "rank": 3,
+      "id": "wfc-2026-07-24-put_credit-83-85",
+      "name": "WFC 7/24 85/83 Put Credit Spread",
+      "symbol": "WFC",
+      "underlyingMark": 86.54,
+      "expiration": "2026-07-24",
+      "daysToExpiry": 11,
+      "structureType": "Credit",
+      "style": "put_credit",
+      "direction": "bullish",
+      "theme": "financial and digital-market structure",
+      "regime": "mean_reversion",
+      "correlationBucket": "financials",
+      "bucket": "conditional",
+      "entry": 0.53,
+      "width": 2,
+      "maxLossDollars": 147,
+      "maxProfitDollars": 53,
+      "rewardToRisk": 0.36,
+      "breakeven": 84.47,
+      "requiredMovePctToBreakeven": -2.39,
+      "probabilityProfit": 0.6208,
+      "probabilityNearMaxProfit": 0.5895,
+      "expectedValueDollars": -17.41,
+      "blackScholesEdge": -0.1759,
+      "impliedVolUsed": 0.4325,
+      "liquidityScore": 0.6846,
+      "score": 38.91,
+      "riskFlags": [
+        "negative conservative BS edge"
+      ],
+      "thesis": "WFC is expressing a bullish mean reversion setup: -1.0% over five sessions and +5.0% over twenty, with +24.9% annualized realized volatility. The put credit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
+      "longLeg": {
+        "optionSymbol": "WFC   260724P00083000",
+        "right": "P",
+        "strike": 83,
+        "bid": 1.06,
+        "ask": 1.19,
+        "mid": 1.125,
+        "volume": 50,
+        "openInterest": 546,
+        "quoteTimeUtc": "2026-07-13T14:58:13.218Z"
+      },
+      "shortLeg": {
+        "optionSymbol": "WFC   260724P00085000",
+        "right": "P",
+        "strike": 85,
+        "bid": 1.72,
+        "ask": 1.91,
+        "mid": 1.815,
+        "volume": 16,
+        "openInterest": 2780,
+        "quoteTimeUtc": "2026-07-13T14:58:28.596Z"
+      },
+      "sourceAsOfUtc": "2026-07-13T14:58:49.010Z",
+      "marketEvidence": [
+        "Underlying $87 at the source timestamp",
+        "-1.0% over five sessions and +5.0% over twenty, with +24.9% annualized realized volatility.",
+        "66 contracts of combined session volume and 3326 contracts of combined open interest across the two legs"
+      ],
+      "historySessionCount": 260,
+      "advancedMetrics": {
+        "symbol": "WFC",
+        "historySessions": 260,
+        "historyConfidence": 1,
+        "return1d": -0.007113,
+        "return5d": -0.010406,
+        "return20d": 0.050243,
+        "sma5Distance": -0.0015,
+        "sma20Distance": 0.019797,
+        "emaTrend": 0.021838,
+        "macdPct": 0.000593,
+        "rsi14": 60.563389,
+        "atr14Pct": 0.020129,
+        "bollingerZ20": 1.050583,
+        "realizedVol5": 0.201395,
+        "realizedVol20": 0.249431,
+        "downsideVol20": 0.093247,
+        "maxDrawdown20": -0.03351,
+        "trendEfficiency20": 0.196208,
+        "volumeZScore20": -1.719566,
+        "atmImpliedVol": 0.419106,
+        "putCallIvSkew": 0.019266,
+        "putCallVolumeRatio": 4.341232,
+        "putCallOpenInterestRatio": 0.468612,
+        "expectedMovePct": 0.058239,
+        "meanQuoteWidthPct": 33.228079,
+        "liquidContractRatio": 0.25,
+        "trendSignal": 0.293893,
+        "riskAdjustedMomentum": 0.805717
+      },
+      "trainingAdjustment": 0,
+      "trainingPolicyVersion": "rfdelta-online-policy-v1",
+      "fiveDayReturn": -0.010406,
+      "twentyDayReturn": 0.050243,
+      "realizedVolatility": 0.249431,
+      "lessonAdjustments": [],
+      "commentary": {
+        "convictionLabel": "Trigger-dependent setup",
+        "rankingRead": "The setup scores 38.91 on the common scale, supported by 62.1% modeled probability of profit, 0.68 liquidity quality and a conservative modeled expectancy of -$17.41, which keeps sizing discipline central.",
+        "setup": "WFC enters with -1.0% five-session momentum and +5.0% over twenty sessions. Realized volatility is 24.9%, placing the underlying in a mean reversion regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
+        "execution": "Buy the 83 put and sell the 85 put, both expiring Jul 24, 2026. The credit mark of 0.53 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.53 of credit without rerunning the payoff.",
+        "risk": "Maximum one-lot loss is $147.00. Breakeven is $84.47 and sits 2.4% below the source mark, providing a downside cushion. Primary watch: negative conservative BS edge. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
+        "payoffRead": "Maximum one-lot profit is $53.00, or 0.36 times maximum risk. The simulation assigns 59.0% probability to finishing near maximum profit and uses 43.3% implied volatility across deterministic jump-stress paths."
+      },
+      "underlyingChart": {
+        "assetPath": "/charts/2026-07-13/underlying/03-wfc.svg",
+        "entryDate": "2026-07-13",
+        "entryPrice": 86.54,
+        "points": [
+          {
+            "date": "2026-03-04",
+            "close": 83.93
+          },
+          {
+            "date": "2026-03-05",
+            "close": 82.11
+          },
+          {
+            "date": "2026-03-06",
+            "close": 80.42
+          },
+          {
+            "date": "2026-03-09",
+            "close": 78.83
+          },
+          {
+            "date": "2026-03-10",
+            "close": 78.3
+          },
+          {
+            "date": "2026-03-11",
+            "close": 76.88
+          },
+          {
+            "date": "2026-03-12",
+            "close": 75.25
+          },
+          {
+            "date": "2026-03-13",
+            "close": 74.1
+          },
+          {
+            "date": "2026-03-16",
+            "close": 75.75
+          },
+          {
+            "date": "2026-03-17",
+            "close": 76.23
+          },
+          {
+            "date": "2026-03-18",
+            "close": 76.19
+          },
+          {
+            "date": "2026-03-19",
+            "close": 76.39
+          },
+          {
+            "date": "2026-03-20",
+            "close": 77.6
+          },
+          {
+            "date": "2026-03-23",
+            "close": 78.28
+          },
+          {
+            "date": "2026-03-24",
+            "close": 79.61
+          },
+          {
+            "date": "2026-03-25",
+            "close": 80.26
+          },
+          {
+            "date": "2026-03-26",
+            "close": 79.02
+          },
+          {
+            "date": "2026-03-27",
+            "close": 77.19
+          },
+          {
+            "date": "2026-03-30",
+            "close": 76.8
+          },
+          {
+            "date": "2026-03-31",
+            "close": 79.61
+          },
+          {
+            "date": "2026-04-01",
+            "close": 80.57
+          },
+          {
+            "date": "2026-04-02",
+            "close": 80.6
+          },
+          {
+            "date": "2026-04-06",
+            "close": 81.85
+          },
+          {
+            "date": "2026-04-07",
+            "close": 81.75
+          },
+          {
+            "date": "2026-04-08",
+            "close": 84.66
+          },
+          {
+            "date": "2026-04-09",
+            "close": 86.02
+          },
+          {
+            "date": "2026-04-10",
+            "close": 85.4
+          },
+          {
+            "date": "2026-04-13",
+            "close": 86.64
+          },
+          {
+            "date": "2026-04-14",
+            "close": 81.7
+          },
+          {
+            "date": "2026-04-15",
+            "close": 80.29
+          },
+          {
+            "date": "2026-04-16",
+            "close": 81.25
+          },
+          {
+            "date": "2026-04-17",
+            "close": 81.41
+          },
+          {
+            "date": "2026-04-20",
+            "close": 81.97
+          },
+          {
+            "date": "2026-04-21",
+            "close": 81.55
+          },
+          {
+            "date": "2026-04-22",
+            "close": 80.58
+          },
+          {
+            "date": "2026-04-23",
+            "close": 80.51
+          },
+          {
+            "date": "2026-04-24",
+            "close": 79.42
+          },
+          {
+            "date": "2026-04-27",
+            "close": 80.56
+          },
+          {
+            "date": "2026-04-28",
+            "close": 81.5
+          },
+          {
+            "date": "2026-04-29",
+            "close": 81.51
+          },
+          {
+            "date": "2026-04-30",
+            "close": 82.23
+          },
+          {
+            "date": "2026-05-01",
+            "close": 80.81
+          },
+          {
+            "date": "2026-05-04",
+            "close": 79.18
+          },
+          {
+            "date": "2026-05-05",
+            "close": 79.89
+          },
+          {
+            "date": "2026-05-06",
+            "close": 80.42
+          },
+          {
+            "date": "2026-05-07",
+            "close": 79.16
+          },
+          {
+            "date": "2026-05-08",
+            "close": 75.64
+          },
+          {
+            "date": "2026-05-11",
+            "close": 73.58
+          },
+          {
+            "date": "2026-05-12",
+            "close": 75.18
+          },
+          {
+            "date": "2026-05-13",
+            "close": 73.53
+          },
+          {
+            "date": "2026-05-14",
+            "close": 73.79
+          },
+          {
+            "date": "2026-05-15",
+            "close": 73.42
+          },
+          {
+            "date": "2026-05-18",
+            "close": 74.37
+          },
+          {
+            "date": "2026-05-19",
+            "close": 74.55
+          },
+          {
+            "date": "2026-05-20",
+            "close": 75.81
+          },
+          {
+            "date": "2026-05-21",
+            "close": 75.92
+          },
+          {
+            "date": "2026-05-22",
+            "close": 76.4
+          },
+          {
+            "date": "2026-05-26",
+            "close": 77.52
+          },
+          {
+            "date": "2026-05-27",
+            "close": 76.11
+          },
+          {
+            "date": "2026-05-28",
+            "close": 76.65
+          },
+          {
+            "date": "2026-05-29",
+            "close": 77.54
+          },
+          {
+            "date": "2026-06-01",
+            "close": 77.17
+          },
+          {
+            "date": "2026-06-02",
+            "close": 79.44
+          },
+          {
+            "date": "2026-06-03",
+            "close": 78.68
+          },
+          {
+            "date": "2026-06-04",
+            "close": 81.62
+          },
+          {
+            "date": "2026-06-05",
+            "close": 81.94
+          },
+          {
+            "date": "2026-06-08",
+            "close": 80.96
+          },
+          {
+            "date": "2026-06-09",
+            "close": 82
+          },
+          {
+            "date": "2026-06-10",
+            "close": 81.97
+          },
+          {
+            "date": "2026-06-11",
+            "close": 82.4
+          },
+          {
+            "date": "2026-06-12",
+            "close": 83.73
+          },
+          {
+            "date": "2026-06-15",
+            "close": 83.14
+          },
+          {
+            "date": "2026-06-16",
+            "close": 85.05
+          },
+          {
+            "date": "2026-06-17",
+            "close": 83.81
+          },
+          {
+            "date": "2026-06-18",
+            "close": 82.2
+          },
+          {
+            "date": "2026-06-22",
+            "close": 83.84
+          },
+          {
+            "date": "2026-06-23",
+            "close": 84.13
+          },
+          {
+            "date": "2026-06-24",
+            "close": 84.3
+          },
+          {
+            "date": "2026-06-25",
+            "close": 84.74
+          },
+          {
+            "date": "2026-06-26",
+            "close": 83.86
+          },
+          {
+            "date": "2026-06-29",
+            "close": 83.51
+          },
+          {
+            "date": "2026-06-30",
+            "close": 82.64
+          },
+          {
+            "date": "2026-07-01",
+            "close": 85.94
+          },
+          {
+            "date": "2026-07-02",
+            "close": 85.51
+          },
+          {
+            "date": "2026-07-06",
+            "close": 87.45
+          },
+          {
+            "date": "2026-07-07",
+            "close": 87.18
+          },
+          {
+            "date": "2026-07-08",
+            "close": 85.56
+          },
+          {
+            "date": "2026-07-09",
+            "close": 86.91
+          },
+          {
+            "date": "2026-07-10",
+            "close": 87.16
+          },
+          {
+            "date": "2026-07-13",
+            "close": 86.54
+          }
+        ]
+      }
+    },
+    {
+      "rank": 4,
+      "id": "pltr-2026-07-24-put_debit-127-122",
+      "name": "PLTR 7/24 127/122 Put Debit Spread",
+      "symbol": "PLTR",
+      "underlyingMark": 128.54,
+      "expiration": "2026-07-24",
+      "daysToExpiry": 11,
+      "structureType": "Debit",
+      "style": "put_debit",
+      "direction": "bearish",
+      "theme": "defense software and AI",
+      "regime": "risk_off",
+      "correlationBucket": "defense-space",
+      "bucket": "conditional",
+      "entry": 1.94,
+      "width": 5,
+      "maxLossDollars": 194,
+      "maxProfitDollars": 306,
+      "rewardToRisk": 1.58,
+      "breakeven": 125.06,
+      "requiredMovePctToBreakeven": -2.71,
+      "probabilityProfit": 0.4027,
+      "probabilityNearMaxProfit": 0.3106,
+      "expectedValueDollars": -1.4,
+      "blackScholesEdge": -0.0176,
+      "impliedVolUsed": 0.5601,
+      "liquidityScore": 0.8027,
+      "score": 35.04,
+      "riskFlags": [],
+      "thesis": "PLTR is expressing a bearish risk off setup: -3.0% over five sessions and -1.9% over twenty, with +58.2% annualized realized volatility. The put debit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
+      "longLeg": {
+        "optionSymbol": "PLTR  260724P00127000",
+        "right": "P",
+        "strike": 127,
+        "bid": 4.05,
+        "ask": 4.15,
+        "mid": 4.1,
+        "volume": 86,
+        "openInterest": 373,
+        "quoteTimeUtc": "2026-07-13T14:58:02.504Z"
+      },
+      "shortLeg": {
+        "optionSymbol": "PLTR  260724P00122000",
+        "right": "P",
+        "strike": 122,
+        "bid": 2.21,
+        "ask": 2.3,
+        "mid": 2.255,
+        "volume": 267,
+        "openInterest": 272,
+        "quoteTimeUtc": "2026-07-13T14:58:01.932Z"
+      },
+      "sourceAsOfUtc": "2026-07-13T14:58:49.010Z",
+      "marketEvidence": [
+        "Underlying $129 at the source timestamp",
+        "-3.0% over five sessions and -1.9% over twenty, with +58.2% annualized realized volatility.",
+        "353 contracts of combined session volume and 645 contracts of combined open interest across the two legs"
+      ],
+      "historySessionCount": 260,
+      "advancedMetrics": {
+        "symbol": "PLTR",
+        "historySessions": 260,
+        "historyConfidence": 1,
+        "return1d": 0.013802,
+        "return5d": -0.03018,
+        "return20d": -0.019377,
+        "sma5Distance": -0.012689,
+        "sma20Distance": 0.03003,
+        "emaTrend": 0.008042,
+        "macdPct": 0.011698,
+        "rsi14": 59.288945,
+        "atr14Pct": 0.053407,
+        "bollingerZ20": 0.451434,
+        "realizedVol5": 0.291676,
+        "realizedVol20": 0.58212,
+        "downsideVol20": 0.299696,
+        "maxDrawdown20": -0.203697,
+        "trendEfficiency20": 0.034473,
+        "volumeZScore20": -2.475566,
+        "atmImpliedVol": 0.541446,
+        "putCallIvSkew": 0.014722,
+        "putCallVolumeRatio": 0.640447,
+        "putCallOpenInterestRatio": 0.638508,
+        "expectedMovePct": 0.075074,
+        "meanQuoteWidthPct": 4.721602,
+        "liquidContractRatio": 0.9375,
+        "trendSignal": -0.235057,
+        "riskAdjustedMomentum": -0.133151
+      },
+      "trainingAdjustment": 0,
+      "trainingPolicyVersion": "rfdelta-online-policy-v1",
+      "fiveDayReturn": -0.03018,
+      "twentyDayReturn": -0.019377,
+      "realizedVolatility": 0.58212,
+      "lessonAdjustments": [],
+      "commentary": {
+        "convictionLabel": "Trigger-dependent setup",
+        "rankingRead": "The setup scores 35.04 on the common scale, supported by 40.3% modeled probability of profit, 0.80 liquidity quality and a conservative modeled expectancy of -$1.40, which keeps sizing discipline central.",
+        "setup": "PLTR enters with -3.0% five-session momentum and -1.9% over twenty sessions. Realized volatility is 58.2%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
+        "execution": "Buy the 127 put and sell the 122 put, both expiring Jul 24, 2026. The debit mark of 1.94 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.94 for the spread without rerunning the payoff.",
+        "risk": "Maximum one-lot loss is $194.00. Breakeven is $125.06 and requires a 2.7% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
+        "payoffRead": "Maximum one-lot profit is $306.00, or 1.58 times maximum risk. The simulation assigns 31.1% probability to finishing near maximum profit and uses 56.0% implied volatility across deterministic jump-stress paths."
+      },
+      "underlyingChart": {
+        "assetPath": "/charts/2026-07-13/underlying/04-pltr.svg",
+        "entryDate": "2026-07-13",
+        "entryPrice": 128.54,
+        "points": [
+          {
+            "date": "2026-03-04",
+            "close": 153.19
+          },
+          {
+            "date": "2026-03-05",
+            "close": 152.67
+          },
+          {
+            "date": "2026-03-06",
+            "close": 157.16
+          },
+          {
+            "date": "2026-03-09",
+            "close": 156.43
+          },
+          {
+            "date": "2026-03-10",
+            "close": 151.14
+          },
+          {
+            "date": "2026-03-11",
+            "close": 151.6
+          },
+          {
+            "date": "2026-03-12",
+            "close": 153.5
+          },
+          {
+            "date": "2026-03-13",
+            "close": 150.95
+          },
+          {
+            "date": "2026-03-16",
+            "close": 152.72
+          },
+          {
+            "date": "2026-03-17",
+            "close": 155.08
+          },
+          {
+            "date": "2026-03-18",
+            "close": 152.77
+          },
+          {
+            "date": "2026-03-19",
+            "close": 155.68
+          },
+          {
+            "date": "2026-03-20",
+            "close": 150.68
+          },
+          {
+            "date": "2026-03-23",
+            "close": 160.84
+          },
+          {
+            "date": "2026-03-24",
+            "close": 154.78
+          },
+          {
+            "date": "2026-03-25",
+            "close": 154.96
+          },
+          {
+            "date": "2026-03-26",
+            "close": 147.56
+          },
+          {
+            "date": "2026-03-27",
+            "close": 143.06
+          },
+          {
+            "date": "2026-03-30",
+            "close": 137.55
+          },
+          {
+            "date": "2026-03-31",
+            "close": 146.28
+          },
+          {
+            "date": "2026-04-01",
+            "close": 146.49
+          },
+          {
+            "date": "2026-04-02",
+            "close": 148.46
+          },
+          {
+            "date": "2026-04-06",
+            "close": 147.93
+          },
+          {
+            "date": "2026-04-07",
+            "close": 150.07
+          },
+          {
+            "date": "2026-04-08",
+            "close": 140.76
+          },
+          {
+            "date": "2026-04-09",
+            "close": 130.49
+          },
+          {
+            "date": "2026-04-10",
+            "close": 128.06
+          },
+          {
+            "date": "2026-04-13",
+            "close": 132.37
+          },
+          {
+            "date": "2026-04-14",
+            "close": 135.7
+          },
+          {
+            "date": "2026-04-15",
+            "close": 142.15
+          },
+          {
+            "date": "2026-04-16",
+            "close": 142.76
+          },
+          {
+            "date": "2026-04-17",
+            "close": 146.39
+          },
+          {
+            "date": "2026-04-20",
+            "close": 145.89
+          },
+          {
+            "date": "2026-04-21",
+            "close": 145.97
+          },
+          {
+            "date": "2026-04-22",
+            "close": 152.62
+          },
+          {
+            "date": "2026-04-23",
+            "close": 141.57
+          },
+          {
+            "date": "2026-04-24",
+            "close": 143.09
+          },
+          {
+            "date": "2026-04-27",
+            "close": 143.1
+          },
+          {
+            "date": "2026-04-28",
+            "close": 141.18
+          },
+          {
+            "date": "2026-04-29",
+            "close": 137.97
+          },
+          {
+            "date": "2026-04-30",
+            "close": 139.11
+          },
+          {
+            "date": "2026-05-01",
+            "close": 144.07
+          },
+          {
+            "date": "2026-05-04",
+            "close": 146.03
+          },
+          {
+            "date": "2026-05-05",
+            "close": 135.91
+          },
+          {
+            "date": "2026-05-06",
+            "close": 133.79
+          },
+          {
+            "date": "2026-05-07",
+            "close": 137.05
+          },
+          {
+            "date": "2026-05-08",
+            "close": 137.8
+          },
+          {
+            "date": "2026-05-11",
+            "close": 136.89
+          },
+          {
+            "date": "2026-05-12",
+            "close": 136
+          },
+          {
+            "date": "2026-05-13",
+            "close": 130.05
+          },
+          {
+            "date": "2026-05-14",
+            "close": 133.73
+          },
+          {
+            "date": "2026-05-15",
+            "close": 133.99
+          },
+          {
+            "date": "2026-05-18",
+            "close": 135.14
+          },
+          {
+            "date": "2026-05-19",
+            "close": 135.26
+          },
+          {
+            "date": "2026-05-20",
+            "close": 137.15
+          },
+          {
+            "date": "2026-05-21",
+            "close": 137.415
+          },
+          {
+            "date": "2026-05-22",
+            "close": 136.88
+          },
+          {
+            "date": "2026-05-26",
+            "close": 136.6
+          },
+          {
+            "date": "2026-05-27",
+            "close": 132.51
+          },
+          {
+            "date": "2026-05-28",
+            "close": 143.34
+          },
+          {
+            "date": "2026-05-29",
+            "close": 156.54
+          },
+          {
+            "date": "2026-06-01",
+            "close": 160.65
+          },
+          {
+            "date": "2026-06-02",
+            "close": 152.17
+          },
+          {
+            "date": "2026-06-03",
+            "close": 142.2
+          },
+          {
+            "date": "2026-06-04",
+            "close": 141.7
+          },
+          {
+            "date": "2026-06-05",
+            "close": 135.53
+          },
+          {
+            "date": "2026-06-08",
+            "close": 136.47
+          },
+          {
+            "date": "2026-06-09",
+            "close": 132.07
+          },
+          {
+            "date": "2026-06-10",
+            "close": 130.21
+          },
+          {
+            "date": "2026-06-11",
+            "close": 131.08
+          },
+          {
+            "date": "2026-06-12",
+            "close": 127.99
+          },
+          {
+            "date": "2026-06-15",
+            "close": 134.71
+          },
+          {
+            "date": "2026-06-16",
+            "close": 133.25
+          },
+          {
+            "date": "2026-06-17",
+            "close": 130.63
+          },
+          {
+            "date": "2026-06-18",
+            "close": 128.47
+          },
+          {
+            "date": "2026-06-22",
+            "close": 119.5
+          },
+          {
+            "date": "2026-06-23",
+            "close": 116.7
+          },
+          {
+            "date": "2026-06-24",
+            "close": 113.5
+          },
+          {
+            "date": "2026-06-25",
+            "close": 107.27
+          },
+          {
+            "date": "2026-06-26",
+            "close": 112.93
+          },
+          {
+            "date": "2026-06-29",
+            "close": 115.7
+          },
+          {
+            "date": "2026-06-30",
+            "close": 116.67
+          },
+          {
+            "date": "2026-07-01",
+            "close": 125.73
+          },
+          {
+            "date": "2026-07-02",
+            "close": 129.3
+          },
+          {
+            "date": "2026-07-06",
+            "close": 132.54
+          },
+          {
+            "date": "2026-07-07",
+            "close": 134.37
+          },
+          {
+            "date": "2026-07-08",
+            "close": 132.22
+          },
+          {
+            "date": "2026-07-09",
+            "close": 129.04
+          },
+          {
+            "date": "2026-07-10",
+            "close": 126.79
+          },
+          {
+            "date": "2026-07-13",
+            "close": 128.54
+          }
+        ]
+      }
+    }
+  ],
+  "accountability": {
+    "sourceReportDate": "2026-07-10",
+    "evaluatedThrough": "2026-07-13",
+    "wins": 0,
+    "losses": 0,
+    "nearBreakeven": 0,
+    "open": 5,
+    "resolvedPnlDollars": 0,
+    "read": "The Jul 10, 2026 basket has no scored expiration result yet. 5 positions remain open.",
+    "trades": [
+      {
+        "tradeId": "nflx-2026-07-24-call_credit-77-76",
+        "name": "NFLX 7/24 76/77 Call Credit Spread",
+        "symbol": "NFLX",
+        "style": "call_credit",
+        "expiration": "2026-07-24",
+        "status": "open",
+        "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+      },
+      {
+        "tradeId": "t-2026-07-24-call_credit-22-21.5",
+        "name": "T 7/24 21.5/22 Call Credit Spread",
+        "symbol": "T",
+        "style": "call_credit",
+        "expiration": "2026-07-24",
+        "status": "open",
+        "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+      },
+      {
+        "tradeId": "wfc-2026-07-24-put_credit-84-85",
+        "name": "WFC 7/24 85/84 Put Credit Spread",
+        "symbol": "WFC",
+        "style": "put_credit",
+        "expiration": "2026-07-24",
+        "status": "open",
+        "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+      },
+      {
+        "tradeId": "tlt-2026-07-24-put_debit-85-84.5",
+        "name": "TLT 7/24 85/84.5 Put Debit Spread",
+        "symbol": "TLT",
+        "style": "put_debit",
+        "expiration": "2026-07-24",
+        "status": "open",
+        "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+      },
+      {
+        "tradeId": "pltr-2026-07-24-put_debit-125-120",
+        "name": "PLTR 7/24 125/120 Put Debit Spread",
+        "symbol": "PLTR",
+        "style": "put_debit",
+        "expiration": "2026-07-24",
+        "status": "open",
+        "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+      }
+    ]
+  },
+  "methodology": {
+    "selectionCriteria": [
+      "A broad liquid-symbol quote universe is intersected with the source's fingerprinted universe. Core market anchors, the largest percentage movers, the most active names and a date-seeded rotation sleeve determine which option chains are evaluated.",
+      "The nearest expiration inside the configured 7-to-35-day window is chosen by distance from a 14-day target.",
+      "Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.",
+      "Both legs must clear bid, ask, open-interest, volume or depth, and relative quote-width gates.",
+      "Momentum direction determines whether bullish call-debit and put-credit structures or bearish put-debit and call-credit structures enter the ranking set.",
+      "Resolved trades train bounded feature adjustments only after the minimum sample threshold; every policy and input dataset is versioned with the report."
+    ],
+    "rankingFramework": [
+      "Modeled probability of profit: 26% of the base score.",
+      "Conservative expected-value efficiency: 22%.",
+      "Two-leg liquidity quality: 18%.",
+      "Maximum reward relative to maximum risk: 14%.",
+      "Black-Scholes spread edge and directional signal strength: 10% each.",
+      "Resolved prior outcomes adjust the strategy-style posterior without changing the underlying quote record.",
+      "The advanced feature layer contributes at most 8 score points and currently contains 5 fully resolved training examples."
+    ],
+    "executionAssumption": "Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.",
+    "publicationCadence": "A single weekday workflow runs after the U.S. options session opens. If same-session quotes are unavailable, the most recent valid edition remains published.",
+    "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 13, 2026, 10:58 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
+    "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  }
+}
