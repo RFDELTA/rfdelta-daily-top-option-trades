@@ -25,7 +25,7 @@ If current-session data are not available, generation exits with code `75`. The 
 
 ## Market Data Contract
 
-The primary production adapter uses `https://tt-bridge.rfdelta.com` for three read-only market-data operations: deterministic equity-universe discovery, bulk equity quotes and normalized equity option chains. An allowlist in the adapter rejects account, transaction and order routes before any request is sent. The bridge key is required only in the generation runtime and is never needed by Vercel or the public browser.
+The primary production adapter uses `https://tt-bridge.rfdelta.com` for three read-only market-data operations: deterministic equity-universe discovery, paged equity quotes and normalized equity option chains. Quote retrieval defaults to 25-symbol pages with at most two pages in flight. Each page uses the same bounded retry policy and the complete response set is merged by symbol before chain selection. An allowlist in the adapter rejects account, transaction and order routes before any request is sent. The bridge key is required only in the generation runtime and is never needed by Vercel or the public browser.
 
 The default quote universe is categorized in `lib/market/universe.ts`. `OPTIONS_CHAIN_SYMBOL_LIMIT` controls the maximum chains requested per run; core, mover and volume slot settings reserve capacity, and the remaining budget rotates deterministically by New York report date. Expiration monitoring is independent of this rotating set, so a prior top idea can still receive its final close and chart marker when it is no longer a current ranking candidate.
 

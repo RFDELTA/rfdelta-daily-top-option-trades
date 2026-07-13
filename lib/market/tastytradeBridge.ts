@@ -155,9 +155,11 @@ export class TastytradeBridgeMarketDataProvider implements MarketDataProvider {
 
   private async getQuotes(symbols: string[]) {
     const quotes = new Map<string, EquityQuote>();
-    const batchSize = clampInteger(envNumber("TT_BRIDGE_QUOTE_BATCH_SIZE", 60), 10, 100);
+    const batchSize = clampInteger(envNumber("TT_BRIDGE_QUOTE_BATCH_SIZE", 25), 10, 100);
+    const batchConcurrency = clampInteger(envNumber("TT_BRIDGE_QUOTE_BATCH_CONCURRENCY", 2), 1, 4);
     const batches = chunk(symbols, batchSize);
-    const responses = await mapLimit(batches, 3, async (batch) => {
+    console.log(`[market-data] quotes pages=${batches.length} page_size=${batchSize} concurrency=${batchConcurrency}`);
+    const responses = await mapLimit(batches, batchConcurrency, async (batch) => {
       const query = new URLSearchParams();
       batch.forEach((symbol) => query.append("symbols", symbol));
       return this.fetchJson(`/quotes/equities?${query.toString()}`);

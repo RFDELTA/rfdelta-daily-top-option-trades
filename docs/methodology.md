@@ -2,7 +2,7 @@
 
 ## Discovery
 
-The categorized publication universe is sorted, deduplicated and intersected with the source's fingerprinted deterministic equity universe on every run. Underlying quotes are retrieved in bounded batches. Option-chain requests are then capped and allocated deterministically across four sleeves: permanent market anchors, the largest absolute session movers, the highest-volume remaining names and a date-seeded rotation of the remaining quote universe. This allows the candidate set to change with market leadership while preserving exact reproducibility for a given date and quote snapshot.
+The categorized publication universe is sorted, deduplicated and intersected with the source's fingerprinted deterministic equity universe on every run. Underlying quotes are retrieved in deterministic 25-symbol pages with no more than two pages in flight, then merged by symbol. Option-chain requests are capped and allocated deterministically across four sleeves: permanent market anchors, the largest absolute session movers, the highest-volume remaining names and a date-seeded rotation of the remaining quote universe. This allows the candidate set to change with market leadership while preserving exact reproducibility for a given date and quote snapshot.
 
 The production defaults quote more than 100 market, sector, technology, semiconductor, financial, digital-asset, defense, space, healthcare, industrial, energy, materials, consumer and emerging-growth symbols, then request no more than 40 multi-expiration chains. Sleeve membership and the complete selected-symbol list are stored in the feature dataset; quote and chain counts are copied into the run manifest and public report context.
 

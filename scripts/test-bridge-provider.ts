@@ -3,6 +3,9 @@ import { TastytradeBridgeMarketDataProvider } from "../lib/market/tastytradeBrid
 
 async function main() {
   const calls: Array<{ url: string; key: string }> = [];
+  process.env.TT_BRIDGE_QUOTE_BATCH_SIZE = "10";
+  process.env.TT_BRIDGE_QUOTE_BATCH_CONCURRENCY = "2";
+  const pagedSymbols = Array.from({ length: 24 }, (_, index) => `T${String(index).padStart(2, "0")}`);
   const fetcher: typeof fetch = async (input, init) => {
     const url = String(input);
     const headers = new Headers(init?.headers);
@@ -11,7 +14,7 @@ async function main() {
       return jsonResponse({}, 403);
     }
     if (url.endsWith("/scan-universe/default")) {
-      return jsonResponse({ data: { equities: ["SPY", "QQQ"], fingerprint: "fixture-fingerprint" } });
+      return jsonResponse({ data: { equities: ["SPY", "QQQ", ...pagedSymbols], fingerprint: "fixture-fingerprint" } });
     }
     if (url.includes("/quotes/equities?")) {
       return jsonResponse({
@@ -44,8 +47,8 @@ async function main() {
     fetcher,
     retainedHistory: {}
   });
-  const snapshot = await provider.getSnapshot({ reportDate: "2026-07-13", universe: ["SPY", "MISSING"] });
-  assert.deepEqual(snapshot.universe, ["SPY"]);
+  const snapshot = await provider.getSnapshot({ reportDate: "2026-07-13", universe: ["SPY", "QQQ", ...pagedSymbols, "MISSING"] });
+  assert.equal(snapshot.universe.length, 26);
   assert.equal(snapshot.symbols.length, 1);
   assert.equal(snapshot.symbols[0]?.expiration, "2026-07-24");
   assert.equal(snapshot.symbols[0]?.options.length, 4);
@@ -56,9 +59,15 @@ async function main() {
     "/scan-universe/full",
     "/scan-universe/default",
     "/quotes/equities",
+    "/quotes/equities",
+    "/quotes/equities",
     "/normalized/equity-chain/SPY"
   ]);
-  console.log(`[test:bridge] calls=${calls.length} market_data_only=true history_sessions=${snapshot.symbols[0]?.bars.length}`);
+  const pageSizes = calls.filter((call) => new URL(call.url).pathname === "/quotes/equities")
+    .map((call) => new URL(call.url).searchParams.getAll("symbols").length)
+    .sort((a, b) => b - a);
+  assert.deepEqual(pageSizes, [10, 10, 6]);
+  console.log(`[test:bridge] calls=${calls.length} quote_pages=${pageSizes.join("/")} market_data_only=true history_sessions=${snapshot.symbols[0]?.bars.length}`);
 }
 
 function optionItems() {
