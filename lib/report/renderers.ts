@@ -21,6 +21,7 @@ export function renderReportMarkdown(report: OptionsReport) {
   ];
 
   for (const idea of report.topTrades) {
+    const latestClose = idea.dailyCloses?.at(-1);
     lines.push(
       `### ${idea.rank}. ${idea.name}`,
       "",
@@ -29,7 +30,7 @@ export function renderReportMarkdown(report: OptionsReport) {
       idea.commentary.setup,
       "",
       ...(idea.underlyingChart ? [
-        `**Underlying chart:** [${idea.symbol} entry${idea.underlyingChart.closeDate ? " through expiration close" : " and open-position history"}](${idea.underlyingChart.assetPath}) at ${money(idea.underlyingChart.entryPrice)}${idea.underlyingChart.closePrice !== undefined ? `; expiration close ${money(idea.underlyingChart.closePrice)}` : ""}.`,
+        `**Underlying chart:** [${idea.symbol} entry${idea.underlyingChart.closeDate ? " through expiration close" : " and open-position history"}](${idea.underlyingChart.assetPath}) at ${money(idea.underlyingChart.entryPrice)}${idea.underlyingChart.closePrice !== undefined ? `; expiration close ${money(idea.underlyingChart.closePrice)}` : latestClose ? `; latest official close ${money(latestClose.underlyingClose)} on ${latestClose.date}` : ""}.`,
         ""
       ] : []),
       ...(idea.advancedMetrics ? [

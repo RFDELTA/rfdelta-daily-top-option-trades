@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { PublishedTradeIdea } from "@/lib/report/types";
 
 export function TradeCard({ idea }: { idea: PublishedTradeIdea }) {
+  const latestClose = idea.dailyCloses?.at(-1);
   return (
     <article className="trade-card">
       <div className="trade-rank" aria-hidden="true">{idea.rank}</div>
@@ -48,7 +49,9 @@ export function TradeCard({ idea }: { idea: PublishedTradeIdea }) {
               Underlying entry {money(idea.underlyingChart.entryPrice)} on {formatDate(idea.underlyingChart.entryDate)}
               {idea.underlyingChart.closeDate && idea.underlyingChart.closePrice !== undefined
                 ? `; expiration close ${money(idea.underlyingChart.closePrice)} on ${formatDate(idea.underlyingChart.closeDate)}`
-                : "; the expiration close will be added after the position resolves"}.
+                : latestClose
+                  ? `; latest official close ${money(latestClose.underlyingClose)} on ${formatDate(latestClose.date)}`
+                  : "; official closes will extend the chart after each session"}.
             </figcaption>
           </figure>
         )}

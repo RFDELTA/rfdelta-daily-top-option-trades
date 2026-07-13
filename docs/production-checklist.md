@@ -15,6 +15,9 @@
 - [ ] Confirm branch protection permits the workflow's report commit, or grant the workflow an approved bypass.
 - [ ] Confirm Actions has `contents: write` permission.
 - [ ] Run CI and the daily workflow manually.
+- [ ] Confirm the 10:45 a.m. and 11:05 a.m. `America/New_York` publication schedules are active.
+- [ ] Confirm the 4:20 p.m. and 5:05 p.m. `America/New_York` close-capture schedules are active.
+- [ ] Manually test both `publish` and `closing_prints` workflow modes.
 - [ ] Confirm only `data/reports`, `data/market-history`, `data/datasets`, `data/training` and `public/charts` change during a normal daily run.
 
 ## Vercel
@@ -42,12 +45,14 @@
 - [ ] Workflow date is New York market date.
 - [ ] Report data timestamp belongs to the same market session.
 - [ ] Five or fewer ideas meet all hard gates.
+- [ ] When five qualified ideas fit inside the $800 basket cap, all five are published.
 - [ ] Rank chart labels and scores do not overlap bars.
 - [ ] Prior-basket outcomes use expiration settlement and no open trade is scored.
 - [ ] The run manifest hashes match the feature, candidate and policy datasets.
 - [ ] Historical provider, coverage ratio and bar count match between the feature dataset and run manifest.
 - [ ] Quote-universe and option-chain counts match between the feature dataset, run manifest and public report context.
 - [ ] Every top idea has a readable underlying entry chart; completed ideas also show the exact settlement close marker.
+- [ ] After the close workflow, every open idea has the current session's official close and the chart ends on that session.
 - [ ] The report references the same dataset run and policy version used for selection.
 - [ ] Completed baskets contain no open trades and final P/L equals the sum of trade outcomes.
 - [ ] Learned feature weights stay inactive below the minimum sample threshold and score adjustment remains inside the configured cap.

@@ -49,7 +49,7 @@ All legal pairs are scored by delta distance, quote width and distance from the 
 
 ## Conservative Entry
 
-Debit entry equals long ask minus short bid. Credit entry equals short bid minus long ask. Candidates are rejected when entry is nonpositive, consumes at least 95% of the vertical width or exceeds the configured one-lot maximum risk. The production default caps one-lot loss at $250 and the complete published basket at $750.
+Debit entry equals long ask minus short bid. Credit entry equals short bid minus long ask. Candidates are rejected when entry is nonpositive, consumes at least 95% of the vertical width or exceeds the configured one-lot maximum risk. The production default caps one-lot loss at $250 and the complete five-idea published basket at $800.
 
 ## Simulation
 
@@ -92,7 +92,7 @@ The screen may publish fewer than five ideas. It does not fill a date with a can
 
 ## Outcome Accountability
 
-Once an option expires, settlement is calculated from the retained expiration-session underlying close and the exact vertical payoff. Because the daily report runs before the closing bell, the next session's official previous-close field replaces the earlier intraday mark before reconciliation. P/L is clamped to published maximum loss and maximum profit. Outcomes are win, loss or near breakeven within one dollar. Open or unresolved contracts never train either learning layer.
+The selected entry and option legs are fixed in the 10:45 a.m. edition. After each regular session, finalized public daily history adds an ordered underlying close to every open idea and extends its chart; it never reranks or replaces the morning basket. Once an option expires, settlement is calculated from the retained expiration-session underlying close and the exact vertical payoff. P/L is clamped to published maximum loss and maximum profit. Outcomes are win, loss or near breakeven within one dollar. Open or unresolved contracts never train either learning layer.
 
 When every trade from a report is terminal, the originating report receives a completed-basket section with final P/L, return on maximum risk, the strongest contributor, the largest detractor, structure-level lessons and trade-by-trade settlement reads. Partially resolved baskets are not written back as complete.
 

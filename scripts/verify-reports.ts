@@ -57,6 +57,21 @@ async function main() {
       const chartSvg = await fs.readFile(chartPath, "utf8");
       if (!chartSvg.includes("ENTRY |")) throw new Error(`Underlying chart for ${idea.id} is missing its entry marker.`);
       if (chart.closeDate && !chartSvg.includes("EXPIRATION CLOSE |")) throw new Error(`Underlying chart for ${idea.id} is missing its expiration close marker.`);
+      if (idea.dailyCloses) {
+        const dates = idea.dailyCloses.map((print) => print.date);
+        if (dates.some((date) => !/^\d{4}-\d{2}-\d{2}$/u.test(date) || date < report.runMetadata.reportDate || date > idea.expiration)) {
+          throw new Error(`Published idea ${idea.id} contains an invalid daily close date.`);
+        }
+        if (new Set(dates).size !== dates.length || dates.some((date, index) => index > 0 && date <= (dates[index - 1] ?? ""))) {
+          throw new Error(`Published idea ${idea.id} contains duplicate or unordered daily closes.`);
+        }
+        for (const print of idea.dailyCloses) {
+          if (!Number.isFinite(print.underlyingClose) || print.underlyingClose <= 0) throw new Error(`Published idea ${idea.id} contains an invalid daily close.`);
+          if (!chart.points.some((point) => point.date === print.date && point.close === print.underlyingClose)) {
+            throw new Error(`Published idea ${idea.id} daily close is missing from its underlying chart.`);
+          }
+        }
+      }
     }
     const datasetDirectory = path.join(process.cwd(), "data", "datasets", report.runMetadata.reportDate, runId);
     const [manifest, features, candidates, policy] = await Promise.all([

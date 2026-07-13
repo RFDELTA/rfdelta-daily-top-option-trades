@@ -9,8 +9,13 @@ export function createUnderlyingTradeChart(snapshot: MarketSnapshot, idea: Trade
   return buildChart(idea, snapshot.reportDate, bars);
 }
 
-export function createUnderlyingTradeChartFromBars(reportDate: string, idea: PublishedTradeIdea, bars: DailyBar[]) {
-  return buildChart(idea, reportDate, bars);
+export function createUnderlyingTradeChartFromBars(
+  reportDate: string,
+  idea: PublishedTradeIdea,
+  bars: DailyBar[],
+  throughDate = reportDate
+) {
+  return buildChart(idea, reportDate, bars, { throughDate });
 }
 
 export function attachCompletedUnderlyingCharts(
@@ -32,8 +37,10 @@ export function attachCompletedUnderlyingCharts(
       volume: 0
     })) ?? [];
     const chart = buildChart(idea, report.runMetadata.reportDate, mergeBars(existing, retained[idea.symbol] ?? [], live), {
-      closeDate: outcome.settlementDate,
-      closePrice: outcome.settlementUnderlying
+      close: {
+        closeDate: outcome.settlementDate,
+        closePrice: outcome.settlementUnderlying
+      }
     });
     return { ...idea, underlyingChart: chart };
   });
@@ -49,14 +56,20 @@ function buildChart(
   idea: TradeIdeaScore | PublishedTradeIdea,
   entryDate: string,
   bars: DailyBar[],
-  close?: { closeDate: string; closePrice: number }
+  options: {
+    throughDate?: string;
+    close?: { closeDate: string; closePrice: number };
+  } = {}
 ): UnderlyingTradeChart {
-  const cutoff = close?.closeDate ?? entryDate;
+  const close = options.close;
+  const cutoff = close?.closeDate ?? options.throughDate ?? entryDate;
   const values = new Map<string, number>();
   bars
     .filter((bar) => bar.date <= cutoff && Number.isFinite(bar.close) && bar.close > 0)
     .forEach((bar) => values.set(bar.date, bar.close));
-  values.set(entryDate, idea.underlyingMark);
+  if (!values.has(entryDate) || (!options.throughDate && !close)) {
+    values.set(entryDate, idea.underlyingMark);
+  }
   if (close) values.set(close.closeDate, close.closePrice);
   const points = [...values.entries()]
     .map(([date, value]) => ({ date, close: round(value, 4) }))

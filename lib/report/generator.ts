@@ -186,7 +186,7 @@ async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun): 
         `The advanced feature layer contributes at most ${prepared.policy.maximumScoreAdjustment.toFixed(0)} score points and currently contains ${prepared.policy.resolvedTradeCount} fully resolved training example${prepared.policy.resolvedTradeCount === 1 ? "" : "s"}.`
       ],
       executionAssumption: "Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.",
-      publicationCadence: "A single weekday workflow runs after the U.S. options session opens. If same-session quotes are unavailable, the most recent valid edition remains published.",
+      publicationCadence: "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
       marketDataStatement: `${snapshot.providerAttribution}.${snapshot.historicalData ? ` Historical technical series: ${snapshot.historicalData.provider} ${snapshot.historicalData.dataset.toLowerCase()}.` : ""} Data timestamp: ${formatDateTime(snapshot.asOfUtc)}. Historical calibration editions are clearly labeled and are never promoted as current market data.`,
       disclaimer: "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
     }

@@ -54,22 +54,38 @@ export async function persistSnapshotHistory(snapshot: MarketSnapshot) {
   for (const item of snapshot.symbols) {
     current[item.symbol] = mergeQuoteHistory(item.bars, item.quote);
   }
+  await writeRetainedHistory(current, snapshot.asOfUtc);
+}
+
+export async function persistHistoricalBars(
+  additions: Record<string, DailyBar[]>,
+  updatedAtUtc: string
+) {
+  const current = await loadRetainedHistory();
+  for (const [symbol, bars] of Object.entries(additions)) {
+    const merged = new Map((current[symbol] ?? []).map((bar) => [bar.date, bar]));
+    bars.forEach((bar) => merged.set(bar.date, bar));
+    current[symbol] = [...merged.values()]
+      .filter((bar) => /^\d{4}-\d{2}-\d{2}$/u.test(bar.date) && bar.close > 0)
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .slice(-MAX_RETAINED_BARS);
+  }
+  await writeRetainedHistory(current, updatedAtUtc);
+}
+
+function positiveOr(value: number | undefined, fallback: number) {
+  return value !== undefined && Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+async function writeRetainedHistory(symbols: Record<string, DailyBar[]>, updatedAtUtc: string) {
   const sorted = Object.fromEntries(
-    Object.entries(current)
+    Object.entries(symbols)
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([symbol, bars]) => [symbol, bars.slice(-MAX_RETAINED_BARS)])
   );
   await fs.mkdir(path.dirname(HISTORY_PATH), { recursive: true });
   const temporaryPath = `${HISTORY_PATH}.${process.pid}.tmp`;
-  const value: RetainedHistory = {
-    schemaVersion: "1.0",
-    updatedAtUtc: snapshot.asOfUtc,
-    symbols: sorted
-  };
+  const value: RetainedHistory = { schemaVersion: "1.0", updatedAtUtc, symbols: sorted };
   await fs.writeFile(temporaryPath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
   await fs.rename(temporaryPath, HISTORY_PATH);
-}
-
-function positiveOr(value: number | undefined, fallback: number) {
-  return value !== undefined && Number.isFinite(value) && value > 0 ? value : fallback;
 }

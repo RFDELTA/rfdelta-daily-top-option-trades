@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { HistoricalFixtureProvider } from "../lib/market/fixture";
 import { buildReport } from "../lib/report/generator";
 import { currentReportDate, resolveReportDate } from "../lib/report/dates";
@@ -17,6 +18,12 @@ async function main() {
   assert.equal(first.runMetadata.methodologyVersion, "rfdelta-options-v2");
   assert.ok(first.runMetadata.datasetRunId?.startsWith("run-"));
   assert.ok(first.topTrades.every((idea) => idea.advancedMetrics));
+  const workflow = await readFile(".github/workflows/daily-options-report.yml", "utf8");
+  for (const cron of ["45 10 * * 1-5", "5 11 * * 1-5", "20 16 * * 1-5", "5 17 * * 1-5"]) {
+    assert.match(workflow, new RegExp(`cron: [\"']${cron.replaceAll("*", "\\*")}[\"']`, "u"));
+  }
+  assert.equal(workflow.match(/timezone: ["']America\/New_York["']/gu)?.length, 4);
+  assert.match(workflow, /npm run collect:closes/u);
   console.log(`[test:workflow] hash=${first.runMetadata.selectionHash.slice(0, 12)} ideas=${first.topTrades.length}`);
 }
 

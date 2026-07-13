@@ -525,10 +525,16 @@
           },
           {
             "date": "2026-07-10",
-            "close": 73.4
+            "close": 73.37
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-10",
+          "underlyingClose": 73.37
+        }
+      ]
     },
     {
       "rank": 2,
@@ -993,14 +999,20 @@
           },
           {
             "date": "2026-07-09",
-            "close": 21.04
+            "close": 20.7625
           },
           {
             "date": "2026-07-10",
             "close": 21.13
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-10",
+          "underlyingClose": 21.13
+        }
+      ]
     },
     {
       "rank": 3,
@@ -1471,10 +1483,16 @@
           },
           {
             "date": "2026-07-10",
-            "close": 87.11
+            "close": 87.16
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-10",
+          "underlyingClose": 87.16
+        }
+      ]
     },
     {
       "rank": 4,
@@ -1943,10 +1961,16 @@
           },
           {
             "date": "2026-07-10",
-            "close": 84.55
+            "close": 84.47
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-10",
+          "underlyingClose": 84.47
+        }
+      ]
     },
     {
       "rank": 5,
@@ -2415,10 +2439,16 @@
           },
           {
             "date": "2026-07-10",
-            "close": 126.5502
+            "close": 126.79
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-10",
+          "underlyingClose": 126.79
+        }
+      ]
     }
   ],
   "accountability": {

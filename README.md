@@ -1,25 +1,26 @@
 # RFDELTA Daily Top Option Trades
 
-Production-oriented generator and public report site for the RFDELTA Top Option Trades page. One weekday workflow discovers current U.S. option chains, constructs defined-risk vertical spreads, applies deterministic liquidity and risk gates, simulates each candidate, ranks a diversified basket, writes an immutable report archive, generates SVG graphics and publishes the committed result through Vercel. Six standalone iframe blocks are provided for the GoDaddy page at `https://rfdelta.com/delta-%7C-top-option-trades`.
+Production-oriented generator and public report site for the RFDELTA Top Option Trades page. A timezone-aware weekday workflow discovers current U.S. option chains, constructs defined-risk vertical spreads, applies deterministic liquidity and risk gates, simulates each candidate, ranks a diversified basket, writes an immutable report archive, generates SVG graphics and publishes the committed result through Vercel. The same workflow records finalized underlying closes after the session without replacing the morning selections. Six standalone iframe blocks are provided for the GoDaddy page at `https://rfdelta.com/delta-%7C-top-option-trades`.
 
 The repository never submits orders. It does not contain account identifiers, balances, buying power, brokerage controls or public fallback mocks.
 
 ## Publication Flow
 
-1. GitHub Actions starts at 14:45 UTC on weekdays, after the U.S. regular session is open in both standard and daylight time.
-2. The workflow resolves the current date in `America/New_York`.
+1. GitHub Actions starts the primary publication at 10:45 a.m. `America/New_York` on weekdays, with an idempotent 11:05 a.m. recovery run if GitHub delayed or dropped the first schedule event.
+2. The workflow resolves the current New York market date and uses timezone-aware schedules across daylight-saving changes.
 3. The authenticated RFDELTA market-data adapter discovers the deterministic source universe and retrieves underlying quotes in bounded batches.
 4. A configurable chain budget is allocated to core market anchors, the largest percentage movers, the highest-volume remaining names and a date-seeded rotation sleeve. The exact selected set is retained with the run.
 5. Same-session freshness runs before any model input is retained.
 6. Finalized public daily price and volume history is queried from two fixed Yahoo Finance chart hosts, validated, merged deterministically and capped at 260 sessions. The live bridge remains authoritative for the current quote and option chain.
 7. The generator computes versioned price, volatility, volume, options-skew, implied-volatility, expected-move and liquidity features for every included symbol.
-8. Prior report baskets are reconciled against public expiration closes. Fully completed baskets receive final P/L, post-trade commentary and close-marked underlying charts on their original report.
-9. A deterministic ridge-regularized policy is trained from fully resolved feature-rich trades. Learned score adjustments remain zero until the minimum sample threshold is reached and are always capped.
-10. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
-11. Each candidate runs through deterministic jump-stress Monte Carlo, common scoring weights and the versioned outcome-trained policy.
-12. The basket optimizer enforces one idea per symbol, correlation-bucket limits, one-lot and total-risk limits, and minimum debit/credit representation.
-13. Reports, ranking graphics, per-idea underlying charts, retained bars, market features, all ranked candidates, the selection policy and a hash-verified run manifest are committed to Git.
-14. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
+8. A separate 4:20 p.m. close mode, with a 5:05 p.m. recovery run, records each open symbol's finalized official close and extends its chart without changing the selected spread or entry.
+9. Prior report baskets are reconciled against public expiration closes. Fully completed baskets receive final P/L, post-trade commentary and close-marked underlying charts on their original report.
+10. A deterministic ridge-regularized policy is trained from fully resolved feature-rich trades. Learned score adjustments remain zero until the minimum sample threshold is reached and are always capped.
+11. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
+12. Each candidate runs through deterministic jump-stress Monte Carlo, common scoring weights and the versioned outcome-trained policy.
+13. The basket optimizer enforces one idea per symbol, correlation-bucket limits, a $250 one-lot cap, an $800 five-idea basket cap, and minimum debit/credit representation.
+14. Reports, ranking graphics, per-idea underlying charts, retained bars, market features, all ranked candidates, the selection policy and a hash-verified run manifest are committed to Git.
+15. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
 
 If current-session data are not available, generation exits with code `75`. The workflow records a clean market-session skip and leaves the previous valid report published. It never copies yesterday's quotes into today's date.
 
@@ -98,6 +99,14 @@ Replace an existing report for the same date after deliberately re-fetching the 
 npm run generate:daily -- 2026-07-13 force
 ```
 
+Collect finalized underlying closes for every open published position without changing the morning selection:
+
+```powershell
+npm run collect:closes -- today
+npm run collect:closes -- 2026-07-13
+npm run verify:closes -- 2026-07-13
+```
+
 Add entry charts to an existing committed report without changing its market snapshot, ranking or option structures:
 
 ```powershell
@@ -170,14 +179,15 @@ The workflow uses `RFDELTA LLC <rfdeltax@gmail.com>` for report commits so Verce
 Manual production test:
 
 1. Open **Actions > Daily Top Option Trades > Run workflow**.
-2. Leave `report_date` empty for today's New York date, or enter an explicit market date.
-3. Enable `force` only when replacing that date's edition is intentional.
-4. Confirm the generation, archive verification, commit, deploy and production-date checks all pass.
+2. Choose `publish` for the complete morning pipeline or `closing_prints` for the after-close path.
+3. Leave `report_date` empty for today's New York date, or enter an explicit market date.
+4. Enable `force` only when replacing that date's morning edition is intentional.
+5. Confirm generation or close capture, archive verification, commit, deploy and production checks all pass.
 
 ## Vercel Configuration
 
 1. Import the GitHub repository as a Next.js project.
-2. Do not configure a Vercel cron. GitHub Actions is the only scheduler.
+2. Do not configure a Vercel cron. GitHub Actions owns both timezone-aware publication and close-capture schedules.
 3. Add no market-data token to Vercel unless a future server-side runtime route truly needs it. The current Vercel site reads committed reports only.
 4. Set `NEXT_PUBLIC_SITE_URL` to the production origin if a custom domain is used.
 5. Keep Git deployment enabled, or create a deploy hook and save it as the GitHub secret above.
@@ -215,6 +225,7 @@ Separate blocks remove nested page scrollbars and allow GoDaddy or Google ad sec
 - Every distinct valid run retains its derived market features, complete ranked candidate set, selection policy and a manifest containing SHA-256 hashes for all three datasets.
 - Outcome-trained feature weights remain inactive until at least eight fully resolved feature-rich trades are available, use ridge regularization and can change a score by no more than eight points.
 - Completed report baskets reconcile exact vertical settlement, final one-lot P/L and post-trade commentary back into the originating report.
+- Each open idea retains an ordered official daily-close series; its SVG chart extends after every captured session while the 10:45 a.m. entry and selected option legs remain immutable.
 - Every selected idea carries a 90-session underlying chart with entry marked; completed charts must match the exact settlement date and price used for P/L.
 - Every report carries a SHA-256 selection hash over the timestamped snapshot, features, discovered candidates, settings and policy.
 - Candidate and final-rank tie breaks are stable and lexical.

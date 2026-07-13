@@ -2,9 +2,24 @@ name: Daily Top Option Trades
 
 on:
   schedule:
-    - cron: "45 14 * * 1-5"
+    - cron: "45 10 * * 1-5"
+      timezone: "America/New_York"
+    - cron: "5 11 * * 1-5"
+      timezone: "America/New_York"
+    - cron: "20 16 * * 1-5"
+      timezone: "America/New_York"
+    - cron: "5 17 * * 1-5"
+      timezone: "America/New_York"
   workflow_dispatch:
     inputs:
+      run_mode:
+        description: "Publish the daily edition or collect official closes"
+        type: choice
+        options:
+          - publish
+          - closing_prints
+        required: true
+        default: publish
       report_date:
         description: "Optional YYYY-MM-DD override"
         required: false
@@ -23,6 +38,10 @@ concurrency:
 
 jobs:
   generate:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && inputs.run_mode != 'closing_prints') ||
+      github.event.schedule == '45 10 * * 1-5' ||
+      github.event.schedule == '5 11 * * 1-5'
     runs-on: ubuntu-latest
     env:
       MARKET_DATA_PROVIDER: tt_bridge
@@ -33,6 +52,8 @@ jobs:
       OPTIONS_CHAIN_SYMBOL_LIMIT: "40"
       OPTIONS_MOVER_SLOTS: "18"
       OPTIONS_VOLUME_SLOTS: "7"
+      PUBLISH_IDEA_COUNT: "5"
+      PUBLISH_MAX_TOTAL_BASKET_RISK_DOLLARS: "800"
       PUBLIC_HISTORY_ENABLED: "true"
       PUBLIC_HISTORY_LOOKBACK_DAYS: "400"
       PUBLIC_HISTORY_MAX_BARS: "260"
@@ -127,4 +148,94 @@ jobs:
             sleep 10
           done
           echo "Production did not publish $EXPECTED_DATE within five minutes."
+          exit 1
+
+  closing-prints:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && inputs.run_mode == 'closing_prints') ||
+      github.event.schedule == '20 16 * * 1-5' ||
+      github.event.schedule == '5 17 * * 1-5'
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC_HISTORY_MAX_BARS: "260"
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Validate closing-print workflow
+        run: npm run test:closes
+      - name: Resolve New York close date
+        id: report
+        env:
+          INPUT_REPORT_DATE: ${{ inputs.report_date }}
+        run: |
+          if [ -n "$INPUT_REPORT_DATE" ]; then
+            report_date="$INPUT_REPORT_DATE"
+          else
+            report_date="$(TZ=America/New_York date +%F)"
+          fi
+          echo "date=$report_date" >> "$GITHUB_OUTPUT"
+      - name: Collect official closing prints
+        id: collect
+        run: |
+          set +e
+          npm run collect:closes -- "${{ steps.report.outputs.date }}"
+          code=$?
+          set -e
+          if [ "$code" -eq 75 ]; then
+            echo "captured=false" >> "$GITHUB_OUTPUT"
+            echo "The finalized close is not available yet; the recovery schedule will retry."
+            exit 0
+          fi
+          if [ "$code" -ne 0 ]; then exit "$code"; fi
+          echo "captured=true" >> "$GITHUB_OUTPUT"
+      - name: Verify updated reports
+        if: steps.collect.outputs.captured == 'true'
+        run: |
+          npm run verify:reports
+          npm run verify:closes -- "${{ steps.report.outputs.date }}"
+      - name: Commit closing prints and updated charts
+        if: steps.collect.outputs.captured == 'true'
+        id: commit
+        run: |
+          git config user.name "RFDELTA LLC"
+          git config user.email "rfdeltax@gmail.com"
+          git add data/reports data/market-history public/charts
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Record closing prints for ${{ steps.report.outputs.date }}"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Trigger Vercel deployment
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "$VERCEL_DEPLOY_HOOK_URL" ]; then
+            curl -fsS -X POST "$VERCEL_DEPLOY_HOOK_URL"
+          else
+            echo "Vercel Git integration will deploy the committed close history."
+          fi
+      - name: Verify production closing prints
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          PRODUCTION_URL: ${{ vars.PRODUCTION_URL }}
+          EXPECTED_DATE: ${{ steps.report.outputs.date }}
+        run: |
+          base_url="${PRODUCTION_URL:-https://rfdelta-daily-top-option-trades.vercel.app}"
+          for attempt in $(seq 1 30); do
+            state="$(curl -fsS "$base_url/api/latest?close_attempt=$attempt" | node -e 'let d="";process.stdin.on("data",c=>d+=c);process.stdin.on("end",()=>{try{const r=JSON.parse(d),date=process.env.EXPECTED_DATE,active=(r.topTrades||[]).filter(x=>x.expiration>=date);console.log(!active.length?"complete":active.every(x=>(x.dailyCloses||[]).some(p=>p.date===date))?"captured":"")}catch{console.log("")}})')" || true
+            if [ "$state" = "captured" ] || [ "$state" = "complete" ]; then
+              echo "Production close state: $state"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "Production did not publish the closing prints within five minutes."
           exit 1

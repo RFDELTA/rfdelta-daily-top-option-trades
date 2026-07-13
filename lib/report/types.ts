@@ -39,6 +39,11 @@ export type UnderlyingTradeChart = {
   points: UnderlyingChartPoint[];
 };
 
+export type DailyUnderlyingClose = {
+  date: string;
+  underlyingClose: number;
+};
+
 export type PostTradeReview = {
   status: "complete";
   completedOn: string;
@@ -60,6 +65,7 @@ export type PostTradeReview = {
 export type PublishedTradeIdea = TradeIdeaScore & {
   commentary: TradeCommentary;
   underlyingChart?: UnderlyingTradeChart;
+  dailyCloses?: DailyUnderlyingClose[];
 };
 
 export type OptionsReport = {

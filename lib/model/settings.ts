@@ -27,7 +27,7 @@ export function getDefaultModelSettings(): ModelSettings {
     forceMinCreditSpreads: num("PUBLISH_FORCE_MIN_CREDIT_SPREADS", 1),
     forceMinDebitSpreads: num("PUBLISH_FORCE_MIN_DEBIT_SPREADS", 2),
     maxSingleTradeRiskDollars: num("PUBLISH_MAX_SINGLE_TRADE_RISK_DOLLARS", 250),
-    maxTotalBasketRiskDollars: num("PUBLISH_MAX_TOTAL_BASKET_RISK_DOLLARS", 750),
+    maxTotalBasketRiskDollars: num("PUBLISH_MAX_TOTAL_BASKET_RISK_DOLLARS", 800),
     pathsPerCandidate: num("MODEL_PATHS_PER_CANDIDATE", 100000),
     riskFreeRate: num("MODEL_DEFAULT_RISK_FREE_RATE", 0.045),
     deterministicSeed: num("MODEL_DETERMINISTIC_SEED", 6192026),
