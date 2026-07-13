@@ -377,6 +377,25 @@ p {
   margin-top: 12px;
 }
 
+.underlying-chart-figure {
+  margin: 26px 0 0;
+  border: 1px solid var(--line);
+  background: #071f1c;
+}
+
+.underlying-chart-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.underlying-chart-figure figcaption {
+  padding: 11px 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .risk-read {
   display: grid;
   grid-template-columns: 120px minmax(0, 1fr);

@@ -19,7 +19,7 @@
       <text x="34" y="217" class="rank">2</text>
       <text x="78" y="217" class="title"><tspan x="78" dy="0">SMCI 7/3 28/27 Put Credit Spread</tspan></text>
       <text x="1166" y="217" class="score" text-anchor="end">47.42</text>
-      <text x="78" y="256" class="meta">AI servers | credit | 70% modeled probability</text>
+      <text x="78" y="256" class="meta">semiconductors and compute infrastructure | credit | 70% modeled probability</text>
       <rect x="78" y="273" width="1070" height="16" rx="3" fill="#143b36"/>
       <rect x="78" y="273" width="507.4" height="16" rx="3" fill="url(#scoreBar)"/>
     </g>
@@ -43,7 +43,7 @@
       <text x="34" y="553" class="rank">5</text>
       <text x="78" y="553" class="title"><tspan x="78" dy="0">SOFI 7/3 17.5/16.5 Put Debit Spread</tspan></text>
       <text x="1166" y="553" class="score" text-anchor="end">33.16</text>
-      <text x="78" y="592" class="meta">consumer finance | debit | 36% modeled probability</text>
+      <text x="78" y="592" class="meta">financial and digital-market structure | debit | 36% modeled probability</text>
       <rect x="78" y="609" width="1070" height="16" rx="3" fill="#143b36"/>
       <rect x="78" y="609" width="354.8" height="16" rx="3" fill="url(#scoreBar)"/>
     </g>

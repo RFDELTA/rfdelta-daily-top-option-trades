@@ -11,6 +11,7 @@ export function computeMarketFeatureDataset(snapshot: MarketSnapshot): MarketFea
     dataAsOfUtc: snapshot.asOfUtc,
     ...(snapshot.sourceFingerprint ? { sourceFingerprint: snapshot.sourceFingerprint } : {}),
     ...(snapshot.historicalData ? { historicalData: snapshot.historicalData } : {}),
+    ...(snapshot.chainSelection ? { chainSelection: snapshot.chainSelection } : {}),
     symbols: snapshot.symbols.map(computeSymbolMetrics).sort((a, b) => a.symbol.localeCompare(b.symbol))
   };
 }

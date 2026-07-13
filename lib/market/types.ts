@@ -58,6 +58,17 @@ export type HistoricalDataProvenance = {
   coverageRatio: number;
 };
 
+export type OptionChainSelection = {
+  strategyVersion: "rfdelta-chain-preselection-v1";
+  quoteUniverseCount: number;
+  selectedSymbolCount: number;
+  core: string[];
+  movers: string[];
+  volume: string[];
+  rotation: string[];
+  selectedSymbols: string[];
+};
+
 export type MarketSnapshot = {
   provider: string;
   providerAttribution: string;
@@ -69,6 +80,7 @@ export type MarketSnapshot = {
   symbols: MarketSymbolSnapshot[];
   excludedSymbols: Array<{ symbol: string; reason: string }>;
   historicalData?: HistoricalDataProvenance;
+  chainSelection?: OptionChainSelection;
 };
 
 export type SnapshotRequest = {

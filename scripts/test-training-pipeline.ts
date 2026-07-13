@@ -8,7 +8,8 @@ import { renderReportMarkdown } from "../lib/report/renderers";
 import type { OptionsReport, PostTradeReview } from "../lib/report/types";
 import { computeMarketFeatureDataset } from "../lib/training/features";
 import { getPolicyScoreAdjustment, selectionPolicyHash, trainSelectionPolicy } from "../lib/training/policy";
-import { createDatasetRunId } from "../lib/training/store";
+import { createDatasetRunId, shouldReplaceCurrentPolicy } from "../lib/training/store";
+import { attachCompletedUnderlyingCharts } from "../lib/report/underlyingChart";
 
 async function main() {
   const finalizedBars = mergeQuoteHistory([{
@@ -55,6 +56,9 @@ async function main() {
   assert.equal(review?.status, "complete");
   assert.equal(review?.trades.length, report.topTrades.length);
   assert.ok(review?.trades.every((trade) => trade.realizedPnlDollars !== undefined));
+  assert.ok(review?.trades.every((trade) => trade.settlementDate));
+  const charted = attachCompletedUnderlyingCharts(report, review as PostTradeReview, settlementSnapshot, {});
+  assert.ok(charted.topTrades.every((idea) => idea.underlyingChart?.closeDate && idea.underlyingChart.closePrice !== undefined));
 
   const trainedReports = [0, 1].map((copy) => reportWithReview(report, review as PostTradeReview, copy));
   const policy = trainSelectionPolicy(trainedReports, settlementSnapshot.asOfUtc, settlementSnapshot.reportDate);
@@ -68,6 +72,8 @@ async function main() {
   assert.ok(Math.abs(adjustment) <= policy.maximumScoreAdjustment);
   const runId = createDatasetRunId(snapshot, firstFeatures, policy);
   assert.equal(runId, createDatasetRunId(snapshot, secondFeatures, repeat));
+  assert.equal(shouldReplaceCurrentPolicy(policy, { ...policy, trainedAtUtc: "2026-06-18T00:00:00.000Z", trainingThroughDate: "2026-06-18" }), false);
+  assert.equal(shouldReplaceCurrentPolicy(policy, { ...policy, trainedAtUtc: "2026-07-07T00:00:00.000Z", trainingThroughDate: "2026-07-07" }), true);
 
   const reviewed = { ...report, postTradeReview: review as PostTradeReview } satisfies OptionsReport;
   const markdown = renderReportMarkdown(reviewed);

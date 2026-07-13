@@ -28,6 +28,10 @@ export function renderReportMarkdown(report: OptionsReport) {
       "",
       idea.commentary.setup,
       "",
+      ...(idea.underlyingChart ? [
+        `**Underlying chart:** [${idea.symbol} entry${idea.underlyingChart.closeDate ? " through expiration close" : " and open-position history"}](${idea.underlyingChart.assetPath}) at ${money(idea.underlyingChart.entryPrice)}${idea.underlyingChart.closePrice !== undefined ? `; expiration close ${money(idea.underlyingChart.closePrice)}` : ""}.`,
+        ""
+      ] : []),
       ...(idea.advancedMetrics ? [
         `**Advanced metrics:** ${idea.advancedMetrics.historySessions} retained sessions; ${idea.advancedMetrics.historySessions >= 15 ? "RSI(14)" : "RSI proxy"} ${idea.advancedMetrics.rsi14.toFixed(1)}; MACD spread ${(idea.advancedMetrics.macdPct * 100).toFixed(2)}%; ${idea.advancedMetrics.historySessions >= 15 ? "ATR(14)" : "ATR proxy"} ${(idea.advancedMetrics.atr14Pct * 100).toFixed(2)}%; ${idea.advancedMetrics.historySessions >= 21 ? "realized volatility" : "volatility proxy"} ${(idea.advancedMetrics.realizedVol20 * 100).toFixed(1)}%; ATM implied volatility ${(idea.advancedMetrics.atmImpliedVol * 100).toFixed(1)}%; expected move ${(idea.advancedMetrics.expectedMovePct * 100).toFixed(1)}%. Outcome-trained score adjustment: ${signed(idea.trainingAdjustment)}.`,
         ""

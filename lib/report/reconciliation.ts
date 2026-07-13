@@ -1,8 +1,10 @@
 import { loadRetainedHistory } from "@/lib/market/history";
+import { fetchPublicHistoryBars } from "@/lib/market/publicHistory";
 import type { DailyBar, MarketSnapshot } from "@/lib/market/types";
 import { payoff } from "@/lib/model/math";
 import type { OptionsReport, PostTradeReview, PublishedTradeIdea, TradeOutcome } from "@/lib/report/types";
 import { getReport, getReportIndex } from "@/lib/report/store";
+import { attachCompletedUnderlyingCharts } from "@/lib/report/underlyingChart";
 
 export type ArchiveReconciliation = {
   reports: OptionsReport[];
@@ -12,16 +14,48 @@ export type ArchiveReconciliation = {
 export async function prepareArchiveReconciliation(snapshot: MarketSnapshot): Promise<ArchiveReconciliation> {
   const [index, retained] = await Promise.all([getReportIndex(), loadRetainedHistory()]);
   const reports = await Promise.all(index.reports.map((item) => getReport(item.date)));
+  const outcomeHistory = await hydrateOutcomeHistory(reports, snapshot, retained);
   const updates: OptionsReport[] = [];
   const reconciled = reports.map((report) => {
     if (report.runMetadata.reportDate >= snapshot.reportDate || report.postTradeReview?.status === "complete") return report;
-    const review = evaluateCompletedBasket(report, snapshot, retained);
+    const review = evaluateCompletedBasket(report, snapshot, outcomeHistory);
     if (!review) return report;
-    const updated = { ...report, postTradeReview: review } satisfies OptionsReport;
+    const updated = attachCompletedUnderlyingCharts({ ...report, postTradeReview: review }, review, snapshot, outcomeHistory);
     updates.push(updated);
     return updated;
   });
   return { reports: reconciled, updates };
+}
+
+async function hydrateOutcomeHistory(
+  reports: OptionsReport[],
+  snapshot: MarketSnapshot,
+  retained: Record<string, DailyBar[]>
+) {
+  const required = new Map<string, string>();
+  for (const report of reports) {
+    if (report.postTradeReview?.status === "complete" || report.runMetadata.reportDate >= snapshot.reportDate) continue;
+    for (const idea of report.topTrades) {
+      if (idea.expiration >= snapshot.sessionDate) continue;
+      const current = required.get(idea.symbol);
+      if (!current || report.runMetadata.reportDate < current) required.set(idea.symbol, report.runMetadata.reportDate);
+    }
+  }
+  if (!required.size) return retained;
+  const hydrated: Record<string, DailyBar[]> = { ...retained };
+  let completed = 0;
+  console.log(`[outcomes] settlement-history requested=${required.size}`);
+  await mapLimit([...required.entries()].sort(([a], [b]) => a.localeCompare(b)), 4, async ([symbol, startDate]) => {
+    try {
+      const bars = await fetchPublicHistoryBars(symbol, startDate, snapshot.sessionDate, { maxBars: 260 });
+      hydrated[symbol] = mergeBars(retained[symbol] ?? [], bars);
+      completed += 1;
+    } catch {
+      // The report remains open until a validated settlement close is available.
+    }
+  });
+  console.log(`[outcomes] settlement-history hydrated=${completed} requested=${required.size}`);
+  return hydrated;
 }
 
 export function evaluateReportOutcomes(
@@ -113,6 +147,7 @@ function evaluateTradeOutcome(
   const settlementValue = idea.structureType === "Debit" ? debitGross : creditLiability;
   return {
     ...baseOutcome(idea, status, `${idea.symbol} closed at ${money(settlementBar.close)} for expiration settlement, producing ${money(realizedPnlDollars)} on the one-lot spread.`),
+    settlementDate: settlementBar.date,
     settlementUnderlying: round(settlementBar.close, 4),
     settlementValue: round(settlementValue, 4),
     realizedPnlDollars
@@ -167,4 +202,16 @@ function round(value: number, places: number) {
 
 function clamp(value: number, minimum: number, maximum: number) {
   return Math.max(minimum, Math.min(maximum, value));
+}
+
+async function mapLimit<T>(values: T[], limit: number, mapper: (value: T) => Promise<void>) {
+  let nextIndex = 0;
+  async function worker() {
+    while (nextIndex < values.length) {
+      const index = nextIndex;
+      nextIndex += 1;
+      await mapper(values[index] as T);
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(Math.max(1, limit), values.length) }, worker));
 }

@@ -8,23 +8,26 @@ The repository never submits orders. It does not contain account identifiers, ba
 
 1. GitHub Actions starts at 14:45 UTC on weekdays, after the U.S. regular session is open in both standard and daylight time.
 2. The workflow resolves the current date in `America/New_York`.
-3. The authenticated RFDELTA market-data adapter discovers the deterministic source universe, fetches bulk underlying quotes and retrieves normalized multi-expiration option chains.
-4. Same-session freshness runs before any model input is retained.
-5. Finalized public daily price and volume history is queried from two fixed Yahoo Finance chart hosts, validated, merged deterministically and capped at 260 sessions. The live bridge remains authoritative for the current quote and option chain.
-6. The generator computes versioned price, volatility, volume, options-skew, implied-volatility, expected-move and liquidity features for every included symbol.
-7. Prior report baskets are reconciled against retained expiration closes. Fully completed baskets receive final P/L and post-trade commentary on their original report.
-8. A deterministic ridge-regularized policy is trained from fully resolved feature-rich trades. Learned score adjustments remain zero until the minimum sample threshold is reached and are always capped.
-9. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
-10. Each candidate runs through deterministic jump-stress Monte Carlo, common scoring weights and the versioned outcome-trained policy.
-11. The basket optimizer enforces one idea per symbol, correlation-bucket limits, one-lot and total-risk limits, and minimum debit/credit representation.
-12. Reports, charts, retained bars, market features, all ranked candidates, the selection policy and a hash-verified run manifest are committed to Git.
-13. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
+3. The authenticated RFDELTA market-data adapter discovers the deterministic source universe and retrieves underlying quotes in bounded batches.
+4. A configurable chain budget is allocated to core market anchors, the largest percentage movers, the highest-volume remaining names and a date-seeded rotation sleeve. The exact selected set is retained with the run.
+5. Same-session freshness runs before any model input is retained.
+6. Finalized public daily price and volume history is queried from two fixed Yahoo Finance chart hosts, validated, merged deterministically and capped at 260 sessions. The live bridge remains authoritative for the current quote and option chain.
+7. The generator computes versioned price, volatility, volume, options-skew, implied-volatility, expected-move and liquidity features for every included symbol.
+8. Prior report baskets are reconciled against public expiration closes. Fully completed baskets receive final P/L, post-trade commentary and close-marked underlying charts on their original report.
+9. A deterministic ridge-regularized policy is trained from fully resolved feature-rich trades. Learned score adjustments remain zero until the minimum sample threshold is reached and are always capped.
+10. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
+11. Each candidate runs through deterministic jump-stress Monte Carlo, common scoring weights and the versioned outcome-trained policy.
+12. The basket optimizer enforces one idea per symbol, correlation-bucket limits, one-lot and total-risk limits, and minimum debit/credit representation.
+13. Reports, ranking graphics, per-idea underlying charts, retained bars, market features, all ranked candidates, the selection policy and a hash-verified run manifest are committed to Git.
+14. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
 
 If current-session data are not available, generation exits with code `75`. The workflow records a clean market-session skip and leaves the previous valid report published. It never copies yesterday's quotes into today's date.
 
 ## Market Data Contract
 
 The primary production adapter uses `https://tt-bridge.rfdelta.com` for three read-only market-data operations: deterministic equity-universe discovery, bulk equity quotes and normalized equity option chains. An allowlist in the adapter rejects account, transaction and order routes before any request is sent. The bridge key is required only in the generation runtime and is never needed by Vercel or the public browser.
+
+The default quote universe is categorized in `lib/market/universe.ts`. `OPTIONS_CHAIN_SYMBOL_LIMIT` controls the maximum chains requested per run; core, mover and volume slot settings reserve capacity, and the remaining budget rotates deterministically by New York report date. Expiration monitoring is independent of this rotating set, so a prior top idea can still receive its final close and chart marker when it is no longer a current ranking candidate.
 
 RFDELTA must maintain any exchange, vendor and derived-publication rights required for the public product. Authentication to the bridge is not itself a grant of redistribution rights.
 
@@ -126,6 +129,7 @@ data/reports/YYYY-MM-DD/report.md
 data/reports/YYYY-MM-DD/ideas.csv
 public/charts/YYYY-MM-DD/ranked_scores.svg
 public/charts/YYYY-MM-DD/risk_reward.svg
+public/charts/YYYY-MM-DD/underlying/NN-symbol.svg
 data/market-history/daily-bars.json
 data/datasets/index.json
 data/datasets/YYYY-MM-DD/run-HASH/manifest.json
@@ -198,12 +202,14 @@ Separate blocks remove nested page scrollbars and allow GoDaddy or Google ad sec
 - The production adapter contains an explicit allowlist for discovery, equity-quote and normalized equity-chain routes only.
 - Public report validation rejects bridge, account, mock, order and runtime-failure language.
 - Public output contains derived two-leg quotes and model analytics, not access credentials.
-- Production generation requires current-session quotes for at least half the configured universe.
+- Production generation requires current-session option data for at least half the selected chain set.
+- The broad quote universe is fetched in bounded batches, while a deterministic chain budget limits the more expensive options requests.
 - Public historical responses are schema-validated, restricted to fixed Yahoo Finance chart hosts and never contain credentials.
 - Retained daily bars are capped at 260 sessions per symbol and committed with each valid edition.
 - Every distinct valid run retains its derived market features, complete ranked candidate set, selection policy and a manifest containing SHA-256 hashes for all three datasets.
 - Outcome-trained feature weights remain inactive until at least eight fully resolved feature-rich trades are available, use ridge regularization and can change a score by no more than eight points.
 - Completed report baskets reconcile exact vertical settlement, final one-lot P/L and post-trade commentary back into the originating report.
+- Every selected idea carries a 90-session underlying chart with entry marked; completed charts must match the exact settlement date and price used for P/L.
 - Every report carries a SHA-256 selection hash over the timestamped snapshot, features, discovered candidates, settings and policy.
 - Candidate and final-rank tie breaks are stable and lexical.
 

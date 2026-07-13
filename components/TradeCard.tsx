@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { PublishedTradeIdea } from "@/lib/report/types";
 
 export function TradeCard({ idea }: { idea: PublishedTradeIdea }) {
@@ -35,6 +36,22 @@ export function TradeCard({ idea }: { idea: PublishedTradeIdea }) {
             <p>{idea.commentary.payoffRead}</p>
           </section>
         </div>
+        {idea.underlyingChart && (
+          <figure className="underlying-chart-figure">
+            <Image
+              src={idea.underlyingChart.assetPath}
+              width={1200}
+              height={500}
+              alt={`${idea.symbol} underlying price chart with entry${idea.underlyingChart.closeDate ? " and expiration close" : ""} marked`}
+            />
+            <figcaption>
+              Underlying entry {money(idea.underlyingChart.entryPrice)} on {formatDate(idea.underlyingChart.entryDate)}
+              {idea.underlyingChart.closeDate && idea.underlyingChart.closePrice !== undefined
+                ? `; expiration close ${money(idea.underlyingChart.closePrice)} on ${formatDate(idea.underlyingChart.closeDate)}`
+                : "; the expiration close will be added after the position resolves"}.
+            </figcaption>
+          </figure>
+        )}
         {idea.advancedMetrics && (
           <div className="technical-grid" aria-label={`${idea.symbol} technical and options metrics`}>
             <Stat label="History" value={`${idea.advancedMetrics.historySessions} sessions`} />
@@ -69,4 +86,8 @@ function percentSigned(value: number) {
 
 function money(value: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 }).format(value);
+}
+
+function formatDate(value: string) {
+  return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(`${value}T00:00:00Z`));
 }

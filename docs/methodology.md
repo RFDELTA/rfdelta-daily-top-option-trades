@@ -2,7 +2,9 @@
 
 ## Discovery
 
-The publication list is sorted, deduplicated and intersected with the source's fingerprinted deterministic equity universe on every run. A bulk underlying quote call is followed by one normalized multi-expiration option-chain request per symbol. Symbols are processed with bounded concurrency so the result does not depend on network response timing.
+The categorized publication universe is sorted, deduplicated and intersected with the source's fingerprinted deterministic equity universe on every run. Underlying quotes are retrieved in bounded batches. Option-chain requests are then capped and allocated deterministically across four sleeves: permanent market anchors, the largest absolute session movers, the highest-volume remaining names and a date-seeded rotation of the remaining quote universe. This allows the candidate set to change with market leadership while preserving exact reproducibility for a given date and quote snapshot.
+
+The production defaults quote more than 100 market, sector, technology, semiconductor, financial, digital-asset, defense, space, healthcare, industrial, energy, materials, consumer and emerging-growth symbols, then request no more than 40 multi-expiration chains. Sleeve membership and the complete selected-symbol list are stored in the feature dataset; quote and chain counts are copied into the run manifest and public report context.
 
 Finalized daily underlying bars are queried from fixed Yahoo Finance chart hosts, schema-validated and merged with each valid report. The retained window is capped at 260 sessions per symbol. Public history replaces earlier intraday approximations for completed sessions; the RFDELTA bridge quote remains authoritative for the active session and official previous close. Source coverage and bar counts are stored with the versioned feature dataset and run manifest.
 
@@ -91,6 +93,8 @@ The screen may publish fewer than five ideas. It does not fill a date with a can
 Once an option expires, settlement is calculated from the retained expiration-session underlying close and the exact vertical payoff. Because the daily report runs before the closing bell, the next session's official previous-close field replaces the earlier intraday mark before reconciliation. P/L is clamped to published maximum loss and maximum profit. Outcomes are win, loss or near breakeven within one dollar. Open or unresolved contracts never train either learning layer.
 
 When every trade from a report is terminal, the originating report receives a completed-basket section with final P/L, return on maximum risk, the strongest contributor, the largest detractor, structure-level lessons and trade-by-trade settlement reads. Partially resolved baskets are not written back as complete.
+
+Every published idea also receives a 90-session underlying-price chart with the source-time underlying mark pinned as entry. Expired symbols are queried independently from the rotating chain-selection set, so settlement remains available even when the symbol is not selected for a new trade. Once the complete basket resolves, the archived chart is extended through expiration and receives a close marker tied to the same settlement date and price used for final P/L.
 
 ## Historical Datasets
 

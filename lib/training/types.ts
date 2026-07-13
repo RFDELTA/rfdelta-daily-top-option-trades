@@ -1,5 +1,5 @@
 import type { AdvancedFeatureName, AdvancedMarketMetrics, SpreadStyle, TradeIdeaScore } from "@/lib/model/types";
-import type { HistoricalDataProvenance } from "@/lib/market/types";
+import type { HistoricalDataProvenance, OptionChainSelection } from "@/lib/market/types";
 
 export type MarketFeatureDataset = {
   schemaVersion: "1.0";
@@ -8,6 +8,7 @@ export type MarketFeatureDataset = {
   dataAsOfUtc: string;
   sourceFingerprint?: string;
   historicalData?: HistoricalDataProvenance;
+  chainSelection?: OptionChainSelection;
   symbols: AdvancedMarketMetrics[];
 };
 
@@ -52,6 +53,9 @@ export type DatasetManifest = {
   historicalProvider?: HistoricalDataProvenance["provider"];
   historicalCoverageRatio?: number;
   historicalBarCount?: number;
+  chainSelectionVersion?: OptionChainSelection["strategyVersion"];
+  quotedSymbolCount?: number;
+  chainSymbolCount?: number;
   featureVersion: MarketFeatureDataset["featureVersion"];
   policyVersion: SelectionPolicy["policyVersion"];
   trainingSampleCount: number;

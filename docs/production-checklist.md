@@ -7,6 +7,7 @@
 - [ ] Add `TT_BRIDGE_BASE_URL=https://tt-bridge.rfdelta.com` as a GitHub Actions variable.
 - [ ] Run `npm run smoke:bridge -- YYYY-MM-DD "SPY,QQQ"` during a current U.S. market session.
 - [ ] Run a manual workflow during regular U.S. option-market hours.
+- [ ] Confirm quote-universe batching and the core, mover, volume and rotation sleeve counts appear in safe workflow logs.
 
 ## GitHub
 
@@ -45,6 +46,8 @@
 - [ ] Prior-basket outcomes use expiration settlement and no open trade is scored.
 - [ ] The run manifest hashes match the feature, candidate and policy datasets.
 - [ ] Historical provider, coverage ratio and bar count match between the feature dataset and run manifest.
+- [ ] Quote-universe and option-chain counts match between the feature dataset, run manifest and public report context.
+- [ ] Every top idea has a readable underlying entry chart; completed ideas also show the exact settlement close marker.
 - [ ] The report references the same dataset run and policy version used for selection.
 - [ ] Completed baskets contain no open trades and final P/L equals the sum of trade outcomes.
 - [ ] Learned feature weights stay inactive below the minimum sample threshold and score adjustment remains inside the configured cap.

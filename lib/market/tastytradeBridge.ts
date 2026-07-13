@@ -8,6 +8,7 @@ import type {
   SnapshotRequest
 } from "@/lib/market/types";
 import { NoFreshMarketSessionError } from "@/lib/market/types";
+import { selectOptionChainSymbols } from "@/lib/market/symbolSelection";
 
 type JsonRecord = Record<string, unknown>;
 type Fetcher = (input: string | URL | Request, init?: RequestInit) => Promise<Response>;
@@ -49,7 +50,12 @@ export class TastytradeBridgeMarketDataProvider implements MarketDataProvider {
     console.log(`[market-data] discovery configured=${requested.length} available=${available.size} selected=${activeUniverse.length} fingerprint=${discovery.fingerprint.slice(0, 12) || "unavailable"}`);
 
     const quotes = await this.getQuotes(activeUniverse);
-    const symbols = await mapLimit(activeUniverse, envNumber("TT_BRIDGE_CHAIN_CONCURRENCY", 4), async (symbol) => {
+    activeUniverse.filter((symbol) => !quotes.has(symbol)).forEach((symbol) => {
+      excludedSymbols.push({ symbol, reason: "No current underlying quote" });
+    });
+    const chainSelection = selectOptionChainSymbols(quotes, request.reportDate);
+    console.log(`[market-data] preselection quoted=${chainSelection.quoteUniverseCount} core=${chainSelection.core.length} movers=${chainSelection.movers.length} volume=${chainSelection.volume.length} rotation=${chainSelection.rotation.length} chains=${chainSelection.selectedSymbolCount}`);
+    const symbols = await mapLimit(chainSelection.selectedSymbols, envNumber("TT_BRIDGE_CHAIN_CONCURRENCY", 4), async (symbol) => {
       const quote = quotes.get(symbol);
       if (!quote) {
         excludedSymbols.push({ symbol, reason: "No current underlying quote" });
@@ -92,11 +98,11 @@ export class TastytradeBridgeMarketDataProvider implements MarketDataProvider {
     });
 
     const included = symbols.filter((symbol): symbol is MarketSymbolSnapshot => symbol !== null);
-    const freshRatio = included.length / Math.max(1, activeUniverse.length);
+    const freshRatio = included.length / Math.max(1, chainSelection.selectedSymbolCount);
     console.log(`[market-data] snapshot session=${request.reportDate} included=${included.length} excluded=${excludedSymbols.length}`);
     if (freshRatio < 0.5) {
       throw new NoFreshMarketSessionError(
-        `Only ${included.length} of ${activeUniverse.length} discovered symbols had same-session option data for ${request.reportDate}.`
+        `Only ${included.length} of ${chainSelection.selectedSymbolCount} selected symbols had same-session option data for ${request.reportDate}.`
       );
     }
     const asOfUtc = included
@@ -113,7 +119,8 @@ export class TastytradeBridgeMarketDataProvider implements MarketDataProvider {
       asOfUtc,
       universe: activeUniverse,
       symbols: included,
-      excludedSymbols: excludedSymbols.sort((a, b) => a.symbol.localeCompare(b.symbol))
+      excludedSymbols: excludedSymbols.sort((a, b) => a.symbol.localeCompare(b.symbol)),
+      chainSelection
     };
   }
 
@@ -125,11 +132,15 @@ export class TastytradeBridgeMarketDataProvider implements MarketDataProvider {
   }
 
   private async getQuotes(symbols: string[]) {
-    const query = new URLSearchParams();
-    symbols.forEach((symbol) => query.append("symbols", symbol));
-    const json = await this.fetchJson(`/quotes/equities?${query.toString()}`);
     const quotes = new Map<string, EquityQuote>();
-    for (const value of toArray(unwrapData(json)?.items)) {
+    const batchSize = clampInteger(envNumber("TT_BRIDGE_QUOTE_BATCH_SIZE", 60), 10, 100);
+    const batches = chunk(symbols, batchSize);
+    const responses = await mapLimit(batches, 3, async (batch) => {
+      const query = new URLSearchParams();
+      batch.forEach((symbol) => query.append("symbols", symbol));
+      return this.fetchJson(`/quotes/equities?${query.toString()}`);
+    });
+    for (const value of responses.flatMap((json) => toArray(unwrapData(json)?.items))) {
       const item = asRecord(value);
       const symbol = stringValue(item?.symbol).toUpperCase();
       const bid = numberValue(item?.bid);
@@ -241,6 +252,10 @@ export class TastytradeBridgeMarketDataProvider implements MarketDataProvider {
     }
     throw lastError instanceof Error ? lastError : new Error("Market data request did not complete");
   }
+}
+
+function chunk<T>(values: T[], size: number) {
+  return Array.from({ length: Math.ceil(values.length / size) }, (_, index) => values.slice(index * size, (index + 1) * size));
 }
 
 function chooseExpiration(expirations: string[], reportDate: string) {

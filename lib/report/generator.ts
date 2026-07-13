@@ -23,6 +23,7 @@ import type {
   TradeCommentary,
   TradeOutcome
 } from "@/lib/report/types";
+import { createUnderlyingTradeChart } from "@/lib/report/underlyingChart";
 import { computeMarketFeatureDataset, featureMap } from "@/lib/training/features";
 import { trainSelectionPolicy } from "@/lib/training/policy";
 import { createDatasetRunId, persistRunDataset } from "@/lib/training/store";
@@ -126,7 +127,8 @@ async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun): 
   const topTrades = basket.map((idea) => ({
     ...idea,
     lessonAdjustments: [],
-    commentary: buildTradeCommentary(idea)
+    commentary: buildTradeCommentary(idea),
+    underlyingChart: createUnderlyingTradeChart(snapshot, idea)
   }));
   const selectionHash = createHash("sha256")
     .update(JSON.stringify({ snapshot: snapshot.asOfUtc, candidates: discovery.candidates, settings, features: prepared.features, policy: prepared.policy }))
@@ -153,6 +155,8 @@ async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun): 
     marketContext: {
       providerAttribution: snapshot.providerAttribution,
       universeCount: snapshot.universe.length,
+      quotedSymbolCount: snapshot.chainSelection?.quoteUniverseCount ?? snapshot.universe.length,
+      chainSymbolCount: snapshot.chainSelection?.selectedSymbolCount ?? snapshot.symbols.length,
       includedSymbolCount: snapshot.symbols.length,
       excludedSymbolCount: snapshot.excludedSymbols.length,
       candidateCount: rankedCandidates.length,
@@ -165,7 +169,7 @@ async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun): 
     accountability,
     methodology: {
       selectionCriteria: [
-        "A configured liquid-symbol list is intersected with the source's fingerprinted universe and evaluated alphabetically so discovery and tie-breaking remain repeatable.",
+        "A broad liquid-symbol quote universe is intersected with the source's fingerprinted universe. Core market anchors, the largest percentage movers, the most active names and a date-seeded rotation sleeve determine which option chains are evaluated.",
         "The nearest expiration inside the configured 7-to-35-day window is chosen by distance from a 14-day target.",
         "Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.",
         "Both legs must clear bid, ask, open-interest, volume or depth, and relative quote-width gates.",
@@ -271,7 +275,7 @@ function buildExecutiveSummary(topTrades: PublishedTradeIdea[], snapshot: Market
     standfirst: `${top.name} ranks first with a ${top.score.toFixed(2)} score, ${pct(top.probabilityProfit)} modeled probability of profit and ${money(top.maxLossDollars)} maximum one-lot risk. The basket balances ${bullish} bullish and ${bearish} bearish expression${topTrades.length === 1 ? "" : "s"}.`,
     marketCommentary: [
       `The option board is not rewarding indiscriminate beta. Across the published names, ${momentumRead}, while ${highVol} setup${highVol === 1 ? " carries" : "s carry"} realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.`,
-      `The screen begins with ${snapshot.universe.length} liquid underlyings and accepts only same-session chains with two usable legs. It then forces every idea through the same conservative mark: pay the ask for the long option and receive the bid for the short. The resulting ranking is intentionally harsher than a midpoint screen, because a trade that only works at a theoretical fill is not a durable public idea.`,
+      `The screen quotes ${snapshot.chainSelection?.quoteUniverseCount ?? snapshot.universe.length} liquid underlyings and requests ${snapshot.chainSelection?.selectedSymbolCount ?? snapshot.symbols.length} option chains through its core, mover, volume and rotation sleeves. It accepts only same-session chains with two usable legs, then forces every idea through the same conservative mark: pay the ask for the long option and receive the bid for the short. The resulting ranking is intentionally harsher than a midpoint screen, because a trade that only works at a theoretical fill is not a durable public idea.`,
       `${directionRead} That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade.`
     ],
     selectionCommentary: [

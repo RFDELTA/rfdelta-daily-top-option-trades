@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-label="MARA underlying price from entry">
+  <rect width="1200" height="500" fill="#071f1c"/>
+  <style>.head{fill:#f4fff9;font:800 27px Georgia,serif}.sub{fill:#9fc4bb;font:14px Arial,sans-serif}.axis{fill:#8eaaa3;font:12px Arial,sans-serif}.marker{font:800 12px Arial,sans-serif}</style>
+  <text x="86" y="40" class="head">MARA Underlying Price</text>
+  <text x="86" y="66" class="sub">31 sessions | Entry marked; position remains open | Published option idea rank 1</text>
+  <line x1="86" x2="1142" y1="100.0" y2="100.0" stroke="#1b4a42" stroke-width="1"/><text x="72" y="105.0" text-anchor="end" class="axis">$14.63</text><line x1="86" x2="1142" y1="183.5" y2="183.5" stroke="#1b4a42" stroke-width="1"/><text x="72" y="188.5" text-anchor="end" class="axis">$14.28</text><line x1="86" x2="1142" y1="267.0" y2="267.0" stroke="#1b4a42" stroke-width="1"/><text x="72" y="272.0" text-anchor="end" class="axis">$13.94</text><line x1="86" x2="1142" y1="350.5" y2="350.5" stroke="#1b4a42" stroke-width="1"/><text x="72" y="355.5" text-anchor="end" class="axis">$13.59</text><line x1="86" x2="1142" y1="434.0" y2="434.0" stroke="#1b4a42" stroke-width="1"/><text x="72" y="439.0" text-anchor="end" class="axis">$13.25</text>
+  <path d="M86.0,348.8 L121.2,288.0 L156.4,182.5 L191.6,163.4 L226.8,256.3 L262.0,346.4 L297.2,327.7 L332.4,223.3 L367.6,160.6 L402.8,219.9 L438.0,327.6 L473.2,354.3 L508.4,270.3 L543.6,176.4 L578.8,190.9 L614.0,296.6 L649.2,364.3 L684.4,315.4 L719.6,208.6 L754.8,175.8 L790.0,259.8 L825.2,356.6 L860.4,351.6 L895.6,251.9 L930.8,178.5 L966.0,225.0 L1001.2,333.7 L1036.4,373.4 L1071.6,298.9 L1106.8,199.5 L1142.0,199.7 L1142.0,434.0 L86.0,434.0 Z" fill="#0f5949" opacity="0.28"/>
+  <path d="M86.0,348.8 L121.2,288.0 L156.4,182.5 L191.6,163.4 L226.8,256.3 L262.0,346.4 L297.2,327.7 L332.4,223.3 L367.6,160.6 L402.8,219.9 L438.0,327.6 L473.2,354.3 L508.4,270.3 L543.6,176.4 L578.8,190.9 L614.0,296.6 L649.2,364.3 L684.4,315.4 L719.6,208.6 L754.8,175.8 L790.0,259.8 L825.2,356.6 L860.4,351.6 L895.6,251.9 L930.8,178.5 L966.0,225.0 L1001.2,333.7 L1036.4,373.4 L1071.6,298.9 L1106.8,199.5 L1142.0,199.7" fill="none" stroke="#62d9ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g>
+    <line x1="1142.0" x2="1142.0" y1="100" y2="434" stroke="#18e59c" stroke-width="2" stroke-dasharray="7 7" opacity="0.8"/>
+    <circle cx="1142.0" cy="199.7" r="8" fill="#071f1c" stroke="#18e59c" stroke-width="4"/>
+    <text x="1030.0" y="181.7" text-anchor="middle" class="marker" fill="#18e59c">ENTRY | Jun 19 | $14.22</text>
+  </g>
+  
+  <text x="86.0" y="472" text-anchor="middle" class="axis">May 20</text><text x="367.6" y="472" text-anchor="middle" class="axis">May 28</text><text x="614.0" y="472" text-anchor="middle" class="axis">Jun 4</text><text x="895.6" y="472" text-anchor="middle" class="axis">Jun 12</text><text x="1142.0" y="472" text-anchor="middle" class="axis">Jun 19</text>
+  </svg>

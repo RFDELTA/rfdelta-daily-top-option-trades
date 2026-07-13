@@ -9,6 +9,7 @@ export type TradeOutcome = {
   style: TradeIdeaScore["style"];
   expiration: string;
   status: OutcomeStatus;
+  settlementDate?: string;
   settlementUnderlying?: number;
   settlementValue?: number;
   realizedPnlDollars?: number;
@@ -22,6 +23,20 @@ export type TradeCommentary = {
   execution: string;
   risk: string;
   payoffRead: string;
+};
+
+export type UnderlyingChartPoint = {
+  date: string;
+  close: number;
+};
+
+export type UnderlyingTradeChart = {
+  assetPath: string;
+  entryDate: string;
+  entryPrice: number;
+  closeDate?: string;
+  closePrice?: number;
+  points: UnderlyingChartPoint[];
 };
 
 export type PostTradeReview = {
@@ -44,6 +59,7 @@ export type PostTradeReview = {
 
 export type PublishedTradeIdea = TradeIdeaScore & {
   commentary: TradeCommentary;
+  underlyingChart?: UnderlyingTradeChart;
 };
 
 export type OptionsReport = {
@@ -72,6 +88,8 @@ export type OptionsReport = {
   marketContext: {
     providerAttribution: string;
     universeCount: number;
+    quotedSymbolCount?: number;
+    chainSymbolCount?: number;
     includedSymbolCount: number;
     excludedSymbolCount: number;
     candidateCount: number;

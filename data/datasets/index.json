@@ -19,6 +19,15 @@
       "candidateCount": 10,
       "selectedIdeaCount": 3,
       "trainingSampleCount": 0
+    },
+    {
+      "runId": "run-93f53973d7079a4e",
+      "reportDate": "2026-06-19",
+      "reportId": "rfdelta-options-2026-06-19-3bc1cabccc13",
+      "dataAsOfUtc": "2026-06-19T15:45:00.000Z",
+      "candidateCount": 19,
+      "selectedIdeaCount": 5,
+      "trainingSampleCount": 0
     }
   ]
 }

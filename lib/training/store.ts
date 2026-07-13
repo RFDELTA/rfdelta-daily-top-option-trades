@@ -69,6 +69,11 @@ export async function persistRunDataset(args: {
       historicalCoverageRatio: snapshot.historicalData.coverageRatio,
       historicalBarCount: snapshot.historicalData.totalBarCount
     } : {}),
+    ...(snapshot.chainSelection ? {
+      chainSelectionVersion: snapshot.chainSelection.strategyVersion,
+      quotedSymbolCount: snapshot.chainSelection.quoteUniverseCount,
+      chainSymbolCount: snapshot.chainSelection.selectedSymbolCount
+    } : {}),
     featureVersion: features.featureVersion,
     policyVersion: policy.policyVersion,
     trainingSampleCount: policy.resolvedTradeCount,
@@ -86,10 +91,26 @@ export async function persistRunDataset(args: {
     writeJson(path.join(runDirectory, "market-features.json"), features),
     writeJson(path.join(runDirectory, "candidates.json"), candidateDataset),
     writeJson(path.join(runDirectory, "selection-policy.json"), policy),
-    writeJson(path.join(TRAINING_ROOT, "selection-policy.json"), policy)
+    persistCurrentPolicy(policy)
   ]);
   await updateDatasetIndex(manifest);
   return manifest;
+}
+
+async function persistCurrentPolicy(policy: SelectionPolicy) {
+  let existing: SelectionPolicy | undefined;
+  try {
+    existing = JSON.parse(await fs.readFile(path.join(TRAINING_ROOT, "selection-policy.json"), "utf8")) as SelectionPolicy;
+  } catch {
+    // The first valid run establishes the current policy pointer.
+  }
+  if (existing && !shouldReplaceCurrentPolicy(existing, policy)) return;
+  await writeJson(path.join(TRAINING_ROOT, "selection-policy.json"), policy);
+}
+
+export function shouldReplaceCurrentPolicy(existing: SelectionPolicy, incoming: SelectionPolicy) {
+  return incoming.trainingThroughDate > existing.trainingThroughDate
+    || (incoming.trainingThroughDate === existing.trainingThroughDate && incoming.trainedAtUtc >= existing.trainedAtUtc);
 }
 
 async function updateDatasetIndex(manifest: DatasetManifest) {

@@ -44,6 +44,20 @@ async function main() {
     if (!report.topTrades.every((idea) => idea.advancedMetrics && Number.isFinite(idea.trainingAdjustment))) {
       throw new Error("Published ideas are missing advanced metrics or training adjustments.");
     }
+    for (const idea of report.topTrades) {
+      const chart = idea.underlyingChart;
+      if (!chart || chart.entryDate !== report.runMetadata.reportDate || chart.entryPrice !== idea.underlyingMark || chart.points.length < 21) {
+        throw new Error(`Published idea ${idea.id} is missing a valid underlying entry chart.`);
+      }
+      if (!/^\/charts\/\d{4}-\d{2}-\d{2}\/underlying\/[a-z0-9-]+\.svg$/u.test(chart.assetPath)) {
+        throw new Error(`Published idea ${idea.id} has an invalid underlying chart path.`);
+      }
+      const chartPath = path.join(process.cwd(), "public", chart.assetPath.replace(/^\/+/, ""));
+      await requireFile(chartPath);
+      const chartSvg = await fs.readFile(chartPath, "utf8");
+      if (!chartSvg.includes("ENTRY |")) throw new Error(`Underlying chart for ${idea.id} is missing its entry marker.`);
+      if (chart.closeDate && !chartSvg.includes("EXPIRATION CLOSE |")) throw new Error(`Underlying chart for ${idea.id} is missing its expiration close marker.`);
+    }
     const datasetDirectory = path.join(process.cwd(), "data", "datasets", report.runMetadata.reportDate, runId);
     const [manifest, features, candidates, policy] = await Promise.all([
       readJson(path.join(datasetDirectory, "manifest.json")),
@@ -61,6 +75,15 @@ async function main() {
       if (manifest.historicalCoverageRatio !== historicalData.coverageRatio) throw new Error("Historical coverage does not match the feature dataset.");
       if (manifest.historicalBarCount !== historicalData.totalBarCount) throw new Error("Historical bar count does not match the feature dataset.");
     }
+    const chainSelection = isRecord(features.chainSelection) ? features.chainSelection : undefined;
+    if (chainSelection) {
+      if (manifest.chainSelectionVersion !== chainSelection.strategyVersion) throw new Error("Chain-selection version does not match the feature dataset.");
+      if (manifest.quotedSymbolCount !== chainSelection.quoteUniverseCount) throw new Error("Quoted-symbol count does not match the feature dataset.");
+      if (manifest.chainSymbolCount !== chainSelection.selectedSymbolCount) throw new Error("Chain-symbol count does not match the feature dataset.");
+      if (report.marketContext.quotedSymbolCount !== chainSelection.quoteUniverseCount || report.marketContext.chainSymbolCount !== chainSelection.selectedSymbolCount) {
+        throw new Error("Public market-context counts do not match chain selection.");
+      }
+    }
   }
   if (report.postTradeReview) {
     if (report.postTradeReview.trades.some((trade) => trade.status === "open" || trade.status === "awaiting_close")) {
@@ -68,6 +91,12 @@ async function main() {
     }
     const pnl = round(report.postTradeReview.trades.reduce((sum, trade) => sum + (trade.realizedPnlDollars ?? 0), 0), 2);
     if (pnl !== report.postTradeReview.finalPnlDollars) throw new Error("Completed post-trade P/L does not reconcile.");
+    for (const outcome of report.postTradeReview.trades) {
+      const idea = report.topTrades.find((candidate) => candidate.id === outcome.tradeId);
+      if (!idea?.underlyingChart?.closeDate || idea.underlyingChart.closeDate !== outcome.settlementDate || idea.underlyingChart.closePrice !== outcome.settlementUnderlying) {
+        throw new Error(`Completed trade ${outcome.tradeId} does not match its underlying close marker.`);
+      }
+    }
   }
   console.log(`[verify] date=${index.latest} ideas=${report.topTrades.length} archive_count=${index.reports.length}`);
 }

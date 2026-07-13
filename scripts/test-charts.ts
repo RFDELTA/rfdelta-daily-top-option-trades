@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { HistoricalFixtureProvider } from "../lib/market/fixture";
-import { renderRankedScoresSvg, renderRiskRewardSvg } from "../lib/report/charts";
+import { renderRankedScoresSvg, renderRiskRewardSvg, renderUnderlyingPriceSvg } from "../lib/report/charts";
 import { buildReport } from "../lib/report/generator";
 
 async function main() {
@@ -17,6 +17,25 @@ async function main() {
     }
   }
   assert.ok(renderRankedScoresSvg(report).includes("Labels and scores are separated from payoff bars"));
+  assert.ok(report.topTrades.every((idea) => idea.underlyingChart && idea.underlyingChart.points.length >= 21));
+  for (const idea of report.topTrades) {
+    const entrySvg = renderUnderlyingPriceSvg(idea);
+    assert.match(entrySvg, /ENTRY \|/u);
+    assert.doesNotMatch(entrySvg, /NaN|undefined|Infinity/u);
+    const chart = idea.underlyingChart;
+    assert.ok(chart);
+    const closeDate = "2026-07-03";
+    const closedSvg = renderUnderlyingPriceSvg({
+      ...idea,
+      underlyingChart: {
+        ...chart,
+        closeDate,
+        closePrice: idea.underlyingMark * 1.05,
+        points: [...chart.points, { date: closeDate, close: idea.underlyingMark * 1.05 }]
+      }
+    });
+    assert.match(closedSvg, /EXPIRATION CLOSE \|/u);
+  }
   console.log(`[test:charts] ideas=${report.topTrades.length} bounds=ok`);
 }
 
