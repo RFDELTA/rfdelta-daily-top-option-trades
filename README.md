@@ -10,14 +10,15 @@ The repository never submits orders. It does not contain account identifiers, ba
 2. The workflow resolves the current date in `America/New_York`.
 3. The authenticated RFDELTA market-data adapter discovers the deterministic source universe, fetches bulk underlying quotes and retrieves normalized multi-expiration option chains.
 4. Same-session freshness runs before any model input is retained.
-5. The generator computes versioned price, volatility, volume, options-skew, implied-volatility, expected-move and liquidity features for every included symbol.
-6. Prior report baskets are reconciled against retained expiration closes. Fully completed baskets receive final P/L and post-trade commentary on their original report.
-7. A deterministic ridge-regularized policy is trained from fully resolved feature-rich trades. Learned score adjustments remain zero until the minimum sample threshold is reached and are always capped.
-8. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
-9. Each candidate runs through deterministic jump-stress Monte Carlo, common scoring weights and the versioned outcome-trained policy.
-10. The basket optimizer enforces one idea per symbol, correlation-bucket limits, one-lot and total-risk limits, and minimum debit/credit representation.
-11. Reports, charts, retained bars, market features, all ranked candidates, the selection policy and a hash-verified run manifest are committed to Git.
-12. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
+5. Finalized public daily price and volume history is queried from two fixed Yahoo Finance chart hosts, validated, merged deterministically and capped at 260 sessions. The live bridge remains authoritative for the current quote and option chain.
+6. The generator computes versioned price, volatility, volume, options-skew, implied-volatility, expected-move and liquidity features for every included symbol.
+7. Prior report baskets are reconciled against retained expiration closes. Fully completed baskets receive final P/L and post-trade commentary on their original report.
+8. A deterministic ridge-regularized policy is trained from fully resolved feature-rich trades. Learned score adjustments remain zero until the minimum sample threshold is reached and are always capped.
+9. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
+10. Each candidate runs through deterministic jump-stress Monte Carlo, common scoring weights and the versioned outcome-trained policy.
+11. The basket optimizer enforces one idea per symbol, correlation-bucket limits, one-lot and total-risk limits, and minimum debit/credit representation.
+12. Reports, charts, retained bars, market features, all ranked candidates, the selection policy and a hash-verified run manifest are committed to Git.
+13. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
 
 If current-session data are not available, generation exits with code `75`. The workflow records a clean market-session skip and leaves the previous valid report published. It never copies yesterday's quotes into today's date.
 
@@ -26,6 +27,8 @@ If current-session data are not available, generation exits with code `75`. The 
 The primary production adapter uses `https://tt-bridge.rfdelta.com` for three read-only market-data operations: deterministic equity-universe discovery, bulk equity quotes and normalized equity option chains. An allowlist in the adapter rejects account, transaction and order routes before any request is sent. The bridge key is required only in the generation runtime and is never needed by Vercel or the public browser.
 
 RFDELTA must maintain any exchange, vendor and derived-publication rights required for the public product. Authentication to the bridge is not itself a grant of redistribution rights.
+
+The public-history adapter queries Yahoo Finance daily chart JSON through a fixed primary host and fixed mirror. It validates content type, response shape, symbol, date range and OHLC values before merge. Finalized historical sessions replace retained intraday approximations; the fresh bridge bar always wins for the current session. A temporary public-history outage leaves retained bars in place and does not turn an otherwise current options report into a failed publication.
 
 Tradier remains available as an explicitly selected alternate provider. Its separate publication-rights acknowledgement still fails closed when that adapter is selected.
 
@@ -72,6 +75,12 @@ Verify universe, quote and option-chain access without writing a report:
 
 ```powershell
 npm run smoke:bridge -- 2026-07-13 "SPY,QQQ"
+```
+
+Verify the public historical query and date coverage without writing a report or requiring a bridge key:
+
+```powershell
+npm run smoke:history -- 2026-07-10 "SPY,QQQ"
 ```
 
 Generate a specific market date:
@@ -190,7 +199,8 @@ Separate blocks remove nested page scrollbars and allow GoDaddy or Google ad sec
 - Public report validation rejects bridge, account, mock, order and runtime-failure language.
 - Public output contains derived two-leg quotes and model analytics, not access credentials.
 - Production generation requires current-session quotes for at least half the configured universe.
-- Retained daily bars are derived from public market fields, capped at 90 sessions per symbol and committed with each valid edition.
+- Public historical responses are schema-validated, restricted to fixed Yahoo Finance chart hosts and never contain credentials.
+- Retained daily bars are capped at 260 sessions per symbol and committed with each valid edition.
 - Every distinct valid run retains its derived market features, complete ranked candidate set, selection policy and a manifest containing SHA-256 hashes for all three datasets.
 - Outcome-trained feature weights remain inactive until at least eight fully resolved feature-rich trades are available, use ridge regularization and can change a score by no more than eight points.
 - Completed report baskets reconcile exact vertical settlement, final one-lot P/L and post-trade commentary back into the originating report.

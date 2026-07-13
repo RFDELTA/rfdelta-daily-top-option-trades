@@ -9,7 +9,7 @@ type RetainedHistory = {
 };
 
 const HISTORY_PATH = path.join(process.cwd(), "data", "market-history", "daily-bars.json");
-const MAX_RETAINED_BARS = 90;
+const MAX_RETAINED_BARS = 260;
 
 export async function loadRetainedHistory(): Promise<Record<string, DailyBar[]>> {
   try {
@@ -52,7 +52,7 @@ export async function persistSnapshotHistory(snapshot: MarketSnapshot) {
   if (snapshot.provider.includes("fixture")) return;
   const current = await loadRetainedHistory();
   for (const item of snapshot.symbols) {
-    current[item.symbol] = mergeQuoteHistory(current[item.symbol] ?? [], item.quote);
+    current[item.symbol] = mergeQuoteHistory(item.bars, item.quote);
   }
   const sorted = Object.fromEntries(
     Object.entries(current)

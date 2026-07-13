@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import calibrationOutcomes from "@/data/calibration/prior-outcomes-2026-06-18.json";
 import { loadRetainedHistory, persistSnapshotHistory } from "@/lib/market/history";
 import { createMarketDataProvider } from "@/lib/market/provider";
+import { hydratePublicHistoricalData } from "@/lib/market/publicHistory";
 import type { MarketDataProvider, MarketSnapshot } from "@/lib/market/types";
 import { getUniverse } from "@/lib/market/universe";
 import { buildPublishBasket } from "@/lib/model/basketOptimizer";
@@ -53,7 +54,7 @@ export async function generateAndPersist(options: GenerateOptions) {
     return { report: await getReport(options.date), skipped: true };
   }
   const provider = options.provider ?? createMarketDataProvider();
-  const snapshot = await provider.getSnapshot({ reportDate: options.date, universe: getUniverse() });
+  const snapshot = await hydratePublicHistoricalData(await provider.getSnapshot({ reportDate: options.date, universe: getUniverse() }));
   if (!snapshot.universe.length && !snapshot.symbols.length) throw new Error("The market universe is empty.");
   const prepared = await prepareRun(snapshot);
   const { report, rankedCandidates } = await assembleReport(snapshot, prepared);
@@ -76,7 +77,7 @@ export async function generateWithUniverse(options: GenerateOptions & { universe
     return { report: await getReport(options.date), skipped: true };
   }
   const provider = options.provider ?? createMarketDataProvider();
-  const snapshot = await provider.getSnapshot({ reportDate: options.date, universe: options.universe });
+  const snapshot = await hydratePublicHistoricalData(await provider.getSnapshot({ reportDate: options.date, universe: options.universe }));
   const prepared = await prepareRun(snapshot);
   const { report, rankedCandidates } = await assembleReport(snapshot, prepared);
   await persistSnapshotHistory(snapshot);
@@ -182,7 +183,7 @@ async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun): 
       ],
       executionAssumption: "Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.",
       publicationCadence: "A single weekday workflow runs after the U.S. options session opens. If same-session quotes are unavailable, the most recent valid edition remains published.",
-      marketDataStatement: `${snapshot.providerAttribution}. Data timestamp: ${formatDateTime(snapshot.asOfUtc)}. Historical calibration editions are clearly labeled and are never promoted as current market data.`,
+      marketDataStatement: `${snapshot.providerAttribution}.${snapshot.historicalData ? ` Historical technical series: ${snapshot.historicalData.provider} ${snapshot.historicalData.dataset.toLowerCase()}.` : ""} Data timestamp: ${formatDateTime(snapshot.asOfUtc)}. Historical calibration editions are clearly labeled and are never promoted as current market data.`,
       disclaimer: "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
     }
   };

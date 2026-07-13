@@ -64,6 +64,11 @@ export async function persistRunDataset(args: {
     reportId: report.reportId,
     dataAsOfUtc: snapshot.asOfUtc,
     ...(snapshot.sourceFingerprint ? { sourceFingerprint: snapshot.sourceFingerprint } : {}),
+    ...(snapshot.historicalData ? {
+      historicalProvider: snapshot.historicalData.provider,
+      historicalCoverageRatio: snapshot.historicalData.coverageRatio,
+      historicalBarCount: snapshot.historicalData.totalBarCount
+    } : {}),
     featureVersion: features.featureVersion,
     policyVersion: policy.policyVersion,
     trainingSampleCount: policy.resolvedTradeCount,

@@ -1,4 +1,5 @@
 import type { AdvancedFeatureName, AdvancedMarketMetrics, SpreadStyle, TradeIdeaScore } from "@/lib/model/types";
+import type { HistoricalDataProvenance } from "@/lib/market/types";
 
 export type MarketFeatureDataset = {
   schemaVersion: "1.0";
@@ -6,6 +7,7 @@ export type MarketFeatureDataset = {
   reportDate: string;
   dataAsOfUtc: string;
   sourceFingerprint?: string;
+  historicalData?: HistoricalDataProvenance;
   symbols: AdvancedMarketMetrics[];
 };
 
@@ -47,6 +49,9 @@ export type DatasetManifest = {
   reportId: string;
   dataAsOfUtc: string;
   sourceFingerprint?: string;
+  historicalProvider?: HistoricalDataProvenance["provider"];
+  historicalCoverageRatio?: number;
+  historicalBarCount?: number;
   featureVersion: MarketFeatureDataset["featureVersion"];
   policyVersion: SelectionPolicy["policyVersion"];
   trainingSampleCount: number;

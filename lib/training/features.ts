@@ -10,6 +10,7 @@ export function computeMarketFeatureDataset(snapshot: MarketSnapshot): MarketFea
     reportDate: snapshot.reportDate,
     dataAsOfUtc: snapshot.asOfUtc,
     ...(snapshot.sourceFingerprint ? { sourceFingerprint: snapshot.sourceFingerprint } : {}),
+    ...(snapshot.historicalData ? { historicalData: snapshot.historicalData } : {}),
     symbols: snapshot.symbols.map(computeSymbolMetrics).sort((a, b) => a.symbol.localeCompare(b.symbol))
   };
 }

@@ -55,6 +55,12 @@ async function main() {
     if (String(manifest.featureDatasetHash) !== sha256(features)) throw new Error("Feature dataset hash does not match its manifest.");
     if (String(manifest.candidateDatasetHash) !== sha256(candidates)) throw new Error("Candidate dataset hash does not match its manifest.");
     if (String(manifest.selectionPolicyHash) !== sha256(policy)) throw new Error("Selection policy hash does not match its manifest.");
+    const historicalData = isRecord(features.historicalData) ? features.historicalData : undefined;
+    if (historicalData) {
+      if (manifest.historicalProvider !== historicalData.provider) throw new Error("Historical provider does not match the feature dataset.");
+      if (manifest.historicalCoverageRatio !== historicalData.coverageRatio) throw new Error("Historical coverage does not match the feature dataset.");
+      if (manifest.historicalBarCount !== historicalData.totalBarCount) throw new Error("Historical bar count does not match the feature dataset.");
+    }
   }
   if (report.postTradeReview) {
     if (report.postTradeReview.trades.some((trade) => trade.status === "open" || trade.status === "awaiting_close")) {
@@ -78,6 +84,10 @@ async function readJson(filePath: string): Promise<Record<string, unknown>> {
 
 function sha256(value: unknown) {
   return createHash("sha256").update(JSON.stringify(value)).digest("hex");
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 function round(value: number, places: number) {

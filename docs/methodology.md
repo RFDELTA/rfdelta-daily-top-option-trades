@@ -4,7 +4,7 @@
 
 The publication list is sorted, deduplicated and intersected with the source's fingerprinted deterministic equity universe on every run. A bulk underlying quote call is followed by one normalized multi-expiration option-chain request per symbol. Symbols are processed with bounded concurrency so the result does not depend on network response timing.
 
-Daily underlying bars are retained with each valid report and capped at 90 sessions per symbol. The current session and previous close seed new symbols; the retained window then supplies the five- and twenty-session signal history without introducing a second live-data source.
+Finalized daily underlying bars are queried from fixed Yahoo Finance chart hosts, schema-validated and merged with each valid report. The retained window is capped at 260 sessions per symbol. Public history replaces earlier intraday approximations for completed sessions; the RFDELTA bridge quote remains authoritative for the active session and official previous close. Source coverage and bar counts are stored with the versioned feature dataset and run manifest.
 
 Expiration selection minimizes absolute distance from 14 DTE inside the 7-to-35-DTE window. Ties resolve to the earlier ISO date.
 
@@ -26,7 +26,7 @@ Bearish signals create:
 
 Every included symbol receives a versioned derived feature row before candidate construction. The row includes one-, five- and twenty-session returns; SMA and EMA distance; MACD spread; confidence-adjusted RSI; ATR; Bollinger position; five- and twenty-session realized volatility; downside volatility; maximum drawdown; trend efficiency; volume z-score; ATM implied volatility; put/call IV skew; put/call volume and open-interest ratios; expected move; quote width; and liquid-contract breadth.
 
-Short retained windows are explicitly confidence-weighted. RSI, ATR and volatility are labeled as proxies in public output until their standard lookback is available.
+Short retained windows are explicitly confidence-weighted. RSI, ATR and volatility are labeled as proxies in public output until their standard lookback is available. A temporary public-history outage preserves the last retained series rather than changing current quote or option-chain freshness rules.
 
 ## Leg Construction
 

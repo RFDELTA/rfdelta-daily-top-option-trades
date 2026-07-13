@@ -47,6 +47,17 @@ export type MarketSymbolSnapshot = {
   options: OptionContract[];
 };
 
+export type HistoricalDataProvenance = {
+  provider: "Yahoo Finance";
+  dataset: "Public daily chart history";
+  queryStartDate: string;
+  queryEndDate: string;
+  requestedSymbolCount: number;
+  hydratedSymbolCount: number;
+  totalBarCount: number;
+  coverageRatio: number;
+};
+
 export type MarketSnapshot = {
   provider: string;
   providerAttribution: string;
@@ -57,6 +68,7 @@ export type MarketSnapshot = {
   universe: string[];
   symbols: MarketSymbolSnapshot[];
   excludedSymbols: Array<{ symbol: string; reason: string }>;
+  historicalData?: HistoricalDataProvenance;
 };
 
 export type SnapshotRequest = {

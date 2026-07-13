@@ -28,6 +28,10 @@ jobs:
       MARKET_DATA_PROVIDER: tt_bridge
       TT_BRIDGE_API_KEY: ${{ secrets.TT_BRIDGE_API_KEY }}
       TT_BRIDGE_BASE_URL: ${{ vars.TT_BRIDGE_BASE_URL }}
+      PUBLIC_HISTORY_ENABLED: "true"
+      PUBLIC_HISTORY_LOOKBACK_DAYS: "400"
+      PUBLIC_HISTORY_MAX_BARS: "260"
+      PUBLIC_HISTORY_CONCURRENCY: "4"
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
