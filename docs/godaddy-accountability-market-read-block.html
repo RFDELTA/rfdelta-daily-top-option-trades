@@ -1,0 +1,37 @@
+<!-- RFDELTA expanding accountability history and Daily Market Read -->
+<script>
+(function () {
+  if (window.__rfdeltaOptionsAutoResize) return;
+  window.__rfdeltaOptionsAutoResize = true;
+  var allowedOrigins = [
+    "https://rfdelta-daily-top-option-trades.vercel.app",
+    "https://options.rfdelta.com"
+  ];
+  window.addEventListener("message", function (event) {
+    if (allowedOrigins.indexOf(event.origin) === -1) return;
+    var data = event.data || {};
+    if (!data.rfdeltaEmbed || !data.frameId || !data.height) return;
+    var frame = document.querySelector('iframe[data-rfdelta-frame="' + data.frameId + '"]');
+    if (!frame) return;
+    var height = Math.max(240, Math.ceil(data.height));
+    frame.style.height = height + "px";
+    document.documentElement.style.height = height + "px";
+    document.documentElement.style.overflow = "hidden";
+    if (document.body) {
+      document.body.style.height = height + "px";
+      document.body.style.overflow = "hidden";
+    }
+    try {
+      var hostFrame = window.frameElement;
+      if (hostFrame) {
+        hostFrame.style.height = height + "px";
+        hostFrame.style.overflow = "hidden";
+        hostFrame.setAttribute("scrolling", "no");
+      }
+    } catch (_) {}
+  });
+})();
+</script>
+<div style="width:100%;max-width:none;margin:0;overflow:visible;">
+  <iframe title="RFDELTA Prior Basket Accountability and Daily Market Read" data-rfdelta-frame="rfdelta-options-accountability" src="https://rfdelta-daily-top-option-trades.vercel.app/embed/accountability?frame=rfdelta-options-accountability" style="display:block;width:100%;height:2300px;border:0;background:#030b0a;overflow:hidden;" loading="lazy" scrolling="no" sandbox="allow-scripts allow-same-origin allow-popups" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>

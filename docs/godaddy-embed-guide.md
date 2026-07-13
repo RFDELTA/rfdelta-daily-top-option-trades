@@ -1,6 +1,8 @@
 # GoDaddy Embed Guide
 
-Paste each numbered section from `godaddy-top-option-trades-blocks.html` into a separate GoDaddy HTML block, in order. The six iframes load only committed report content. A `ResizeObserver` inside each Vercel page posts its measured height; the parent listener accepts messages only from the listed Vercel and custom-domain origins.
+Paste each numbered section from `godaddy-top-option-trades-blocks.html` into a separate GoDaddy HTML block, in order. The six iframes load only committed report content. A `ResizeObserver` inside each Vercel page posts its measured height; the parent listener accepts messages only from the listed Vercel and custom-domain origins. The listener updates both the RFDELTA iframe and GoDaddy's containing custom-code iframe when same-origin frame access is available, so expanding a ledger grows the page section instead of clipping it.
+
+For an existing page that only needs the final section replaced, use `godaddy-accountability-market-read-block.html`.
 
 ## No Secondary Scrollbar
 
@@ -12,6 +14,8 @@ style="display:block;width:100%;border:0;overflow:hidden;"
 ```
 
 Leave GoDaddy Forced Height blank. The inline height is a loading fallback and will be replaced after render. Each report section is shorter than the former all-in-one embed, so ad sections can sit between them without trapping a second vertical scroll area.
+
+When upgrading an existing block, repaste the complete current snippet. Changing only the inner iframe height does not install the containing-frame resize hardening.
 
 ## Width
 

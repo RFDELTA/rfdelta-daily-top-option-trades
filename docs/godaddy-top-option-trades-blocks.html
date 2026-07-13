@@ -13,7 +13,22 @@
     if (!data.rfdeltaEmbed || !data.frameId || !data.height) return;
     var frame = document.querySelector('iframe[data-rfdelta-frame="' + data.frameId + '"]');
     if (!frame) return;
-    frame.style.height = Math.max(240, Math.ceil(data.height)) + "px";
+    var height = Math.max(240, Math.ceil(data.height));
+    frame.style.height = height + "px";
+    document.documentElement.style.height = height + "px";
+    document.documentElement.style.overflow = "hidden";
+    if (document.body) {
+      document.body.style.height = height + "px";
+      document.body.style.overflow = "hidden";
+    }
+    try {
+      var hostFrame = window.frameElement;
+      if (hostFrame) {
+        hostFrame.style.height = height + "px";
+        hostFrame.style.overflow = "hidden";
+        hostFrame.setAttribute("scrolling", "no");
+      }
+    } catch (_) {}
   });
 })();
 </script>
@@ -36,7 +51,22 @@
     if (!data.rfdeltaEmbed || !data.frameId || !data.height) return;
     var frame = document.querySelector('iframe[data-rfdelta-frame="' + data.frameId + '"]');
     if (!frame) return;
-    frame.style.height = Math.max(240, Math.ceil(data.height)) + "px";
+    var height = Math.max(240, Math.ceil(data.height));
+    frame.style.height = height + "px";
+    document.documentElement.style.height = height + "px";
+    document.documentElement.style.overflow = "hidden";
+    if (document.body) {
+      document.body.style.height = height + "px";
+      document.body.style.overflow = "hidden";
+    }
+    try {
+      var hostFrame = window.frameElement;
+      if (hostFrame) {
+        hostFrame.style.height = height + "px";
+        hostFrame.style.overflow = "hidden";
+        hostFrame.setAttribute("scrolling", "no");
+      }
+    } catch (_) {}
   });
 })();
 </script>
@@ -59,7 +89,22 @@
     if (!data.rfdeltaEmbed || !data.frameId || !data.height) return;
     var frame = document.querySelector('iframe[data-rfdelta-frame="' + data.frameId + '"]');
     if (!frame) return;
-    frame.style.height = Math.max(240, Math.ceil(data.height)) + "px";
+    var height = Math.max(240, Math.ceil(data.height));
+    frame.style.height = height + "px";
+    document.documentElement.style.height = height + "px";
+    document.documentElement.style.overflow = "hidden";
+    if (document.body) {
+      document.body.style.height = height + "px";
+      document.body.style.overflow = "hidden";
+    }
+    try {
+      var hostFrame = window.frameElement;
+      if (hostFrame) {
+        hostFrame.style.height = height + "px";
+        hostFrame.style.overflow = "hidden";
+        hostFrame.setAttribute("scrolling", "no");
+      }
+    } catch (_) {}
   });
 })();
 </script>
@@ -82,7 +127,22 @@
     if (!data.rfdeltaEmbed || !data.frameId || !data.height) return;
     var frame = document.querySelector('iframe[data-rfdelta-frame="' + data.frameId + '"]');
     if (!frame) return;
-    frame.style.height = Math.max(240, Math.ceil(data.height)) + "px";
+    var height = Math.max(240, Math.ceil(data.height));
+    frame.style.height = height + "px";
+    document.documentElement.style.height = height + "px";
+    document.documentElement.style.overflow = "hidden";
+    if (document.body) {
+      document.body.style.height = height + "px";
+      document.body.style.overflow = "hidden";
+    }
+    try {
+      var hostFrame = window.frameElement;
+      if (hostFrame) {
+        hostFrame.style.height = height + "px";
+        hostFrame.style.overflow = "hidden";
+        hostFrame.setAttribute("scrolling", "no");
+      }
+    } catch (_) {}
   });
 })();
 </script>
@@ -105,7 +165,22 @@
     if (!data.rfdeltaEmbed || !data.frameId || !data.height) return;
     var frame = document.querySelector('iframe[data-rfdelta-frame="' + data.frameId + '"]');
     if (!frame) return;
-    frame.style.height = Math.max(240, Math.ceil(data.height)) + "px";
+    var height = Math.max(240, Math.ceil(data.height));
+    frame.style.height = height + "px";
+    document.documentElement.style.height = height + "px";
+    document.documentElement.style.overflow = "hidden";
+    if (document.body) {
+      document.body.style.height = height + "px";
+      document.body.style.overflow = "hidden";
+    }
+    try {
+      var hostFrame = window.frameElement;
+      if (hostFrame) {
+        hostFrame.style.height = height + "px";
+        hostFrame.style.overflow = "hidden";
+        hostFrame.setAttribute("scrolling", "no");
+      }
+    } catch (_) {}
   });
 })();
 </script>
@@ -128,7 +203,22 @@
     if (!data.rfdeltaEmbed || !data.frameId || !data.height) return;
     var frame = document.querySelector('iframe[data-rfdelta-frame="' + data.frameId + '"]');
     if (!frame) return;
-    frame.style.height = Math.max(240, Math.ceil(data.height)) + "px";
+    var height = Math.max(240, Math.ceil(data.height));
+    frame.style.height = height + "px";
+    document.documentElement.style.height = height + "px";
+    document.documentElement.style.overflow = "hidden";
+    if (document.body) {
+      document.body.style.height = height + "px";
+      document.body.style.overflow = "hidden";
+    }
+    try {
+      var hostFrame = window.frameElement;
+      if (hostFrame) {
+        hostFrame.style.height = height + "px";
+        hostFrame.style.overflow = "hidden";
+        hostFrame.setAttribute("scrolling", "no");
+      }
+    } catch (_) {}
   });
 })();
 </script>

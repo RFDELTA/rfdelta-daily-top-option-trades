@@ -38,6 +38,7 @@
 - [ ] Leave Forced Height blank.
 - [ ] Place advertising sections between iframe sections where desired.
 - [ ] Verify desktop and mobile pages have only the main page scrollbar.
+- [ ] Expand multiple accountability ledgers and confirm GoDaddy's containing iframe grows beyond its loading height.
 - [ ] Verify the iframe content uses the complete HTML-section width.
 - [ ] Publish the GoDaddy page only after the Vercel origins in the snippets are correct.
 
