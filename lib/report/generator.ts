@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import calibrationOutcomes from "@/data/calibration/prior-outcomes-2026-06-18.json";
 import { loadRetainedHistory, persistSnapshotHistory } from "@/lib/market/history";
+import { discoverMarketNews } from "@/lib/market/news";
 import { createMarketDataProvider } from "@/lib/market/provider";
 import { hydratePublicHistoricalData } from "@/lib/market/publicHistory";
 import type { MarketDataProvider, MarketSnapshot } from "@/lib/market/types";
@@ -15,9 +16,12 @@ import {
 import { scoreCandidate } from "@/lib/model/scoring";
 import { getDefaultModelSettings } from "@/lib/model/settings";
 import type { LessonSnapshot, TradeIdeaScore } from "@/lib/model/types";
-import { evaluateReportOutcomes, prepareArchiveReconciliation } from "@/lib/report/reconciliation";
+import { prepareArchiveReconciliation } from "@/lib/report/reconciliation";
+import { buildAccountabilityHistory } from "@/lib/report/accountability";
+import { buildMarketRead } from "@/lib/report/marketRead";
 import { getReport, persistReport, persistUpdatedReports, reportExists } from "@/lib/report/store";
 import type {
+  MarketNewsItem,
   OptionsReport,
   PublishedTradeIdea,
   TradeCommentary,
@@ -33,6 +37,7 @@ type GenerateOptions = {
   date: string;
   force?: boolean;
   provider?: MarketDataProvider;
+  newsItems?: MarketNewsItem[];
 };
 
 const CALIBRATION_OUTCOMES = calibrationOutcomes as TradeOutcome[];
@@ -58,7 +63,7 @@ export async function generateAndPersist(options: GenerateOptions) {
   const snapshot = await hydratePublicHistoricalData(await provider.getSnapshot({ reportDate: options.date, universe: getUniverse() }));
   if (!snapshot.universe.length && !snapshot.symbols.length) throw new Error("The market universe is empty.");
   const prepared = await prepareRun(snapshot);
-  const { report, rankedCandidates } = await assembleReport(snapshot, prepared);
+  const { report, rankedCandidates } = await assembleReport(snapshot, prepared, options.newsItems);
   await persistSnapshotHistory(snapshot);
   await persistUpdatedReports(prepared.archiveUpdates);
   await persistReport(report);
@@ -80,7 +85,7 @@ export async function generateWithUniverse(options: GenerateOptions & { universe
   const provider = options.provider ?? createMarketDataProvider();
   const snapshot = await hydratePublicHistoricalData(await provider.getSnapshot({ reportDate: options.date, universe: options.universe }));
   const prepared = await prepareRun(snapshot);
-  const { report, rankedCandidates } = await assembleReport(snapshot, prepared);
+  const { report, rankedCandidates } = await assembleReport(snapshot, prepared, options.newsItems);
   await persistSnapshotHistory(snapshot);
   await persistUpdatedReports(prepared.archiveUpdates);
   await persistReport(report);
@@ -95,9 +100,9 @@ export async function generateWithUniverse(options: GenerateOptions & { universe
   return { report, skipped: false };
 }
 
-export async function buildReport(snapshot: MarketSnapshot): Promise<OptionsReport> {
+export async function buildReport(snapshot: MarketSnapshot, newsItems?: MarketNewsItem[]): Promise<OptionsReport> {
   const prepared = await prepareRun(snapshot);
-  return (await assembleReport(snapshot, prepared)).report;
+  return (await assembleReport(snapshot, prepared, newsItems)).report;
 }
 
 async function prepareRun(snapshot: MarketSnapshot): Promise<PreparedRun> {
@@ -114,10 +119,18 @@ async function prepareRun(snapshot: MarketSnapshot): Promise<PreparedRun> {
   };
 }
 
-async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun): Promise<BuiltReport> {
+async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun, suppliedNews?: MarketNewsItem[]): Promise<BuiltReport> {
   const settings = getDefaultModelSettings();
   const discovery = discoverCandidates(snapshot, featureMap(prepared.features));
-  const accountability = await buildAccountability(snapshot, prepared.archiveReports);
+  const retainedHistory = await loadRetainedHistory();
+  const accountabilityHistory = buildAccountabilityHistory(
+    snapshot,
+    prepared.archiveReports,
+    retainedHistory,
+    CALIBRATION_OUTCOMES
+  );
+  const accountability = accountabilityHistory[0];
+  if (!accountability) throw new Error("No prior accountability ledger could be assembled.");
   const lessons = await buildLessonSnapshot(snapshot.asOfUtc, accountability, prepared.archiveReports);
   const rankedCandidates = discovery.candidates
     .map((candidate) => scoreCandidate(candidate, settings, lessons, prepared.policy))
@@ -130,11 +143,34 @@ async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun): 
     commentary: buildTradeCommentary(idea),
     underlyingChart: createUnderlyingTradeChart(snapshot, idea)
   }));
-  const selectionHash = createHash("sha256")
-    .update(JSON.stringify({ snapshot: snapshot.asOfUtc, candidates: discovery.candidates, settings, features: prepared.features, policy: prepared.policy }))
-    .digest("hex");
   const historical = snapshot.provider.includes("fixture");
+  const newsRadar = suppliedNews ?? (historical ? [] : await discoverMarketNews({
+    symbols: topTrades.map((idea) => idea.symbol),
+    asOfUtc: snapshot.asOfUtc
+  }));
+  const selectionHash = createHash("sha256")
+    .update(JSON.stringify({
+      snapshot: snapshot.asOfUtc,
+      candidates: discovery.candidates,
+      settings,
+      features: prepared.features,
+      policy: prepared.policy,
+      newsRadar
+    }))
+    .digest("hex");
   const analytics = buildAnalytics(topTrades);
+  const marketContext: OptionsReport["marketContext"] = {
+    providerAttribution: snapshot.providerAttribution,
+    universeCount: snapshot.universe.length,
+    quotedSymbolCount: snapshot.chainSelection?.quoteUniverseCount ?? snapshot.universe.length,
+    chainSymbolCount: snapshot.chainSelection?.selectedSymbolCount ?? snapshot.symbols.length,
+    includedSymbolCount: snapshot.symbols.length,
+    excludedSymbolCount: snapshot.excludedSymbols.length,
+    candidateCount: rankedCandidates.length,
+    bullishCandidateCount: rankedCandidates.filter((idea) => idea.direction === "bullish").length,
+    bearishCandidateCount: rankedCandidates.filter((idea) => idea.direction === "bearish").length,
+    regimeCounts: countBy(rankedCandidates.map((idea) => idea.regime))
+  };
   const report: OptionsReport = {
     schemaVersion: "1.0",
     reportId: `rfdelta-options-${snapshot.reportDate}-${selectionHash.slice(0, 12)}`,
@@ -152,21 +188,18 @@ async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun): 
       trainingSampleCount: prepared.policy.resolvedTradeCount
     },
     executiveSummary: buildExecutiveSummary(topTrades, snapshot),
-    marketContext: {
-      providerAttribution: snapshot.providerAttribution,
-      universeCount: snapshot.universe.length,
-      quotedSymbolCount: snapshot.chainSelection?.quoteUniverseCount ?? snapshot.universe.length,
-      chainSymbolCount: snapshot.chainSelection?.selectedSymbolCount ?? snapshot.symbols.length,
-      includedSymbolCount: snapshot.symbols.length,
-      excludedSymbolCount: snapshot.excludedSymbols.length,
-      candidateCount: rankedCandidates.length,
-      bullishCandidateCount: rankedCandidates.filter((idea) => idea.direction === "bullish").length,
-      bearishCandidateCount: rankedCandidates.filter((idea) => idea.direction === "bearish").length,
-      regimeCounts: countBy(rankedCandidates.map((idea) => idea.regime))
-    },
+    marketContext,
     analytics,
     topTrades,
     accountability,
+    accountabilityHistory,
+    marketRead: buildMarketRead({
+      reportDate: snapshot.reportDate,
+      dataAsOfUtc: snapshot.asOfUtc,
+      topTrades,
+      analytics,
+      marketContext
+    }, prepared.archiveReports, newsRadar),
     methodology: {
       selectionCriteria: [
         "A broad liquid-symbol quote universe is intersected with the source's fingerprinted universe. Core market anchors, the largest percentage movers, the most active names and a date-seeded rotation sleeve determine which option chains are evaluated.",
@@ -211,36 +244,6 @@ async function buildLessonSnapshot(
   const current = currentAccountability.trades.filter(isResolved).filter((outcome) => !seen.has(outcome.tradeId));
   if (current.length) snapshot = applyRealizedBasketLesson(snapshot, `current-${currentAccountability.sourceReportDate ?? "calibration"}`, toLessons(current), asOfUtc);
   return snapshot;
-}
-
-async function buildAccountability(snapshot: MarketSnapshot, archiveReports: OptionsReport[]): Promise<OptionsReport["accountability"]> {
-  const prior = archiveReports
-    .filter((report) => report.runMetadata.reportDate < snapshot.reportDate)
-    .sort((a, b) => b.runMetadata.reportDate.localeCompare(a.runMetadata.reportDate))[0];
-  if (!prior) return summarizeOutcomes(CALIBRATION_OUTCOMES, "2026-06-18", snapshot.reportDate);
-  const outcomes = prior.postTradeReview?.trades ?? evaluateReportOutcomes(prior, snapshot, await loadRetainedHistory());
-  return summarizeOutcomes(outcomes, prior.runMetadata.reportDate, snapshot.reportDate);
-}
-
-function summarizeOutcomes(trades: TradeOutcome[], sourceReportDate: string, evaluatedThrough: string): OptionsReport["accountability"] {
-  const wins = trades.filter((trade) => trade.status === "win").length;
-  const losses = trades.filter((trade) => trade.status === "loss").length;
-  const nearBreakeven = trades.filter((trade) => trade.status === "near_breakeven").length;
-  const activelyOpen = trades.filter((trade) => trade.status === "open").length;
-  const awaitingClose = trades.filter((trade) => trade.status === "awaiting_close").length;
-  const open = activelyOpen + awaitingClose;
-  const resolvedPnlDollars = round(trades.reduce((sum, trade) => sum + (trade.realizedPnlDollars ?? 0), 0), 2);
-  const resolved = wins + losses + nearBreakeven;
-  const unresolvedRead = [
-    activelyOpen ? `${activelyOpen} position${activelyOpen === 1 ? " remains" : "s remain"} open.` : "",
-    awaitingClose ? `${awaitingClose} expired position${awaitingClose === 1 ? " is" : "s are"} awaiting a retained expiration close before scoring.` : ""
-  ].filter(Boolean).join(" ");
-  const read = resolved
-    ? `The ${formatDate(sourceReportDate)} basket has ${wins} win${wins === 1 ? "" : "s"}, ${nearBreakeven} near-breakeven result${nearBreakeven === 1 ? "" : "s"} and ${losses} loss${losses === 1 ? "" : "es"} across ${resolved} resolved spread${resolved === 1 ? "" : "s"}, for modeled one-lot expiration P/L of ${money(resolvedPnlDollars)}. ${unresolvedRead || "All listed positions are resolved."}`
-    : unresolvedRead
-      ? `The ${formatDate(sourceReportDate)} basket has no scored expiration result yet. ${unresolvedRead}`
-      : `The ${formatDate(sourceReportDate)} basket has no scored expiration result yet.`;
-  return { sourceReportDate, evaluatedThrough, wins, losses, nearBreakeven, open, resolvedPnlDollars, read, trades };
 }
 
 function buildExecutiveSummary(topTrades: PublishedTradeIdea[], snapshot: MarketSnapshot): OptionsReport["executiveSummary"] {

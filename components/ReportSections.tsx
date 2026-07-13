@@ -83,7 +83,22 @@ export function TradeList({ report, from = 0, to = report.topTrades.length }: { 
   );
 }
 
-export function AccountabilityAndMethod({ report, showFullLink = false }: { report: OptionsReport; showFullLink?: boolean }) {
+export function AccountabilityAndMarketRead({ report, showFullLink = false }: { report: OptionsReport; showFullLink?: boolean }) {
+  const ledgers = report.accountabilityHistory?.length ? report.accountabilityHistory : [report.accountability];
+  const marketRead = report.marketRead ?? {
+    asOfUtc: report.runMetadata.dataAsOfUtc,
+    lookbackSessionDates: [report.runMetadata.reportDate],
+    headline: "The option board favors selectivity over a broad market bet",
+    standfirst: report.executiveSummary.standfirst,
+    commentary: [...report.executiveSummary.marketCommentary, ...report.executiveSummary.selectionCommentary],
+    newsRadar: [],
+    watchItems: [{
+      label: "Risk budget",
+      signal: `${money(report.analytics.totalMaxLossDollars)} maximum one-lot basket loss`,
+      read: report.executiveSummary.riskCommentary
+    }],
+    basis: report.methodology.marketDataStatement
+  };
   return (
     <>
       {report.postTradeReview && (
@@ -113,41 +128,87 @@ export function AccountabilityAndMethod({ report, showFullLink = false }: { repo
       <section className="accountability-section">
         <div className="content-width">
           <p className="eyebrow">Accountability ledger</p>
-          <h2>What the prior basket actually did</h2>
-          <p className="section-intro">{report.accountability.read}</p>
-          <div className="outcome-summary">
-            <span><strong>{report.accountability.wins}</strong> wins</span>
-            <span><strong>{report.accountability.nearBreakeven}</strong> near breakeven</span>
-            <span><strong>{report.accountability.losses}</strong> losses</span>
-            <span><strong>{money(report.accountability.resolvedPnlDollars)}</strong> resolved P/L</span>
-          </div>
-          <div className="outcome-list">
-            {report.accountability.trades.map((outcome) => (
-              <article className="outcome-row" key={outcome.tradeId}>
-                <div><strong>{outcome.name}</strong><span>{outcome.status.replaceAll("_", " ")}</span></div>
-                <p>{outcome.read}</p>
-                <strong>{outcome.realizedPnlDollars === undefined ? "Open" : money(outcome.realizedPnlDollars)}</strong>
-              </article>
-            ))}
+          <h2>Every prior basket, one expanding record</h2>
+          <p className="section-intro">Open positions remain visible beside completed baskets, preserving the original trade terms and the final modeled expiration result for each published day.</p>
+          <div className="ledger-list">
+            {ledgers.map((ledger, index) => {
+              const resolved = ledger.wins + ledger.losses + ledger.nearBreakeven;
+              const status = ledger.status ?? (ledger.open ? "open" : "complete");
+              return (
+                <details className="ledger-disclosure" open={index === 0} key={ledger.sourceReportDate ?? `ledger-${index}`}>
+                  <summary>
+                    <span className="ledger-heading">
+                      <strong>{ledger.sourceReportDate ? formatDate(ledger.sourceReportDate) : "Prior basket"}</strong>
+                      <small>{ledger.sourceEdition ?? "Published market edition"}</small>
+                    </span>
+                    <span className="ledger-summary-metrics">
+                      <b>{status.replaceAll("_", " ")}</b>
+                      <span>{resolved} resolved / {ledger.open} open</span>
+                      <strong>{money(ledger.resolvedPnlDollars)}</strong>
+                    </span>
+                  </summary>
+                  <div className="ledger-body">
+                    <p className="section-intro">{ledger.read}</p>
+                    <div className="outcome-summary">
+                      <span><strong>{ledger.wins}</strong> wins</span>
+                      <span><strong>{ledger.nearBreakeven}</strong> near breakeven</span>
+                      <span><strong>{ledger.losses}</strong> losses</span>
+                      <span><strong>{ledger.open}</strong> still open</span>
+                    </div>
+                    <div className="outcome-list">
+                      {ledger.trades.map((outcome) => (
+                        <article className="outcome-row" key={outcome.tradeId}>
+                          <div><strong>{outcome.name}</strong><span>{outcome.status.replaceAll("_", " ")}</span></div>
+                          <p>{outcome.read}</p>
+                          <strong>{outcome.realizedPnlDollars === undefined ? "Open" : money(outcome.realizedPnlDollars)}</strong>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                </details>
+              );
+            })}
           </div>
         </div>
       </section>
-      <section className="method-section">
-        <div className="content-width method-grid">
-          <div>
-            <p className="eyebrow">Repeatable method</p>
-            <h2>How the daily board is built</h2>
-            <p>{report.methodology.executionAssumption}</p>
-            <p>{report.methodology.marketDataStatement}</p>
+      <section className="market-read-section">
+        <div className="content-width">
+          <p className="eyebrow">Daily Market Read</p>
+          <h2>{marketRead.headline}</h2>
+          <p className="market-read-standfirst">{marketRead.standfirst}</p>
+          <div className={marketRead.newsRadar.length ? "market-read-grid" : "market-read-grid market-read-grid-wide"}>
+            <article className="market-read-commentary">
+              {marketRead.commentary.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </article>
+            {marketRead.newsRadar.length > 0 && (
+              <aside className="news-radar">
+                <h3>Market news radar</h3>
+                <ol>
+                  {marketRead.newsRadar.map((item) => (
+                    <li key={item.url}>
+                      <a href={item.url} target="_blank" rel="noreferrer">{item.headline}</a>
+                      <span>{item.publisher} | {formatDateTime(item.publishedAtUtc)}</span>
+                    </li>
+                  ))}
+                </ol>
+              </aside>
+            )}
           </div>
-          <div>
-            <h3>Selection rules</h3>
-            <ul>{report.methodology.selectionCriteria.slice(0, 5).map((item) => <li key={item}>{item}</li>)}</ul>
+          <div className="watch-section">
+            <p className="eyebrow">What to watch</p>
+            <div className="watch-list">
+              {marketRead.watchItems.map((item) => (
+                <article className="watch-row" key={item.label}>
+                  <div><strong>{item.label}</strong><span>{item.signal}</span></div>
+                  <p>{item.read}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="content-width disclaimer">
-          <p>{report.methodology.disclaimer}</p>
-          {showFullLink && <Link href="/latest" target="_blank">Open the complete daily edition</Link>}
+          <div className="disclaimer">
+            <p>{marketRead.basis} {report.methodology.disclaimer}</p>
+            {showFullLink && <Link href="/latest" target="_blank">Open the complete daily edition</Link>}
+          </div>
         </div>
       </section>
     </>
@@ -160,4 +221,15 @@ function formatDate(value: string) {
 
 function money(value: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
+}
+
+function formatDateTime(value: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "America/New_York",
+    timeZoneName: "short"
+  }).format(new Date(value));
 }

@@ -8,6 +8,7 @@
 - [ ] Run `npm run smoke:bridge -- YYYY-MM-DD "SPY,QQQ"` during a current U.S. market session.
 - [ ] Run a manual workflow during regular U.S. option-market hours.
 - [ ] Confirm quote-universe batching and the core, mover, volume and rotation sleeve counts appear in safe workflow logs.
+- [ ] Confirm the Daily Market Read contains a one-to-five-session rolling comparison and only recent ranked public headlines.
 
 ## GitHub
 
@@ -48,6 +49,8 @@
 - [ ] When five qualified ideas fit inside the $800 basket cap, all five are published.
 - [ ] Rank chart labels and scores do not overlap bars.
 - [ ] Prior-basket outcomes use expiration settlement and no open trade is scored.
+- [ ] The accountability embed shows multiple dated baskets, opens the newest by default and expands older ledgers without an inner scrollbar.
+- [ ] Daily Market Read commentary reconciles its directional, volatility, score, probability and risk statements to report data.
 - [ ] The run manifest hashes match the feature, candidate and policy datasets.
 - [ ] Historical provider, coverage ratio and bar count match between the feature dataset and run manifest.
 - [ ] Quote-universe and option-chain counts match between the feature dataset, run manifest and public report context.

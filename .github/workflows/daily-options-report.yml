@@ -58,6 +58,8 @@ jobs:
       PUBLIC_HISTORY_LOOKBACK_DAYS: "400"
       PUBLIC_HISTORY_MAX_BARS: "260"
       PUBLIC_HISTORY_CONCURRENCY: "4"
+      MARKET_NEWS_ENABLED: "true"
+      MARKET_NEWS_MAX_ITEMS: "6"
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6

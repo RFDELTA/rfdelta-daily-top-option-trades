@@ -1,6 +1,8 @@
 import type { OptionsReport } from "@/lib/report/types";
 
 export function renderReportMarkdown(report: OptionsReport) {
+  const ledgers = report.accountabilityHistory?.length ? report.accountabilityHistory : [report.accountability];
+  const marketRead = report.marketRead;
   const lines = [
     `# RFDELTA Top Option Trades - ${report.runMetadata.reportDate}`,
     "",
@@ -60,27 +62,48 @@ export function renderReportMarkdown(report: OptionsReport) {
     );
   }
 
-  lines.push(
-    "## Accountability",
-    "",
-    report.accountability.read,
-    "",
-    "| Prior trade | Outcome | Realized P/L | Read |",
-    "|---|---|---:|---|",
-    ...report.accountability.trades.map((outcome) => `| ${outcome.name} | ${outcome.status.replaceAll("_", " ")} | ${outcome.realizedPnlDollars === undefined ? "Open" : money(outcome.realizedPnlDollars)} | ${outcome.read} |`),
-    "",
-    "## Method",
-    "",
-    ...report.methodology.selectionCriteria.map((item) => `- ${item}`),
-    ...report.methodology.rankingFramework.map((item) => `- ${item}`),
-    "",
-    report.methodology.executionAssumption,
-    "",
-    report.methodology.marketDataStatement,
-    "",
-    report.methodology.disclaimer,
-    ""
-  );
+  lines.push("## Prior Basket Accountability", "");
+  for (const ledger of ledgers) {
+    lines.push(
+      `### ${ledger.sourceReportDate ?? "Prior basket"}`,
+      "",
+      ledger.read,
+      "",
+      "| Prior trade | Outcome | Realized P/L | Read |",
+      "|---|---|---:|---|",
+      ...ledger.trades.map((outcome) => `| ${outcome.name} | ${outcome.status.replaceAll("_", " ")} | ${outcome.realizedPnlDollars === undefined ? "Open" : money(outcome.realizedPnlDollars)} | ${outcome.read} |`),
+      ""
+    );
+  }
+
+  lines.push("## Daily Market Read", "");
+  if (marketRead) {
+    lines.push(
+      `**${marketRead.headline}**`,
+      "",
+      marketRead.standfirst,
+      "",
+      ...marketRead.commentary.flatMap((paragraph) => [paragraph, ""]),
+      "### Market News Radar",
+      "",
+      ...(marketRead.newsRadar.length
+        ? marketRead.newsRadar.map((item) => `- [${item.headline}](${item.url}) - ${item.publisher}, ${item.publishedAtUtc}`)
+        : ["Price, options and retained-session evidence supply today's catalyst read."]),
+      "",
+      "### What to Watch",
+      "",
+      ...marketRead.watchItems.map((item) => `- **${item.label}: ${item.signal}.** ${item.read}`),
+      "",
+      marketRead.basis,
+      ""
+    );
+  } else {
+    lines.push(
+      ...report.executiveSummary.marketCommentary.flatMap((paragraph) => [paragraph, ""]),
+      ...report.executiveSummary.selectionCommentary.flatMap((paragraph) => [paragraph, ""])
+    );
+  }
+  lines.push(report.methodology.disclaimer, "");
   return lines.join("\n");
 }
 

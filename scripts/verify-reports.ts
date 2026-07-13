@@ -48,6 +48,29 @@ async function main() {
     if (!report.topTrades.every((idea) => idea.advancedMetrics && Number.isFinite(idea.trainingAdjustment))) {
       throw new Error("Published ideas are missing advanced metrics or training adjustments.");
     }
+    const ledgers = report.accountabilityHistory ?? [];
+    if (!ledgers.length || ledgers.length > 8) throw new Error("Rolling accountability history is missing or exceeds its publication limit.");
+    const ledgerDates = ledgers.map((ledger) => ledger.sourceReportDate ?? "");
+    if (new Set(ledgerDates).size !== ledgerDates.length || ledgerDates.some((date, index) => !/^\d{4}-\d{2}-\d{2}$/u.test(date) || (index > 0 && date >= (ledgerDates[index - 1] ?? "")))) {
+      throw new Error("Accountability ledgers are duplicated, malformed or out of descending order.");
+    }
+    for (const ledger of ledgers) {
+      const resolved = ledger.wins + ledger.losses + ledger.nearBreakeven;
+      if (resolved + ledger.open !== ledger.trades.length) throw new Error(`Accountability ledger ${ledger.sourceReportDate} does not reconcile to its trades.`);
+      const pnl = round(ledger.trades.reduce((sum, trade) => sum + (trade.realizedPnlDollars ?? 0), 0), 2);
+      if (pnl !== ledger.resolvedPnlDollars) throw new Error(`Accountability ledger ${ledger.sourceReportDate} P/L does not reconcile.`);
+    }
+    const marketRead = report.marketRead;
+    if (!marketRead || marketRead.commentary.length < 4 || marketRead.watchItems.length < 5) {
+      throw new Error("Daily Market Read commentary or watch coverage is incomplete.");
+    }
+    if (marketRead.lookbackSessionDates[0] !== report.runMetadata.reportDate || marketRead.lookbackSessionDates.length < 1 || marketRead.lookbackSessionDates.length > 5) {
+      throw new Error("Daily Market Read session window is invalid.");
+    }
+    if (new Set(marketRead.lookbackSessionDates).size !== marketRead.lookbackSessionDates.length) throw new Error("Daily Market Read session window contains duplicate dates.");
+    for (const item of marketRead.newsRadar) {
+      if (!item.url.startsWith("https://") || item.publishedAtUtc > report.runMetadata.dataAsOfUtc) throw new Error("Daily Market Read contains an invalid or future news item.");
+    }
     for (const idea of report.topTrades) {
       const chart = idea.underlyingChart;
       if (!chart || chart.entryDate !== report.runMetadata.reportDate || chart.entryPrice !== idea.underlyingMark || chart.points.length < 21) {

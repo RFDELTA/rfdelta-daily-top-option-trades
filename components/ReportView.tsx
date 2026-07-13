@@ -1,6 +1,6 @@
 import type { OptionsReport } from "@/lib/report/types";
 import { SiteHeader } from "@/components/SiteHeader";
-import { AccountabilityAndMethod, ReportOverview, RiskRewardChart, ScoreChart, TradeList } from "@/components/ReportSections";
+import { AccountabilityAndMarketRead, ReportOverview, RiskRewardChart, ScoreChart, TradeList } from "@/components/ReportSections";
 
 export function ReportView({ report }: { report: OptionsReport }) {
   return (
@@ -11,7 +11,7 @@ export function ReportView({ report }: { report: OptionsReport }) {
         <ScoreChart report={report} />
         <RiskRewardChart report={report} />
         <TradeList report={report} />
-        <AccountabilityAndMethod report={report} />
+        <AccountabilityAndMarketRead report={report} />
       </main>
     </>
   );

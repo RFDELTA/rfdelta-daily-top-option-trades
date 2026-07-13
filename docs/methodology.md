@@ -98,6 +98,14 @@ When every trade from a report is terminal, the originating report receives a co
 
 Every published idea also receives a 90-session underlying-price chart with the source-time underlying mark pinned as entry. Expired symbols are queried independently from the rotating chain-selection set, so settlement remains available even when the symbol is not selected for a new trade. Once the complete basket resolves, the archived chart is extended through expiration and receives a close marker tied to the same settlement date and price used for final P/L.
 
+The public accountability surface retains the eight most recent prior baskets in descending date order. The newest ledger opens by default; earlier open, partially resolved and completed baskets remain available through native expandable sections. Each ledger reconciles its win, loss, near-breakeven, open-position and realized P/L counts to the originating trade records.
+
+## Daily Market Read
+
+The editorial Market Read compares the current board with up to four prior daily boards, producing a one-to-five-session window. Its statements are assembled from directional balance, five-session momentum, score and probability changes, aggregate maximum risk, implied-versus-realized volatility, structure mix, recurring symbols and dominant regime. Numeric claims are rendered directly from report fields rather than generated independently.
+
+Recent public headlines are queried through a bounded Yahoo Finance search surface using the broad-market anchors and up to three selected symbols. Items must fall inside the 72-hour as-of window, use HTTPS, match a controlled publisher list and contain market or selected-symbol relevance. Ranking combines source quality, recency, market-term density and symbol relevance, then limits each publisher and topic to preserve diversity. Promotional framing and future-dated items are excluded. The report remains complete when no headline clears these gates because headline context never controls trade selection.
+
 ## Historical Datasets
 
 Each distinct valid source run is archived under `data/datasets/YYYY-MM-DD/run-HASH`. The run contains the feature dataset, all scored candidates, the policy used before selection and a manifest with independent SHA-256 hashes. The report references the same run ID and policy version. Full raw option-chain payloads are not committed.

@@ -57,6 +57,7 @@ Set at minimum:
 MARKET_DATA_PROVIDER="tt_bridge"
 TT_BRIDGE_API_KEY="your-protected-key"
 TT_BRIDGE_BASE_URL="https://tt-bridge.rfdelta.com"
+MARKET_NEWS_ENABLED="true"
 ```
 
 Start the site:
@@ -158,6 +159,8 @@ data/training/selection-policy.json
 
 The repository stores derived features and ranked candidate records, not full raw option-chain payloads. The current selection policy is a versioned data artifact rather than self-modifying source code, so every learned adjustment can be inspected, reproduced and rolled back.
 
+Each edition also builds a Daily Market Read from the current board and up to four prior daily boards. The comparison tracks directional balance, score and probability changes, basket risk, volatility spread and recurring leadership. A bounded public-headline query adds up to six recent items after deterministic source-quality, recency, market-relevance, symbol-relevance and topic-diversity ranking. Headline discovery is additive: market-data generation remains valid when no qualifying headline is available.
+
 ## GitHub Configuration
 
 Create a GitHub repository and push `main`. Add these Actions secrets:
@@ -203,7 +206,7 @@ Expected public routes:
 - `/embed/risk-reward`
 - `/embed/trades-1-2`
 - `/embed/trades-3-5`
-- `/embed/accountability`
+- `/embed/accountability` (expanding prior-basket ledgers and Daily Market Read)
 
 ## GoDaddy Installation
 
@@ -221,13 +224,14 @@ Separate blocks remove nested page scrollbars and allow GoDaddy or Google ad sec
 - Production generation requires current-session option data for at least half the selected chain set.
 - The broad quote universe is fetched in bounded batches, while a deterministic chain budget limits the more expensive options requests.
 - Public historical responses are schema-validated, restricted to fixed Yahoo Finance chart hosts and never contain credentials.
+- Public headline discovery is read-only, bounded, source-ranked and stores only the selected title, publisher, publication time and HTTPS link.
 - Retained daily bars are capped at 260 sessions per symbol and committed with each valid edition.
 - Every distinct valid run retains its derived market features, complete ranked candidate set, selection policy and a manifest containing SHA-256 hashes for all three datasets.
 - Outcome-trained feature weights remain inactive until at least eight fully resolved feature-rich trades are available, use ridge regularization and can change a score by no more than eight points.
 - Completed report baskets reconcile exact vertical settlement, final one-lot P/L and post-trade commentary back into the originating report.
 - Each open idea retains an ordered official daily-close series; its SVG chart extends after every captured session while the 10:45 a.m. entry and selected option legs remain immutable.
 - Every selected idea carries a 90-session underlying chart with entry marked; completed charts must match the exact settlement date and price used for P/L.
-- Every report carries a SHA-256 selection hash over the timestamped snapshot, features, discovered candidates, settings and policy.
+- Every report carries a SHA-256 content identity over the timestamped snapshot, features, discovered candidates, settings, policy and retained headline set.
 - Candidate and final-rank tie breaks are stable and lexical.
 
 Detailed scoring and construction rules are in [docs/methodology.md](docs/methodology.md). Production wiring is in [docs/production-checklist.md](docs/production-checklist.md).

@@ -16,6 +16,45 @@ export type TradeOutcome = {
   read: string;
 };
 
+export type AccountabilityLedger = {
+  sourceReportDate?: string;
+  sourceEdition?: OptionsReport["runMetadata"]["edition"];
+  evaluatedThrough: string;
+  status?: "open" | "partially_resolved" | "complete";
+  wins: number;
+  losses: number;
+  nearBreakeven: number;
+  open: number;
+  resolvedPnlDollars: number;
+  read: string;
+  trades: TradeOutcome[];
+};
+
+export type MarketNewsItem = {
+  headline: string;
+  publisher: string;
+  url: string;
+  publishedAtUtc: string;
+  topic: "rates" | "earnings" | "energy" | "policy" | "geopolitics" | "technology" | "broad_market";
+};
+
+export type MarketWatchItem = {
+  label: string;
+  signal: string;
+  read: string;
+};
+
+export type MarketRead = {
+  asOfUtc: string;
+  lookbackSessionDates: string[];
+  headline: string;
+  standfirst: string;
+  commentary: string[];
+  newsRadar: MarketNewsItem[];
+  watchItems: MarketWatchItem[];
+  basis: string;
+};
+
 export type TradeCommentary = {
   convictionLabel: string;
   rankingRead: string;
@@ -114,18 +153,10 @@ export type OptionsReport = {
     creditIdeaCount: number;
   };
   topTrades: PublishedTradeIdea[];
-  accountability: {
-    sourceReportDate?: string;
-    evaluatedThrough: string;
-    wins: number;
-    losses: number;
-    nearBreakeven: number;
-    open: number;
-    resolvedPnlDollars: number;
-    read: string;
-    trades: TradeOutcome[];
-  };
+  accountability: AccountabilityLedger;
+  accountabilityHistory?: AccountabilityLedger[];
   postTradeReview?: PostTradeReview;
+  marketRead?: MarketRead;
   methodology: {
     selectionCriteria: string[];
     rankingFramework: string[];

@@ -18,6 +18,10 @@ async function main() {
   assert.equal(first.runMetadata.methodologyVersion, "rfdelta-options-v2");
   assert.ok(first.runMetadata.datasetRunId?.startsWith("run-"));
   assert.ok(first.topTrades.every((idea) => idea.advancedMetrics));
+  assert.ok(first.accountabilityHistory?.length);
+  assert.ok(first.marketRead);
+  assert.equal(first.marketRead?.commentary.length, 4);
+  assert.equal(first.marketRead?.watchItems.length, 5);
   const workflow = await readFile(".github/workflows/daily-options-report.yml", "utf8");
   for (const cron of ["45 10 * * 1-5", "5 11 * * 1-5", "20 16 * * 1-5", "5 17 * * 1-5"]) {
     assert.match(workflow, new RegExp(`cron: [\"']${cron.replaceAll("*", "\\*")}[\"']`, "u"));

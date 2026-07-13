@@ -106,7 +106,9 @@ IWM enters with -1.5% five-session momentum and +1.4% over twenty sessions. Real
 
 **Payoff:** Maximum one-lot profit is $188.00, or 1.68 times maximum risk. The simulation assigns 35.4% probability to finishing near maximum profit and uses 19.4% implied volatility across deterministic jump-stress paths.
 
-## Accountability
+## Prior Basket Accountability
+
+### 2026-07-10
 
 The Jul 10, 2026 basket has no scored expiration result yet. 5 positions remain open.
 
@@ -118,24 +120,47 @@ The Jul 10, 2026 basket has no scored expiration result yet. 5 positions remain 
 | TLT 7/24 85/84.5 Put Debit Spread | open | Open | The spread remains open through Jul 24, 2026; no expiration result is assigned. |
 | PLTR 7/24 125/120 Put Debit Spread | open | Open | The spread remains open through Jul 24, 2026; no expiration result is assigned. |
 
-## Method
+### 2026-06-19
 
-- A broad liquid-symbol quote universe is intersected with the source's fingerprinted universe. Core market anchors, the largest percentage movers, the most active names and a date-seeded rotation sleeve determine which option chains are evaluated.
-- The nearest expiration inside the configured 7-to-35-day window is chosen by distance from a 14-day target.
-- Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.
-- Both legs must clear bid, ask, open-interest, volume or depth, and relative quote-width gates.
-- Momentum direction determines whether bullish call-debit and put-credit structures or bearish put-debit and call-credit structures enter the ranking set.
-- Resolved trades train bounded feature adjustments only after the minimum sample threshold; every policy and input dataset is versioned with the report.
-- Modeled probability of profit: 26% of the base score.
-- Conservative expected-value efficiency: 22%.
-- Two-leg liquidity quality: 18%.
-- Maximum reward relative to maximum risk: 14%.
-- Black-Scholes spread edge and directional signal strength: 10% each.
-- Resolved prior outcomes adjust the strategy-style posterior without changing the underlying quote record.
-- The advanced feature layer contributes at most 8 score points and currently contains 5 fully resolved training examples.
+The Jun 19, 2026 basket has 1 win, 0 near-breakeven results and 4 losses across 5 resolved spreads, for modeled one-lot expiration P/L of -$147.00. All listed positions are resolved.
 
-Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.
+| Prior trade | Outcome | Realized P/L | Read |
+|---|---|---:|---|
+| MARA 7/3 13/12.5 Put Credit Spread | loss | -$39.00 | MARA closed at $12.40 for expiration settlement, producing -$39.00 on the one-lot spread. |
+| SMCI 7/3 28/27 Put Credit Spread | loss | -$57.00 | SMCI closed at $27.22 for expiration settlement, producing -$57.00 on the one-lot spread. |
+| RGTI 7/3 19.5/19 Put Credit Spread | loss | -$38.00 | RGTI closed at $17.94 for expiration settlement, producing -$38.00 on the one-lot spread. |
+| QUBT 7/3 10.5/10 Put Debit Spread | win | $24.00 | QUBT closed at $9.05 for expiration settlement, producing $24.00 on the one-lot spread. |
+| SOFI 7/3 17.5/16.5 Put Debit Spread | loss | -$37.00 | SOFI closed at $18.24 for expiration settlement, producing -$37.00 on the one-lot spread. |
 
-RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 13, 2026, 11:31 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.
+## Daily Market Read
+
+**The board is selling optimism, but only with defined risk**
+
+Today's 5-spread board is defensively tilted: 2 bullish and 3 bearish expressions, 56.8% average modeled probability of profit and $738 of aggregate one-lot maximum risk. Across 2 retained market boards, directional balance has moved more constructive; the top score is -2.85 points versus the prior-board average and modeled win probability is +0.1 percentage points.
+
+The market can look calm at index level while the option chain tells a less comfortable story. The published names carry -1.3% average five-session momentum and cluster most heavily in a mean reversion regime. That is not a blanket vote on the market; it is a warning that the day's best-defined payoffs are selective rather than broad.
+
+No current leader repeats from the available prior boards. Rotation is doing more work than durable leadership, and that is usually where chasing yesterday's winner becomes expensive. The top score sits at 49.91, while the basket's expected value totals $30 under conservative bid-and-ask entries. A ranking that cannot absorb the spread between theory and execution does not belong on the public board.
+
+Average implied volatility is 34.6% against 27.8% realized volatility. The premium is visible, but expensive options are not automatically good shorts; the spread still has to survive direction and path. The structure mix is 3 credit and 2 debit spreads, so the board is neither blindly buying convexity nor mechanically selling premium. It is paying only where direction can justify the bill and collecting only where the strikes leave room for error.
+
+The public headline radar is concentrated in broad-market positioning, earnings and energy. That is the catalyst layer, not the trade instruction: the useful question is whether those stories confirm the board's mean reversion regime or merely create an opening burst that fades after liquidity arrives.
+
+### Market News Radar
+
+- [Stock Market Today: Nasdaq Drops Amid U.S.-Iran Strikes; SK Hynix Slides As Healthcare Firms Gain (Live Coverage)](https://finance.yahoo.com/m/5eba618e-9a5d-3cbe-906d-545b7db0d19c/stock-market-today%3A-nasdaq.html) - Investor's Business Daily, 2026-07-13T14:41:00.000Z
+- [As SpaceX stock dips near IPO price, bulls like BofA's Epstein say buy on 'launch leadership'](https://finance.yahoo.com/markets/stocks/article/as-spacex-stock-dips-near-ipo-price-bulls-like-bofas-epstein-say-buy-on-launch-leadership-150227637.html) - Yahoo Finance, 2026-07-13T15:02:27.000Z
+- [Exchange-Traded Funds, Equity Futures Lower Pre-Bell Monday as Renewed US-Iran Conflict Lifts Oil Prices](https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-125221407.html) - MT Newswires, 2026-07-13T12:52:21.000Z
+- [Big Banks to Hit Earnings Season With High Hopes: ETFs in Focus](https://finance.yahoo.com/markets/stocks/articles/big-banks-hit-earnings-season-131200055.html) - Zacks, 2026-07-13T13:12:00.000Z
+
+### What to Watch
+
+- **Breadth confirmation: 2 bullish / 3 bearish; -1.3% mean five-session move.** Defensive skew needs downside follow-through. A fast reversal above entry regimes would invalidate the premise before contractual risk is reached.
+- **Volatility spread: 34.6% implied vs 27.8% realized.** Watch whether implied volatility expands with price movement or collapses after the opening catalyst. That relationship decides whether direction alone is enough.
+- **Leadership durability: No repeat leader in the current board.** Rapid rotation argues for smaller assumptions and harder entry limits. New leadership has not yet earned persistence.
+- **News catalyst: 4 ranked headlines across 3 themes.** The leading broad-market positioning, earnings and energy headlines matter only where they alter cash-flow expectations, funding costs or volatility. Price confirmation decides whether the story belongs in the trade.
+- **Risk budget: $738 maximum one-lot basket loss (+$339 vs prior average).** Maximum losses are additive. Correlated names can fail together even when each spread is individually defined, so basket risk matters more than the comfort of any single cap.
+
+Rolling comparison uses 2 retained published market sessions: Jul 13, 2026, Jul 10, 2026. The current screen ranked 32 candidates across 39 included symbols. Headline ranking uses publication time, market relevance, source quality, symbol relevance and topic diversity. Market evidence is timestamped Jul 13, 2026, 11:31 AM EDT.
 
 RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled.
