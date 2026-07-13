@@ -1,3 +1,6 @@
 rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
-"1","TLT","TLT 7/24 85/84.5 Put Debit Spread","put_debit","2026-07-24","13","84.55","Debit","0.29","0.5112","-3.16","29","21","0.72","84.71","0.19","37.88","0.8832","0.18"
-"2","PLTR","PLTR 7/24 125/120 Put Debit Spread","put_debit","2026-07-24","13","126.5502","Debit","1.87","0.4008","3.11","187","313","1.67","123.13","-2.7","36.57","0.8565","0.5043"
+"1","NFLX","NFLX 7/24 76/77 Call Credit Spread","call_credit","2026-07-24","13","73.4","Credit","0.3","0.6468","-4.51","70","30","0.43","76.3","3.95","52.76","0.9492","0.605"
+"2","T","T 7/24 21.5/22 Call Credit Spread","call_credit","2026-07-24","13","21.13","Credit","0.15","0.6368","-2.02","35","15","0.43","21.65","2.46","46.72","0.8202","0.3737"
+"3","WFC","WFC 7/24 85/84 Put Credit Spread","put_credit","2026-07-24","13","87.11","Credit","0.22","0.6414","-12.12","78","22","0.28","84.78","-2.67","43.48","0.7817","0.3817"
+"4","TLT","TLT 7/24 85/84.5 Put Debit Spread","put_debit","2026-07-24","13","84.55","Debit","0.29","0.5112","-3.16","29","21","0.72","84.71","0.19","37.88","0.8832","0.18"
+"5","PLTR","PLTR 7/24 125/120 Put Debit Spread","put_debit","2026-07-24","13","126.5502","Debit","1.87","0.4008","3.11","187","313","1.67","123.13","-2.7","36.57","0.8565","0.5043"

@@ -32,7 +32,7 @@ SMCI supplies the counterweight. Its put credit structure scores 47.42 and carri
 
 MARA enters with +0.7% five-session momentum and +3.9% over twenty sessions. Realized volatility is 35.7%, placing the underlying in a risk on regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [MARA entry and open-position history](/charts/2026-06-19/underlying/01-mara.svg) at $14.22.
+**Underlying chart:** [MARA entry through expiration close](/charts/2026-06-19/underlying/01-mara.svg) at $14.22; expiration close $12.40.
 
 **Advanced metrics:** 31 retained sessions; RSI(14) 59.0; MACD spread 0.10%; ATR(14) 4.02%; realized volatility 35.7%; ATM implied volatility 82.0%; expected move 12.8%. Outcome-trained score adjustment: +0.00.
 
@@ -48,7 +48,7 @@ MARA enters with +0.7% five-session momentum and +3.9% over twenty sessions. Rea
 
 SMCI enters with +1.3% five-session momentum and +3.8% over twenty sessions. Realized volatility is 37.5%, placing the underlying in a trend regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SMCI entry and open-position history](/charts/2026-06-19/underlying/02-smci.svg) at $30.72.
+**Underlying chart:** [SMCI entry through expiration close](/charts/2026-06-19/underlying/02-smci.svg) at $30.72; expiration close $27.22.
 
 **Advanced metrics:** 31 retained sessions; RSI(14) 54.7; MACD spread 0.10%; ATR(14) 4.16%; realized volatility 37.5%; ATM implied volatility 84.0%; expected move 13.2%. Outcome-trained score adjustment: +0.00.
 
@@ -64,7 +64,7 @@ SMCI enters with +1.3% five-session momentum and +3.8% over twenty sessions. Rea
 
 RGTI enters with +0.8% five-session momentum and -0.5% over twenty sessions. Realized volatility is 47.5%, placing the underlying in a mean reversion regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [RGTI entry and open-position history](/charts/2026-06-19/underlying/03-rgti.svg) at $21.23.
+**Underlying chart:** [RGTI entry through expiration close](/charts/2026-06-19/underlying/03-rgti.svg) at $21.23; expiration close $17.94.
 
 **Advanced metrics:** 31 retained sessions; RSI(14) 46.5; MACD spread -0.01%; ATR(14) 4.72%; realized volatility 47.5%; ATM implied volatility 103.0%; expected move 16.0%. Outcome-trained score adjustment: +0.00.
 
@@ -80,7 +80,7 @@ RGTI enters with +0.8% five-session momentum and -0.5% over twenty sessions. Rea
 
 QUBT enters with -0.7% five-session momentum and -4.2% over twenty sessions. Realized volatility is 44.6%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [QUBT entry and open-position history](/charts/2026-06-19/underlying/04-qubt.svg) at $10.70.
+**Underlying chart:** [QUBT entry through expiration close](/charts/2026-06-19/underlying/04-qubt.svg) at $10.70; expiration close $9.05.
 
 **Advanced metrics:** 31 retained sessions; RSI(14) 41.1; MACD spread -0.12%; ATR(14) 4.60%; realized volatility 44.6%; ATM implied volatility 102.0%; expected move 15.8%. Outcome-trained score adjustment: +0.00.
 
@@ -96,7 +96,7 @@ QUBT enters with -0.7% five-session momentum and -4.2% over twenty sessions. Rea
 
 SOFI enters with +0.2% five-session momentum and -1.0% over twenty sessions. Realized volatility is 25.5%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SOFI entry and open-position history](/charts/2026-06-19/underlying/05-sofi.svg) at $17.88.
+**Underlying chart:** [SOFI entry through expiration close](/charts/2026-06-19/underlying/05-sofi.svg) at $17.88; expiration close $18.24.
 
 **Advanced metrics:** 31 retained sessions; RSI(14) 43.5; MACD spread -0.03%; ATR(14) 3.74%; realized volatility 25.5%; ATM implied volatility 56.0%; expected move 8.8%. Outcome-trained score adjustment: +0.00.
 
@@ -105,6 +105,24 @@ SOFI enters with +0.2% five-session momentum and -1.0% over twenty sessions. Rea
 **Risk:** Maximum one-lot loss is $37.00. Breakeven is $17.13 and requires a 4.2% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $63.00, or 1.70 times maximum risk. The simulation assigns 24.6% probability to finishing near maximum profit and uses 56.0% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Jun 19, 2026 basket closes with -$147.00 final P/L**
+
+The 5-trade basket finished with 1 win, 0 near-breakeven results and 4 losses. The modeled one-lot portfolio produced a loss of -$147.00, equal to -67.1% of the maximum capital at risk.
+
+QUBT 7/3 10.5/10 Put Debit Spread was the strongest contributor at $24.00. SMCI 7/3 28/27 Put Credit Spread was the largest detractor at -$57.00.
+
+What worked: put debit. What needs tighter gating: put credit, put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| MARA 7/3 13/12.5 Put Credit Spread | loss | -$39.00 | MARA closed at $12.40 for expiration settlement, producing -$39.00 on the one-lot spread. |
+| SMCI 7/3 28/27 Put Credit Spread | loss | -$57.00 | SMCI closed at $27.22 for expiration settlement, producing -$57.00 on the one-lot spread. |
+| RGTI 7/3 19.5/19 Put Credit Spread | loss | -$38.00 | RGTI closed at $17.94 for expiration settlement, producing -$38.00 on the one-lot spread. |
+| QUBT 7/3 10.5/10 Put Debit Spread | win | $24.00 | QUBT closed at $9.05 for expiration settlement, producing $24.00 on the one-lot spread. |
+| SOFI 7/3 17.5/16.5 Put Debit Spread | loss | -$37.00 | SOFI closed at $18.24 for expiration settlement, producing -$37.00 on the one-lot spread. |
 
 ## Accountability
 
