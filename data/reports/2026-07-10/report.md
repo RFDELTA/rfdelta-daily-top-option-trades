@@ -30,6 +30,8 @@ IWM supplies the counterweight. Its put debit structure scores 38.43 and carries
 
 TLT enters with +0.1% across the available 2-session retained window, with a reduced conviction weight until the full history builds. Realized volatility is 25.0%, placing the underlying in a risk on regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
+**Advanced metrics:** 2 retained sessions; RSI proxy 55.0; MACD spread 0.00%; ATR proxy 0.20%; volatility proxy 22.6%; ATM implied volatility 8.1%; expected move 1.3%. Outcome-trained score adjustment: +0.00.
+
 **Execution:** Buy the 85 put and sell the 85.5 put, both expiring Jul 24, 2026. The credit mark of 0.33 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.33 of credit without rerunning the payoff.
 
 **Risk:** Maximum one-lot loss is $17.00. Breakeven is $85.17 and requires a 0.7% rise from the source mark. Primary watch: short strike at/above spot; low credit probability. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
@@ -42,6 +44,8 @@ TLT enters with +0.1% across the available 2-session retained window, with a red
 
 IWM enters with -0.4% across the available 2-session retained window, with a reduced conviction weight until the full history builds. Realized volatility is 25.0%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
+**Advanced metrics:** 2 retained sessions; RSI proxy 45.0; MACD spread -0.03%; ATR proxy 0.78%; volatility proxy 22.6%; ATM implied volatility 16.3%; expected move 2.6%. Outcome-trained score adjustment: +0.00.
+
 **Execution:** Buy the 296 put and sell the 292.5 put, both expiring Jul 24, 2026. The debit mark of 1.31 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.31 for the spread without rerunning the payoff.
 
 **Risk:** Maximum one-lot loss is $131.00. Breakeven is $294.69 and requires a 0.4% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
@@ -53,6 +57,8 @@ IWM enters with -0.4% across the available 2-session retained window, with a red
 **Trigger-dependent setup.** The setup scores 36.04 on the common scale, supported by 40.1% modeled probability of profit, 0.86 liquidity quality and positive modeled expectancy of $3.11.
 
 PLTR enters with -1.9% across the available 2-session retained window, with a reduced conviction weight until the full history builds. Realized volatility is 30.6%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
+
+**Advanced metrics:** 2 retained sessions; RSI proxy 45.0; MACD spread -0.13%; ATR proxy 2.57%; volatility proxy 27.7%; ATM implied volatility 49.1%; expected move 7.7%. Outcome-trained score adjustment: +0.00.
 
 **Execution:** Buy the 125 put and sell the 120 put, both expiring Jul 24, 2026. The debit mark of 1.87 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.87 for the spread without rerunning the payoff.
 
@@ -79,12 +85,14 @@ The Jun 19, 2026 basket has no scored expiration result yet. 5 expired positions
 - Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.
 - Both legs must clear bid, ask, open-interest, volume or depth, and relative quote-width gates.
 - Momentum direction determines whether bullish call-debit and put-credit structures or bearish put-debit and call-credit structures enter the ranking set.
+- Resolved trades train bounded feature adjustments only after the minimum sample threshold; every policy and input dataset is versioned with the report.
 - Modeled probability of profit: 26% of the base score.
 - Conservative expected-value efficiency: 22%.
 - Two-leg liquidity quality: 18%.
 - Maximum reward relative to maximum risk: 14%.
 - Black-Scholes spread edge and directional signal strength: 10% each.
 - Resolved prior outcomes adjust the strategy-style posterior without changing the underlying quote record.
+- The advanced feature layer contributes at most 8 score points and currently contains 0 fully resolved training examples.
 
 Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.
 

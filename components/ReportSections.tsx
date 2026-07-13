@@ -86,6 +86,30 @@ export function TradeList({ report, from = 0, to = report.topTrades.length }: { 
 export function AccountabilityAndMethod({ report, showFullLink = false }: { report: OptionsReport; showFullLink?: boolean }) {
   return (
     <>
+      {report.postTradeReview && (
+        <section className="post-trade-section">
+          <div className="content-width">
+            <p className="eyebrow">Completed basket review</p>
+            <h2>{report.postTradeReview.headline}</h2>
+            {report.postTradeReview.commentary.map((paragraph) => <p className="section-intro" key={paragraph}>{paragraph}</p>)}
+            <div className="outcome-summary">
+              <span><strong>{report.postTradeReview.wins}</strong> wins</span>
+              <span><strong>{report.postTradeReview.nearBreakeven}</strong> near breakeven</span>
+              <span><strong>{report.postTradeReview.losses}</strong> losses</span>
+              <span><strong>{money(report.postTradeReview.finalPnlDollars)}</strong> final P/L</span>
+            </div>
+            <div className="outcome-list">
+              {report.postTradeReview.trades.map((outcome) => (
+                <article className="outcome-row" key={outcome.tradeId}>
+                  <div><strong>{outcome.name}</strong><span>{outcome.status.replaceAll("_", " ")}</span></div>
+                  <p>{outcome.read}</p>
+                  <strong>{money(outcome.realizedPnlDollars ?? 0)}</strong>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       <section className="accountability-section">
         <div className="content-width">
           <p className="eyebrow">Accountability ledger</p>
@@ -118,7 +142,7 @@ export function AccountabilityAndMethod({ report, showFullLink = false }: { repo
           </div>
           <div>
             <h3>Selection rules</h3>
-            <ul>{report.methodology.selectionCriteria.slice(0, 4).map((item) => <li key={item}>{item}</li>)}</ul>
+            <ul>{report.methodology.selectionCriteria.slice(0, 5).map((item) => <li key={item}>{item}</li>)}</ul>
           </div>
         </div>
         <div className="content-width disclaimer">

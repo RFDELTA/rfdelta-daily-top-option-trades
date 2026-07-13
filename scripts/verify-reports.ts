@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { getReport, getReportIndex } from "../lib/report/store";
@@ -37,12 +38,51 @@ async function main() {
   for (const pattern of forbiddenPublicPatterns) {
     if (pattern.test(`${markdown}\n${publicJson}`)) throw new Error(`Public report contains internal-facing language matching ${pattern}.`);
   }
+  if (report.runMetadata.methodologyVersion === "rfdelta-options-v2") {
+    const runId = report.runMetadata.datasetRunId;
+    if (!runId?.match(/^run-[a-f0-9]{16}$/u)) throw new Error("Dataset run identifier is missing or malformed.");
+    if (!report.topTrades.every((idea) => idea.advancedMetrics && Number.isFinite(idea.trainingAdjustment))) {
+      throw new Error("Published ideas are missing advanced metrics or training adjustments.");
+    }
+    const datasetDirectory = path.join(process.cwd(), "data", "datasets", report.runMetadata.reportDate, runId);
+    const [manifest, features, candidates, policy] = await Promise.all([
+      readJson(path.join(datasetDirectory, "manifest.json")),
+      readJson(path.join(datasetDirectory, "market-features.json")),
+      readJson(path.join(datasetDirectory, "candidates.json")),
+      readJson(path.join(datasetDirectory, "selection-policy.json"))
+    ]);
+    if (String(manifest.reportId) !== report.reportId) throw new Error("Dataset manifest does not match the report.");
+    if (String(manifest.featureDatasetHash) !== sha256(features)) throw new Error("Feature dataset hash does not match its manifest.");
+    if (String(manifest.candidateDatasetHash) !== sha256(candidates)) throw new Error("Candidate dataset hash does not match its manifest.");
+    if (String(manifest.selectionPolicyHash) !== sha256(policy)) throw new Error("Selection policy hash does not match its manifest.");
+  }
+  if (report.postTradeReview) {
+    if (report.postTradeReview.trades.some((trade) => trade.status === "open" || trade.status === "awaiting_close")) {
+      throw new Error("Completed post-trade review contains an unresolved trade.");
+    }
+    const pnl = round(report.postTradeReview.trades.reduce((sum, trade) => sum + (trade.realizedPnlDollars ?? 0), 0), 2);
+    if (pnl !== report.postTradeReview.finalPnlDollars) throw new Error("Completed post-trade P/L does not reconcile.");
+  }
   console.log(`[verify] date=${index.latest} ideas=${report.topTrades.length} archive_count=${index.reports.length}`);
 }
 
 async function requireFile(filePath: string) {
   const stat = await fs.stat(filePath);
   if (!stat.isFile() || stat.size === 0) throw new Error(`Required output is empty: ${filePath}`);
+}
+
+async function readJson(filePath: string): Promise<Record<string, unknown>> {
+  await requireFile(filePath);
+  return JSON.parse(await fs.readFile(filePath, "utf8")) as Record<string, unknown>;
+}
+
+function sha256(value: unknown) {
+  return createHash("sha256").update(JSON.stringify(value)).digest("hex");
+}
+
+function round(value: number, places: number) {
+  const scale = 10 ** places;
+  return Math.round(value * scale) / scale;
 }
 
 main().catch((error) => {

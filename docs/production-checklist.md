@@ -14,7 +14,7 @@
 - [ ] Confirm branch protection permits the workflow's report commit, or grant the workflow an approved bypass.
 - [ ] Confirm Actions has `contents: write` permission.
 - [ ] Run CI and the daily workflow manually.
-- [ ] Confirm only `data/reports`, `data/market-history` and `public/charts` change during a normal daily run.
+- [ ] Confirm only `data/reports`, `data/market-history`, `data/datasets`, `data/training` and `public/charts` change during a normal daily run.
 
 ## Vercel
 
@@ -43,4 +43,8 @@
 - [ ] Five or fewer ideas meet all hard gates.
 - [ ] Rank chart labels and scores do not overlap bars.
 - [ ] Prior-basket outcomes use expiration settlement and no open trade is scored.
+- [ ] The run manifest hashes match the feature, candidate and policy datasets.
+- [ ] The report references the same dataset run and policy version used for selection.
+- [ ] Completed baskets contain no open trades and final P/L equals the sum of trade outcomes.
+- [ ] Learned feature weights stay inactive below the minimum sample threshold and score adjustment remains inside the configured cap.
 - [ ] Public copy contains no account, provider-failure, bridge, mock or execution-control language.

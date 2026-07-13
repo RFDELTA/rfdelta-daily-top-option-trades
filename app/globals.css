@@ -215,6 +215,7 @@ p {
 .chart-section,
 .trades-section,
 .accountability-section,
+.post-trade-section,
 .method-section,
 .archive-list-section {
   padding: 64px 0;
@@ -227,6 +228,16 @@ p {
 .chart-section.alternate,
 .accountability-section {
   background: #081f1b;
+}
+
+.post-trade-section {
+  border-top: 1px solid var(--line);
+  background: #071c18;
+}
+
+.post-trade-section h2 {
+  margin: 10px 0 18px;
+  font-size: 34px;
 }
 
 .chart-section h2,
@@ -391,6 +402,35 @@ p {
   margin: 30px 0 18px;
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
+}
+
+.technical-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.technical-grid > div {
+  min-width: 0;
+  padding: 14px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.technical-grid span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.technical-grid strong {
+  display: block;
+  margin-top: 5px;
+  color: var(--cyan);
+  font-size: 16px;
 }
 
 .outcome-summary span {
@@ -817,6 +857,7 @@ p {
 
   .metric-strip,
   .outcome-summary,
+  .technical-grid,
   .trade-stat-grid {
     grid-template-columns: 1fr;
   }

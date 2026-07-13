@@ -3,7 +3,7 @@ import type { MarketSnapshot, MarketSymbolSnapshot, OptionContract } from "@/lib
 import { getSymbolProfile } from "@/lib/market/universe";
 import { getDefaultModelSettings } from "@/lib/model/settings";
 import { getEntryWidth } from "@/lib/model/simulation";
-import type { OptionLeg, SpreadStyle, TradeCandidate } from "@/lib/model/types";
+import type { AdvancedMarketMetrics, OptionLeg, SpreadStyle, TradeCandidate } from "@/lib/model/types";
 
 type DiscoverySettings = {
   minVolume: number;
@@ -22,7 +22,7 @@ export type DiscoveryResult = {
   rejectionCounts: Record<string, number>;
 };
 
-export function discoverCandidates(snapshot: MarketSnapshot): DiscoveryResult {
+export function discoverCandidates(snapshot: MarketSnapshot, metricsBySymbol: Map<string, AdvancedMarketMetrics> = new Map()): DiscoveryResult {
   const settings = getDiscoverySettings();
   const modelSettings = getDefaultModelSettings();
   const candidates: TradeCandidate[] = [];
@@ -39,7 +39,7 @@ export function discoverCandidates(snapshot: MarketSnapshot): DiscoveryResult {
         increment(rejectionCounts, "No liquid vertical matched the structure rules");
         continue;
       }
-      const candidate = buildCandidate(symbolData, style, pair, snapshot.asOfUtc);
+      const candidate = buildCandidate(symbolData, style, pair, snapshot.asOfUtc, metricsBySymbol.get(symbolData.symbol));
       const entry = getEntryWidth(candidate);
       if (entry.entry <= 0 || entry.entry >= entry.width * 0.95) {
         increment(rejectionCounts, "Conservative entry consumed nearly all spread width");
@@ -110,7 +110,13 @@ function assignLegs(style: SpreadStyle, first: OptionContract, second: OptionCon
   return null;
 }
 
-function buildCandidate(symbolData: MarketSymbolSnapshot, style: SpreadStyle, pair: PairDefinition, sourceAsOfUtc: string): TradeCandidate {
+function buildCandidate(
+  symbolData: MarketSymbolSnapshot,
+  style: SpreadStyle,
+  pair: PairDefinition,
+  sourceAsOfUtc: string,
+  advancedMetrics?: AdvancedMarketMetrics
+): TradeCandidate {
   const regime = assessRegime(symbolData.bars, symbolData.quote.changePct);
   const profile = getSymbolProfile(symbolData.symbol);
   const structureType = style.includes("debit") ? "Debit" : "Credit";
@@ -147,6 +153,7 @@ function buildCandidate(symbolData: MarketSymbolSnapshot, style: SpreadStyle, pa
     sourceAsOfUtc,
     marketEvidence: evidence,
     historySessionCount: symbolData.bars.length,
+    ...(advancedMetrics ? { advancedMetrics } : {}),
     fiveDayReturn: regime.fiveDayReturn,
     twentyDayReturn: regime.twentyDayReturn,
     realizedVolatility: regime.realizedVolatility

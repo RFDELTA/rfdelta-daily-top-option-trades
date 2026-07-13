@@ -28,6 +28,45 @@ export type OptionLeg = {
   quoteTimeUtc?: string;
 };
 
+export type AdvancedFeatureName =
+  | "trendAlignment"
+  | "meanReversion"
+  | "volatilityQuality"
+  | "optionsSkew"
+  | "liquidity"
+  | "riskAdjustedMomentum";
+
+export type AdvancedMarketMetrics = {
+  symbol: string;
+  historySessions: number;
+  historyConfidence: number;
+  return1d: number;
+  return5d: number;
+  return20d: number;
+  sma5Distance: number;
+  sma20Distance: number;
+  emaTrend: number;
+  macdPct: number;
+  rsi14: number;
+  atr14Pct: number;
+  bollingerZ20: number;
+  realizedVol5: number;
+  realizedVol20: number;
+  downsideVol20: number;
+  maxDrawdown20: number;
+  trendEfficiency20: number;
+  volumeZScore20: number;
+  atmImpliedVol: number;
+  putCallIvSkew: number;
+  putCallVolumeRatio: number;
+  putCallOpenInterestRatio: number;
+  expectedMovePct: number;
+  meanQuoteWidthPct: number;
+  liquidContractRatio: number;
+  trendSignal: number;
+  riskAdjustedMomentum: number;
+};
+
 export type TradeCandidate = {
   id: string;
   name: string;
@@ -49,6 +88,7 @@ export type TradeCandidate = {
   sourceAsOfUtc?: string;
   marketEvidence?: string[];
   historySessionCount?: number;
+  advancedMetrics?: AdvancedMarketMetrics;
   fiveDayReturn?: number;
   twentyDayReturn?: number;
   realizedVolatility?: number;
@@ -90,6 +130,9 @@ export type TradeIdeaScore = {
   sourceAsOfUtc?: string;
   marketEvidence: string[];
   historySessionCount: number;
+  advancedMetrics?: AdvancedMarketMetrics;
+  trainingAdjustment: number;
+  trainingPolicyVersion: string;
   fiveDayReturn: number;
   twentyDayReturn: number;
   realizedVolatility: number;

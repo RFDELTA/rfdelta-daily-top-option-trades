@@ -14,6 +14,9 @@ async function main() {
   assert.equal(first.runMetadata.selectionHash, second.runMetadata.selectionHash);
   assert.deepEqual(first.topTrades.map((idea) => idea.id), second.topTrades.map((idea) => idea.id));
   assert.equal(first.runMetadata.edition, "Historical calibration edition");
+  assert.equal(first.runMetadata.methodologyVersion, "rfdelta-options-v2");
+  assert.ok(first.runMetadata.datasetRunId?.startsWith("run-"));
+  assert.ok(first.topTrades.every((idea) => idea.advancedMetrics));
   console.log(`[test:workflow] hash=${first.runMetadata.selectionHash.slice(0, 12)} ideas=${first.topTrades.length}`);
 }
 

@@ -24,6 +24,24 @@ export type TradeCommentary = {
   payoffRead: string;
 };
 
+export type PostTradeReview = {
+  status: "complete";
+  completedOn: string;
+  evaluatedAtUtc: string;
+  tradeCount: number;
+  wins: number;
+  losses: number;
+  nearBreakeven: number;
+  totalMaxRiskDollars: number;
+  finalPnlDollars: number;
+  returnOnRisk: number;
+  bestTradeId?: string;
+  worstTradeId?: string;
+  headline: string;
+  commentary: string[];
+  trades: TradeOutcome[];
+};
+
 export type PublishedTradeIdea = TradeIdeaScore & {
   commentary: TradeCommentary;
 };
@@ -37,8 +55,12 @@ export type OptionsReport = {
     generatedAtUtc: string;
     dataAsOfUtc: string;
     edition: "Daily market edition" | "Historical calibration edition";
-    methodologyVersion: "rfdelta-options-v1";
+    methodologyVersion: "rfdelta-options-v1" | "rfdelta-options-v2";
     selectionHash: string;
+    datasetRunId?: string;
+    featureVersion?: string;
+    selectionPolicyVersion?: string;
+    trainingSampleCount?: number;
   };
   executiveSummary: {
     headline: string;
@@ -79,6 +101,7 @@ export type OptionsReport = {
     read: string;
     trades: TradeOutcome[];
   };
+  postTradeReview?: PostTradeReview;
   methodology: {
     selectionCriteria: string[];
     rankingFramework: string[];

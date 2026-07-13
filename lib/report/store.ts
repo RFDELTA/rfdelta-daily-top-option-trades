@@ -50,6 +50,18 @@ export async function persistReport(report: OptionsReport) {
   await updateIndex(report);
 }
 
+export async function persistUpdatedReports(reports: OptionsReport[]) {
+  for (const report of reports) {
+    const reportDirectory = path.join(REPORTS_ROOT, report.runMetadata.reportDate);
+    await fs.mkdir(reportDirectory, { recursive: true });
+    await Promise.all([
+      writeJson(path.join(reportDirectory, "report.json"), report),
+      fs.writeFile(path.join(reportDirectory, "report.md"), renderReportMarkdown(report), "utf8"),
+      fs.writeFile(path.join(reportDirectory, "ideas.csv"), renderIdeasCsv(report), "utf8")
+    ]);
+  }
+}
+
 async function updateIndex(report: OptionsReport) {
   const index = await getReportIndex();
   const item: ReportIndexItem = {

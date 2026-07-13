@@ -2,11 +2,14 @@ import { LessonSnapshot, TradeCandidate, TradeIdeaScore } from "@/lib/model/type
 import { ModelSettings } from "@/lib/model/settings";
 import { getBreakeven, getEntryWidth, runCandidateSimulation } from "@/lib/model/simulation";
 import { explainLessonAdjustment, getStylePosteriorAdjustment } from "@/lib/model/lessonLearning";
+import { getPolicyScoreAdjustment } from "@/lib/training/policy";
+import type { SelectionPolicy } from "@/lib/training/types";
 
 export function scoreCandidate(
   candidate: TradeCandidate,
   settings: ModelSettings,
-  lessons: LessonSnapshot
+  lessons: LessonSnapshot,
+  policy?: SelectionPolicy
 ): TradeIdeaScore {
   const entryWidth = getEntryWidth(candidate);
   const sim = runCandidateSimulation(candidate, settings);
@@ -63,6 +66,8 @@ export function scoreCandidate(
   const edgeEff = clamp(sim.blackScholesEdge / Math.max(entryWidth.maxLoss, 0.01), -1, 1);
   const posteriorAdjustment = getStylePosteriorAdjustment(lessons, candidate.style);
   const signalStrength = clamp(candidate.signalStrength ?? 0.5, 0, 1);
+  const direction = candidate.direction ?? (candidate.style === "call_debit" || candidate.style === "put_credit" ? "bullish" : "bearish");
+  const trainingAdjustment = policy ? getPolicyScoreAdjustment(policy, candidate.advancedMetrics, direction) : 0;
 
   let score =
     100 *
@@ -72,7 +77,8 @@ export function scoreCandidate(
         0.18 * candidate.liquidityScore +
         0.10 * Math.max(0, edgeEff) +
         0.10 * signalStrength) +
-    posteriorAdjustment;
+    posteriorAdjustment +
+    trainingAdjustment;
 
   if (candidate.structureType === "Credit") {
     score += settings.creditSpreadPriorBoost * 20;
@@ -110,7 +116,7 @@ export function scoreCandidate(
     daysToExpiry: candidate.daysToExpiry,
     structureType: candidate.structureType,
     style: candidate.style,
-    direction: candidate.direction ?? (candidate.style === "call_debit" || candidate.style === "put_credit" ? "bullish" : "bearish"),
+    direction,
     theme: candidate.theme,
     regime: candidate.regime,
     correlationBucket: candidate.correlationBucket ?? candidate.theme,
@@ -136,6 +142,9 @@ export function scoreCandidate(
     ...(candidate.sourceAsOfUtc ? { sourceAsOfUtc: candidate.sourceAsOfUtc } : {}),
     marketEvidence: candidate.marketEvidence ?? [],
     historySessionCount: candidate.historySessionCount ?? 0,
+    ...(candidate.advancedMetrics ? { advancedMetrics: candidate.advancedMetrics } : {}),
+    trainingAdjustment,
+    trainingPolicyVersion: policy?.policyVersion ?? "untrained-baseline",
     fiveDayReturn: round(candidate.fiveDayReturn ?? 0, 6),
     twentyDayReturn: round(candidate.twentyDayReturn ?? 0, 6),
     realizedVolatility: round(candidate.realizedVolatility ?? 0, 6),

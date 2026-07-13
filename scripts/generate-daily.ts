@@ -10,6 +10,9 @@ async function main() {
   const { report, skipped } = await generateAndPersist({ date, force });
   console.log(`[options-report] ${skipped ? "kept existing edition" : "generated"} date=${report.runMetadata.reportDate} ideas=${report.topTrades.length} candidates=${report.marketContext.candidateCount}`);
   console.log(`[options-report] source_timestamp=${report.runMetadata.dataAsOfUtc} top=${report.topTrades[0]?.symbol ?? "none"}`);
+  if (report.runMetadata.datasetRunId) {
+    console.log(`[options-report] dataset_run=${report.runMetadata.datasetRunId} training_samples=${report.runMetadata.trainingSampleCount ?? 0} policy=${report.runMetadata.selectionPolicyVersion ?? "baseline"}`);
+  }
   console.log(`[options-report] complete date=${date}`);
 }
 

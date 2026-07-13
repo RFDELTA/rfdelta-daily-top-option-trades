@@ -22,14 +22,15 @@ export async function loadRetainedHistory(): Promise<Record<string, DailyBar[]>>
 
 export function mergeQuoteHistory(existing: DailyBar[], quote: EquityQuote): DailyBar[] {
   const bars = new Map(existing.map((bar) => [bar.date, bar]));
-  if (quote.previousCloseDate && quote.previousClose > 0 && !bars.has(quote.previousCloseDate)) {
+  if (quote.previousCloseDate && quote.previousClose > 0) {
+    const existing = bars.get(quote.previousCloseDate);
     bars.set(quote.previousCloseDate, {
       date: quote.previousCloseDate,
-      open: quote.previousClose,
-      high: quote.previousClose,
-      low: quote.previousClose,
+      open: existing?.open ?? quote.previousClose,
+      high: Math.max(existing?.high ?? quote.previousClose, quote.previousClose),
+      low: Math.min(existing?.low ?? quote.previousClose, quote.previousClose),
       close: quote.previousClose,
-      volume: 0
+      volume: existing?.volume ?? 0
     });
   }
   const sessionDate = quote.sessionDate ?? quote.tradeTimeUtc.slice(0, 10);

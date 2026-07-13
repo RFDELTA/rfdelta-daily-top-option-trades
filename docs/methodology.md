@@ -22,6 +22,12 @@ Bearish signals create:
 - put debit spreads
 - call credit spreads
 
+## Advanced Feature Surface
+
+Every included symbol receives a versioned derived feature row before candidate construction. The row includes one-, five- and twenty-session returns; SMA and EMA distance; MACD spread; confidence-adjusted RSI; ATR; Bollinger position; five- and twenty-session realized volatility; downside volatility; maximum drawdown; trend efficiency; volume z-score; ATM implied volatility; put/call IV skew; put/call volume and open-interest ratios; expected move; quote width; and liquid-contract breadth.
+
+Short retained windows are explicitly confidence-weighted. RSI, ATR and volatility are labeled as proxies in public output until their standard lookback is available.
+
 ## Leg Construction
 
 Contracts must have a positive bid, ask above bid, sufficient open interest and either current volume or substantially higher standing depth. Relative bid/ask width must remain below the configured maximum.
@@ -60,6 +66,14 @@ Base weights:
 
 Resolved expiration outcomes update beta-binomial strategy-style posteriors. Credit-to-width, short-strike location, quote economics and debit-lottery behavior add transparent adjustments or risk flags.
 
+## Outcome-Trained Policy
+
+Fully resolved trades with stored advanced metrics become deterministic training examples. Each target is realized one-lot P/L divided by published maximum loss, clamped to `[-1, 1]`. Trade-relative feature vectors cover trend alignment, mean reversion, volatility quality, option skew, liquidity and risk-adjusted momentum.
+
+Each feature coefficient is fitted independently as `sum(x*y) / (regularization + sum(x^2))`, capped at `[-0.35, 0.35]`. The production policy remains inactive until eight examples exist. Once active, the combined learned adjustment is capped at eight score points. Policy version, sufficient statistics, coefficients, training reports and sample count are stored with every run.
+
+This process updates versioned policy data; it never rewrites model source code.
+
 ## Basket
 
 The publication basket:
@@ -74,4 +88,10 @@ The screen may publish fewer than five ideas. It does not fill a date with a can
 
 ## Outcome Accountability
 
-Once an option expires, settlement is calculated from the underlying expiration close and the exact vertical payoff. P/L is clamped to published maximum loss and maximum profit. Outcomes are win, loss or near breakeven within one dollar. Open contracts stay open and do not train the posterior.
+Once an option expires, settlement is calculated from the retained expiration-session underlying close and the exact vertical payoff. Because the daily report runs before the closing bell, the next session's official previous-close field replaces the earlier intraday mark before reconciliation. P/L is clamped to published maximum loss and maximum profit. Outcomes are win, loss or near breakeven within one dollar. Open or unresolved contracts never train either learning layer.
+
+When every trade from a report is terminal, the originating report receives a completed-basket section with final P/L, return on maximum risk, the strongest contributor, the largest detractor, structure-level lessons and trade-by-trade settlement reads. Partially resolved baskets are not written back as complete.
+
+## Historical Datasets
+
+Each distinct valid source run is archived under `data/datasets/YYYY-MM-DD/run-HASH`. The run contains the feature dataset, all scored candidates, the policy used before selection and a manifest with independent SHA-256 hashes. The report references the same run ID and policy version. Full raw option-chain payloads are not committed.

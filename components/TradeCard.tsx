@@ -35,6 +35,17 @@ export function TradeCard({ idea }: { idea: PublishedTradeIdea }) {
             <p>{idea.commentary.payoffRead}</p>
           </section>
         </div>
+        {idea.advancedMetrics && (
+          <div className="technical-grid" aria-label={`${idea.symbol} technical and options metrics`}>
+            <Stat label="History" value={`${idea.advancedMetrics.historySessions} sessions`} />
+            <Stat label={idea.advancedMetrics.historySessions >= 15 ? "RSI (14)" : "RSI proxy"} value={idea.advancedMetrics.rsi14.toFixed(1)} />
+            <Stat label="MACD spread" value={percentSigned(idea.advancedMetrics.macdPct)} />
+            <Stat label={idea.advancedMetrics.historySessions >= 15 ? "ATR (14)" : "ATR proxy"} value={percent(idea.advancedMetrics.atr14Pct)} />
+            <Stat label={idea.advancedMetrics.historySessions >= 21 ? "Realized vol." : "Volatility proxy"} value={percent(idea.advancedMetrics.realizedVol20)} />
+            <Stat label="ATM implied vol." value={percent(idea.advancedMetrics.atmImpliedVol)} />
+            <Stat label="Expected move" value={percent(idea.advancedMetrics.expectedMovePct)} />
+          </div>
+        )}
         <div className="risk-read">
           <strong>Risk read</strong>
           <p>{idea.commentary.risk}</p>
@@ -50,6 +61,10 @@ function Stat({ label, value }: { label: string; value: string }) {
 
 function percent(value: number) {
   return `${(value * 100).toFixed(1)}%`;
+}
+
+function percentSigned(value: number) {
+  return `${value >= 0 ? "+" : ""}${(value * 100).toFixed(2)}%`;
 }
 
 function money(value: number) {

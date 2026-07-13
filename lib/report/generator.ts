@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import calibrationOutcomes from "@/data/calibration/prior-outcomes-2026-06-18.json";
-import { persistSnapshotHistory } from "@/lib/market/history";
+import { loadRetainedHistory, persistSnapshotHistory } from "@/lib/market/history";
 import { createMarketDataProvider } from "@/lib/market/provider";
 import type { MarketDataProvider, MarketSnapshot } from "@/lib/market/types";
 import { getUniverse } from "@/lib/market/universe";
@@ -11,17 +11,21 @@ import {
   createInitialLessonSnapshot,
   type RealizedTradeOutcome
 } from "@/lib/model/lessonLearning";
-import { payoff } from "@/lib/model/math";
 import { scoreCandidate } from "@/lib/model/scoring";
 import { getDefaultModelSettings } from "@/lib/model/settings";
 import type { LessonSnapshot, TradeIdeaScore } from "@/lib/model/types";
-import { getReport, getReportIndex, persistReport, reportExists } from "@/lib/report/store";
+import { evaluateReportOutcomes, prepareArchiveReconciliation } from "@/lib/report/reconciliation";
+import { getReport, persistReport, persistUpdatedReports, reportExists } from "@/lib/report/store";
 import type {
   OptionsReport,
   PublishedTradeIdea,
   TradeCommentary,
   TradeOutcome
 } from "@/lib/report/types";
+import { computeMarketFeatureDataset, featureMap } from "@/lib/training/features";
+import { trainSelectionPolicy } from "@/lib/training/policy";
+import { createDatasetRunId, persistRunDataset } from "@/lib/training/store";
+import type { MarketFeatureDataset, SelectionPolicy } from "@/lib/training/types";
 
 type GenerateOptions = {
   date: string;
@@ -31,6 +35,19 @@ type GenerateOptions = {
 
 const CALIBRATION_OUTCOMES = calibrationOutcomes as TradeOutcome[];
 
+type PreparedRun = {
+  features: MarketFeatureDataset;
+  policy: SelectionPolicy;
+  archiveReports: OptionsReport[];
+  archiveUpdates: OptionsReport[];
+  runId: string;
+};
+
+type BuiltReport = {
+  report: OptionsReport;
+  rankedCandidates: TradeIdeaScore[];
+};
+
 export async function generateAndPersist(options: GenerateOptions) {
   if (!options.force && await reportExists(options.date)) {
     return { report: await getReport(options.date), skipped: true };
@@ -38,9 +55,19 @@ export async function generateAndPersist(options: GenerateOptions) {
   const provider = options.provider ?? createMarketDataProvider();
   const snapshot = await provider.getSnapshot({ reportDate: options.date, universe: getUniverse() });
   if (!snapshot.universe.length && !snapshot.symbols.length) throw new Error("The market universe is empty.");
-  const report = await buildReport(snapshot);
+  const prepared = await prepareRun(snapshot);
+  const { report, rankedCandidates } = await assembleReport(snapshot, prepared);
   await persistSnapshotHistory(snapshot);
+  await persistUpdatedReports(prepared.archiveUpdates);
   await persistReport(report);
+  await persistRunDataset({
+    runId: prepared.runId,
+    snapshot,
+    features: prepared.features,
+    policy: prepared.policy,
+    candidates: rankedCandidates,
+    report
+  });
   return { report, skipped: false };
 }
 
@@ -50,19 +77,48 @@ export async function generateWithUniverse(options: GenerateOptions & { universe
   }
   const provider = options.provider ?? createMarketDataProvider();
   const snapshot = await provider.getSnapshot({ reportDate: options.date, universe: options.universe });
-  const report = await buildReport(snapshot);
+  const prepared = await prepareRun(snapshot);
+  const { report, rankedCandidates } = await assembleReport(snapshot, prepared);
   await persistSnapshotHistory(snapshot);
+  await persistUpdatedReports(prepared.archiveUpdates);
   await persistReport(report);
+  await persistRunDataset({
+    runId: prepared.runId,
+    snapshot,
+    features: prepared.features,
+    policy: prepared.policy,
+    candidates: rankedCandidates,
+    report
+  });
   return { report, skipped: false };
 }
 
 export async function buildReport(snapshot: MarketSnapshot): Promise<OptionsReport> {
+  const prepared = await prepareRun(snapshot);
+  return (await assembleReport(snapshot, prepared)).report;
+}
+
+async function prepareRun(snapshot: MarketSnapshot): Promise<PreparedRun> {
+  const features = computeMarketFeatureDataset(snapshot);
+  const reconciliation = await prepareArchiveReconciliation(snapshot);
+  const policy = trainSelectionPolicy(reconciliation.reports, snapshot.asOfUtc, snapshot.reportDate);
+  const runId = createDatasetRunId(snapshot, features, policy);
+  return {
+    features,
+    policy,
+    archiveReports: reconciliation.reports,
+    archiveUpdates: reconciliation.updates,
+    runId
+  };
+}
+
+async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun): Promise<BuiltReport> {
   const settings = getDefaultModelSettings();
-  const discovery = discoverCandidates(snapshot);
-  const accountability = await buildAccountability(snapshot);
-  const lessons = await buildLessonSnapshot(snapshot.asOfUtc, accountability);
+  const discovery = discoverCandidates(snapshot, featureMap(prepared.features));
+  const accountability = await buildAccountability(snapshot, prepared.archiveReports);
+  const lessons = await buildLessonSnapshot(snapshot.asOfUtc, accountability, prepared.archiveReports);
   const rankedCandidates = discovery.candidates
-    .map((candidate) => scoreCandidate(candidate, settings, lessons))
+    .map((candidate) => scoreCandidate(candidate, settings, lessons, prepared.policy))
     .sort(compareIdeas)
     .map((idea, index) => ({ ...idea, rank: index + 1 }));
   const basket = buildPublishBasket(rankedCandidates, settings);
@@ -72,7 +128,7 @@ export async function buildReport(snapshot: MarketSnapshot): Promise<OptionsRepo
     commentary: buildTradeCommentary(idea)
   }));
   const selectionHash = createHash("sha256")
-    .update(JSON.stringify({ snapshot: snapshot.asOfUtc, candidates: discovery.candidates, settings }))
+    .update(JSON.stringify({ snapshot: snapshot.asOfUtc, candidates: discovery.candidates, settings, features: prepared.features, policy: prepared.policy }))
     .digest("hex");
   const historical = snapshot.provider.includes("fixture");
   const analytics = buildAnalytics(topTrades);
@@ -85,8 +141,12 @@ export async function buildReport(snapshot: MarketSnapshot): Promise<OptionsRepo
       generatedAtUtc: historical ? snapshot.asOfUtc : new Date().toISOString(),
       dataAsOfUtc: snapshot.asOfUtc,
       edition: historical ? "Historical calibration edition" : "Daily market edition",
-      methodologyVersion: "rfdelta-options-v1",
-      selectionHash
+      methodologyVersion: "rfdelta-options-v2",
+      selectionHash,
+      datasetRunId: prepared.runId,
+      featureVersion: prepared.features.featureVersion,
+      selectionPolicyVersion: prepared.policy.policyVersion,
+      trainingSampleCount: prepared.policy.resolvedTradeCount
     },
     executiveSummary: buildExecutiveSummary(topTrades, snapshot),
     marketContext: {
@@ -108,7 +168,8 @@ export async function buildReport(snapshot: MarketSnapshot): Promise<OptionsRepo
         "The nearest expiration inside the configured 7-to-35-day window is chosen by distance from a 14-day target.",
         "Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.",
         "Both legs must clear bid, ask, open-interest, volume or depth, and relative quote-width gates.",
-        "Momentum direction determines whether bullish call-debit and put-credit structures or bearish put-debit and call-credit structures enter the ranking set."
+        "Momentum direction determines whether bullish call-debit and put-credit structures or bearish put-debit and call-credit structures enter the ranking set.",
+        "Resolved trades train bounded feature adjustments only after the minimum sample threshold; every policy and input dataset is versioned with the report."
       ],
       rankingFramework: [
         "Modeled probability of profit: 26% of the base score.",
@@ -116,7 +177,8 @@ export async function buildReport(snapshot: MarketSnapshot): Promise<OptionsRepo
         "Two-leg liquidity quality: 18%.",
         "Maximum reward relative to maximum risk: 14%.",
         "Black-Scholes spread edge and directional signal strength: 10% each.",
-        "Resolved prior outcomes adjust the strategy-style posterior without changing the underlying quote record."
+        "Resolved prior outcomes adjust the strategy-style posterior without changing the underlying quote record.",
+        `The advanced feature layer contributes at most ${prepared.policy.maximumScoreAdjustment.toFixed(0)} score points and currently contains ${prepared.policy.resolvedTradeCount} fully resolved training example${prepared.policy.resolvedTradeCount === 1 ? "" : "s"}.`
       ],
       executionAssumption: "Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.",
       publicationCadence: "A single weekday workflow runs after the U.S. options session opens. If same-session quotes are unavailable, the most recent valid edition remains published.",
@@ -124,83 +186,34 @@ export async function buildReport(snapshot: MarketSnapshot): Promise<OptionsRepo
       disclaimer: "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
     }
   };
-  return report;
+  return { report, rankedCandidates };
 }
 
-async function buildLessonSnapshot(asOfUtc: string, currentAccountability: OptionsReport["accountability"]): Promise<LessonSnapshot> {
+async function buildLessonSnapshot(
+  asOfUtc: string,
+  currentAccountability: OptionsReport["accountability"],
+  archiveReports: OptionsReport[]
+): Promise<LessonSnapshot> {
   let snapshot = createInitialLessonSnapshot(asOfUtc);
   snapshot = applyRealizedBasketLesson(snapshot, "calibration-2026-06-18", toLessons(CALIBRATION_OUTCOMES), asOfUtc);
-  const index = await getReportIndex();
   const seen = new Set(CALIBRATION_OUTCOMES.map((outcome) => outcome.tradeId));
-  for (const item of [...index.reports].sort((a, b) => a.date.localeCompare(b.date))) {
-    const report = await getReport(item.date);
-    const outcomes = report.accountability.trades.filter(isResolved).filter((outcome) => !seen.has(outcome.tradeId));
+  for (const report of [...archiveReports].sort((a, b) => a.runMetadata.reportDate.localeCompare(b.runMetadata.reportDate))) {
+    const source = report.postTradeReview?.trades ?? report.accountability.trades;
+    const outcomes = source.filter(isResolved).filter((outcome) => !seen.has(outcome.tradeId));
     outcomes.forEach((outcome) => seen.add(outcome.tradeId));
-    if (outcomes.length) snapshot = applyRealizedBasketLesson(snapshot, `archive-${item.date}`, toLessons(outcomes), asOfUtc);
+    if (outcomes.length) snapshot = applyRealizedBasketLesson(snapshot, `archive-${report.runMetadata.reportDate}`, toLessons(outcomes), asOfUtc);
   }
   const current = currentAccountability.trades.filter(isResolved).filter((outcome) => !seen.has(outcome.tradeId));
   if (current.length) snapshot = applyRealizedBasketLesson(snapshot, `current-${currentAccountability.sourceReportDate ?? "calibration"}`, toLessons(current), asOfUtc);
   return snapshot;
 }
 
-async function buildAccountability(snapshot: MarketSnapshot): Promise<OptionsReport["accountability"]> {
-  const index = await getReportIndex();
-  const priorItem = index.reports.find((item) => item.date < snapshot.reportDate);
-  if (!priorItem) return summarizeOutcomes(CALIBRATION_OUTCOMES, "2026-06-18", snapshot.reportDate);
-  const prior = await getReport(priorItem.date);
-  const outcomes = prior.topTrades.map((idea): TradeOutcome => {
-    if (idea.expiration >= snapshot.sessionDate) {
-      return {
-        tradeId: idea.id,
-        name: idea.name,
-        symbol: idea.symbol,
-        style: idea.style,
-        expiration: idea.expiration,
-        status: "open",
-        read: `The spread remains open through ${formatDate(idea.expiration)}; no expiration result is assigned.`
-      };
-    }
-    const symbol = snapshot.symbols.find((item) => item.symbol === idea.symbol);
-    const settlementBar = symbol?.bars.filter((bar) => bar.date <= idea.expiration).sort((a, b) => b.date.localeCompare(a.date))[0];
-    if (!settlementBar) {
-      return {
-        tradeId: idea.id,
-        name: idea.name,
-        symbol: idea.symbol,
-        style: idea.style,
-        expiration: idea.expiration,
-        status: "awaiting_close",
-        read: "The expiration close is not yet present in the retained history, so the outcome remains unscored."
-      };
-    }
-    const width = Math.abs(idea.longLeg.strike - idea.shortLeg.strike);
-    const debitGross = clamp(
-      payoff(settlementBar.close, idea.longLeg.strike, idea.longLeg.right) - payoff(settlementBar.close, idea.shortLeg.strike, idea.shortLeg.right),
-      0,
-      width
-    );
-    const creditLiability = clamp(
-      payoff(settlementBar.close, idea.shortLeg.strike, idea.shortLeg.right) - payoff(settlementBar.close, idea.longLeg.strike, idea.longLeg.right),
-      0,
-      width
-    );
-    const rawPnl = idea.structureType === "Debit" ? (debitGross - idea.entry) * 100 : (idea.entry - creditLiability) * 100;
-    const realizedPnlDollars = round(clamp(rawPnl, -idea.maxLossDollars, idea.maxProfitDollars), 2);
-    const status = realizedPnlDollars > 1 ? "win" : realizedPnlDollars < -1 ? "loss" : "near_breakeven";
-    const settlementValue = idea.structureType === "Debit" ? debitGross : creditLiability;
-    return {
-      tradeId: idea.id,
-      name: idea.name,
-      symbol: idea.symbol,
-      style: idea.style,
-      expiration: idea.expiration,
-      status,
-      settlementUnderlying: round(settlementBar.close, 4),
-      settlementValue: round(settlementValue, 4),
-      realizedPnlDollars,
-      read: `${idea.symbol} closed at ${money(settlementBar.close)} for expiration settlement, producing ${money(realizedPnlDollars)} on the one-lot spread.`
-    };
-  });
+async function buildAccountability(snapshot: MarketSnapshot, archiveReports: OptionsReport[]): Promise<OptionsReport["accountability"]> {
+  const prior = archiveReports
+    .filter((report) => report.runMetadata.reportDate < snapshot.reportDate)
+    .sort((a, b) => b.runMetadata.reportDate.localeCompare(a.runMetadata.reportDate))[0];
+  if (!prior) return summarizeOutcomes(CALIBRATION_OUTCOMES, "2026-06-18", snapshot.reportDate);
+  const outcomes = prior.postTradeReview?.trades ?? evaluateReportOutcomes(prior, snapshot, await loadRetainedHistory());
   return summarizeOutcomes(outcomes, prior.runMetadata.reportDate, snapshot.reportDate);
 }
 
@@ -342,10 +355,6 @@ function countBy(values: string[]) {
 
 function average(values: number[]) {
   return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : 0;
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, value));
 }
 
 function round(value: number, places: number) {

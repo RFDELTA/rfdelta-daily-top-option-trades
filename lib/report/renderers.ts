@@ -28,11 +28,29 @@ export function renderReportMarkdown(report: OptionsReport) {
       "",
       idea.commentary.setup,
       "",
+      ...(idea.advancedMetrics ? [
+        `**Advanced metrics:** ${idea.advancedMetrics.historySessions} retained sessions; ${idea.advancedMetrics.historySessions >= 15 ? "RSI(14)" : "RSI proxy"} ${idea.advancedMetrics.rsi14.toFixed(1)}; MACD spread ${(idea.advancedMetrics.macdPct * 100).toFixed(2)}%; ${idea.advancedMetrics.historySessions >= 15 ? "ATR(14)" : "ATR proxy"} ${(idea.advancedMetrics.atr14Pct * 100).toFixed(2)}%; ${idea.advancedMetrics.historySessions >= 21 ? "realized volatility" : "volatility proxy"} ${(idea.advancedMetrics.realizedVol20 * 100).toFixed(1)}%; ATM implied volatility ${(idea.advancedMetrics.atmImpliedVol * 100).toFixed(1)}%; expected move ${(idea.advancedMetrics.expectedMovePct * 100).toFixed(1)}%. Outcome-trained score adjustment: ${signed(idea.trainingAdjustment)}.`,
+        ""
+      ] : []),
       `**Execution:** ${idea.commentary.execution}`,
       "",
       `**Risk:** ${idea.commentary.risk}`,
       "",
       `**Payoff:** ${idea.commentary.payoffRead}`,
+      ""
+    );
+  }
+
+  if (report.postTradeReview) {
+    lines.push(
+      "## Completed Basket Review",
+      "",
+      `**${report.postTradeReview.headline}**`,
+      "",
+      ...report.postTradeReview.commentary.flatMap((paragraph) => [paragraph, ""]),
+      "| Trade | Outcome | Final P/L | Settlement read |",
+      "|---|---|---:|---|",
+      ...report.postTradeReview.trades.map((outcome) => `| ${outcome.name} | ${outcome.status.replaceAll("_", " ")} | ${money(outcome.realizedPnlDollars ?? 0)} | ${outcome.read} |`),
       ""
     );
   }
@@ -83,4 +101,8 @@ function csvCell(value: unknown) {
 function money(value: number) {
   const sign = value < 0 ? "-$" : "$";
   return `${sign}${Math.abs(value).toFixed(2)}`;
+}
+
+function signed(value: number) {
+  return `${value >= 0 ? "+" : ""}${value.toFixed(2)}`;
 }

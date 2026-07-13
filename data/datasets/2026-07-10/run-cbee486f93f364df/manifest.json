@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "run-cbee486f93f364df",
+  "reportDate": "2026-07-10",
+  "reportId": "rfdelta-options-2026-07-10-0ce701ebe7e2",
+  "dataAsOfUtc": "2026-07-11T10:38:06.677Z",
+  "sourceFingerprint": "3651e804e112f85ea6f306f656272e04eead212ea0fc51db2c8fcf539a80193d",
+  "featureVersion": "rfdelta-market-features-v1",
+  "policyVersion": "rfdelta-online-policy-v1",
+  "trainingSampleCount": 0,
+  "universeCount": 18,
+  "includedSymbolCount": 18,
+  "candidateCount": 10,
+  "selectedIdeaCount": 3,
+  "featureDatasetHash": "11fa1feea78b21260bc51a66785bc30ef3f51feb7fb4ad7aeb65bda4d0c44160",
+  "candidateDatasetHash": "03769741fb5c9d2f6ef0b6f0cc7792afbc0068911faca1cece296803073a5a0f",
+  "selectionPolicyHash": "b01403bf465454bb8103d9d267516296a4f87ac86018dde54cff43e1b9c0ad13"
+}

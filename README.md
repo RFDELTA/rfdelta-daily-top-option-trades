@@ -9,13 +9,15 @@ The repository never submits orders. It does not contain account identifiers, ba
 1. GitHub Actions starts at 14:45 UTC on weekdays, after the U.S. regular session is open in both standard and daylight time.
 2. The workflow resolves the current date in `America/New_York`.
 3. The authenticated RFDELTA market-data adapter discovers the deterministic source universe, fetches bulk underlying quotes and retrieves normalized multi-expiration option chains.
-4. Same-session freshness, bid/ask, open interest, volume/depth and relative spread-width gates run before modeling.
-5. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
-6. Each candidate runs through deterministic jump-stress Monte Carlo and common scoring weights.
-7. The basket optimizer enforces one idea per symbol, correlation-bucket limits, one-lot and total-risk limits, and minimum debit/credit representation.
-8. The generator evaluates expired ideas from the prior edition and integrates resolved outcomes into strategy-style posteriors.
-9. JSON, Markdown, CSV, two SVG charts and a rolling 90-session price-history file are committed to Git.
-10. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
+4. Same-session freshness runs before any model input is retained.
+5. The generator computes versioned price, volatility, volume, options-skew, implied-volatility, expected-move and liquidity features for every included symbol.
+6. Prior report baskets are reconciled against retained expiration closes. Fully completed baskets receive final P/L and post-trade commentary on their original report.
+7. A deterministic ridge-regularized policy is trained from fully resolved feature-rich trades. Learned score adjustments remain zero until the minimum sample threshold is reached and are always capped.
+8. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
+9. Each candidate runs through deterministic jump-stress Monte Carlo, common scoring weights and the versioned outcome-trained policy.
+10. The basket optimizer enforces one idea per symbol, correlation-bucket limits, one-lot and total-risk limits, and minimum debit/credit representation.
+11. Reports, charts, retained bars, market features, all ranked candidates, the selection policy and a hash-verified run manifest are committed to Git.
+12. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
 
 If current-session data are not available, generation exits with code `75`. The workflow records a clean market-session skip and leaves the previous valid report published. It never copies yesterday's quotes into today's date.
 
@@ -116,9 +118,17 @@ data/reports/YYYY-MM-DD/ideas.csv
 public/charts/YYYY-MM-DD/ranked_scores.svg
 public/charts/YYYY-MM-DD/risk_reward.svg
 data/market-history/daily-bars.json
+data/datasets/index.json
+data/datasets/YYYY-MM-DD/run-HASH/manifest.json
+data/datasets/YYYY-MM-DD/run-HASH/market-features.json
+data/datasets/YYYY-MM-DD/run-HASH/candidates.json
+data/datasets/YYYY-MM-DD/run-HASH/selection-policy.json
+data/training/selection-policy.json
 ```
 
-`data/reports/index.json` identifies the latest valid report and retains archive metadata. The archive is committed data, so a Vercel build never depends on writing to an ephemeral server filesystem.
+`data/reports/index.json` identifies the latest valid report. `data/datasets/index.json` retains every distinct valid source run. Identical forced reruns deduplicate to the same content-derived run ID; a new source timestamp, feature set or policy creates a new immutable run directory.
+
+The repository stores derived features and ranked candidate records, not full raw option-chain payloads. The current selection policy is a versioned data artifact rather than self-modifying source code, so every learned adjustment can be inspected, reproduced and rolled back.
 
 ## GitHub Configuration
 
@@ -181,7 +191,10 @@ Separate blocks remove nested page scrollbars and allow GoDaddy or Google ad sec
 - Public output contains derived two-leg quotes and model analytics, not access credentials.
 - Production generation requires current-session quotes for at least half the configured universe.
 - Retained daily bars are derived from public market fields, capped at 90 sessions per symbol and committed with each valid edition.
-- Every report carries a SHA-256 selection hash over the timestamped snapshot, discovered candidates and model settings.
+- Every distinct valid run retains its derived market features, complete ranked candidate set, selection policy and a manifest containing SHA-256 hashes for all three datasets.
+- Outcome-trained feature weights remain inactive until at least eight fully resolved feature-rich trades are available, use ridge regularization and can change a score by no more than eight points.
+- Completed report baskets reconcile exact vertical settlement, final one-lot P/L and post-trade commentary back into the originating report.
+- Every report carries a SHA-256 selection hash over the timestamped snapshot, features, discovered candidates, settings and policy.
 - Candidate and final-rank tie breaks are stable and lexical.
 
 Detailed scoring and construction rules are in [docs/methodology.md](docs/methodology.md). Production wiring is in [docs/production-checklist.md](docs/production-checklist.md).
