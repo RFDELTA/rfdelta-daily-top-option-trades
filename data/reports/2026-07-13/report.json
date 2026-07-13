@@ -524,10 +524,16 @@
           },
           {
             "date": "2026-07-13",
-            "close": 59.055
+            "close": 59.5
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-13",
+          "underlyingClose": 59.5
+        }
+      ]
     },
     {
       "rank": 2,
@@ -996,10 +1002,16 @@
           },
           {
             "date": "2026-07-13",
-            "close": 44.25
+            "close": 43.76
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-13",
+          "underlyingClose": 43.76
+        }
+      ]
     },
     {
       "rank": 3,
@@ -1470,10 +1482,16 @@
           },
           {
             "date": "2026-07-13",
-            "close": 136.66
+            "close": 131.54
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-13",
+          "underlyingClose": 131.54
+        }
+      ]
     },
     {
       "rank": 4,
@@ -1942,10 +1960,16 @@
           },
           {
             "date": "2026-07-13",
-            "close": 717.77
+            "close": 711.74
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-13",
+          "underlyingClose": 711.74
+        }
+      ]
     },
     {
       "rank": 5,
@@ -2414,10 +2438,16 @@
           },
           {
             "date": "2026-07-13",
-            "close": 294.51
+            "close": 293.48
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-07-13",
+          "underlyingClose": 293.48
+        }
+      ]
     }
   ],
   "accountability": {

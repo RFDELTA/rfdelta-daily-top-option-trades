@@ -32,7 +32,7 @@ T supplies the counterweight. Its call credit structure scores 46.72 and carries
 
 NFLX enters with -5.5% five-session momentum and -10.5% over twenty sessions. Realized volatility is 41.9%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [NFLX entry and open-position history](/charts/2026-07-10/underlying/01-nflx.svg) at $73.40; latest official close $73.37 on 2026-07-10.
+**Underlying chart:** [NFLX entry and open-position history](/charts/2026-07-10/underlying/01-nflx.svg) at $73.40; latest official close $73.83 on 2026-07-13.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 41.2; MACD spread 0.72%; ATR(14) 3.67%; realized volatility 41.9%; ATM implied volatility 57.9%; expected move 9.0%. Outcome-trained score adjustment: +0.00.
 
@@ -48,7 +48,7 @@ NFLX enters with -5.5% five-session momentum and -10.5% over twenty sessions. Re
 
 T enters with +2.7% five-session momentum and -9.0% over twenty sessions. Realized volatility is 33.7%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [T entry and open-position history](/charts/2026-07-10/underlying/02-t.svg) at $21.13; latest official close $21.13 on 2026-07-10.
+**Underlying chart:** [T entry and open-position history](/charts/2026-07-10/underlying/02-t.svg) at $21.13; latest official close $21.55 on 2026-07-13.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 40.5; MACD spread 0.10%; ATR(14) 3.42%; realized volatility 33.7%; ATM implied volatility 38.3%; expected move 6.0%. Outcome-trained score adjustment: +0.00.
 
@@ -64,7 +64,7 @@ T enters with +2.7% five-session momentum and -9.0% over twenty sessions. Realiz
 
 WFC enters with +1.9% five-session momentum and +6.3% over twenty sessions. Realized volatility is 24.7%, placing the underlying in a trend regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [WFC entry and open-position history](/charts/2026-07-10/underlying/03-wfc.svg) at $87.11; latest official close $87.16 on 2026-07-10.
+**Underlying chart:** [WFC entry and open-position history](/charts/2026-07-10/underlying/03-wfc.svg) at $87.11; latest official close $87.67 on 2026-07-13.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 67.9; MACD spread 0.13%; ATR(14) 2.17%; realized volatility 24.7%; ATM implied volatility 36.5%; expected move 5.7%. Outcome-trained score adjustment: +0.00.
 
@@ -80,7 +80,7 @@ WFC enters with +1.9% five-session momentum and +6.3% over twenty sessions. Real
 
 TLT enters with -1.1% five-session momentum and -0.4% over twenty sessions. Realized volatility is 10.6%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-10/underlying/04-tlt.svg) at $84.55; latest official close $84.47 on 2026-07-10.
+**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-10/underlying/04-tlt.svg) at $84.55; latest official close $83.97 on 2026-07-13.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 29.5; MACD spread -0.33%; ATR(14) 0.71%; realized volatility 10.6%; ATM implied volatility 8.1%; expected move 1.3%. Outcome-trained score adjustment: +0.00.
 
@@ -96,7 +96,7 @@ TLT enters with -1.1% five-session momentum and -0.4% over twenty sessions. Real
 
 PLTR enters with -2.1% five-session momentum and -2.8% over twenty sessions. Realized volatility is 58.1%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [PLTR entry and open-position history](/charts/2026-07-10/underlying/05-pltr.svg) at $126.55; latest official close $126.79 on 2026-07-10.
+**Underlying chart:** [PLTR entry and open-position history](/charts/2026-07-10/underlying/05-pltr.svg) at $126.55; latest official close $130.04 on 2026-07-13.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 48.3; MACD spread 1.29%; ATR(14) 5.58%; realized volatility 58.1%; ATM implied volatility 49.1%; expected move 7.7%. Outcome-trained score adjustment: +0.00.
 
@@ -106,7 +106,9 @@ PLTR enters with -2.1% five-session momentum and -2.8% over twenty sessions. Rea
 
 **Payoff:** Maximum one-lot profit is $313.00, or 1.67 times maximum risk. The simulation assigns 30.3% probability to finishing near maximum profit and uses 50.4% implied volatility across deterministic jump-stress paths.
 
-## Accountability
+## Prior Basket Accountability
+
+### 2026-06-19
 
 The Jun 19, 2026 basket has 1 win, 0 near-breakeven results and 4 losses across 5 resolved spreads, for modeled one-lot expiration P/L of -$147.00. All listed positions are resolved.
 
@@ -118,24 +120,16 @@ The Jun 19, 2026 basket has 1 win, 0 near-breakeven results and 4 losses across 
 | QUBT 7/3 10.5/10 Put Debit Spread | win | $24.00 | QUBT closed at $9.05 for expiration settlement, producing $24.00 on the one-lot spread. |
 | SOFI 7/3 17.5/16.5 Put Debit Spread | loss | -$37.00 | SOFI closed at $18.24 for expiration settlement, producing -$37.00 on the one-lot spread. |
 
-## Method
+## Daily Market Read
 
-- A broad liquid-symbol quote universe is intersected with the source's fingerprinted universe. Core market anchors, the largest percentage movers, the most active names and a date-seeded rotation sleeve determine which option chains are evaluated.
-- The nearest expiration inside the configured 7-to-35-day window is chosen by distance from a 14-day target.
-- Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.
-- Both legs must clear bid, ask, open-interest, volume or depth, and relative quote-width gates.
-- Momentum direction determines whether bullish call-debit and put-credit structures or bearish put-debit and call-credit structures enter the ranking set.
-- Resolved trades train bounded feature adjustments only after the minimum sample threshold; every policy and input dataset is versioned with the report.
-- Modeled probability of profit: 26% of the base score.
-- Conservative expected-value efficiency: 22%.
-- Two-leg liquidity quality: 18%.
-- Maximum reward relative to maximum risk: 14%.
-- Black-Scholes spread edge and directional signal strength: 10% each.
-- Resolved prior outcomes adjust the strategy-style posterior without changing the underlying quote record.
-- The advanced feature layer contributes at most 8 score points and currently contains 5 fully resolved training examples.
+The option board is not rewarding indiscriminate beta. Across the published names, the mean five-session move is -0.8%, while 0 setups carry realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.
 
-Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.
+The screen quotes 105 liquid underlyings and requests 40 option chains through its core, mover, volume and rotation sleeves. It accepts only same-session chains with two usable legs, then forces every idea through the same conservative mark: pay the ask for the long option and receive the bid for the short. The resulting ranking is intentionally harsher than a midpoint screen, because a trade that only works at a theoretical fill is not a durable public idea.
 
-RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 11, 2026, 6:38 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.
+Direction comes from five- and twenty-session price structure rather than a headline guess. That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade.
+
+NFLX wins the top slot because liquidity, directional alignment and bounded payoff reinforce one another. Its credit entry of 0.30 creates 0.43 dollars of maximum reward for each dollar of maximum risk, with breakeven at $76.30.
+
+T supplies the counterweight. Its call credit structure scores 46.72 and carries $35.00 of one-lot maximum loss. The basket is therefore ranked as a portfolio of explicit risks, not as five unrelated ticker calls.
 
 RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled.
