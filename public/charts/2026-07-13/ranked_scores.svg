@@ -1,42 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560" role="img" aria-label="RFDELTA ranked option trade scores">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="672" viewBox="0 0 1200 672" role="img" aria-label="RFDELTA ranked option trade scores">
   <defs>
     <linearGradient id="background" x1="0" x2="1"><stop stop-color="#061b19"/><stop offset="1" stop-color="#0a2d28"/></linearGradient>
     <linearGradient id="scoreBar" x1="0" x2="1"><stop stop-color="#18e59c"/><stop offset="0.7" stop-color="#5bd7f4"/><stop offset="1" stop-color="#f4c95d"/></linearGradient>
     <style>.title{fill:#f4fff9;font:700 18px Arial,sans-serif}.rank,.score{fill:#f4fff9;font:800 18px Arial,sans-serif}.meta{fill:#9fc4bb;font:13px Arial,sans-serif}.head{fill:#f4fff9;font:800 28px Georgia,serif}.sub{fill:#9fc4bb;font:14px Arial,sans-serif}</style>
   </defs>
-  <rect width="1200" height="560" fill="url(#background)"/>
+  <rect width="1200" height="672" fill="url(#background)"/>
   <text x="34" y="42" class="head">RFDELTA Top Option Trades</text>
   <text x="34" y="69" class="sub">Deterministic ranking for 2026-07-13. Labels and scores are separated from payoff bars for legibility.</text>
   <g>
       <text x="34" y="105" class="rank">1</text>
-      <text x="78" y="105" class="title"><tspan x="78" dy="0">IWM 7/24 295/290 Put Debit Spread</tspan></text>
-      <text x="1166" y="105" class="score" text-anchor="end">42.72</text>
-      <text x="78" y="144" class="meta">small-cap breadth | debit | 44% modeled probability</text>
+      <text x="78" y="105" class="title"><tspan x="78" dy="0">NFLX 7/24 79/80 Call Credit Spread</tspan></text>
+      <text x="1166" y="105" class="score" text-anchor="end">52.23</text>
+      <text x="78" y="144" class="meta">technology and AI leadership | credit | 71% modeled probability</text>
       <rect x="78" y="161" width="1070" height="16" rx="3" fill="#143b36"/>
-      <rect x="78" y="161" width="457.1" height="16" rx="3" fill="url(#scoreBar)"/>
+      <rect x="78" y="161" width="558.9" height="16" rx="3" fill="url(#scoreBar)"/>
     </g>
 <g>
       <text x="34" y="217" class="rank">2</text>
-      <text x="78" y="217" class="title"><tspan x="78" dy="0">CRM 7/24 165/162.5 Put Credit Spread</tspan></text>
-      <text x="1166" y="217" class="score" text-anchor="end">41.82</text>
-      <text x="78" y="256" class="meta">technology and AI leadership | credit | 67% modeled probability</text>
+      <text x="78" y="217" class="title"><tspan x="78" dy="0">IWM 7/24 295/288 Put Debit Spread</tspan></text>
+      <text x="1166" y="217" class="score" text-anchor="end">42.79</text>
+      <text x="78" y="256" class="meta">small-cap breadth | debit | 43% modeled probability</text>
       <rect x="78" y="273" width="1070" height="16" rx="3" fill="#143b36"/>
-      <rect x="78" y="273" width="447.5" height="16" rx="3" fill="url(#scoreBar)"/>
+      <rect x="78" y="273" width="457.9" height="16" rx="3" fill="url(#scoreBar)"/>
     </g>
 <g>
       <text x="34" y="329" class="rank">3</text>
-      <text x="78" y="329" class="title"><tspan x="78" dy="0">WFC 7/24 85/83 Put Credit Spread</tspan></text>
-      <text x="1166" y="329" class="score" text-anchor="end">38.91</text>
-      <text x="78" y="368" class="meta">financial and digital-market structure | credit | 62% modeled probability</text>
+      <text x="78" y="329" class="title"><tspan x="78" dy="0">BAC 7/24 59/58 Put Credit Spread</tspan></text>
+      <text x="1166" y="329" class="score" text-anchor="end">41.12</text>
+      <text x="78" y="368" class="meta">financial and digital-market structure | credit | 55% modeled probability</text>
       <rect x="78" y="385" width="1070" height="16" rx="3" fill="#143b36"/>
-      <rect x="78" y="385" width="416.3" height="16" rx="3" fill="url(#scoreBar)"/>
+      <rect x="78" y="385" width="440.0" height="16" rx="3" fill="url(#scoreBar)"/>
     </g>
 <g>
       <text x="34" y="441" class="rank">4</text>
-      <text x="78" y="441" class="title"><tspan x="78" dy="0">PLTR 7/24 127/122 Put Debit Spread</tspan></text>
-      <text x="1166" y="441" class="score" text-anchor="end">35.04</text>
-      <text x="78" y="480" class="meta">defense software and AI | debit | 40% modeled probability</text>
+      <text x="78" y="441" class="title"><tspan x="78" dy="0">CMCSA 7/24 24/23 Put Credit Spread</tspan></text>
+      <text x="1166" y="441" class="score" text-anchor="end">37.83</text>
+      <text x="78" y="480" class="meta">consumer and communications demand | credit | 58% modeled probability</text>
       <rect x="78" y="497" width="1070" height="16" rx="3" fill="#143b36"/>
-      <rect x="78" y="497" width="374.9" height="16" rx="3" fill="url(#scoreBar)"/>
+      <rect x="78" y="497" width="404.8" height="16" rx="3" fill="url(#scoreBar)"/>
+    </g>
+<g>
+      <text x="34" y="553" class="rank">5</text>
+      <text x="78" y="553" class="title"><tspan x="78" dy="0">ON 7/24 96/99 Call Credit Spread</tspan></text>
+      <text x="1166" y="553" class="score" text-anchor="end">35.13</text>
+      <text x="78" y="592" class="meta">semiconductors and compute infrastructure | credit | 66% modeled probability</text>
+      <rect x="78" y="609" width="1070" height="16" rx="3" fill="#143b36"/>
+      <rect x="78" y="609" width="375.9" height="16" rx="3" fill="url(#scoreBar)"/>
     </g>
   </svg>
