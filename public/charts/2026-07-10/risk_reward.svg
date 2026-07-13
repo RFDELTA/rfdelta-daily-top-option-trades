@@ -1,33 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="RFDELTA option trade risk and reward comparison">
-  <rect width="1200" height="420" fill="#071f1c"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="316" viewBox="0 0 1200 316" role="img" aria-label="RFDELTA option trade risk and reward comparison">
+  <rect width="1200" height="316" fill="#071f1c"/>
   <style>.head{fill:#f4fff9;font:800 28px Georgia,serif}.sub{fill:#9fc4bb;font:14px Arial,sans-serif}.label,.ratio{fill:#f4fff9;font:700 16px Arial,sans-serif}.lossText{fill:#f2b17b;font:800 12px Arial,sans-serif}.profitText{fill:#7ce3f4;font:800 12px Arial,sans-serif}</style>
   <text x="34" y="42" class="head">Defined Risk Versus Maximum Payoff</text>
   <text x="34" y="68" class="sub">One contract per spread, excluding commissions and assignment costs.</text>
   <g>
-      <text x="34" y="100" class="label">1. TLT Put Credit</text>
-      <text x="1166" y="100" class="ratio" text-anchor="end">1.94x reward/risk</text>
-      <text x="34" y="131" class="lossText">MAX LOSS $17</text>
-      <rect x="180" y="118" width="19.0" height="18" rx="3" fill="#f29e5b"/>
-      <text x="620" y="131" class="profitText">MAX PROFIT $33</text>
-      <rect x="800" y="118" width="36.9" height="18" rx="3" fill="#58d8ee"/>
+      <text x="34" y="100" class="label">1. TLT Put Debit</text>
+      <text x="1166" y="100" class="ratio" text-anchor="end">0.72x reward/risk</text>
+      <text x="34" y="131" class="lossText">MAX LOSS $29</text>
+      <rect x="180" y="118" width="32.4" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="131" class="profitText">MAX PROFIT $21</text>
+      <rect x="800" y="118" width="23.5" height="18" rx="3" fill="#58d8ee"/>
       <line x1="34" x2="1166" y1="162" y2="162" stroke="#1e4a43"/>
     </g>
 <g>
-      <text x="34" y="204" class="label">2. IWM Put Debit</text>
+      <text x="34" y="204" class="label">2. PLTR Put Debit</text>
       <text x="1166" y="204" class="ratio" text-anchor="end">1.67x reward/risk</text>
-      <text x="34" y="235" class="lossText">MAX LOSS $131</text>
-      <rect x="180" y="222" width="146.5" height="18" rx="3" fill="#f29e5b"/>
-      <text x="620" y="235" class="profitText">MAX PROFIT $219</text>
-      <rect x="800" y="222" width="244.9" height="18" rx="3" fill="#58d8ee"/>
+      <text x="34" y="235" class="lossText">MAX LOSS $187</text>
+      <rect x="180" y="222" width="209.1" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="235" class="profitText">MAX PROFIT $313</text>
+      <rect x="800" y="222" width="350.0" height="18" rx="3" fill="#58d8ee"/>
       <line x1="34" x2="1166" y1="266" y2="266" stroke="#1e4a43"/>
-    </g>
-<g>
-      <text x="34" y="308" class="label">3. PLTR Put Debit</text>
-      <text x="1166" y="308" class="ratio" text-anchor="end">1.67x reward/risk</text>
-      <text x="34" y="339" class="lossText">MAX LOSS $187</text>
-      <rect x="180" y="326" width="209.1" height="18" rx="3" fill="#f29e5b"/>
-      <text x="620" y="339" class="profitText">MAX PROFIT $313</text>
-      <rect x="800" y="326" width="350.0" height="18" rx="3" fill="#58d8ee"/>
-      <line x1="34" x2="1166" y1="370" y2="370" stroke="#1e4a43"/>
     </g>
   </svg>

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0",
+  "runId": "run-6ad5c751f18be70d",
+  "reportDate": "2026-07-10",
+  "reportId": "rfdelta-options-2026-07-10-991f5d65f27c",
+  "dataAsOfUtc": "2026-07-11T10:38:06.677Z",
+  "sourceFingerprint": "3651e804e112f85ea6f306f656272e04eead212ea0fc51db2c8fcf539a80193d",
+  "historicalProvider": "Yahoo Finance",
+  "historicalCoverageRatio": 1,
+  "historicalBarCount": 4680,
+  "featureVersion": "rfdelta-market-features-v1",
+  "policyVersion": "rfdelta-online-policy-v1",
+  "trainingSampleCount": 0,
+  "universeCount": 18,
+  "includedSymbolCount": 18,
+  "candidateCount": 8,
+  "selectedIdeaCount": 2,
+  "featureDatasetHash": "0c0cb6ef99d7e680bf5d31e8033cbab0951c2fa12429cfbc9d964253630e376a",
+  "candidateDatasetHash": "9ca61724ada9a70a98364a685358c78feda95a7687a981e41b5a1dd84ec8cce3",
+  "selectionPolicyHash": "b01403bf465454bb8103d9d267516296a4f87ac86018dde54cff43e1b9c0ad13"
+}

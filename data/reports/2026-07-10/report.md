@@ -1,18 +1,18 @@
 # RFDELTA Top Option Trades - 2026-07-10
 
-**3 defined-risk option setups lead the Jul 10, 2026 board**
+**2 defined-risk option setups lead the Jul 10, 2026 board**
 
-TLT 7/24 85.5/85 Put Credit Spread ranks first with a 44.82 score, 42.7% modeled probability of profit and $17.00 maximum one-lot risk. The basket balances 1 bullish and 2 bearish expressions.
+TLT 7/24 85/84.5 Put Debit Spread ranks first with a 37.88 score, 51.1% modeled probability of profit and $29.00 maximum one-lot risk. The basket balances 0 bullish and 2 bearish expressions.
 
-The option board is not rewarding indiscriminate beta. Across the published names, the mean move across the available 2-session retained window is -0.8%, while 0 setups carry realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.
+The option board is not rewarding indiscriminate beta. Across the published names, the mean five-session move is -1.6%, while 0 setups carry realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.
 
 The screen begins with 18 liquid underlyings and accepts only same-session chains with two usable legs. It then forces every idea through the same conservative mark: pay the ask for the long option and receive the bid for the short. The resulting ranking is intentionally harsher than a midpoint screen, because a trade that only works at a theoretical fill is not a durable public idea.
 
-Direction uses the available 2-session retained price window with a reduced conviction weight while the full twenty-session record builds. That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade.
+Direction comes from five- and twenty-session price structure rather than a headline guess. That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade.
 
-TLT wins the top slot because liquidity, directional alignment and bounded payoff reinforce one another. Its credit entry of 0.33 creates 1.94 dollars of maximum reward for each dollar of maximum risk, with breakeven at $85.17.
+TLT wins the top slot because liquidity, directional alignment and bounded payoff reinforce one another. Its debit entry of 0.29 creates 0.72 dollars of maximum reward for each dollar of maximum risk, with breakeven at $84.71.
 
-IWM supplies the counterweight. Its put debit structure scores 38.43 and carries $131.00 of one-lot maximum loss. The basket is therefore ranked as a portfolio of explicit risks, not as five unrelated ticker calls.
+PLTR supplies the counterweight. Its put debit structure scores 36.57 and carries $187.00 of one-lot maximum loss. The basket is therefore ranked as a portfolio of explicit risks, not as five unrelated ticker calls.
 
 **Risk read:** The basket's maximum losses are additive if every thesis fails. Quote slippage, early assignment and volatility repricing can also change the practical outcome before expiration, so the published entry is a ceiling for debits and a floor for credits, not an assurance of execution.
 
@@ -20,45 +20,30 @@ IWM supplies the counterweight. Its put debit structure scores 38.43 and carries
 
 | Rank | Trade | Entry | Prob. Profit | EV | Max Loss | Max Profit | Score |
 |---:|---|---:|---:|---:|---:|---:|---:|
-| 1 | TLT 7/24 85.5/85 Put Credit Spread | Credit 0.33 | 42.7% | $3.80 | $17.00 | $33.00 | 44.82 |
-| 2 | IWM 7/24 296/292.5 Put Debit Spread | Debit 1.31 | 43.7% | $15.96 | $131.00 | $219.00 | 38.43 |
-| 3 | PLTR 7/24 125/120 Put Debit Spread | Debit 1.87 | 40.1% | $3.11 | $187.00 | $313.00 | 36.04 |
+| 1 | TLT 7/24 85/84.5 Put Debit Spread | Debit 0.29 | 51.1% | -$3.16 | $29.00 | $21.00 | 37.88 |
+| 2 | PLTR 7/24 125/120 Put Debit Spread | Debit 1.87 | 40.1% | $3.11 | $187.00 | $313.00 | 36.57 |
 
-### 1. TLT 7/24 85.5/85 Put Credit Spread
+### 1. TLT 7/24 85/84.5 Put Debit Spread
 
-**Trigger-dependent setup.** The setup scores 44.82 on the common scale, supported by 42.7% modeled probability of profit, 0.85 liquidity quality and positive modeled expectancy of $3.80.
+**Trigger-dependent setup.** The setup scores 37.88 on the common scale, supported by 51.1% modeled probability of profit, 0.88 liquidity quality and a conservative modeled expectancy of -$3.16, which keeps sizing discipline central.
 
-TLT enters with +0.1% across the available 2-session retained window, with a reduced conviction weight until the full history builds. Realized volatility is 25.0%, placing the underlying in a risk on regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
+TLT enters with -1.1% five-session momentum and -0.4% over twenty sessions. Realized volatility is 10.6%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Advanced metrics:** 2 retained sessions; RSI proxy 55.0; MACD spread 0.00%; ATR proxy 0.20%; volatility proxy 22.6%; ATM implied volatility 8.1%; expected move 1.3%. Outcome-trained score adjustment: +0.00.
+**Advanced metrics:** 260 retained sessions; RSI(14) 29.5; MACD spread -0.33%; ATR(14) 0.71%; realized volatility 10.6%; ATM implied volatility 8.1%; expected move 1.3%. Outcome-trained score adjustment: +0.00.
 
-**Execution:** Buy the 85 put and sell the 85.5 put, both expiring Jul 24, 2026. The credit mark of 0.33 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.33 of credit without rerunning the payoff.
+**Execution:** Buy the 85 put and sell the 84.5 put, both expiring Jul 24, 2026. The debit mark of 0.29 assumes the long ask and short bid, not a midpoint. Do not pay more than 0.29 for the spread without rerunning the payoff.
 
-**Risk:** Maximum one-lot loss is $17.00. Breakeven is $85.17 and requires a 0.7% rise from the source mark. Primary watch: short strike at/above spot; low credit probability. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
+**Risk:** Maximum one-lot loss is $29.00. Breakeven is $84.71 and sits 0.2% above the source mark, providing an upside cushion. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
-**Payoff:** Maximum one-lot profit is $33.00, or 1.94 times maximum risk. The simulation assigns 38.4% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
+**Payoff:** Maximum one-lot profit is $21.00, or 0.72 times maximum risk. The simulation assigns 48.3% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
 
-### 2. IWM 7/24 296/292.5 Put Debit Spread
+### 2. PLTR 7/24 125/120 Put Debit Spread
 
-**Trigger-dependent setup.** The setup scores 38.43 on the common scale, supported by 43.7% modeled probability of profit, 0.82 liquidity quality and positive modeled expectancy of $15.96.
+**Trigger-dependent setup.** The setup scores 36.57 on the common scale, supported by 40.1% modeled probability of profit, 0.86 liquidity quality and positive modeled expectancy of $3.11.
 
-IWM enters with -0.4% across the available 2-session retained window, with a reduced conviction weight until the full history builds. Realized volatility is 25.0%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
+PLTR enters with -2.1% five-session momentum and -2.8% over twenty sessions. Realized volatility is 58.1%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Advanced metrics:** 2 retained sessions; RSI proxy 45.0; MACD spread -0.03%; ATR proxy 0.78%; volatility proxy 22.6%; ATM implied volatility 16.3%; expected move 2.6%. Outcome-trained score adjustment: +0.00.
-
-**Execution:** Buy the 296 put and sell the 292.5 put, both expiring Jul 24, 2026. The debit mark of 1.31 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.31 for the spread without rerunning the payoff.
-
-**Risk:** Maximum one-lot loss is $131.00. Breakeven is $294.69 and requires a 0.4% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
-
-**Payoff:** Maximum one-lot profit is $219.00, or 1.67 times maximum risk. The simulation assigns 35.4% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
-
-### 3. PLTR 7/24 125/120 Put Debit Spread
-
-**Trigger-dependent setup.** The setup scores 36.04 on the common scale, supported by 40.1% modeled probability of profit, 0.86 liquidity quality and positive modeled expectancy of $3.11.
-
-PLTR enters with -1.9% across the available 2-session retained window, with a reduced conviction weight until the full history builds. Realized volatility is 30.6%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
-
-**Advanced metrics:** 2 retained sessions; RSI proxy 45.0; MACD spread -0.13%; ATR proxy 2.57%; volatility proxy 27.7%; ATM implied volatility 49.1%; expected move 7.7%. Outcome-trained score adjustment: +0.00.
+**Advanced metrics:** 260 retained sessions; RSI(14) 48.3; MACD spread 1.29%; ATR(14) 5.58%; realized volatility 58.1%; ATM implied volatility 49.1%; expected move 7.7%. Outcome-trained score adjustment: +0.00.
 
 **Execution:** Buy the 125 put and sell the 120 put, both expiring Jul 24, 2026. The debit mark of 1.87 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.87 for the spread without rerunning the payoff.
 
@@ -96,6 +81,6 @@ The Jun 19, 2026 basket has no scored expiration result yet. 5 expired positions
 
 Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.
 
-RFDELTA normalized U.S. equity and options market data. Data timestamp: Jul 11, 2026, 6:38 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.
+RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 11, 2026, 6:38 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.
 
 RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled.
