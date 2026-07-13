@@ -44,7 +44,7 @@
 
 - [ ] Workflow date is New York market date.
 - [ ] Report data timestamp belongs to the same market session.
-- [ ] Five or fewer ideas meet all hard gates.
+- [ ] Five ideas are published when five structurally valid candidates fit all hard gates and the basket cap.
 - [ ] When five qualified ideas fit inside the $800 basket cap, all five are published.
 - [ ] Rank chart labels and scores do not overlap bars.
 - [ ] Prior-basket outcomes use expiration settlement and no open trade is scored.

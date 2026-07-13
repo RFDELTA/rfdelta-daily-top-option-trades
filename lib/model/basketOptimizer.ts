@@ -38,13 +38,14 @@ export function buildPublishBasket(
     add(idea);
   }
 
-  // If strict eligible list cannot fill the publication target, allow positive-EV rejects as conditional.
+  // Fill the ranked surface from structurally valid candidates without relaxing hard risk flags.
   if (selected.length < settings.publishIdeaCount) {
-    const positiveRejects = rankedIdeas
-      .filter((x) => x.expectedValueDollars > 0 && !selected.some((s) => s.id === x.id))
-      .sort((a, b) => b.expectedValueDollars - a.expectedValueDollars || a.id.localeCompare(b.id));
+    const conditionalPool = rankedIdeas
+      .filter((idea) => !selected.some((selectedIdea) => selectedIdea.id === idea.id))
+      .filter((idea) => !idea.riskFlags.some((flag) => CONDITIONAL_DISQUALIFIERS.has(flag)))
+      .sort(compareIdeas);
 
-    for (const idea of positiveRejects) {
+    for (const idea of conditionalPool) {
       if (selected.length >= settings.publishIdeaCount) break;
       add({ ...idea, bucket: "conditional" });
     }
@@ -55,6 +56,15 @@ export function buildPublishBasket(
     .sort(compareIdeas)
     .map((idea, idx) => ({ ...idea, rank: idx + 1 }));
 }
+
+const CONDITIONAL_DISQUALIFIERS = new Set([
+  "max single-trade risk exceeded",
+  "credit below width threshold",
+  "short strike at/above spot",
+  "call short strike at/below spot",
+  "low debit probability",
+  "low credit probability"
+]);
 
 function compareIdeas(a: TradeIdeaScore, b: TradeIdeaScore) {
   return b.score - a.score || b.expectedValueDollars - a.expectedValueDollars || a.id.localeCompare(b.id);

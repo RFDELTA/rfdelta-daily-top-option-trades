@@ -88,7 +88,7 @@ The publication basket:
 - targets at least one credit and two debit structures when qualifying candidates exist
 - ranks selected ideas by score, then expected value, then stable candidate ID
 
-The screen may publish fewer than five ideas. It does not fill a date with a candidate that breaches a hard risk gate.
+The surface targets five ranked ideas. When fewer than five candidates clear the primary score buckets, the remaining slots use the highest-ranked structures that already passed freshness, liquidity, two-leg construction and defined-risk gates. Those additions are labeled conditional and cannot carry a low modeled probability or a hard strike, credit-width or maximum-risk flag. If five candidates cannot satisfy those rules and the basket cap, the edition remains shorter rather than weakening a hard gate.
 
 ## Outcome Accountability
 

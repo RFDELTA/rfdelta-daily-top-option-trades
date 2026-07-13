@@ -27,6 +27,10 @@ async function main() {
   if (expected && index.latest !== expected) throw new Error(`Latest report is ${index.latest}; expected ${expected}.`);
   const report = await getReport(index.latest);
   if (report.topTrades.length === 0) throw new Error(`Report ${index.latest} contains no published ideas.`);
+  const expectedIdeaCount = Number(process.env.PUBLISH_IDEA_COUNT ?? 5);
+  if (report.runMetadata.edition === "Daily market edition" && report.topTrades.length !== expectedIdeaCount) {
+    throw new Error(`Daily report ${index.latest} contains ${report.topTrades.length} ideas; expected ${expectedIdeaCount}.`);
+  }
   if (report.analytics.publishedIdeaCount !== report.topTrades.length) throw new Error("Published idea count does not match the report body.");
   if (!report.runMetadata.selectionHash.match(/^[a-f0-9]{64}$/u)) throw new Error("Selection hash is missing or malformed.");
   const reportDirectory = path.join(process.cwd(), "data", "reports", index.latest);
