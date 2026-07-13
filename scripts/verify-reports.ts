@@ -21,7 +21,8 @@ async function main() {
   const index = await getReportIndex();
   if (!index.latest) throw new Error("No report is listed as latest.");
   const dateIndex = process.argv.indexOf("--date");
-  const expected = (dateIndex >= 0 ? process.argv[dateIndex + 1] : undefined) || process.env.EXPECTED_REPORT_DATE;
+  const positionalDate = process.argv.find((value) => /^\d{4}-\d{2}-\d{2}$/u.test(value));
+  const expected = (dateIndex >= 0 ? process.argv[dateIndex + 1] : undefined) || positionalDate || process.env.EXPECTED_REPORT_DATE;
   if (expected && index.latest !== expected) throw new Error(`Latest report is ${index.latest}; expected ${expected}.`);
   const report = await getReport(index.latest);
   if (report.topTrades.length === 0) throw new Error(`Report ${index.latest} contains no published ideas.`);

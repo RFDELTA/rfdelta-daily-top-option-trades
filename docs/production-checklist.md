@@ -2,10 +2,10 @@
 
 ## Market Data
 
-- [ ] Confirm public derived-publication rights with the provider.
-- [ ] Create a Tradier production access token.
-- [ ] Add `TRADIER_ACCESS_TOKEN` as a GitHub Actions secret.
-- [ ] Set the Actions variable `MARKET_DATA_PUBLICATION_LICENSE_ACKNOWLEDGED=true` only after rights are confirmed.
+- [ ] Confirm exchange, vendor and derived-publication rights for the public product.
+- [ ] Add `TT_BRIDGE_API_KEY` as a GitHub Actions secret.
+- [ ] Add `TT_BRIDGE_BASE_URL=https://tt-bridge.rfdelta.com` as a GitHub Actions variable.
+- [ ] Run `npm run smoke:bridge -- YYYY-MM-DD "SPY,QQQ"` during a current U.S. market session.
 - [ ] Run a manual workflow during regular U.S. option-market hours.
 
 ## GitHub
@@ -14,7 +14,7 @@
 - [ ] Confirm branch protection permits the workflow's report commit, or grant the workflow an approved bypass.
 - [ ] Confirm Actions has `contents: write` permission.
 - [ ] Run CI and the daily workflow manually.
-- [ ] Confirm only `data/reports` and `public/charts` change during a normal daily run.
+- [ ] Confirm only `data/reports`, `data/market-history` and `public/charts` change during a normal daily run.
 
 ## Vercel
 

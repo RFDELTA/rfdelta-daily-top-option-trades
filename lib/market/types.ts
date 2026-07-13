@@ -4,9 +4,14 @@ export type EquityQuote = {
   bid: number;
   ask: number;
   previousClose: number;
+  previousCloseDate?: string;
   changePct: number;
   volume: number;
   tradeTimeUtc: string;
+  sessionDate?: string;
+  dayOpen?: number;
+  dayHigh?: number;
+  dayLow?: number;
 };
 
 export type DailyBar = {
@@ -45,6 +50,7 @@ export type MarketSymbolSnapshot = {
 export type MarketSnapshot = {
   provider: string;
   providerAttribution: string;
+  sourceFingerprint?: string;
   reportDate: string;
   sessionDate: string;
   asOfUtc: string;

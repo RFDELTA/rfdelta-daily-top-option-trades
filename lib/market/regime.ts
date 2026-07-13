@@ -11,18 +11,31 @@ export type RegimeAssessment = {
   rationale: string;
 };
 
-export function assessRegime(bars: DailyBar[]): RegimeAssessment {
+export function assessRegime(bars: DailyBar[], fallbackChangePct = 0): RegimeAssessment {
   const sorted = [...bars].sort((a, b) => a.date.localeCompare(b.date));
   const closes = sorted.map((bar) => bar.close).filter((value) => value > 0);
   if (closes.length < 6) {
+    const first = closes[0];
+    const last = closes.at(-1);
+    const observedReturn = first && last && closes.length > 1 ? last / first - 1 : fallbackChangePct;
+    const direction = observedReturn >= 0 ? "bullish" : "bearish";
+    const realizedVolatility = Math.max(0.25, Math.min(1.5, Math.abs(observedReturn) * Math.sqrt(252)));
+    const signalStrength = Math.max(0.35, Math.min(0.62, 0.35 + Math.abs(observedReturn) * 8));
+    const label: RegimeLabel = Math.abs(observedReturn) >= 0.025
+      ? "vol_expansion"
+      : observedReturn >= 0.01
+        ? "trend"
+        : observedReturn <= -0.01
+          ? "risk_off"
+          : direction === "bullish" ? "risk_on" : "mixed";
     return {
-      label: "mixed",
-      direction: "bullish",
-      fiveDayReturn: 0,
-      twentyDayReturn: 0,
-      realizedVolatility: 0.35,
-      signalStrength: 0.35,
-      rationale: "Price history is limited, so the signal receives a reduced conviction weight."
+      label,
+      direction,
+      fiveDayReturn: observedReturn,
+      twentyDayReturn: observedReturn,
+      realizedVolatility,
+      signalStrength,
+      rationale: `${formatPct(observedReturn)} across the retained session window; the shorter history receives a reduced conviction weight.`
     };
   }
 

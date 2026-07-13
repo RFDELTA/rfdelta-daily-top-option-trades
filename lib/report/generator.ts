@@ -1,7 +1,8 @@
 import { createHash } from "node:crypto";
 import calibrationOutcomes from "@/data/calibration/prior-outcomes-2026-06-18.json";
+import { persistSnapshotHistory } from "@/lib/market/history";
+import { createMarketDataProvider } from "@/lib/market/provider";
 import type { MarketDataProvider, MarketSnapshot } from "@/lib/market/types";
-import { TradierMarketDataProvider } from "@/lib/market/tradier";
 import { getUniverse } from "@/lib/market/universe";
 import { buildPublishBasket } from "@/lib/model/basketOptimizer";
 import { discoverCandidates } from "@/lib/model/candidateDiscovery";
@@ -34,10 +35,11 @@ export async function generateAndPersist(options: GenerateOptions) {
   if (!options.force && await reportExists(options.date)) {
     return { report: await getReport(options.date), skipped: true };
   }
-  const provider = options.provider ?? new TradierMarketDataProvider();
+  const provider = options.provider ?? createMarketDataProvider();
   const snapshot = await provider.getSnapshot({ reportDate: options.date, universe: getUniverse() });
   if (!snapshot.universe.length && !snapshot.symbols.length) throw new Error("The market universe is empty.");
   const report = await buildReport(snapshot);
+  await persistSnapshotHistory(snapshot);
   await persistReport(report);
   return { report, skipped: false };
 }
@@ -46,9 +48,10 @@ export async function generateWithUniverse(options: GenerateOptions & { universe
   if (!options.force && await reportExists(options.date)) {
     return { report: await getReport(options.date), skipped: true };
   }
-  const provider = options.provider ?? new TradierMarketDataProvider();
+  const provider = options.provider ?? createMarketDataProvider();
   const snapshot = await provider.getSnapshot({ reportDate: options.date, universe: options.universe });
   const report = await buildReport(snapshot);
+  await persistSnapshotHistory(snapshot);
   await persistReport(report);
   return { report, skipped: false };
 }
@@ -101,7 +104,7 @@ export async function buildReport(snapshot: MarketSnapshot): Promise<OptionsRepo
     accountability,
     methodology: {
       selectionCriteria: [
-        "A fixed liquid-symbol universe is evaluated in alphabetical order so source discovery and tie-breaking remain repeatable.",
+        "A configured liquid-symbol list is intersected with the source's fingerprinted universe and evaluated alphabetically so discovery and tie-breaking remain repeatable.",
         "The nearest expiration inside the configured 7-to-35-day window is chosen by distance from a 14-day target.",
         "Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.",
         "Both legs must clear bid, ask, open-interest, volume or depth, and relative quote-width gates.",
@@ -205,12 +208,20 @@ function summarizeOutcomes(trades: TradeOutcome[], sourceReportDate: string, eva
   const wins = trades.filter((trade) => trade.status === "win").length;
   const losses = trades.filter((trade) => trade.status === "loss").length;
   const nearBreakeven = trades.filter((trade) => trade.status === "near_breakeven").length;
-  const open = trades.filter((trade) => trade.status === "open" || trade.status === "awaiting_close").length;
+  const activelyOpen = trades.filter((trade) => trade.status === "open").length;
+  const awaitingClose = trades.filter((trade) => trade.status === "awaiting_close").length;
+  const open = activelyOpen + awaitingClose;
   const resolvedPnlDollars = round(trades.reduce((sum, trade) => sum + (trade.realizedPnlDollars ?? 0), 0), 2);
   const resolved = wins + losses + nearBreakeven;
+  const unresolvedRead = [
+    activelyOpen ? `${activelyOpen} position${activelyOpen === 1 ? " remains" : "s remain"} open.` : "",
+    awaitingClose ? `${awaitingClose} expired position${awaitingClose === 1 ? " is" : "s are"} awaiting a retained expiration close before scoring.` : ""
+  ].filter(Boolean).join(" ");
   const read = resolved
-    ? `The ${formatDate(sourceReportDate)} basket has ${wins} win${wins === 1 ? "" : "s"}, ${nearBreakeven} near-breakeven result${nearBreakeven === 1 ? "" : "s"} and ${losses} loss${losses === 1 ? "" : "es"} across ${resolved} resolved spread${resolved === 1 ? "" : "s"}, for modeled one-lot expiration P/L of ${money(resolvedPnlDollars)}. ${open ? `${open} position${open === 1 ? " remains" : "s remain"} open or awaiting a final close.` : "All listed positions are resolved."}`
-    : `The ${formatDate(sourceReportDate)} basket remains open, so no expiration result has been assigned yet.`;
+    ? `The ${formatDate(sourceReportDate)} basket has ${wins} win${wins === 1 ? "" : "s"}, ${nearBreakeven} near-breakeven result${nearBreakeven === 1 ? "" : "s"} and ${losses} loss${losses === 1 ? "" : "es"} across ${resolved} resolved spread${resolved === 1 ? "" : "s"}, for modeled one-lot expiration P/L of ${money(resolvedPnlDollars)}. ${unresolvedRead || "All listed positions are resolved."}`
+    : unresolvedRead
+      ? `The ${formatDate(sourceReportDate)} basket has no scored expiration result yet. ${unresolvedRead}`
+      : `The ${formatDate(sourceReportDate)} basket has no scored expiration result yet.`;
   return { sourceReportDate, evaluatedThrough, wins, losses, nearBreakeven, open, resolvedPnlDollars, read, trades };
 }
 

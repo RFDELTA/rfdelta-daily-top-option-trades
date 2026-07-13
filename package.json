@@ -16,7 +16,9 @@
     "test:discovery": "tsx scripts/test-candidate-discovery.ts",
     "test:charts": "tsx scripts/test-charts.ts",
     "test:workflow": "tsx scripts/test-workflow.ts",
-    "test": "npm run test:model && npm run test:discovery && npm run test:charts && npm run test:workflow",
+    "test:bridge": "tsx scripts/test-bridge-provider.ts",
+    "test": "npm run test:model && npm run test:discovery && npm run test:charts && npm run test:workflow && npm run test:bridge",
+    "smoke:bridge": "tsx scripts/smoke-bridge.ts",
     "generate:daily": "tsx scripts/generate-daily.ts",
     "generate:fixture": "tsx scripts/generate-fixture-report.ts",
     "verify:reports": "tsx scripts/verify-reports.ts"

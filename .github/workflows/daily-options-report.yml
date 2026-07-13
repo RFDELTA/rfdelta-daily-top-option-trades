@@ -25,9 +25,9 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     env:
-      TRADIER_ACCESS_TOKEN: ${{ secrets.TRADIER_ACCESS_TOKEN }}
-      TRADIER_BASE_URL: https://api.tradier.com/v1
-      MARKET_DATA_PUBLICATION_LICENSE_ACKNOWLEDGED: ${{ vars.MARKET_DATA_PUBLICATION_LICENSE_ACKNOWLEDGED }}
+      MARKET_DATA_PROVIDER: tt_bridge
+      TT_BRIDGE_API_KEY: ${{ secrets.TT_BRIDGE_API_KEY }}
+      TT_BRIDGE_BASE_URL: ${{ vars.TT_BRIDGE_BASE_URL }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -38,6 +38,12 @@ jobs:
         run: npm ci
       - name: Validate deterministic workflow
         run: npm test
+      - name: Validate protected market-data configuration
+        run: |
+          if [ -z "$TT_BRIDGE_API_KEY" ]; then
+            echo "Required market-data credential is not configured."
+            exit 1
+          fi
       - name: Resolve New York report date
         id: report
         env:
@@ -54,8 +60,8 @@ jobs:
         env:
           FORCE_RUN: ${{ inputs.force }}
         run: |
-          args=(--date "${{ steps.report.outputs.date }}")
-          if [ "$FORCE_RUN" = "true" ]; then args+=(--force); fi
+          args=("${{ steps.report.outputs.date }}")
+          if [ "$FORCE_RUN" = "true" ]; then args+=(force); fi
           set +e
           npm run generate:daily -- "${args[@]}"
           code=$?
@@ -69,14 +75,16 @@ jobs:
           echo "generated=true" >> "$GITHUB_OUTPUT"
       - name: Verify report archive
         if: steps.generate.outputs.generated == 'true'
-        run: npm run verify:reports -- --date "${{ steps.report.outputs.date }}"
+        env:
+          EXPECTED_REPORT_DATE: ${{ steps.report.outputs.date }}
+        run: npm run verify:reports -- "${{ steps.report.outputs.date }}"
       - name: Commit report and graphics
         if: steps.generate.outputs.generated == 'true'
         id: commit
         run: |
           git config user.name "RFDELTA LLC"
           git config user.email "rfdeltax@gmail.com"
-          git add data/reports public/charts
+          git add data/reports data/market-history public/charts
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else

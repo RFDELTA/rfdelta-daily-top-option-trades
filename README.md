@@ -8,26 +8,24 @@ The repository never submits orders. It does not contain account identifiers, ba
 
 1. GitHub Actions starts at 14:45 UTC on weekdays, after the U.S. regular session is open in both standard and daylight time.
 2. The workflow resolves the current date in `America/New_York`.
-3. The Tradier production adapter fetches bulk underlying quotes, daily history, deterministic expirations and one option chain per included symbol.
+3. The authenticated RFDELTA market-data adapter discovers the deterministic source universe, fetches bulk underlying quotes and retrieves normalized multi-expiration option chains.
 4. Same-session freshness, bid/ask, open interest, volume/depth and relative spread-width gates run before modeling.
 5. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
 6. Each candidate runs through deterministic jump-stress Monte Carlo and common scoring weights.
 7. The basket optimizer enforces one idea per symbol, correlation-bucket limits, one-lot and total-risk limits, and minimum debit/credit representation.
 8. The generator evaluates expired ideas from the prior edition and integrates resolved outcomes into strategy-style posteriors.
-9. JSON, Markdown, CSV and two SVG charts are written under the report date and committed to Git.
+9. JSON, Markdown, CSV, two SVG charts and a rolling 90-session price-history file are committed to Git.
 10. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
 
 If current-session data are not available, generation exits with code `75`. The workflow records a clean market-session skip and leaves the previous valid report published. It never copies yesterday's quotes into today's date.
 
-## Market Data Rights
+## Market Data Contract
 
-The included production adapter uses the Tradier Brokerage API. Tradier documents production market data and option-chain Greeks, but its FAQ also says ordinary API access is for personal use unless the user is a Tradier Partner. Before public deployment, confirm that the RFDELTA account and intended derived publication have the necessary rights. See:
+The primary production adapter uses `https://tt-bridge.rfdelta.com` for three read-only market-data operations: deterministic equity-universe discovery, bulk equity quotes and normalized equity option chains. An allowlist in the adapter rejects account, transaction and order routes before any request is sent. The bridge key is required only in the generation runtime and is never needed by Vercel or the public browser.
 
-- <https://docs.tradier.com/docs/endpoints>
-- <https://docs.tradier.com/reference/brokerage-api-markets-get-options-chains>
-- <https://docs.tradier.com/docs/faq>
+RFDELTA must maintain any exchange, vendor and derived-publication rights required for the public product. Authentication to the bridge is not itself a grant of redistribution rights.
 
-The generator fails closed until `MARKET_DATA_PUBLICATION_LICENSE_ACKNOWLEDGED=true`. That switch is an operational acknowledgement, not a substitute for an appropriate agreement.
+Tradier remains available as an explicitly selected alternate provider. Its separate publication-rights acknowledgement still fails closed when that adapter is selected.
 
 ## Local Setup
 
@@ -35,7 +33,7 @@ Prerequisites:
 
 - Node.js 22
 - npm 10 or later
-- A Tradier production token for live generation
+- An RFDELTA market-data key for live generation
 
 Install and create local configuration:
 
@@ -47,9 +45,9 @@ Copy-Item .env.example .env.local
 Set at minimum:
 
 ```dotenv
-TRADIER_ACCESS_TOKEN="your-production-token"
-TRADIER_BASE_URL="https://api.tradier.com/v1"
-MARKET_DATA_PUBLICATION_LICENSE_ACKNOWLEDGED="true"
+MARKET_DATA_PROVIDER="tt_bridge"
+TT_BRIDGE_API_KEY="your-protected-key"
+TT_BRIDGE_BASE_URL="https://tt-bridge.rfdelta.com"
 ```
 
 Start the site:
@@ -65,19 +63,25 @@ Open `http://localhost:3000/latest`.
 Generate the current New York market date from live data:
 
 ```powershell
-npm run generate:daily -- --date today
+npm run generate:daily -- today
+```
+
+Verify universe, quote and option-chain access without writing a report:
+
+```powershell
+npm run smoke:bridge -- 2026-07-13 "SPY,QQQ"
 ```
 
 Generate a specific market date:
 
 ```powershell
-npm run generate:daily -- --date 2026-07-13
+npm run generate:daily -- 2026-07-13
 ```
 
 Replace an existing report for the same date after deliberately re-fetching the market:
 
 ```powershell
-npm run generate:daily -- --date 2026-07-13 --force
+npm run generate:daily -- 2026-07-13 force
 ```
 
 Generate the clearly labeled historical calibration edition without network credentials:
@@ -89,7 +93,7 @@ npm run generate:fixture
 Verify archive completeness and reject internal-facing public copy:
 
 ```powershell
-npm run verify:reports -- --date 2026-06-19
+npm run verify:reports -- 2026-06-19
 ```
 
 Run all deterministic tests and production checks:
@@ -111,24 +115,25 @@ data/reports/YYYY-MM-DD/report.md
 data/reports/YYYY-MM-DD/ideas.csv
 public/charts/YYYY-MM-DD/ranked_scores.svg
 public/charts/YYYY-MM-DD/risk_reward.svg
+data/market-history/daily-bars.json
 ```
 
 `data/reports/index.json` identifies the latest valid report and retains archive metadata. The archive is committed data, so a Vercel build never depends on writing to an ephemeral server filesystem.
 
 ## GitHub Configuration
 
-Create a GitHub repository and push `main`. Add this Actions secret:
+Create a GitHub repository and push `main`. Add these Actions secrets:
 
 | Name | Type | Purpose |
 |---|---|---|
-| `TRADIER_ACCESS_TOKEN` | Secret | Production market-data authentication |
+| `TT_BRIDGE_API_KEY` | Secret | Production read-only market-data authentication |
 | `VERCEL_DEPLOY_HOOK_URL` | Secret, optional | Explicit deploy hook when Git integration is not sufficient |
 
 Add these Actions variables:
 
 | Name | Value |
 |---|---|
-| `MARKET_DATA_PUBLICATION_LICENSE_ACKNOWLEDGED` | `true` only after rights are confirmed |
+| `TT_BRIDGE_BASE_URL` | `https://tt-bridge.rfdelta.com` |
 | `PRODUCTION_URL` | The final Vercel or custom-domain origin |
 
 The workflow uses `RFDELTA LLC <rfdeltax@gmail.com>` for report commits so Vercel Git attribution remains consistent.
@@ -169,11 +174,13 @@ Separate blocks remove nested page scrollbars and allow GoDaddy or Google ad sec
 
 ## Security and Integrity
 
-- Tokens stay in `.env.local` or GitHub Actions secrets.
+- Credentials stay in `.env.local` or GitHub Actions secrets.
 - Authorization headers and raw provider payloads are never written to reports.
+- The production adapter contains an explicit allowlist for discovery, equity-quote and normalized equity-chain routes only.
 - Public report validation rejects bridge, account, mock, order and runtime-failure language.
 - Public output contains derived two-leg quotes and model analytics, not access credentials.
 - Production generation requires current-session quotes for at least half the configured universe.
+- Retained daily bars are derived from public market fields, capped at 90 sessions per symbol and committed with each valid edition.
 - Every report carries a SHA-256 selection hash over the timestamped snapshot, discovered candidates and model settings.
 - Candidate and final-rank tie breaks are stable and lexical.
 

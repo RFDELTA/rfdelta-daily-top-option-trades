@@ -2,13 +2,15 @@
 
 ## Discovery
 
-The symbol universe is a sorted, deduplicated environment setting. A bulk underlying quote call is followed by a 70-calendar-day daily history request, deterministic expiration selection and one Greek-enabled option-chain request per symbol. Symbols are processed with bounded concurrency so the order does not depend on network response timing.
+The publication list is sorted, deduplicated and intersected with the source's fingerprinted deterministic equity universe on every run. A bulk underlying quote call is followed by one normalized multi-expiration option-chain request per symbol. Symbols are processed with bounded concurrency so the result does not depend on network response timing.
+
+Daily underlying bars are retained with each valid report and capped at 90 sessions per symbol. The current session and previous close seed new symbols; the retained window then supplies the five- and twenty-session signal history without introducing a second live-data source.
 
 Expiration selection minimizes absolute distance from 14 DTE inside the 7-to-35-DTE window. Ties resolve to the earlier ISO date.
 
 ## Regime
 
-The directional signal combines 65% five-session return and 35% twenty-session return. Twenty-session close-to-close log-return volatility is annualized. The resulting labels are trend, mean reversion, volatility expansion, risk off, risk on or mixed.
+The directional signal combines 65% five-session return and 35% twenty-session return. Twenty-session close-to-close log-return volatility is annualized. The resulting labels are trend, mean reversion, volatility expansion, risk off, risk on or mixed. Until six retained sessions are available, previous-close movement determines direction with a deliberately reduced conviction weight.
 
 Bullish signals create:
 
@@ -37,7 +39,7 @@ All legal pairs are scored by delta distance, quote width and distance from the 
 
 ## Conservative Entry
 
-Debit entry equals long ask minus short bid. Credit entry equals short bid minus long ask. Candidates are rejected when entry is nonpositive, consumes at least 95% of the vertical width or exceeds one-lot maximum risk.
+Debit entry equals long ask minus short bid. Credit entry equals short bid minus long ask. Candidates are rejected when entry is nonpositive, consumes at least 95% of the vertical width or exceeds the configured one-lot maximum risk. The production default caps one-lot loss at $250 and the complete published basket at $750.
 
 ## Simulation
 

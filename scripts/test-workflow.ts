@@ -5,6 +5,7 @@ import { currentReportDate, resolveReportDate } from "../lib/report/dates";
 
 async function main() {
   assert.equal(resolveReportDate(["--date", "2026-06-19"]), "2026-06-19");
+  assert.equal(resolveReportDate(["2026-07-10"]), "2026-07-10");
   assert.equal(currentReportDate(new Date("2026-06-19T02:00:00Z"), "America/New_York"), "2026-06-18");
   const provider = new HistoricalFixtureProvider();
   const snapshot = await provider.getSnapshot({ reportDate: "2026-06-19", universe: [] });

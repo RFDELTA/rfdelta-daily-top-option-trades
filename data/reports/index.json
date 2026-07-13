@@ -1,6 +1,15 @@
 {
-  "latest": "2026-06-19",
+  "latest": "2026-07-10",
   "reports": [
+    {
+      "date": "2026-07-10",
+      "title": "3 defined-risk option setups lead the Jul 10, 2026 board",
+      "edition": "Daily market edition",
+      "dataAsOfUtc": "2026-07-11T10:38:06.677Z",
+      "topSymbol": "TLT",
+      "ideaCount": 3,
+      "topScore": 44.82
+    },
     {
       "date": "2026-06-19",
       "title": "5 defined-risk option setups lead the Jun 19, 2026 board",

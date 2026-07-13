@@ -3,7 +3,8 @@ import { generateAndPersist } from "../lib/report/generator";
 
 async function main() {
   const dateIndex = process.argv.indexOf("--date");
-  const date = dateIndex >= 0 ? process.argv[dateIndex + 1] : "2026-06-19";
+  const positionalDate = process.argv.find((value) => /^\d{4}-\d{2}-\d{2}$/u.test(value));
+  const date = (dateIndex >= 0 ? process.argv[dateIndex + 1] : undefined) || positionalDate || "2026-06-19";
   if (!date || !/^\d{4}-\d{2}-\d{2}$/u.test(date)) throw new Error("Fixture date must use YYYY-MM-DD.");
   const { report } = await generateAndPersist({
     date,

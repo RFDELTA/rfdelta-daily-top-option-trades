@@ -3,8 +3,9 @@ import { generateAndPersist } from "../lib/report/generator";
 import { resolveReportDate } from "../lib/report/dates";
 
 async function main() {
-  const date = resolveReportDate(process.argv.slice(2), process.env.REPORT_DATE);
-  const force = process.argv.includes("--force");
+  const args = process.argv.slice(2);
+  const date = resolveReportDate(args, process.env.REPORT_DATE);
+  const force = args.includes("--force") || args.includes("force") || process.env.FORCE_RUN === "true";
   console.log(`[options-report] start date=${date} force=${force}`);
   const { report, skipped } = await generateAndPersist({ date, force });
   console.log(`[options-report] ${skipped ? "kept existing edition" : "generated"} date=${report.runMetadata.reportDate} ideas=${report.topTrades.length} candidates=${report.marketContext.candidateCount}`);

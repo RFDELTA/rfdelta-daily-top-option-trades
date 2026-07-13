@@ -1,0 +1,4 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","TLT","TLT 7/24 85.5/85 Put Credit Spread","put_credit","2026-07-24","13","84.55","Credit","0.33","0.4268","3.8","17","33","1.94","85.17","0.73","44.82","0.8531","0.18"
+"2","IWM","IWM 7/24 296/292.5 Put Debit Spread","put_debit","2026-07-24","13","295.99","Debit","1.31","0.4366","15.96","131","219","1.67","294.69","-0.44","38.43","0.8159","0.18"
+"3","PLTR","PLTR 7/24 125/120 Put Debit Spread","put_debit","2026-07-24","13","126.5502","Debit","1.87","0.4008","3.11","187","313","1.67","123.13","-2.7","36.04","0.8565","0.5043"

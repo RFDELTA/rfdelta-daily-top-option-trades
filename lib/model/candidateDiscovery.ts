@@ -29,7 +29,7 @@ export function discoverCandidates(snapshot: MarketSnapshot): DiscoveryResult {
   const rejectionCounts: Record<string, number> = {};
 
   for (const symbolData of snapshot.symbols) {
-    const regime = assessRegime(symbolData.bars);
+    const regime = assessRegime(symbolData.bars, symbolData.quote.changePct);
     const styles: SpreadStyle[] = regime.direction === "bullish"
       ? ["call_debit", "put_credit"]
       : ["put_debit", "call_credit"];
@@ -111,7 +111,7 @@ function assignLegs(style: SpreadStyle, first: OptionContract, second: OptionCon
 }
 
 function buildCandidate(symbolData: MarketSymbolSnapshot, style: SpreadStyle, pair: PairDefinition, sourceAsOfUtc: string): TradeCandidate {
-  const regime = assessRegime(symbolData.bars);
+  const regime = assessRegime(symbolData.bars, symbolData.quote.changePct);
   const profile = getSymbolProfile(symbolData.symbol);
   const structureType = style.includes("debit") ? "Debit" : "Credit";
   const direction = style === "call_debit" || style === "put_credit" ? "bullish" : "bearish";
