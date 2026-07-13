@@ -6,6 +6,8 @@ The categorized publication universe is sorted, deduplicated and intersected wit
 
 The production defaults quote more than 100 market, sector, technology, semiconductor, financial, digital-asset, defense, space, healthcare, industrial, energy, materials, consumer and emerging-growth symbols, then request no more than 40 multi-expiration chains. Sleeve membership and the complete selected-symbol list are stored in the feature dataset; quote and chain counts are copied into the run manifest and public report context.
 
+Source discovery uses the full provider universe first and its default universe second. If both discovery routes are unavailable, the controlled repository configuration becomes the deterministic discovery set; same-session quote and option-chain requirements still apply unchanged, so this fallback cannot publish synthetic or stale records.
+
 Finalized daily underlying bars are queried from fixed Yahoo Finance chart hosts, schema-validated and merged with each valid report. The retained window is capped at 260 sessions per symbol. Public history replaces earlier intraday approximations for completed sessions; the RFDELTA bridge quote remains authoritative for the active session and official previous close. Source coverage and bar counts are stored with the versioned feature dataset and run manifest.
 
 Expiration selection minimizes absolute distance from 14 DTE inside the 7-to-35-DTE window. Ties resolve to the earlier ISO date.

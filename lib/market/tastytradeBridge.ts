@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { loadRetainedHistory, mergeQuoteHistory } from "@/lib/market/history";
 import type {
   EquityQuote,
@@ -12,6 +13,8 @@ import { selectOptionChainSymbols } from "@/lib/market/symbolSelection";
 
 type JsonRecord = Record<string, unknown>;
 type Fetcher = (input: string | URL | Request, init?: RequestInit) => Promise<Response>;
+
+class NonRetryableMarketDataError extends Error {}
 
 type ProviderOptions = {
   apiKey?: string;
@@ -36,18 +39,18 @@ export class TastytradeBridgeMarketDataProvider implements MarketDataProvider {
   }
 
   async getSnapshot(request: SnapshotRequest): Promise<MarketSnapshot> {
+    const requested = [...new Set(request.universe.map((symbol) => symbol.trim().toUpperCase()).filter(Boolean))];
     const [discovery, history] = await Promise.all([
-      this.getDiscoveredUniverse(),
+      this.getDiscoveredUniverse(requested),
       this.retainedHistory ? Promise.resolve(this.retainedHistory) : loadRetainedHistory()
     ]);
-    const requested = [...new Set(request.universe.map((symbol) => symbol.trim().toUpperCase()).filter(Boolean))];
     const available = new Set(discovery.equities);
     const activeUniverse = requested.filter((symbol) => available.has(symbol)).sort();
     const excludedSymbols: MarketSnapshot["excludedSymbols"] = requested
       .filter((symbol) => !available.has(symbol))
       .map((symbol) => ({ symbol, reason: "Symbol is outside the deterministic publication universe" }));
     if (!activeUniverse.length) throw new Error("No configured symbols were present in the deterministic publication universe.");
-    console.log(`[market-data] discovery configured=${requested.length} available=${available.size} selected=${activeUniverse.length} fingerprint=${discovery.fingerprint.slice(0, 12) || "unavailable"}`);
+    console.log(`[market-data] discovery mode=${discovery.mode} configured=${requested.length} available=${available.size} selected=${activeUniverse.length} fingerprint=${discovery.fingerprint.slice(0, 12) || "unavailable"}`);
 
     const quotes = await this.getQuotes(activeUniverse);
     activeUniverse.filter((symbol) => !quotes.has(symbol)).forEach((symbol) => {
@@ -124,11 +127,30 @@ export class TastytradeBridgeMarketDataProvider implements MarketDataProvider {
     };
   }
 
-  private async getDiscoveredUniverse() {
-    const json = await this.fetchJson("/scan-universe/full");
+  private async getDiscoveredUniverse(configured: string[]) {
+    let json: unknown;
+    let mode = "full";
+    try {
+      json = await this.fetchJson("/scan-universe/full");
+    } catch {
+      mode = "default";
+      console.log("[market-data] discovery full unavailable; trying default universe");
+      try {
+        json = await this.fetchJson("/scan-universe/default");
+      } catch {
+        mode = "configured";
+        console.log("[market-data] discovery default unavailable; using controlled configured universe");
+        return {
+          equities: [...configured].sort(),
+          fingerprint: createHash("sha256").update(JSON.stringify([...configured].sort())).digest("hex"),
+          mode
+        };
+      }
+    }
     const data = unwrapData(json);
     const equities = toArray(data?.equities).map(stringValue).map((symbol) => symbol.toUpperCase()).filter(Boolean).sort();
-    return { equities: [...new Set(equities)], fingerprint: stringValue(data?.fingerprint) };
+    if (!equities.length) throw new Error("Market-data discovery returned an empty universe.");
+    return { equities: [...new Set(equities)], fingerprint: stringValue(data?.fingerprint), mode };
   }
 
   private async getQuotes(symbols: string[]) {
@@ -240,10 +262,11 @@ export class TastytradeBridgeMarketDataProvider implements MarketDataProvider {
         });
         if (response.ok) return response.json();
         if (response.status !== 429 && response.status < 500) {
-          throw new Error(`Market data request returned HTTP ${response.status}`);
+          throw new NonRetryableMarketDataError(`Market data request for ${allowedPath} returned HTTP ${response.status}`);
         }
-        lastError = new Error(`Market data request returned HTTP ${response.status}`);
+        lastError = new Error(`Market data request for ${allowedPath} returned HTTP ${response.status}`);
       } catch (error) {
+        if (error instanceof NonRetryableMarketDataError) throw error;
         lastError = error;
       } finally {
         clearTimeout(timeout);

@@ -8,6 +8,9 @@ async function main() {
     const headers = new Headers(init?.headers);
     calls.push({ url, key: headers.get("X-Proxy-Key") ?? "" });
     if (url.endsWith("/scan-universe/full")) {
+      return jsonResponse({}, 403);
+    }
+    if (url.endsWith("/scan-universe/default")) {
       return jsonResponse({ data: { equities: ["SPY", "QQQ"], fingerprint: "fixture-fingerprint" } });
     }
     if (url.includes("/quotes/equities?")) {
@@ -51,6 +54,7 @@ async function main() {
   assert.ok(calls.every((call) => !/orders|accounts|transactions/u.test(call.url)));
   assert.deepEqual(calls.map((call) => new URL(call.url).pathname), [
     "/scan-universe/full",
+    "/scan-universe/default",
     "/quotes/equities",
     "/normalized/equity-chain/SPY"
   ]);
