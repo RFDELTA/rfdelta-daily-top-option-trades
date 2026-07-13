@@ -1,30 +1,30 @@
 {
   "schemaVersion": "1.0",
-  "reportId": "rfdelta-options-2026-07-13-b35e334b9593",
+  "reportId": "rfdelta-options-2026-07-13-7b17cb1f399a",
   "runMetadata": {
     "reportDate": "2026-07-13",
     "marketSessionDate": "2026-07-13",
-    "generatedAtUtc": "2026-07-13T15:17:26.441Z",
-    "dataAsOfUtc": "2026-07-13T15:17:21.048Z",
+    "generatedAtUtc": "2026-07-13T15:23:55.806Z",
+    "dataAsOfUtc": "2026-07-13T15:23:50.977Z",
     "edition": "Daily market edition",
     "methodologyVersion": "rfdelta-options-v2",
-    "selectionHash": "b35e334b95930c09458e1f27a0173e59fe1a1cfc2e128eabc100792d91f67c78",
-    "datasetRunId": "run-1bded96c7e9276d1",
+    "selectionHash": "7b17cb1f399a48a6966a8a9f77fe0aed7571ac43eb142c58eee54111c6905f0c",
+    "datasetRunId": "run-3d3c3f4f58060547",
     "featureVersion": "rfdelta-market-features-v1",
     "selectionPolicyVersion": "rfdelta-online-policy-v1",
     "trainingSampleCount": 5
   },
   "executiveSummary": {
-    "headline": "5 defined-risk option setups lead the Jul 13, 2026 board",
-    "standfirst": "NFLX 7/24 79/80 Call Credit Spread ranks first with a 52.23 score, 70.7% modeled probability of profit and $76.00 maximum one-lot risk. The basket balances 2 bullish and 3 bearish expressions.",
+    "headline": "3 defined-risk option setups lead the Jul 13, 2026 board",
+    "standfirst": "NFLX 7/24 78/80 Call Credit Spread ranks first with a 51.79 score, 68.0% modeled probability of profit and $145.00 maximum one-lot risk. The basket balances 1 bullish and 2 bearish expressions.",
     "marketCommentary": [
-      "The option board is not rewarding indiscriminate beta. Across the published names, the mean five-session move is -0.8%, while 1 setup carries realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.",
+      "The option board is not rewarding indiscriminate beta. Across the published names, the mean five-session move is +0.1%, while 0 setups carry realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.",
       "The screen quotes 105 liquid underlyings and requests 40 option chains through its core, mover, volume and rotation sleeves. It accepts only same-session chains with two usable legs, then forces every idea through the same conservative mark: pay the ask for the long option and receive the bid for the short. The resulting ranking is intentionally harsher than a midpoint screen, because a trade that only works at a theoretical fill is not a durable public idea.",
       "Direction comes from five- and twenty-session price structure rather than a headline guess. That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade."
     ],
     "selectionCommentary": [
-      "NFLX wins the top slot because liquidity, directional alignment and bounded payoff reinforce one another. Its credit entry of 0.24 creates 0.32 dollars of maximum reward for each dollar of maximum risk, with breakeven at $79.24.",
-      "IWM supplies the counterweight. Its put debit structure scores 42.79 and carries $233.00 of one-lot maximum loss. The basket is therefore ranked as a portfolio of explicit risks, not as five unrelated ticker calls."
+      "NFLX wins the top slot because liquidity, directional alignment and bounded payoff reinforce one another. Its credit entry of 0.55 creates 0.38 dollars of maximum reward for each dollar of maximum risk, with breakeven at $78.55.",
+      "IWM supplies the counterweight. Its put debit structure scores 40.57 and carries $81.00 of one-lot maximum loss. The basket is therefore ranked as a portfolio of explicit risks, not as five unrelated ticker calls."
     ],
     "riskCommentary": "The basket's maximum losses are additive if every thesis fails. Quote slippage, early assignment and volatility repricing can also change the practical outcome before expiration, so the published entry is a ceiling for debits and a floor for credits, not an assurance of execution."
   },
@@ -35,34 +35,34 @@
     "chainSymbolCount": 40,
     "includedSymbolCount": 38,
     "excludedSymbolCount": 37,
-    "candidateCount": 29,
+    "candidateCount": 30,
     "bullishCandidateCount": 21,
-    "bearishCandidateCount": 8,
+    "bearishCandidateCount": 9,
     "regimeCounts": {
       "risk_off": 4,
-      "mean_reversion": 20,
+      "mean_reversion": 22,
       "risk_on": 2,
-      "vol_expansion": 1,
-      "trend": 2
+      "trend": 1,
+      "vol_expansion": 1
     }
   },
   "analytics": {
-    "publishedIdeaCount": 5,
-    "topScore": 52.23,
-    "averageProbabilityProfit": 0.5835199999999999,
-    "totalExpectedValueDollars": -11.85,
-    "totalMaxLossDollars": 673,
-    "totalMaxProfitDollars": 627,
+    "publishedIdeaCount": 3,
+    "topScore": 51.79,
+    "averageProbabilityProfit": 0.5674666666666667,
+    "totalExpectedValueDollars": -8.42,
+    "totalMaxLossDollars": 297,
+    "totalMaxProfitDollars": 203,
     "debitIdeaCount": 1,
-    "creditIdeaCount": 4
+    "creditIdeaCount": 2
   },
   "topTrades": [
     {
       "rank": 1,
-      "id": "nflx-2026-07-24-call_credit-80-79",
-      "name": "NFLX 7/24 79/80 Call Credit Spread",
+      "id": "nflx-2026-07-24-call_credit-80-78",
+      "name": "NFLX 7/24 78/80 Call Credit Spread",
       "symbol": "NFLX",
-      "underlyingMark": 74.805,
+      "underlyingMark": 74.7799,
       "expiration": "2026-07-24",
       "daysToExpiry": 11,
       "structureType": "Credit",
@@ -72,99 +72,99 @@
       "regime": "risk_off",
       "correlationBucket": "large-cap-growth",
       "bucket": "watchlist",
-      "entry": 0.24,
-      "width": 1,
-      "maxLossDollars": 76,
-      "maxProfitDollars": 24,
-      "rewardToRisk": 0.32,
-      "breakeven": 79.24,
-      "requiredMovePctToBreakeven": 5.93,
-      "probabilityProfit": 0.7065,
-      "probabilityNearMaxProfit": 0.6978,
-      "expectedValueDollars": -4.4,
-      "blackScholesEdge": -0.0426,
-      "impliedVolUsed": 0.6633,
-      "liquidityScore": 0.9728,
-      "score": 52.23,
+      "entry": 0.55,
+      "width": 2,
+      "maxLossDollars": 145,
+      "maxProfitDollars": 55,
+      "rewardToRisk": 0.38,
+      "breakeven": 78.55,
+      "requiredMovePctToBreakeven": 5.04,
+      "probabilityProfit": 0.68,
+      "probabilityNearMaxProfit": 0.6589,
+      "expectedValueDollars": -5.58,
+      "blackScholesEdge": -0.0499,
+      "impliedVolUsed": 0.6598,
+      "liquidityScore": 0.9755,
+      "score": 51.79,
       "riskFlags": [],
       "thesis": "NFLX is expressing a bearish risk off setup: -1.6% over five sessions and -8.0% over twenty, with +42.8% annualized realized volatility. The call credit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
       "longLeg": {
         "optionSymbol": "NFLX  260724C00080000",
         "right": "C",
         "strike": 80,
-        "bid": 1.57,
-        "ask": 1.59,
-        "mid": 1.58,
-        "volume": 2598,
+        "bid": 1.55,
+        "ask": 1.57,
+        "mid": 1.56,
+        "volume": 2633,
         "openInterest": 14296,
-        "quoteTimeUtc": "2026-07-13T15:16:09.418Z"
+        "quoteTimeUtc": "2026-07-13T15:22:38.352Z"
       },
       "shortLeg": {
-        "optionSymbol": "NFLX  260724C00079000",
+        "optionSymbol": "NFLX  260724C00078000",
         "right": "C",
-        "strike": 79,
-        "bid": 1.83,
-        "ask": 1.86,
-        "mid": 1.8450000000000002,
-        "volume": 198,
-        "openInterest": 506,
-        "quoteTimeUtc": "2026-07-13T15:16:09.114Z"
+        "strike": 78,
+        "bid": 2.12,
+        "ask": 2.15,
+        "mid": 2.135,
+        "volume": 275,
+        "openInterest": 1615,
+        "quoteTimeUtc": "2026-07-13T15:22:38.386Z"
       },
-      "sourceAsOfUtc": "2026-07-13T15:17:21.048Z",
+      "sourceAsOfUtc": "2026-07-13T15:23:50.977Z",
       "marketEvidence": [
         "Underlying $75 at the source timestamp",
         "-1.6% over five sessions and -8.0% over twenty, with +42.8% annualized realized volatility.",
-        "2796 contracts of combined session volume and 14802 contracts of combined open interest across the two legs"
+        "2908 contracts of combined session volume and 15911 contracts of combined open interest across the two legs"
       ],
       "historySessionCount": 260,
       "advancedMetrics": {
         "symbol": "NFLX",
         "historySessions": 260,
         "historyConfidence": 1,
-        "return1d": 0.019558,
-        "return5d": -0.015983,
-        "return20d": -0.07955,
-        "sma5Distance": -0.003703,
-        "sma20Distance": -0.006425,
-        "emaTrend": -0.01906,
-        "macdPct": 0.00714,
-        "rsi14": 54.914485,
-        "atr14Pct": 0.035675,
-        "bollingerZ20": -0.16672,
-        "realizedVol5": 0.273465,
-        "realizedVol20": 0.428281,
+        "return1d": 0.019216,
+        "return5d": -0.016313,
+        "return20d": -0.079858,
+        "sma5Distance": -0.00397,
+        "sma20Distance": -0.006742,
+        "emaTrend": -0.019139,
+        "macdPct": 0.007121,
+        "rsi14": 54.856629,
+        "atr14Pct": 0.035687,
+        "bollingerZ20": -0.174924,
+        "realizedVol5": 0.271723,
+        "realizedVol20": 0.428038,
         "downsideVol20": 0.271408,
         "maxDrawdown20": -0.131872,
-        "trendEfficiency20": 0.205401,
-        "volumeZScore20": -1.959556,
-        "atmImpliedVol": 0.653768,
-        "putCallIvSkew": -0.014562,
-        "putCallVolumeRatio": 0.222602,
+        "trendEfficiency20": 0.206363,
+        "volumeZScore20": -1.940826,
+        "atmImpliedVol": 0.651437,
+        "putCallIvSkew": -0.014389,
+        "putCallVolumeRatio": 0.222962,
         "putCallOpenInterestRatio": 0.425589,
-        "expectedMovePct": 0.090569,
-        "meanQuoteWidthPct": 4.78142,
+        "expectedMovePct": 0.090265,
+        "meanQuoteWidthPct": 4.46296,
         "liquidContractRatio": 0.875,
-        "trendSignal": -0.511622,
-        "riskAdjustedMomentum": -0.742966
+        "trendSignal": -0.515888,
+        "riskAdjustedMomentum": -0.746274
       },
       "trainingAdjustment": 0,
       "trainingPolicyVersion": "rfdelta-online-policy-v1",
-      "fiveDayReturn": -0.015983,
-      "twentyDayReturn": -0.07955,
-      "realizedVolatility": 0.428281,
+      "fiveDayReturn": -0.016313,
+      "twentyDayReturn": -0.079858,
+      "realizedVolatility": 0.428038,
       "lessonAdjustments": [],
       "commentary": {
         "convictionLabel": "Actionable watch",
-        "rankingRead": "The setup scores 52.23 on the common scale, supported by 70.7% modeled probability of profit, 0.97 liquidity quality and a conservative modeled expectancy of -$4.40, which keeps sizing discipline central.",
+        "rankingRead": "The setup scores 51.79 on the common scale, supported by 68.0% modeled probability of profit, 0.98 liquidity quality and a conservative modeled expectancy of -$5.58, which keeps sizing discipline central.",
         "setup": "NFLX enters with -1.6% five-session momentum and -8.0% over twenty sessions. Realized volatility is 42.8%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
-        "execution": "Buy the 80 call and sell the 79 call, both expiring Jul 24, 2026. The credit mark of 0.24 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.24 of credit without rerunning the payoff.",
-        "risk": "Maximum one-lot loss is $76.00. Breakeven is $79.24 and sits 5.9% above the source mark, providing an upside cushion. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
-        "payoffRead": "Maximum one-lot profit is $24.00, or 0.32 times maximum risk. The simulation assigns 69.8% probability to finishing near maximum profit and uses 66.3% implied volatility across deterministic jump-stress paths."
+        "execution": "Buy the 80 call and sell the 78 call, both expiring Jul 24, 2026. The credit mark of 0.55 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.55 of credit without rerunning the payoff.",
+        "risk": "Maximum one-lot loss is $145.00. Breakeven is $78.55 and sits 5.0% above the source mark, providing an upside cushion. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
+        "payoffRead": "Maximum one-lot profit is $55.00, or 0.38 times maximum risk. The simulation assigns 65.9% probability to finishing near maximum profit and uses 66.0% implied volatility across deterministic jump-stress paths."
       },
       "underlyingChart": {
         "assetPath": "/charts/2026-07-13/underlying/01-nflx.svg",
         "entryDate": "2026-07-13",
-        "entryPrice": 74.805,
+        "entryPrice": 74.7799,
         "points": [
           {
             "date": "2026-03-04",
@@ -524,17 +524,17 @@
           },
           {
             "date": "2026-07-13",
-            "close": 74.805
+            "close": 74.7799
           }
         ]
       }
     },
     {
       "rank": 2,
-      "id": "iwm-2026-07-24-put_debit-295-288",
-      "name": "IWM 7/24 295/288 Put Debit Spread",
+      "id": "iwm-2026-07-24-put_debit-294-292",
+      "name": "IWM 7/24 294/292 Put Debit Spread",
       "symbol": "IWM",
-      "underlyingMark": 294.36,
+      "underlyingMark": 294.26,
       "expiration": "2026-07-24",
       "daysToExpiry": 11,
       "structureType": "Debit",
@@ -544,99 +544,99 @@
       "regime": "mean_reversion",
       "correlationBucket": "broad-market",
       "bucket": "conditional",
-      "entry": 2.33,
-      "width": 7,
-      "maxLossDollars": 233,
-      "maxProfitDollars": 467,
-      "rewardToRisk": 2,
-      "breakeven": 292.67,
-      "requiredMovePctToBreakeven": -0.57,
-      "probabilityProfit": 0.4264,
-      "probabilityNearMaxProfit": 0.2604,
-      "expectedValueDollars": 35.34,
-      "blackScholesEdge": 0.3297,
-      "impliedVolUsed": 0.1959,
-      "liquidityScore": 0.8792,
-      "score": 42.79,
+      "entry": 0.81,
+      "width": 2,
+      "maxLossDollars": 81,
+      "maxProfitDollars": 119,
+      "rewardToRisk": 1.47,
+      "breakeven": 293.19,
+      "requiredMovePctToBreakeven": -0.36,
+      "probabilityProfit": 0.4474,
+      "probabilityNearMaxProfit": 0.4003,
+      "expectedValueDollars": 6.96,
+      "blackScholesEdge": 0.0667,
+      "impliedVolUsed": 0.1908,
+      "liquidityScore": 0.9184,
+      "score": 40.57,
       "riskFlags": [],
-      "thesis": "IWM is expressing a bearish mean reversion setup: -1.5% over five sessions and +1.4% over twenty, with +13.4% annualized realized volatility. The put debit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
+      "thesis": "IWM is expressing a bearish mean reversion setup: -1.6% over five sessions and +1.3% over twenty, with +13.4% annualized realized volatility. The put debit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
       "longLeg": {
-        "optionSymbol": "IWM   260724P00295000",
+        "optionSymbol": "IWM   260724P00294000",
         "right": "P",
-        "strike": 295,
-        "bid": 3.86,
-        "ask": 3.94,
-        "mid": 3.9,
-        "volume": 673,
-        "openInterest": 1662,
-        "quoteTimeUtc": "2026-07-13T15:16:02.866Z"
+        "strike": 294,
+        "bid": 3.48,
+        "ask": 3.53,
+        "mid": 3.505,
+        "volume": 887,
+        "openInterest": 4368,
+        "quoteTimeUtc": "2026-07-13T15:22:32.884Z"
       },
       "shortLeg": {
-        "optionSymbol": "IWM   260724P00288000",
+        "optionSymbol": "IWM   260724P00292000",
         "right": "P",
-        "strike": 288,
-        "bid": 1.61,
-        "ask": 1.65,
-        "mid": 1.63,
-        "volume": 36,
-        "openInterest": 764,
-        "quoteTimeUtc": "2026-07-13T15:16:03.100Z"
+        "strike": 292,
+        "bid": 2.72,
+        "ask": 2.77,
+        "mid": 2.745,
+        "volume": 25,
+        "openInterest": 469,
+        "quoteTimeUtc": "2026-07-13T15:22:33.633Z"
       },
-      "sourceAsOfUtc": "2026-07-13T15:17:21.048Z",
+      "sourceAsOfUtc": "2026-07-13T15:23:50.977Z",
       "marketEvidence": [
         "Underlying $294 at the source timestamp",
-        "-1.5% over five sessions and +1.4% over twenty, with +13.4% annualized realized volatility.",
-        "709 contracts of combined session volume and 2426 contracts of combined open interest across the two legs"
+        "-1.6% over five sessions and +1.3% over twenty, with +13.4% annualized realized volatility.",
+        "912 contracts of combined session volume and 4837 contracts of combined open interest across the two legs"
       ],
       "historySessionCount": 260,
       "advancedMetrics": {
         "symbol": "IWM",
         "historySessions": 260,
         "historyConfidence": 1,
-        "return1d": -0.005507,
-        "return5d": -0.015189,
-        "return20d": 0.013601,
-        "sma5Distance": -0.003696,
-        "sma20Distance": -0.00664,
-        "emaTrend": 0.002427,
-        "macdPct": -0.003093,
-        "rsi14": 42.642526,
-        "atr14Pct": 0.015441,
-        "bollingerZ20": -0.69564,
-        "realizedVol5": 0.144384,
-        "realizedVol20": 0.133672,
-        "downsideVol20": 0.039958,
+        "return1d": -0.005845,
+        "return5d": -0.015524,
+        "return20d": 0.013257,
+        "sma5Distance": -0.003967,
+        "sma20Distance": -0.00696,
+        "emaTrend": 0.002346,
+        "macdPct": -0.003116,
+        "rsi14": 42.478893,
+        "atr14Pct": 0.015447,
+        "bollingerZ20": -0.728264,
+        "realizedVol5": 0.144769,
+        "realizedVol20": 0.133886,
+        "downsideVol20": 0.039726,
         "maxDrawdown20": -0.023199,
-        "trendEfficiency20": 0.091329,
-        "volumeZScore20": -2.283075,
-        "atmImpliedVol": 0.185562,
-        "putCallIvSkew": 0.014874,
-        "putCallVolumeRatio": 1.812118,
+        "trendEfficiency20": 0.088812,
+        "volumeZScore20": -2.275706,
+        "atmImpliedVol": 0.185494,
+        "putCallIvSkew": 0.014989,
+        "putCallVolumeRatio": 1.804757,
         "putCallOpenInterestRatio": 2.243214,
-        "expectedMovePct": 0.025751,
-        "meanQuoteWidthPct": 2.615595,
+        "expectedMovePct": 0.025726,
+        "meanQuoteWidthPct": 2.492857,
         "liquidContractRatio": 0.875,
-        "trendSignal": -0.122427,
-        "riskAdjustedMomentum": 0.362705
+        "trendSignal": -0.13371,
+        "riskAdjustedMomentum": 0.353523
       },
       "trainingAdjustment": 0,
       "trainingPolicyVersion": "rfdelta-online-policy-v1",
-      "fiveDayReturn": -0.015189,
-      "twentyDayReturn": 0.013601,
-      "realizedVolatility": 0.133672,
+      "fiveDayReturn": -0.015524,
+      "twentyDayReturn": 0.013257,
+      "realizedVolatility": 0.133886,
       "lessonAdjustments": [],
       "commentary": {
         "convictionLabel": "Trigger-dependent setup",
-        "rankingRead": "The setup scores 42.79 on the common scale, supported by 42.6% modeled probability of profit, 0.88 liquidity quality and positive modeled expectancy of $35.34.",
-        "setup": "IWM enters with -1.5% five-session momentum and +1.4% over twenty sessions. Realized volatility is 13.4%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
-        "execution": "Buy the 295 put and sell the 288 put, both expiring Jul 24, 2026. The debit mark of 2.33 assumes the long ask and short bid, not a midpoint. Do not pay more than 2.33 for the spread without rerunning the payoff.",
-        "risk": "Maximum one-lot loss is $233.00. Breakeven is $292.67 and requires a 0.6% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
-        "payoffRead": "Maximum one-lot profit is $467.00, or 2.00 times maximum risk. The simulation assigns 26.0% probability to finishing near maximum profit and uses 19.6% implied volatility across deterministic jump-stress paths."
+        "rankingRead": "The setup scores 40.57 on the common scale, supported by 44.7% modeled probability of profit, 0.92 liquidity quality and positive modeled expectancy of $6.96.",
+        "setup": "IWM enters with -1.6% five-session momentum and +1.3% over twenty sessions. Realized volatility is 13.4%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
+        "execution": "Buy the 294 put and sell the 292 put, both expiring Jul 24, 2026. The debit mark of 0.81 assumes the long ask and short bid, not a midpoint. Do not pay more than 0.81 for the spread without rerunning the payoff.",
+        "risk": "Maximum one-lot loss is $81.00. Breakeven is $293.19 and requires a 0.4% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
+        "payoffRead": "Maximum one-lot profit is $119.00, or 1.47 times maximum risk. The simulation assigns 40.0% probability to finishing near maximum profit and uses 19.1% implied volatility across deterministic jump-stress paths."
       },
       "underlyingChart": {
         "assetPath": "/charts/2026-07-13/underlying/02-iwm.svg",
         "entryDate": "2026-07-13",
-        "entryPrice": 294.36,
+        "entryPrice": 294.26,
         "points": [
           {
             "date": "2026-03-04",
@@ -996,491 +996,17 @@
           },
           {
             "date": "2026-07-13",
-            "close": 294.36
+            "close": 294.26
           }
         ]
       }
     },
     {
       "rank": 3,
-      "id": "bac-2026-07-24-put_credit-58-59",
-      "name": "BAC 7/24 59/58 Put Credit Spread",
-      "symbol": "BAC",
-      "underlyingMark": 59.065,
-      "expiration": "2026-07-24",
-      "daysToExpiry": 11,
-      "structureType": "Credit",
-      "style": "put_credit",
-      "direction": "bullish",
-      "theme": "financial and digital-market structure",
-      "regime": "mean_reversion",
-      "correlationBucket": "financials",
-      "bucket": "conditional",
-      "entry": 0.37,
-      "width": 1,
-      "maxLossDollars": 63,
-      "maxProfitDollars": 37,
-      "rewardToRisk": 0.59,
-      "breakeven": 58.63,
-      "requiredMovePctToBreakeven": -0.74,
-      "probabilityProfit": 0.5504,
-      "probabilityNearMaxProfit": 0.5065,
-      "expectedValueDollars": -6.4,
-      "blackScholesEdge": -0.0621,
-      "impliedVolUsed": 0.3195,
-      "liquidityScore": 0.8277,
-      "score": 41.12,
-      "riskFlags": [
-        "negative conservative BS edge"
-      ],
-      "thesis": "BAC is expressing a bullish mean reversion setup: -1.4% over five sessions and +7.1% over twenty, with +21.1% annualized realized volatility. The put credit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
-      "longLeg": {
-        "optionSymbol": "BAC   260724P00058000",
-        "right": "P",
-        "strike": 58,
-        "bid": 0.79,
-        "ask": 0.83,
-        "mid": 0.81,
-        "volume": 111,
-        "openInterest": 1209,
-        "quoteTimeUtc": "2026-07-13T15:15:23.209Z"
-      },
-      "shortLeg": {
-        "optionSymbol": "BAC   260724P00059000",
-        "right": "P",
-        "strike": 59,
-        "bid": 1.2,
-        "ask": 1.25,
-        "mid": 1.225,
-        "volume": 323,
-        "openInterest": 1092,
-        "quoteTimeUtc": "2026-07-13T15:15:22.820Z"
-      },
-      "sourceAsOfUtc": "2026-07-13T15:17:21.048Z",
-      "marketEvidence": [
-        "Underlying $59 at the source timestamp",
-        "-1.4% over five sessions and +7.1% over twenty, with +21.1% annualized realized volatility.",
-        "434 contracts of combined session volume and 2301 contracts of combined open interest across the two legs"
-      ],
-      "historySessionCount": 260,
-      "advancedMetrics": {
-        "symbol": "BAC",
-        "historySessions": 260,
-        "historyConfidence": 1,
-        "return1d": -0.010139,
-        "return5d": -0.01394,
-        "return20d": 0.070794,
-        "sma5Distance": -0.002769,
-        "sma20Distance": 0.01965,
-        "emaTrend": 0.024653,
-        "macdPct": -0.000754,
-        "rsi14": 59.538553,
-        "atr14Pct": 0.018686,
-        "bollingerZ20": 0.906035,
-        "realizedVol5": 0.26004,
-        "realizedVol20": 0.210683,
-        "downsideVol20": 0.128619,
-        "maxDrawdown20": -0.026711,
-        "trendEfficiency20": 0.308087,
-        "volumeZScore20": -2.244401,
-        "atmImpliedVol": 0.315464,
-        "putCallIvSkew": 0.023313,
-        "putCallVolumeRatio": 0.211488,
-        "putCallOpenInterestRatio": 0.486429,
-        "expectedMovePct": 0.043681,
-        "meanQuoteWidthPct": 33.549815,
-        "liquidContractRatio": 0.5,
-        "trendSignal": 0.501154,
-        "riskAdjustedMomentum": 1
-      },
-      "trainingAdjustment": 0,
-      "trainingPolicyVersion": "rfdelta-online-policy-v1",
-      "fiveDayReturn": -0.01394,
-      "twentyDayReturn": 0.070794,
-      "realizedVolatility": 0.210683,
-      "lessonAdjustments": [],
-      "commentary": {
-        "convictionLabel": "Trigger-dependent setup",
-        "rankingRead": "The setup scores 41.12 on the common scale, supported by 55.0% modeled probability of profit, 0.83 liquidity quality and a conservative modeled expectancy of -$6.40, which keeps sizing discipline central.",
-        "setup": "BAC enters with -1.4% five-session momentum and +7.1% over twenty sessions. Realized volatility is 21.1%, placing the underlying in a mean reversion regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
-        "execution": "Buy the 58 put and sell the 59 put, both expiring Jul 24, 2026. The credit mark of 0.37 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.37 of credit without rerunning the payoff.",
-        "risk": "Maximum one-lot loss is $63.00. Breakeven is $58.63 and sits 0.7% below the source mark, providing a downside cushion. Primary watch: negative conservative BS edge. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
-        "payoffRead": "Maximum one-lot profit is $37.00, or 0.59 times maximum risk. The simulation assigns 50.6% probability to finishing near maximum profit and uses 31.9% implied volatility across deterministic jump-stress paths."
-      },
-      "underlyingChart": {
-        "assetPath": "/charts/2026-07-13/underlying/03-bac.svg",
-        "entryDate": "2026-07-13",
-        "entryPrice": 59.065,
-        "points": [
-          {
-            "date": "2026-03-04",
-            "close": 50.3
-          },
-          {
-            "date": "2026-03-05",
-            "close": 49.81
-          },
-          {
-            "date": "2026-03-06",
-            "close": 48.64
-          },
-          {
-            "date": "2026-03-09",
-            "close": 47.9
-          },
-          {
-            "date": "2026-03-10",
-            "close": 48.56
-          },
-          {
-            "date": "2026-03-11",
-            "close": 48.52
-          },
-          {
-            "date": "2026-03-12",
-            "close": 47.13
-          },
-          {
-            "date": "2026-03-13",
-            "close": 46.72
-          },
-          {
-            "date": "2026-03-16",
-            "close": 47.06
-          },
-          {
-            "date": "2026-03-17",
-            "close": 47.28
-          },
-          {
-            "date": "2026-03-18",
-            "close": 46.83
-          },
-          {
-            "date": "2026-03-19",
-            "close": 47.01
-          },
-          {
-            "date": "2026-03-20",
-            "close": 47.16
-          },
-          {
-            "date": "2026-03-23",
-            "close": 47.52
-          },
-          {
-            "date": "2026-03-24",
-            "close": 48.14
-          },
-          {
-            "date": "2026-03-25",
-            "close": 48.75
-          },
-          {
-            "date": "2026-03-26",
-            "close": 48.24
-          },
-          {
-            "date": "2026-03-27",
-            "close": 46.97
-          },
-          {
-            "date": "2026-03-30",
-            "close": 47.23
-          },
-          {
-            "date": "2026-03-31",
-            "close": 48.75
-          },
-          {
-            "date": "2026-04-01",
-            "close": 49.27
-          },
-          {
-            "date": "2026-04-02",
-            "close": 49.38
-          },
-          {
-            "date": "2026-04-06",
-            "close": 50.06
-          },
-          {
-            "date": "2026-04-07",
-            "close": 50.28
-          },
-          {
-            "date": "2026-04-08",
-            "close": 51.88
-          },
-          {
-            "date": "2026-04-09",
-            "close": 52.71
-          },
-          {
-            "date": "2026-04-10",
-            "close": 52.54
-          },
-          {
-            "date": "2026-04-13",
-            "close": 53.35
-          },
-          {
-            "date": "2026-04-14",
-            "close": 53.35
-          },
-          {
-            "date": "2026-04-15",
-            "close": 54.32
-          },
-          {
-            "date": "2026-04-16",
-            "close": 53.51
-          },
-          {
-            "date": "2026-04-17",
-            "close": 53.91
-          },
-          {
-            "date": "2026-04-20",
-            "close": 53.95
-          },
-          {
-            "date": "2026-04-21",
-            "close": 53.48
-          },
-          {
-            "date": "2026-04-22",
-            "close": 53.12
-          },
-          {
-            "date": "2026-04-23",
-            "close": 52.47
-          },
-          {
-            "date": "2026-04-24",
-            "close": 52.05
-          },
-          {
-            "date": "2026-04-27",
-            "close": 52.63
-          },
-          {
-            "date": "2026-04-28",
-            "close": 52.66
-          },
-          {
-            "date": "2026-04-29",
-            "close": 52.88
-          },
-          {
-            "date": "2026-04-30",
-            "close": 53.46
-          },
-          {
-            "date": "2026-05-01",
-            "close": 53.24
-          },
-          {
-            "date": "2026-05-04",
-            "close": 52.19
-          },
-          {
-            "date": "2026-05-05",
-            "close": 53.12
-          },
-          {
-            "date": "2026-05-06",
-            "close": 53.6
-          },
-          {
-            "date": "2026-05-07",
-            "close": 52.75
-          },
-          {
-            "date": "2026-05-08",
-            "close": 51.31
-          },
-          {
-            "date": "2026-05-11",
-            "close": 50.55
-          },
-          {
-            "date": "2026-05-12",
-            "close": 50.78
-          },
-          {
-            "date": "2026-05-13",
-            "close": 49.84
-          },
-          {
-            "date": "2026-05-14",
-            "close": 49.85
-          },
-          {
-            "date": "2026-05-15",
-            "close": 49.77
-          },
-          {
-            "date": "2026-05-18",
-            "close": 50.69
-          },
-          {
-            "date": "2026-05-19",
-            "close": 50.7
-          },
-          {
-            "date": "2026-05-20",
-            "close": 51.23
-          },
-          {
-            "date": "2026-05-21",
-            "close": 51.49
-          },
-          {
-            "date": "2026-05-22",
-            "close": 51.8
-          },
-          {
-            "date": "2026-05-26",
-            "close": 52.2
-          },
-          {
-            "date": "2026-05-27",
-            "close": 51.1
-          },
-          {
-            "date": "2026-05-28",
-            "close": 50.77
-          },
-          {
-            "date": "2026-05-29",
-            "close": 51.6
-          },
-          {
-            "date": "2026-06-01",
-            "close": 51.51
-          },
-          {
-            "date": "2026-06-02",
-            "close": 52.48
-          },
-          {
-            "date": "2026-06-03",
-            "close": 52.4
-          },
-          {
-            "date": "2026-06-04",
-            "close": 54.17
-          },
-          {
-            "date": "2026-06-05",
-            "close": 53.83
-          },
-          {
-            "date": "2026-06-08",
-            "close": 53.63
-          },
-          {
-            "date": "2026-06-09",
-            "close": 54.42
-          },
-          {
-            "date": "2026-06-10",
-            "close": 54.54
-          },
-          {
-            "date": "2026-06-11",
-            "close": 55.16
-          },
-          {
-            "date": "2026-06-12",
-            "close": 56.02
-          },
-          {
-            "date": "2026-06-15",
-            "close": 55.87
-          },
-          {
-            "date": "2026-06-16",
-            "close": 56.84
-          },
-          {
-            "date": "2026-06-17",
-            "close": 56.53
-          },
-          {
-            "date": "2026-06-18",
-            "close": 56.2
-          },
-          {
-            "date": "2026-06-22",
-            "close": 57.37
-          },
-          {
-            "date": "2026-06-23",
-            "close": 57.91
-          },
-          {
-            "date": "2026-06-24",
-            "close": 57.73
-          },
-          {
-            "date": "2026-06-25",
-            "close": 58.19
-          },
-          {
-            "date": "2026-06-26",
-            "close": 57.88
-          },
-          {
-            "date": "2026-06-29",
-            "close": 57.88
-          },
-          {
-            "date": "2026-06-30",
-            "close": 56.98
-          },
-          {
-            "date": "2026-07-01",
-            "close": 58.36
-          },
-          {
-            "date": "2026-07-02",
-            "close": 58.73
-          },
-          {
-            "date": "2026-07-06",
-            "close": 59.9
-          },
-          {
-            "date": "2026-07-07",
-            "close": 59.86
-          },
-          {
-            "date": "2026-07-08",
-            "close": 58.3
-          },
-          {
-            "date": "2026-07-09",
-            "close": 59.25
-          },
-          {
-            "date": "2026-07-10",
-            "close": 59.67
-          },
-          {
-            "date": "2026-07-13",
-            "close": 59.065
-          }
-        ]
-      }
-    },
-    {
-      "rank": 4,
       "id": "cmcsa-2026-07-24-put_credit-23-24",
       "name": "CMCSA 7/24 24/23 Put Credit Spread",
       "symbol": "CMCSA",
-      "underlyingMark": 24.2,
+      "underlyingMark": 24.185,
       "expiration": "2026-07-24",
       "daysToExpiry": 11,
       "structureType": "Credit",
@@ -1490,50 +1016,50 @@
       "regime": "risk_on",
       "correlationBucket": "consumer",
       "bucket": "conditional",
-      "entry": 0.28,
+      "entry": 0.29,
       "width": 1,
-      "maxLossDollars": 72,
-      "maxProfitDollars": 28,
-      "rewardToRisk": 0.39,
-      "breakeven": 23.72,
-      "requiredMovePctToBreakeven": -1.98,
-      "probabilityProfit": 0.5761,
-      "probabilityNearMaxProfit": 0.5256,
-      "expectedValueDollars": -10.5,
-      "blackScholesEdge": -0.1039,
-      "impliedVolUsed": 0.5189,
-      "liquidityScore": 0.6339,
-      "score": 37.83,
+      "maxLossDollars": 71,
+      "maxProfitDollars": 29,
+      "rewardToRisk": 0.41,
+      "breakeven": 23.71,
+      "requiredMovePctToBreakeven": -1.96,
+      "probabilityProfit": 0.575,
+      "probabilityNearMaxProfit": 0.5229,
+      "expectedValueDollars": -9.8,
+      "blackScholesEdge": -0.0968,
+      "impliedVolUsed": 0.5202,
+      "liquidityScore": 0.6578,
+      "score": 38.24,
       "riskFlags": [
         "negative conservative BS edge"
       ],
-      "thesis": "CMCSA is expressing a bullish risk on setup: +3.5% over five sessions and +1.0% over twenty, with +33.6% annualized realized volatility. The put credit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
+      "thesis": "CMCSA is expressing a bullish risk on setup: +3.4% over five sessions and +0.9% over twenty, with +33.5% annualized realized volatility. The put credit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
       "longLeg": {
         "optionSymbol": "CMCSA 260724P00023000",
         "right": "P",
         "strike": 23,
-        "bid": 0.35,
+        "bid": 0.36,
         "ask": 0.43,
-        "mid": 0.39,
+        "mid": 0.395,
         "volume": 1,
         "openInterest": 1327,
-        "quoteTimeUtc": "2026-07-13T15:15:24.745Z"
+        "quoteTimeUtc": "2026-07-13T15:21:49.094Z"
       },
       "shortLeg": {
         "optionSymbol": "CMCSA 260724P00024000",
         "right": "P",
         "strike": 24,
-        "bid": 0.71,
-        "ask": 0.75,
-        "mid": 0.73,
+        "bid": 0.72,
+        "ask": 0.76,
+        "mid": 0.74,
         "volume": 64,
         "openInterest": 631,
-        "quoteTimeUtc": "2026-07-13T15:15:27.479Z"
+        "quoteTimeUtc": "2026-07-13T15:21:56.786Z"
       },
-      "sourceAsOfUtc": "2026-07-13T15:17:21.048Z",
+      "sourceAsOfUtc": "2026-07-13T15:23:50.977Z",
       "marketEvidence": [
         "Underlying $24 at the source timestamp",
-        "+3.5% over five sessions and +1.0% over twenty, with +33.6% annualized realized volatility.",
+        "+3.4% over five sessions and +0.9% over twenty, with +33.5% annualized realized volatility.",
         "65 contracts of combined session volume and 1958 contracts of combined open interest across the two legs"
       ],
       "historySessionCount": 260,
@@ -1541,50 +1067,50 @@
         "symbol": "CMCSA",
         "historySessions": 260,
         "historyConfidence": 1,
-        "return1d": 0.026729,
-        "return5d": 0.035073,
-        "return20d": 0.009595,
-        "sma5Distance": 0.027863,
-        "sma20Distance": 0.033614,
-        "emaTrend": 0.002088,
-        "macdPct": 0.006351,
-        "rsi14": 68.43137,
-        "atr14Pct": 0.036996,
-        "bollingerZ20": 1.164572,
-        "realizedVol5": 0.207609,
-        "realizedVol20": 0.335925,
+        "return1d": 0.026093,
+        "return5d": 0.034431,
+        "return20d": 0.00897,
+        "sma5Distance": 0.027357,
+        "sma20Distance": 0.033006,
+        "emaTrend": 0.001937,
+        "macdPct": 0.006315,
+        "rsi14": 68.338247,
+        "atr14Pct": 0.037019,
+        "bollingerZ20": 1.14503,
+        "realizedVol5": 0.203958,
+        "realizedVol20": 0.335298,
         "downsideVol20": 0.200089,
         "maxDrawdown20": -0.08898,
-        "trendEfficiency20": 0.02945,
-        "volumeZScore20": -1.307426,
-        "atmImpliedVol": 0.515779,
-        "putCallIvSkew": 0.029578,
-        "putCallVolumeRatio": 0.630042,
+        "trendEfficiency20": 0.027582,
+        "volumeZScore20": -1.298784,
+        "atmImpliedVol": 0.516316,
+        "putCallIvSkew": 0.024123,
+        "putCallVolumeRatio": 0.665698,
         "putCallOpenInterestRatio": 0.488343,
-        "expectedMovePct": 0.071488,
-        "meanQuoteWidthPct": 54.822319,
+        "expectedMovePct": 0.071532,
+        "meanQuoteWidthPct": 54.685662,
         "liquidContractRatio": 0.229167,
-        "trendSignal": 0.391938,
-        "riskAdjustedMomentum": 0.114256
+        "trendSignal": 0.382647,
+        "riskAdjustedMomentum": 0.107004
       },
       "trainingAdjustment": 0,
       "trainingPolicyVersion": "rfdelta-online-policy-v1",
-      "fiveDayReturn": 0.035073,
-      "twentyDayReturn": 0.009595,
-      "realizedVolatility": 0.335925,
+      "fiveDayReturn": 0.034431,
+      "twentyDayReturn": 0.00897,
+      "realizedVolatility": 0.335298,
       "lessonAdjustments": [],
       "commentary": {
         "convictionLabel": "Trigger-dependent setup",
-        "rankingRead": "The setup scores 37.83 on the common scale, supported by 57.6% modeled probability of profit, 0.63 liquidity quality and a conservative modeled expectancy of -$10.50, which keeps sizing discipline central.",
-        "setup": "CMCSA enters with +3.5% five-session momentum and +1.0% over twenty sessions. Realized volatility is 33.6%, placing the underlying in a risk on regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
-        "execution": "Buy the 23 put and sell the 24 put, both expiring Jul 24, 2026. The credit mark of 0.28 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.28 of credit without rerunning the payoff.",
-        "risk": "Maximum one-lot loss is $72.00. Breakeven is $23.72 and sits 2.0% below the source mark, providing a downside cushion. Primary watch: negative conservative BS edge. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
-        "payoffRead": "Maximum one-lot profit is $28.00, or 0.39 times maximum risk. The simulation assigns 52.6% probability to finishing near maximum profit and uses 51.9% implied volatility across deterministic jump-stress paths."
+        "rankingRead": "The setup scores 38.24 on the common scale, supported by 57.5% modeled probability of profit, 0.66 liquidity quality and a conservative modeled expectancy of -$9.80, which keeps sizing discipline central.",
+        "setup": "CMCSA enters with +3.4% five-session momentum and +0.9% over twenty sessions. Realized volatility is 33.5%, placing the underlying in a risk on regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
+        "execution": "Buy the 23 put and sell the 24 put, both expiring Jul 24, 2026. The credit mark of 0.29 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.29 of credit without rerunning the payoff.",
+        "risk": "Maximum one-lot loss is $71.00. Breakeven is $23.71 and sits 2.0% below the source mark, providing a downside cushion. Primary watch: negative conservative BS edge. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
+        "payoffRead": "Maximum one-lot profit is $29.00, or 0.41 times maximum risk. The simulation assigns 52.3% probability to finishing near maximum profit and uses 52.0% implied volatility across deterministic jump-stress paths."
       },
       "underlyingChart": {
-        "assetPath": "/charts/2026-07-13/underlying/04-cmcsa.svg",
+        "assetPath": "/charts/2026-07-13/underlying/03-cmcsa.svg",
         "entryDate": "2026-07-13",
-        "entryPrice": 24.2,
+        "entryPrice": 24.185,
         "points": [
           {
             "date": "2026-03-04",
@@ -1944,482 +1470,7 @@
           },
           {
             "date": "2026-07-13",
-            "close": 24.2
-          }
-        ]
-      }
-    },
-    {
-      "rank": 5,
-      "id": "on-2026-07-24-call_credit-99-96",
-      "name": "ON 7/24 96/99 Call Credit Spread",
-      "symbol": "ON",
-      "underlyingMark": 91.73,
-      "expiration": "2026-07-24",
-      "daysToExpiry": 11,
-      "structureType": "Credit",
-      "style": "call_credit",
-      "direction": "bearish",
-      "theme": "semiconductors and compute infrastructure",
-      "regime": "vol_expansion",
-      "correlationBucket": "semiconductors",
-      "bucket": "conditional",
-      "entry": 0.71,
-      "width": 3,
-      "maxLossDollars": 229,
-      "maxProfitDollars": 71,
-      "rewardToRisk": 0.31,
-      "breakeven": 96.71,
-      "requiredMovePctToBreakeven": 5.43,
-      "probabilityProfit": 0.6582,
-      "probabilityNearMaxProfit": 0.6411,
-      "expectedValueDollars": -25.89,
-      "blackScholesEdge": -0.2519,
-      "impliedVolUsed": 0.8831,
-      "liquidityScore": 0.5613,
-      "score": 35.13,
-      "riskFlags": [
-        "negative conservative BS edge",
-        "elevated gap and volatility risk"
-      ],
-      "thesis": "ON is expressing a bearish vol expansion setup: -3.1% over five sessions and -20.9% over twenty, with +127.2% annualized realized volatility. The call credit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 7/24.",
-      "longLeg": {
-        "optionSymbol": "ON    260724C00099000",
-        "right": "C",
-        "strike": 99,
-        "bid": 2.55,
-        "ask": 2.94,
-        "mid": 2.745,
-        "volume": 422,
-        "openInterest": 220,
-        "quoteTimeUtc": "2026-07-13T15:16:21.580Z"
-      },
-      "shortLeg": {
-        "optionSymbol": "ON    260724C00096000",
-        "right": "C",
-        "strike": 96,
-        "bid": 3.65,
-        "ask": 4.55,
-        "mid": 4.1,
-        "volume": 334,
-        "openInterest": 218,
-        "quoteTimeUtc": "2026-07-13T15:16:21.225Z"
-      },
-      "sourceAsOfUtc": "2026-07-13T15:17:21.048Z",
-      "marketEvidence": [
-        "Underlying $92 at the source timestamp",
-        "-3.1% over five sessions and -20.9% over twenty, with +127.2% annualized realized volatility.",
-        "756 contracts of combined session volume and 438 contracts of combined open interest across the two legs"
-      ],
-      "historySessionCount": 260,
-      "advancedMetrics": {
-        "symbol": "ON",
-        "historySessions": 260,
-        "historyConfidence": 1,
-        "return1d": -0.044081,
-        "return5d": -0.03126,
-        "return20d": -0.208951,
-        "sma5Distance": -0.025082,
-        "sma20Distance": -0.12776,
-        "emaTrend": -0.074379,
-        "macdPct": -0.013623,
-        "rsi14": 24.61107,
-        "atr14Pct": 0.093855,
-        "bollingerZ20": -0.94256,
-        "realizedVol5": 0.63364,
-        "realizedVol20": 1.272288,
-        "downsideVol20": 1.224606,
-        "maxDrawdown20": -0.32672,
-        "trendEfficiency20": 0.201967,
-        "volumeZScore20": -1.349795,
-        "atmImpliedVol": 0.873714,
-        "putCallIvSkew": 0.016545,
-        "putCallVolumeRatio": 0.233151,
-        "putCallOpenInterestRatio": 3.66311,
-        "expectedMovePct": 0.121007,
-        "meanQuoteWidthPct": 15.950949,
-        "liquidContractRatio": 0.270833,
-        "trendSignal": -0.425622,
-        "riskAdjustedMomentum": -0.656931
-      },
-      "trainingAdjustment": 0,
-      "trainingPolicyVersion": "rfdelta-online-policy-v1",
-      "fiveDayReturn": -0.03126,
-      "twentyDayReturn": -0.208951,
-      "realizedVolatility": 1.272288,
-      "lessonAdjustments": [],
-      "commentary": {
-        "convictionLabel": "Trigger-dependent setup",
-        "rankingRead": "The setup scores 35.13 on the common scale, supported by 65.8% modeled probability of profit, 0.56 liquidity quality and a conservative modeled expectancy of -$25.89, which keeps sizing discipline central.",
-        "setup": "ON enters with -3.1% five-session momentum and -20.9% over twenty sessions. Realized volatility is 127.2%, placing the underlying in a vol expansion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
-        "execution": "Buy the 99 call and sell the 96 call, both expiring Jul 24, 2026. The credit mark of 0.71 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.71 of credit without rerunning the payoff.",
-        "risk": "Maximum one-lot loss is $229.00. Breakeven is $96.71 and sits 5.4% above the source mark, providing an upside cushion. Primary watch: negative conservative BS edge; elevated gap and volatility risk. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
-        "payoffRead": "Maximum one-lot profit is $71.00, or 0.31 times maximum risk. The simulation assigns 64.1% probability to finishing near maximum profit and uses 88.3% implied volatility across deterministic jump-stress paths."
-      },
-      "underlyingChart": {
-        "assetPath": "/charts/2026-07-13/underlying/05-on.svg",
-        "entryDate": "2026-07-13",
-        "entryPrice": 91.73,
-        "points": [
-          {
-            "date": "2026-03-04",
-            "close": 62.53
-          },
-          {
-            "date": "2026-03-05",
-            "close": 60.85
-          },
-          {
-            "date": "2026-03-06",
-            "close": 56.87
-          },
-          {
-            "date": "2026-03-09",
-            "close": 59.23
-          },
-          {
-            "date": "2026-03-10",
-            "close": 59.59
-          },
-          {
-            "date": "2026-03-11",
-            "close": 59.24
-          },
-          {
-            "date": "2026-03-12",
-            "close": 57.69
-          },
-          {
-            "date": "2026-03-13",
-            "close": 58.55
-          },
-          {
-            "date": "2026-03-16",
-            "close": 59.88
-          },
-          {
-            "date": "2026-03-17",
-            "close": 60.98
-          },
-          {
-            "date": "2026-03-18",
-            "close": 60.46
-          },
-          {
-            "date": "2026-03-19",
-            "close": 59.29
-          },
-          {
-            "date": "2026-03-20",
-            "close": 59.26
-          },
-          {
-            "date": "2026-03-23",
-            "close": 59.89
-          },
-          {
-            "date": "2026-03-24",
-            "close": 62.34
-          },
-          {
-            "date": "2026-03-25",
-            "close": 63.1
-          },
-          {
-            "date": "2026-03-26",
-            "close": 60.87
-          },
-          {
-            "date": "2026-03-27",
-            "close": 58.35
-          },
-          {
-            "date": "2026-03-30",
-            "close": 55.66
-          },
-          {
-            "date": "2026-03-31",
-            "close": 61.92
-          },
-          {
-            "date": "2026-04-01",
-            "close": 62.2
-          },
-          {
-            "date": "2026-04-02",
-            "close": 62.19
-          },
-          {
-            "date": "2026-04-06",
-            "close": 63.49
-          },
-          {
-            "date": "2026-04-07",
-            "close": 63.79
-          },
-          {
-            "date": "2026-04-08",
-            "close": 68.38
-          },
-          {
-            "date": "2026-04-09",
-            "close": 68.49
-          },
-          {
-            "date": "2026-04-10",
-            "close": 68.65
-          },
-          {
-            "date": "2026-04-13",
-            "close": 71.02
-          },
-          {
-            "date": "2026-04-14",
-            "close": 72.05
-          },
-          {
-            "date": "2026-04-15",
-            "close": 72.43
-          },
-          {
-            "date": "2026-04-16",
-            "close": 79.93
-          },
-          {
-            "date": "2026-04-17",
-            "close": 83.01
-          },
-          {
-            "date": "2026-04-20",
-            "close": 85.56
-          },
-          {
-            "date": "2026-04-21",
-            "close": 86.91
-          },
-          {
-            "date": "2026-04-22",
-            "close": 88.99
-          },
-          {
-            "date": "2026-04-23",
-            "close": 97.78
-          },
-          {
-            "date": "2026-04-24",
-            "close": 98.4
-          },
-          {
-            "date": "2026-04-27",
-            "close": 98.04
-          },
-          {
-            "date": "2026-04-28",
-            "close": 93.3
-          },
-          {
-            "date": "2026-04-29",
-            "close": 98.86
-          },
-          {
-            "date": "2026-04-30",
-            "close": 100.81
-          },
-          {
-            "date": "2026-05-01",
-            "close": 103.03
-          },
-          {
-            "date": "2026-05-04",
-            "close": 102.04
-          },
-          {
-            "date": "2026-05-05",
-            "close": 102.67
-          },
-          {
-            "date": "2026-05-06",
-            "close": 105.77
-          },
-          {
-            "date": "2026-05-07",
-            "close": 100.61
-          },
-          {
-            "date": "2026-05-08",
-            "close": 103.2
-          },
-          {
-            "date": "2026-05-11",
-            "close": 107.24
-          },
-          {
-            "date": "2026-05-12",
-            "close": 104.11
-          },
-          {
-            "date": "2026-05-13",
-            "close": 115.71
-          },
-          {
-            "date": "2026-05-14",
-            "close": 118.37
-          },
-          {
-            "date": "2026-05-15",
-            "close": 113.11
-          },
-          {
-            "date": "2026-05-18",
-            "close": 109.43
-          },
-          {
-            "date": "2026-05-19",
-            "close": 106.02
-          },
-          {
-            "date": "2026-05-20",
-            "close": 110.21
-          },
-          {
-            "date": "2026-05-21",
-            "close": 109.61
-          },
-          {
-            "date": "2026-05-22",
-            "close": 116.2
-          },
-          {
-            "date": "2026-05-26",
-            "close": 127
-          },
-          {
-            "date": "2026-05-27",
-            "close": 124.89
-          },
-          {
-            "date": "2026-05-28",
-            "close": 123.77
-          },
-          {
-            "date": "2026-05-29",
-            "close": 120.62
-          },
-          {
-            "date": "2026-06-01",
-            "close": 120.92
-          },
-          {
-            "date": "2026-06-02",
-            "close": 128.64
-          },
-          {
-            "date": "2026-06-03",
-            "close": 133.93
-          },
-          {
-            "date": "2026-06-04",
-            "close": 131.82
-          },
-          {
-            "date": "2026-06-05",
-            "close": 117.26
-          },
-          {
-            "date": "2026-06-08",
-            "close": 120.9
-          },
-          {
-            "date": "2026-06-09",
-            "close": 117
-          },
-          {
-            "date": "2026-06-10",
-            "close": 110.17
-          },
-          {
-            "date": "2026-06-11",
-            "close": 115.96
-          },
-          {
-            "date": "2026-06-12",
-            "close": 116.79
-          },
-          {
-            "date": "2026-06-15",
-            "close": 125.9
-          },
-          {
-            "date": "2026-06-16",
-            "close": 118.25
-          },
-          {
-            "date": "2026-06-17",
-            "close": 112.92
-          },
-          {
-            "date": "2026-06-18",
-            "close": 121.62
-          },
-          {
-            "date": "2026-06-22",
-            "close": 131.55
-          },
-          {
-            "date": "2026-06-23",
-            "close": 117.06
-          },
-          {
-            "date": "2026-06-24",
-            "close": 115.74
-          },
-          {
-            "date": "2026-06-25",
-            "close": 118.74
-          },
-          {
-            "date": "2026-06-26",
-            "close": 90.65
-          },
-          {
-            "date": "2026-06-29",
-            "close": 88.57
-          },
-          {
-            "date": "2026-06-30",
-            "close": 94.54
-          },
-          {
-            "date": "2026-07-01",
-            "close": 94.63
-          },
-          {
-            "date": "2026-07-02",
-            "close": 91.22
-          },
-          {
-            "date": "2026-07-06",
-            "close": 94.69
-          },
-          {
-            "date": "2026-07-07",
-            "close": 91.1
-          },
-          {
-            "date": "2026-07-08",
-            "close": 93.79
-          },
-          {
-            "date": "2026-07-09",
-            "close": 97.87
-          },
-          {
-            "date": "2026-07-10",
-            "close": 95.96
-          },
-          {
-            "date": "2026-07-13",
-            "close": 91.73
+            "close": 24.185
           }
         ]
       }
@@ -2502,7 +1553,7 @@
     ],
     "executionAssumption": "Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.",
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
-    "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 13, 2026, 11:17 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
+    "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 13, 2026, 11:23 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
   }
 }
