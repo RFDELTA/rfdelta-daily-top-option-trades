@@ -32,7 +32,7 @@ BAC supplies the counterweight. Its put credit structure scores 44.86 and carrie
 
 TLT enters with -0.6% five-session momentum and -2.0% over twenty sessions. Realized volatility is 9.6%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-14/underlying/01-tlt.svg) at $84.07.
+**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-14/underlying/01-tlt.svg) at $84.07; latest official close $84.08 on 2026-07-14.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 29.3; MACD spread -0.34%; ATR(14) 0.69%; realized volatility 9.6%; ATM implied volatility 9.3%; expected move 1.4%. Outcome-trained score adjustment: +0.00.
 
@@ -48,7 +48,7 @@ TLT enters with -0.6% five-session momentum and -2.0% over twenty sessions. Real
 
 BAC enters with +1.4% five-session momentum and +8.3% over twenty sessions. Realized volatility is 21.0%, placing the underlying in a trend regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [BAC entry and open-position history](/charts/2026-07-14/underlying/02-bac.svg) at $60.68.
+**Underlying chart:** [BAC entry and open-position history](/charts/2026-07-14/underlying/02-bac.svg) at $60.68; latest official close $60.62 on 2026-07-14.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 65.2; MACD spread 0.05%; ATR(14) 2.00%; realized volatility 21.0%; ATM implied volatility 23.4%; expected move 4.0%. Outcome-trained score adjustment: +0.00.
 
@@ -64,7 +64,7 @@ BAC enters with +1.4% five-session momentum and +8.3% over twenty sessions. Real
 
 C enters with -4.1% five-session momentum and -3.4% over twenty sessions. Realized volatility is 27.0%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [C entry and open-position history](/charts/2026-07-14/underlying/03-c.svg) at $135.02.
+**Underlying chart:** [C entry and open-position history](/charts/2026-07-14/underlying/03-c.svg) at $135.02; latest official close $133.27 on 2026-07-14.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 32.9; MACD spread -0.83%; ATR(14) 2.88%; realized volatility 27.0%; ATM implied volatility 33.1%; expected move 5.7%. Outcome-trained score adjustment: +0.00.
 
@@ -80,7 +80,7 @@ C enters with -4.1% five-session momentum and -3.4% over twenty sessions. Realiz
 
 T enters with +1.1% five-session momentum and -9.6% over twenty sessions. Realized volatility is 33.2%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [T entry and open-position history](/charts/2026-07-14/underlying/04-t.svg) at $21.32.
+**Underlying chart:** [T entry and open-position history](/charts/2026-07-14/underlying/04-t.svg) at $21.32; latest official close $21.28 on 2026-07-14.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 33.4; MACD spread 0.47%; ATR(14) 3.30%; realized volatility 33.2%; ATM implied volatility 36.7%; expected move 6.4%. Outcome-trained score adjustment: +0.00.
 
@@ -96,7 +96,7 @@ T enters with +1.1% five-session momentum and -9.6% over twenty sessions. Realiz
 
 F enters with +2.1% five-session momentum and -6.7% over twenty sessions. Realized volatility is 27.1%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [F entry and open-position history](/charts/2026-07-14/underlying/05-f.svg) at $13.84.
+**Underlying chart:** [F entry and open-position history](/charts/2026-07-14/underlying/05-f.svg) at $13.84; latest official close $13.94 on 2026-07-14.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 47.0; MACD spread -0.09%; ATR(14) 3.06%; realized volatility 27.1%; ATM implied volatility 47.9%; expected move 8.3%. Outcome-trained score adjustment: +0.00.
 
