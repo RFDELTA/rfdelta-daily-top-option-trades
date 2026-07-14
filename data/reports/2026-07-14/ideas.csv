@@ -1,0 +1,6 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","TLT","TLT 7/27 84/82 Put Debit Spread","put_debit","2026-07-27","13","84.07","Debit","0.43","0.4204","26.49","43","157","3.65","83.57","-0.59","61.86","0.7611","0.18"
+"2","BAC","BAC 7/31 60/59 Put Credit Spread","put_credit","2026-07-31","17","60.68","Credit","0.27","0.6196","-8.35","73","27","0.37","59.73","-1.57","44.86","0.8128","0.2438"
+"3","C","C 7/31 140/142 Call Credit Spread","call_credit","2026-07-31","17","135.02","Credit","0.42","0.7103","-12.24","158","42","0.27","140.42","4","40.76","0.703","0.3253"
+"4","T","T 7/31 21/20 Put Debit Spread","put_debit","2026-07-31","17","21.3166","Debit","0.32","0.3663","0.96","32","68","2.12","20.68","-2.99","36.66","0.7585","0.389"
+"5","F","F 7/31 14/13.5 Put Debit Spread","put_debit","2026-07-31","17","13.8399","Debit","0.27","0.4841","-2.52","27","23","0.85","13.73","-0.79","35.16","0.8162","0.4816"
