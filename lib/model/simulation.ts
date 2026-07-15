@@ -1,10 +1,14 @@
-import { blackScholesPrice, impliedVolBisection, payoff } from "@/lib/model/math";
+import { blackScholesDelta, blackScholesPrice, impliedVolBisection, payoff } from "@/lib/model/math";
 import { DeterministicRng } from "@/lib/model/rng";
 import { ModelSettings } from "@/lib/model/settings";
 import { TradeCandidate } from "@/lib/model/types";
 
 export type SimulationResult = {
   impliedVolUsed: number;
+  longImpliedVol: number;
+  shortImpliedVol: number;
+  longDelta: number;
+  shortDelta: number;
   blackScholesEdge: number;
   probabilityProfit: number;
   probabilityNearMaxProfit: number;
@@ -149,6 +153,24 @@ export function runCandidateSimulation(
 
   return {
     impliedVolUsed: sigma,
+    longImpliedVol: ivLong,
+    shortImpliedVol: ivShort,
+    longDelta: blackScholesDelta({
+      s: candidate.underlyingMark,
+      k: candidate.longLeg.strike,
+      t,
+      r: settings.riskFreeRate,
+      sigma: ivLong,
+      right: candidate.longLeg.right
+    }),
+    shortDelta: blackScholesDelta({
+      s: candidate.underlyingMark,
+      k: candidate.shortLeg.strike,
+      t,
+      r: settings.riskFreeRate,
+      sigma: ivShort,
+      right: candidate.shortLeg.right
+    }),
     blackScholesEdge,
     probabilityProfit: profitCount / settings.pathsPerCandidate,
     probabilityNearMaxProfit: nearMaxProfitCount / settings.pathsPerCandidate,

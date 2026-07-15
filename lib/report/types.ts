@@ -116,7 +116,7 @@ export type OptionsReport = {
     generatedAtUtc: string;
     dataAsOfUtc: string;
     edition: "Daily market edition" | "Historical calibration edition";
-    methodologyVersion: "rfdelta-options-v1" | "rfdelta-options-v2";
+    methodologyVersion: "rfdelta-options-v1" | "rfdelta-options-v2" | "rfdelta-options-v3";
     selectionHash: string;
     datasetRunId?: string;
     featureVersion?: string;

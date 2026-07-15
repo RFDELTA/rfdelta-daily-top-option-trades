@@ -12,17 +12,20 @@ The repository never submits orders. It does not contain account identifiers, ba
 4. A configurable chain budget is allocated to core market anchors, the largest percentage movers, the highest-volume remaining names and a date-seeded rotation sleeve. The exact selected set is retained with the run.
 5. Same-session freshness runs before any model input is retained.
 6. Finalized public daily price and volume history is queried from two fixed Yahoo Finance chart hosts, validated, merged deterministically and capped at 260 sessions. The live bridge remains authoritative for the current quote and option chain.
-7. The generator computes versioned price, volatility, volume, options-skew, implied-volatility, expected-move and liquidity features for every included symbol.
+7. The generator computes versioned price, volatility, volume, options-skew, implied-volatility, expected-move, liquidity and 5/15/60-session confirmation features for every included symbol.
 8. A separate 4:20 p.m. close mode, with a 5:05 p.m. recovery run, records each open symbol's finalized official close and extends its chart without changing the selected spread or entry.
 9. Prior report baskets are reconciled against public expiration closes. Fully completed baskets receive final P/L, post-trade commentary and close-marked underlying charts on their original report.
 10. A deterministic ridge-regularized policy is trained from fully resolved feature-rich trades. Learned score adjustments remain zero until the minimum sample threshold is reached and are always capped.
 11. Bullish symbols produce call-debit and put-credit candidates. Bearish symbols produce put-debit and call-credit candidates.
-12. Each candidate runs through deterministic jump-stress Monte Carlo, common scoring weights and the versioned outcome-trained policy.
-13. The basket optimizer enforces one idea per symbol, correlation-bucket limits, a $250 one-lot cap, an $800 five-idea basket cap, and minimum debit/credit representation.
-14. Reports, ranking graphics, per-idea underlying charts, retained bars, market features, all ranked candidates, the selection policy and a hash-verified run manifest are committed to Git.
-15. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
+12. Each candidate runs through four deterministic payoff views: jump-stress simulation, market-implied terminal probability, a horizon-confirmed regime estimate and a fat-tail case.
+13. Publication requires a 70 eligibility score, nonnegative conservative expected value, at least three positive models, five probability-margin points, 0.80 liquidity, complete two-leg data, current-session confirmation and aligned 5/15/60-session direction.
+14. Only candidates that clear every hard gate reach the basket optimizer. It enforces one idea per symbol, correlation-bucket limits, a $250 one-lot cap and an $800 five-idea basket cap without filling empty slots from rejected candidates.
+15. Reports, ranking graphics, per-idea underlying charts, retained bars, market features, all ranked candidates, the selection policy and a hash-verified run manifest are committed to Git.
+16. Vercel deploys the commit. The GoDaddy iframes always render `/embed/...` from the latest valid committed edition.
 
 If current-session data are not available, generation exits with code `75`. The workflow records a clean market-session skip and leaves the previous valid report published. It never copies yesterday's quotes into today's date.
+
+If current data are valid but no spread clears every publication gate, the workflow publishes a fresh no-trade edition with the complete Daily Market Read and retains every rejected candidate and failure reason in the immutable run dataset.
 
 ## Market Data Contract
 

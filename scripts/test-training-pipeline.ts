@@ -48,6 +48,13 @@ async function main() {
     }
   }
 
+  process.env.MODEL_MIN_PUBLICATION_SCORE = "0";
+  process.env.MODEL_MIN_PROBABILITY_MARGIN = "-1";
+  process.env.MODEL_MIN_CONSERVATIVE_EV_DOLLARS = "-10000";
+  process.env.MODEL_MIN_POSITIVE_MODELS = "0";
+  process.env.MODEL_MIN_LIQUIDITY_SCORE = "0";
+  process.env.MODEL_MIN_MULTI_HORIZON_ALIGNMENT = "0";
+  process.env.MODEL_REQUIRE_SESSION_CONFIRMATION = "false";
   const report = await buildReport(snapshot);
   assert.ok(report.topTrades.every((idea) => idea.advancedMetrics));
   const settlementSnapshot = withSettlementBars(snapshot, report);

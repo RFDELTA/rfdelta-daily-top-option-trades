@@ -24,6 +24,7 @@ export function buildMarketRead(
       .sort((a, b) => b.runMetadata.reportDate.localeCompare(a.runMetadata.reportDate))
       .slice(0, 4);
   const lookbackSessionDates = [current.reportDate, ...priorSessions.map((report) => report.runMetadata.reportDate)].slice(0, 5);
+  if (!current.topTrades.length) return buildNoTradeMarketRead(current, lookbackSessionDates, newsRadar);
   const currentBias = directionalBias(current.topTrades);
   const priorBias = average(priorSessions.map((report) => directionalBias(report.topTrades)));
   const bullish = current.topTrades.filter((idea) => idea.direction === "bullish").length;
@@ -117,6 +118,32 @@ export function buildMarketRead(
       }
     ],
     basis: `Rolling comparison uses ${lookbackSessionDates.length} retained published market session${lookbackSessionDates.length === 1 ? "" : "s"}: ${lookbackSessionDates.map(formatDate).join(", ")}. The current screen ranked ${current.marketContext.candidateCount} candidates across ${current.marketContext.includedSymbolCount} included symbols. Headline ranking uses publication time, market relevance, source quality, symbol relevance and topic diversity. Market evidence is timestamped ${formatDateTime(current.dataAsOfUtc)}.`
+  };
+}
+
+function buildNoTradeMarketRead(current: MarketReadInput, lookbackSessionDates: string[], newsRadar: MarketNewsItem[]): MarketRead {
+  return {
+    asOfUtc: current.dataAsOfUtc,
+    lookbackSessionDates,
+    headline: "The cleanest option trade today is patience",
+    standfirst: `The screen evaluated ${current.marketContext.candidateCount} defined-risk spreads across ${current.marketContext.includedSymbolCount} current option chains. None cleared the complete price, probability, liquidity and confirmation standard at the quoted terms.`,
+    commentary: [
+      "A no-trade board does not mean the market is quiet. It means the available spreads asked for too much risk, offered too little probability margin or lacked enough follow-through to justify an entry at the displayed bid and ask.",
+      "The important distinction is between an interesting ticker and an executable spread. Today produced candidates worth monitoring, but not one with enough room between its modeled probability and the payoff hurdle after conservative pricing.",
+      "That leaves the daily posture in cash rather than forcing a fifth-best idea into a portfolio. A later move can improve the setup, but it would need a fresh option-chain evaluation because both price and volatility will have changed.",
+      newsRadar.length
+        ? "The headline tape remains active, but fresh news only matters when the underlying and option market confirm it together. Today that confirmation was incomplete."
+        : "Price, volatility and liquidity carry the read today. None aligned strongly enough to turn market movement into a defined-risk recommendation."
+    ],
+    newsRadar,
+    watchItems: [
+      { label: "Probability margin", signal: "No spread cleared the full hurdle", read: "A stronger move or better option price can widen the gap between modeled probability and the break-even requirement." },
+      { label: "Liquidity", signal: `${current.marketContext.includedSymbolCount} current chains reviewed`, read: "Tighter two-sided quotes can materially improve a vertical spread without changing the underlying thesis." },
+      { label: "Session follow-through", signal: "Direction remains unconfirmed", read: "A durable move through the session reference level matters more than an opening burst that fades." },
+      { label: "Volatility", signal: "No favorable risk-price combination", read: "Watch whether implied volatility reprices faster than the underlying. Better structure can emerge even when direction stays unchanged." },
+      { label: "Risk budget", signal: "$0 of new one-lot maximum loss", read: "No new exposure is preferable to accepting a spread that failed the same publication standard applied to every candidate." }
+    ],
+    basis: `Rolling comparison covers ${lookbackSessionDates.length} retained market session${lookbackSessionDates.length === 1 ? "" : "s"}: ${lookbackSessionDates.map(formatDate).join(", ")}. Market evidence is timestamped ${formatDateTime(current.dataAsOfUtc)}.`
   };
 }
 

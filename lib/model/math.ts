@@ -38,6 +38,24 @@ export function blackScholesPrice(args: {
   return k * Math.exp(-r * t) * normCdf(-d2) - s * normCdf(-d1);
 }
 
+export function blackScholesDelta(args: {
+  s: number;
+  k: number;
+  t: number;
+  r: number;
+  sigma: number;
+  right: "C" | "P";
+}): number {
+  const sigma = Math.max(args.sigma, 1e-6);
+  if (args.t <= 0) {
+    const callDelta = args.s > args.k ? 1 : args.s < args.k ? 0 : 0.5;
+    return args.right === "C" ? callDelta : callDelta - 1;
+  }
+  const d1 = (Math.log(args.s / args.k) + (args.r + 0.5 * sigma * sigma) * args.t) / (sigma * Math.sqrt(args.t));
+  const callDelta = normCdf(d1);
+  return args.right === "C" ? callDelta : callDelta - 1;
+}
+
 export function impliedVolBisection(args: {
   s: number;
   k: number;

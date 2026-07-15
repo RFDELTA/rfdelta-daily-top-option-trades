@@ -24,13 +24,16 @@ export function ReportOverview({ report, compact = false }: { report: OptionsRep
 }
 
 export function ScoreChart({ report }: { report: OptionsReport }) {
+  const hasTrades = report.topTrades.length > 0;
   return (
     <section className="chart-section">
       <div className="content-width">
         <p className="eyebrow">Ranked opportunity set</p>
         <h2>What leads the board</h2>
-        <p className="section-intro">Every score uses the same probability, expected value, liquidity, payoff, model-edge and signal framework.</p>
-        <Image className="report-chart desktop-chart" src={`/charts/${report.runMetadata.reportDate}/ranked_scores.svg`} width={1200} height={680} alt={`Ranked option trade scores for ${report.runMetadata.reportDate}`} priority />
+        <p className="section-intro">Every score combines four payoff views, conservative expected value, liquidity, session follow-through and multi-session alignment.</p>
+        {hasTrades
+          ? <Image className="report-chart desktop-chart" src={`/charts/${report.runMetadata.reportDate}/ranked_scores.svg`} width={1200} height={680} alt={`Ranked option trade scores for ${report.runMetadata.reportDate}`} priority />
+          : <p className="section-intro">No spread reached the publication threshold today. The full candidate screen remains part of the retained daily record.</p>}
         <div className="mobile-chart" aria-label={`Ranked option trade scores for ${report.runMetadata.reportDate}`}>
           {report.topTrades.map((idea) => (
             <div className="mobile-score-row" key={idea.id}>
@@ -46,6 +49,7 @@ export function ScoreChart({ report }: { report: OptionsReport }) {
 }
 
 export function RiskRewardChart({ report }: { report: OptionsReport }) {
+  const hasTrades = report.topTrades.length > 0;
   const maxPayoff = Math.max(1, ...report.topTrades.flatMap((idea) => [idea.maxLossDollars, idea.maxProfitDollars]));
   return (
     <section className="chart-section alternate">
@@ -53,7 +57,9 @@ export function RiskRewardChart({ report }: { report: OptionsReport }) {
         <p className="eyebrow">Payoff discipline</p>
         <h2>Risk is known before the trade</h2>
         <p className="section-intro">Maximum loss and maximum profit are shown for one vertical spread using conservative entry prices.</p>
-        <Image className="report-chart desktop-chart" src={`/charts/${report.runMetadata.reportDate}/risk_reward.svg`} width={1200} height={680} alt={`Risk and reward comparison for ${report.runMetadata.reportDate}`} />
+        {hasTrades
+          ? <Image className="report-chart desktop-chart" src={`/charts/${report.runMetadata.reportDate}/risk_reward.svg`} width={1200} height={680} alt={`Risk and reward comparison for ${report.runMetadata.reportDate}`} />
+          : <p className="section-intro">There is no recommended spread risk on the board for this session.</p>}
         <div className="mobile-chart" aria-label={`Risk and reward comparison for ${report.runMetadata.reportDate}`}>
           {report.topTrades.map((idea) => (
             <div className="mobile-risk-row" key={idea.id}>
@@ -76,8 +82,10 @@ export function TradeList({ report, from = 0, to = report.topTrades.length }: { 
     <section className="trades-section">
       <div className="content-width">
         <p className="eyebrow">Detailed trade intelligence</p>
-        <h2>{ideas.length === 1 ? `Trade ${ideas[0]?.rank}` : `Trades ${ideas[0]?.rank ?? from + 1}-${ideas.at(-1)?.rank ?? to}`}</h2>
-        <div className="trade-list">{ideas.map((idea) => <TradeCard idea={idea} key={idea.id} />)}</div>
+        <h2>{ideas.length === 0 ? "No qualifying trade today" : ideas.length === 1 ? `Trade ${ideas[0]?.rank}` : `Trades ${ideas[0]?.rank ?? from + 1}-${ideas.at(-1)?.rank ?? to}`}</h2>
+        {ideas.length === 0
+          ? <p className="section-intro">None of today&apos;s defined-risk spreads offered enough probability margin and conservative expected value at executable prices.</p>
+          : <div className="trade-list">{ideas.map((idea) => <TradeCard idea={idea} key={idea.id} />)}</div>}
       </div>
     </section>
   );

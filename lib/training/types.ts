@@ -3,7 +3,7 @@ import type { HistoricalDataProvenance, OptionChainSelection } from "@/lib/marke
 
 export type MarketFeatureDataset = {
   schemaVersion: "1.0";
-  featureVersion: "rfdelta-market-features-v1";
+  featureVersion: "rfdelta-market-features-v1" | "rfdelta-market-features-v2";
   reportDate: string;
   dataAsOfUtc: string;
   sourceFingerprint?: string;

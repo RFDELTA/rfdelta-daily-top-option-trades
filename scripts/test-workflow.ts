@@ -15,9 +15,10 @@ async function main() {
   assert.equal(first.runMetadata.selectionHash, second.runMetadata.selectionHash);
   assert.deepEqual(first.topTrades.map((idea) => idea.id), second.topTrades.map((idea) => idea.id));
   assert.equal(first.runMetadata.edition, "Historical calibration edition");
-  assert.equal(first.runMetadata.methodologyVersion, "rfdelta-options-v2");
+  assert.equal(first.runMetadata.methodologyVersion, "rfdelta-options-v3");
   assert.ok(first.runMetadata.datasetRunId?.startsWith("run-"));
   assert.ok(first.topTrades.every((idea) => idea.advancedMetrics));
+  assert.ok(first.topTrades.every((idea) => idea.publicationEligible && idea.inference.hardGateFailures.length === 0));
   assert.ok(first.accountabilityHistory?.length);
   assert.ok(first.marketRead);
   assert.equal(first.marketRead?.commentary.length, 4);

@@ -26,10 +26,9 @@ async function main() {
   const expected = (dateIndex >= 0 ? process.argv[dateIndex + 1] : undefined) || positionalDate || process.env.EXPECTED_REPORT_DATE;
   if (expected && index.latest !== expected) throw new Error(`Latest report is ${index.latest}; expected ${expected}.`);
   const report = await getReport(index.latest);
-  if (report.topTrades.length === 0) throw new Error(`Report ${index.latest} contains no published ideas.`);
   const expectedIdeaCount = Number(process.env.PUBLISH_IDEA_COUNT ?? 5);
-  if (report.runMetadata.edition === "Daily market edition" && report.topTrades.length !== expectedIdeaCount) {
-    throw new Error(`Daily report ${index.latest} contains ${report.topTrades.length} ideas; expected ${expectedIdeaCount}.`);
+  if (report.runMetadata.edition === "Daily market edition" && report.topTrades.length > expectedIdeaCount) {
+    throw new Error(`Daily report ${index.latest} contains ${report.topTrades.length} ideas; maximum is ${expectedIdeaCount}.`);
   }
   if (report.analytics.publishedIdeaCount !== report.topTrades.length) throw new Error("Published idea count does not match the report body.");
   if (!report.runMetadata.selectionHash.match(/^[a-f0-9]{64}$/u)) throw new Error("Selection hash is missing or malformed.");
@@ -42,11 +41,19 @@ async function main() {
   for (const pattern of forbiddenPublicPatterns) {
     if (pattern.test(`${markdown}\n${publicJson}`)) throw new Error(`Public report contains internal-facing language matching ${pattern}.`);
   }
-  if (report.runMetadata.methodologyVersion === "rfdelta-options-v2") {
+  if (["rfdelta-options-v2", "rfdelta-options-v3"].includes(report.runMetadata.methodologyVersion)) {
     const runId = report.runMetadata.datasetRunId;
     if (!runId?.match(/^run-[a-f0-9]{16}$/u)) throw new Error("Dataset run identifier is missing or malformed.");
     if (!report.topTrades.every((idea) => idea.advancedMetrics && Number.isFinite(idea.trainingAdjustment))) {
       throw new Error("Published ideas are missing advanced metrics or training adjustments.");
+    }
+    if (report.runMetadata.methodologyVersion === "rfdelta-options-v3" && !report.topTrades.every((idea) =>
+      idea.publicationEligible &&
+      idea.inference?.inferenceVersion === "rfdelta-inference-v3" &&
+      idea.inference.hardGateFailures.length === 0 &&
+      idea.inference.conservativeExpectedValueDollars >= 0
+    )) {
+      throw new Error("A v3 published idea did not clear the deterministic inference gates.");
     }
     const ledgers = report.accountabilityHistory ?? [];
     if (!ledgers.length || ledgers.length > 8) throw new Error("Rolling accountability history is missing or exceeds its publication limit.");

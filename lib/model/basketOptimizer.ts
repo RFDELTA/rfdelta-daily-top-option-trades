@@ -5,9 +5,7 @@ export function buildPublishBasket(
   rankedIdeas: TradeIdeaScore[],
   settings: ModelSettings
 ): TradeIdeaScore[] {
-  const eligible = rankedIdeas.filter((idea) =>
-    ["top_candidate", "watchlist", "conditional"].includes(idea.bucket)
-  );
+  const eligible = rankedIdeas.filter((idea) => idea.publicationEligible && idea.inference.hardGateFailures.length === 0);
 
   const selected: TradeIdeaScore[] = [];
   const add = (idea: TradeIdeaScore | undefined) => {
@@ -38,33 +36,11 @@ export function buildPublishBasket(
     add(idea);
   }
 
-  // Fill the ranked surface from structurally valid candidates without relaxing hard risk flags.
-  if (selected.length < settings.publishIdeaCount) {
-    const conditionalPool = rankedIdeas
-      .filter((idea) => !selected.some((selectedIdea) => selectedIdea.id === idea.id))
-      .filter((idea) => !idea.riskFlags.some((flag) => CONDITIONAL_DISQUALIFIERS.has(flag)))
-      .sort(compareIdeas);
-
-    for (const idea of conditionalPool) {
-      if (selected.length >= settings.publishIdeaCount) break;
-      add({ ...idea, bucket: "conditional" });
-    }
-  }
-
   return selected
     .slice(0, settings.publishIdeaCount)
     .sort(compareIdeas)
     .map((idea, idx) => ({ ...idea, rank: idx + 1 }));
 }
-
-const CONDITIONAL_DISQUALIFIERS = new Set([
-  "max single-trade risk exceeded",
-  "credit below width threshold",
-  "short strike at/above spot",
-  "call short strike at/below spot",
-  "low debit probability",
-  "low credit probability"
-]);
 
 function compareIdeas(a: TradeIdeaScore, b: TradeIdeaScore) {
   return b.score - a.score || b.expectedValueDollars - a.expectedValueDollars || a.id.localeCompare(b.id);

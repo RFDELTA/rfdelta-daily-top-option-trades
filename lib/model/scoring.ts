@@ -1,6 +1,7 @@
 import { LessonSnapshot, TradeCandidate, TradeIdeaScore } from "@/lib/model/types";
 import { ModelSettings } from "@/lib/model/settings";
 import { getBreakeven, getEntryWidth, runCandidateSimulation } from "@/lib/model/simulation";
+import { inferCandidate } from "@/lib/model/inference";
 import { explainLessonAdjustment, getStylePosteriorAdjustment } from "@/lib/model/lessonLearning";
 import { getPolicyScoreAdjustment } from "@/lib/training/policy";
 import type { SelectionPolicy } from "@/lib/training/types";
@@ -14,6 +15,7 @@ export function scoreCandidate(
   const entryWidth = getEntryWidth(candidate);
   const sim = runCandidateSimulation(candidate, settings);
   const breakeven = getBreakeven(candidate, entryWidth.entry);
+  const inference = inferCandidate(candidate, sim, entryWidth, breakeven, settings);
   const rewardToRisk =
     entryWidth.maxLoss > 0 ? entryWidth.maxProfit / entryWidth.maxLoss : 0;
 
@@ -61,50 +63,17 @@ export function scoreCandidate(
     riskFlags.push("max single-trade risk exceeded");
   }
 
-  const evEff = clamp(sim.expectedValueDollars / Math.max(entryWidth.maxLoss * 100, 1), -1, 1);
-  const rrEff = clamp(rewardToRisk / 5, 0, 1);
-  const edgeEff = clamp(sim.blackScholesEdge / Math.max(entryWidth.maxLoss, 0.01), -1, 1);
   const posteriorAdjustment = getStylePosteriorAdjustment(lessons, candidate.style);
-  const signalStrength = clamp(candidate.signalStrength ?? 0.5, 0, 1);
   const direction = candidate.direction ?? (candidate.style === "call_debit" || candidate.style === "put_credit" ? "bullish" : "bearish");
   const trainingAdjustment = policy ? getPolicyScoreAdjustment(policy, candidate.advancedMetrics, direction) : 0;
-
-  let score =
-    100 *
-      (0.26 * sim.probabilityProfit +
-        0.22 * Math.max(0, evEff) +
-        0.14 * rrEff +
-        0.18 * candidate.liquidityScore +
-        0.10 * Math.max(0, edgeEff) +
-        0.10 * signalStrength) +
-    posteriorAdjustment +
-    trainingAdjustment;
-
-  if (candidate.structureType === "Credit") {
-    score += settings.creditSpreadPriorBoost * 20;
-    if (creditToWidth >= settings.minCreditReceivedWidthPct) score += 5;
-    if (candidate.style === "put_credit" && candidate.shortLeg.strike < candidate.underlyingMark) {
-      score += 4;
-    }
-  }
-
-  if (candidate.structureType === "Debit" && rewardToRisk > 4 && sim.probabilityProfit < 0.3) {
-    score -= settings.debitLotteryPenalty * 20;
-  }
-
-  if (riskFlags.includes("short strike at/above spot")) score -= 10;
-  if (riskFlags.includes("negative conservative BS edge")) score -= 8;
-  if (riskFlags.includes("credit below width threshold")) score -= 6;
-
-  let bucket: TradeIdeaScore["bucket"] = "reject";
-  const evRiskRatio = sim.expectedValueDollars / Math.max(entryWidth.maxLoss * 100, 1);
-  if (score >= 58 && sim.expectedValueDollars > 0 && severeRiskCount(riskFlags) === 0) {
-    bucket = "top_candidate";
-  } else if (score >= 45 && evRiskRatio >= -0.15 && severeRiskCount(riskFlags) === 0) {
-    bucket = "watchlist";
-  } else if (score >= 32 && evRiskRatio >= -0.2 && severeRiskCount(riskFlags) === 0) {
-    bucket = "conditional";
-  }
+  const score = clamp(inference.eligibilityScore + posteriorAdjustment + trainingAdjustment, 0, 100);
+  const bucket: TradeIdeaScore["bucket"] = inference.publicationEligible
+    ? "top_candidate"
+    : inference.eligibleBeforeSessionGate
+      ? "watchlist"
+      : inference.hardGateFailures.length <= 2 && inference.eligibilityScore >= settings.minPublicationScore - 10
+        ? "conditional"
+        : "reject";
 
   const idea: TradeIdeaScore = {
     rank: 0,
@@ -128,17 +97,27 @@ export function scoreCandidate(
     rewardToRisk: round(rewardToRisk, 2),
     breakeven: round(breakeven, 4),
     requiredMovePctToBreakeven: round(((breakeven / candidate.underlyingMark) - 1) * 100, 2),
-    probabilityProfit: round(sim.probabilityProfit, 4),
+    probabilityProfit: round(inference.consensusProbability, 4),
     probabilityNearMaxProfit: round(sim.probabilityNearMaxProfit, 4),
-    expectedValueDollars: round(sim.expectedValueDollars, 2),
+    expectedValueDollars: round(inference.conservativeExpectedValueDollars, 2),
     blackScholesEdge: round(sim.blackScholesEdge, 4),
     impliedVolUsed: round(sim.impliedVolUsed, 4),
     liquidityScore: round(candidate.liquidityScore, 4),
     score: round(score, 2),
+    inference,
+    publicationEligible: inference.publicationEligible,
     riskFlags,
     thesis: candidate.thesis,
-    longLeg: candidate.longLeg,
-    shortLeg: candidate.shortLeg,
+    longLeg: {
+      ...candidate.longLeg,
+      impliedVolatility: candidate.longLeg.impliedVolatility ?? round(sim.longImpliedVol, 6),
+      delta: candidate.longLeg.delta ?? round(sim.longDelta, 6)
+    },
+    shortLeg: {
+      ...candidate.shortLeg,
+      impliedVolatility: candidate.shortLeg.impliedVolatility ?? round(sim.shortImpliedVol, 6),
+      delta: candidate.shortLeg.delta ?? round(sim.shortDelta, 6)
+    },
     ...(candidate.sourceAsOfUtc ? { sourceAsOfUtc: candidate.sourceAsOfUtc } : {}),
     marketEvidence: candidate.marketEvidence ?? [],
     historySessionCount: candidate.historySessionCount ?? 0,
@@ -153,17 +132,6 @@ export function scoreCandidate(
 
   idea.lessonAdjustments = explainLessonAdjustment(lessons, idea);
   return idea;
-}
-
-function severeRiskCount(flags: string[]): number {
-  return flags.filter((x) =>
-    [
-      "max single-trade risk exceeded",
-      "credit below width threshold",
-      "short strike at/above spot",
-      "call short strike at/below spot"
-    ].includes(x)
-  ).length;
 }
 
 function clamp(x: number, lo: number, hi: number): number {

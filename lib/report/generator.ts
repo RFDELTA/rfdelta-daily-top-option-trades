@@ -180,7 +180,7 @@ async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun, s
       generatedAtUtc: historical ? snapshot.asOfUtc : new Date().toISOString(),
       dataAsOfUtc: snapshot.asOfUtc,
       edition: historical ? "Historical calibration edition" : "Daily market edition",
-      methodologyVersion: "rfdelta-options-v2",
+      methodologyVersion: "rfdelta-options-v3",
       selectionHash,
       datasetRunId: prepared.runId,
       featureVersion: prepared.features.featureVersion,
@@ -205,17 +205,17 @@ async function assembleReport(snapshot: MarketSnapshot, prepared: PreparedRun, s
         "A broad liquid-symbol quote universe is intersected with the source's fingerprinted universe. Core market anchors, the largest percentage movers, the most active names and a date-seeded rotation sleeve determine which option chains are evaluated.",
         "The nearest expiration inside the configured 7-to-35-day window is chosen by distance from a 14-day target.",
         "Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.",
-        "Both legs must clear bid, ask, open-interest, volume or depth, and relative quote-width gates.",
-        "Momentum direction determines whether bullish call-debit and put-credit structures or bearish put-debit and call-credit structures enter the ranking set.",
+        "Both legs must clear bid, ask, open-interest, volume, derived-Greek, timestamp and relative quote-width gates.",
+        "The current session and five-, fifteen- and sixty-session price structure must confirm the trade direction.",
+        "A trade publishes only when every hard gate clears; the basket is never filled with a rejected or negative-expectancy setup.",
         "Resolved trades train bounded feature adjustments only after the minimum sample threshold; every policy and input dataset is versioned with the report."
       ],
       rankingFramework: [
-        "Modeled probability of profit: 26% of the base score.",
-        "Conservative expected-value efficiency: 22%.",
-        "Two-leg liquidity quality: 18%.",
-        "Maximum reward relative to maximum risk: 14%.",
-        "Black-Scholes spread edge and directional signal strength: 10% each.",
-        "Resolved prior outcomes adjust the strategy-style posterior without changing the underlying quote record.",
+        "Four deterministic views estimate the payoff: jump-stress simulation, market-implied terminal probability, a horizon-confirmed regime estimate and a fat-tail case.",
+        `Publication requires at least ${settings.minPositiveModels} positive models, ${Math.round(settings.minProbabilityMargin * 100)} percentage points of probability margin and nonnegative conservative expected value.`,
+        `Liquidity must score at least ${settings.minLiquidityScore.toFixed(2)}, and the unadjusted eligibility score must reach ${settings.minPublicationScore.toFixed(0)}.`,
+        "Scenario perturbations measure whether the setup remains viable when probability assumptions move in either direction.",
+        "Resolved prior outcomes may reorder candidates that already passed every deterministic gate; they cannot promote a failed candidate.",
         `The advanced feature layer contributes at most ${prepared.policy.maximumScoreAdjustment.toFixed(0)} score points and currently contains ${prepared.policy.resolvedTradeCount} fully resolved training example${prepared.policy.resolvedTradeCount === 1 ? "" : "s"}.`
       ],
       executionAssumption: "Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.",
@@ -316,7 +316,7 @@ function buildTradeCommentary(idea: TradeIdeaScore): TradeCommentary {
     : `${signedPct(idea.fiveDayReturn)} across the available ${idea.historySessionCount}-session retained window, with a reduced conviction weight until the full history builds`;
   return {
     convictionLabel,
-    rankingRead: `The setup scores ${idea.score.toFixed(2)} on the common scale, supported by ${pct(idea.probabilityProfit)} modeled probability of profit, ${idea.liquidityScore.toFixed(2)} liquidity quality and ${evRead}.`,
+    rankingRead: `The setup scores ${idea.score.toFixed(2)} on the common scale. Four-model consensus places probability of profit at ${pct(idea.probabilityProfit)}, ${pct(idea.inference.probabilityMargin)} above the payoff hurdle, with ${idea.liquidityScore.toFixed(2)} liquidity quality and ${evRead}.`,
     setup: `${idea.symbol} enters with ${momentumSetup}. Realized volatility is ${pct(idea.realizedVolatility)}, placing the underlying in a ${idea.regime.replaceAll("_", " ")} regime. The ${idea.direction} structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.`,
     execution: `${longAction} and ${shortAction}, both expiring ${formatDate(idea.expiration)}. The ${idea.structureType.toLowerCase()} mark of ${idea.entry.toFixed(2)} assumes the long ask and short bid, not a midpoint. ${entryDiscipline}`,
     risk: `Maximum one-lot loss is ${money(idea.maxLossDollars)}. Breakeven is ${money(idea.breakeven)} and ${moveRead}. Primary watch: ${risks}. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.`,

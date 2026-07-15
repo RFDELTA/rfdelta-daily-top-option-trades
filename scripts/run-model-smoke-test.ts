@@ -8,11 +8,12 @@ import { scoreCandidate } from "../lib/model/scoring";
 import { getDefaultModelSettings } from "../lib/model/settings";
 import type { RealizedTradeOutcome } from "../lib/model/lessonLearning";
 import type { SpreadStyle } from "../lib/model/types";
+import { computeMarketFeatureDataset, featureMap } from "../lib/training/features";
 
 async function main() {
   const provider = new HistoricalFixtureProvider();
   const snapshot = await provider.getSnapshot({ reportDate: "2026-06-19", universe: [] });
-  const discovery = discoverCandidates(snapshot);
+  const discovery = discoverCandidates(snapshot, featureMap(computeMarketFeatureDataset(snapshot)));
   const outcomes: RealizedTradeOutcome[] = calibrationOutcomes.map((outcome) => ({
     id: outcome.tradeId,
     style: outcome.style as SpreadStyle,
@@ -31,15 +32,17 @@ async function main() {
     .sort((a, b) => b.score - a.score || a.id.localeCompare(b.id))
     .map((idea, index) => ({ ...idea, rank: index + 1 }));
   const basket = buildPublishBasket(ranked, settings);
-  assert.equal(basket.length, 5);
+  assert.ok(basket.length <= settings.publishIdeaCount);
   assert.equal(new Set(basket.map((idea) => idea.symbol)).size, basket.length);
-  assert.ok(basket.some((idea) => idea.structureType === "Credit"));
-  assert.ok(basket.filter((idea) => idea.structureType === "Debit").length >= 2);
+  assert.ok(basket.every((idea) => idea.publicationEligible && idea.inference.hardGateFailures.length === 0));
+  assert.ok(basket.every((idea) => idea.inference.conservativeExpectedValueDollars >= settings.minConservativeExpectedValueDollars));
+  assert.ok(basket.every((idea) => idea.inference.positiveModelCount >= settings.minPositiveModels));
+  assert.ok(basket.every((idea) => idea.inference.probabilityMargin >= settings.minProbabilityMargin));
   assert.ok(basket.reduce((sum, idea) => sum + idea.maxLossDollars, 0) <= settings.maxTotalBasketRiskDollars);
   console.log(JSON.stringify({
     ok: true,
     candidates: ranked.length,
-    finalBasket: basket.map((idea) => ({ rank: idea.rank, name: idea.name, type: idea.structureType, ev: idea.expectedValueDollars, score: idea.score }))
+    finalBasket: basket.map((idea) => ({ rank: idea.rank, name: idea.name, type: idea.structureType, ev: idea.expectedValueDollars, score: idea.score, margin: idea.inference.probabilityMargin }))
   }, null, 2));
 }
 

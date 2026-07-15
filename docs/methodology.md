@@ -14,7 +14,7 @@ Expiration selection minimizes absolute distance from 14 DTE inside the 7-to-35-
 
 ## Regime
 
-The directional signal combines 65% five-session return and 35% twenty-session return. Twenty-session close-to-close log-return volatility is annualized. The resulting labels are trend, mean reversion, volatility expansion, risk off, risk on or mixed. Until six retained sessions are available, previous-close movement determines direction with a deliberately reduced conviction weight.
+The initial directional classification combines 65% five-session return and 35% twenty-session return. Publication then independently requires current-session follow-through and agreement across five-, fifteen- and sixty-session returns. Twenty-session close-to-close log-return volatility is annualized. The resulting labels are trend, mean reversion, volatility expansion, risk off, risk on or mixed. Until six retained sessions are available, previous-close movement determines direction with a deliberately reduced conviction weight.
 
 Bullish signals create:
 
@@ -28,7 +28,7 @@ Bearish signals create:
 
 ## Advanced Feature Surface
 
-Every included symbol receives a versioned derived feature row before candidate construction. The row includes one-, five- and twenty-session returns; SMA and EMA distance; MACD spread; confidence-adjusted RSI; ATR; Bollinger position; five- and twenty-session realized volatility; downside volatility; maximum drawdown; trend efficiency; volume z-score; ATM implied volatility; put/call IV skew; put/call volume and open-interest ratios; expected move; quote width; and liquid-contract breadth.
+Every included symbol receives a versioned derived feature row before candidate construction. The row includes one-, five-, fifteen-, twenty- and sixty-session returns; SMA and EMA distance; MACD spread; confidence-adjusted RSI; ATR; Bollinger position; five- and twenty-session realized volatility; downside volatility; maximum drawdown; trend efficiency; volume z-score; ATM implied volatility; put/call IV skew; put/call volume and open-interest ratios; expected move; quote width; and liquid-contract breadth.
 
 Short retained windows are explicitly confidence-weighted. RSI, ATR and volatility are labeled as proxies in public output until their standard lookback is available. A temporary public-history outage preserves the last retained series rather than changing current quote or option-chain freshness rules.
 
@@ -53,22 +53,26 @@ Debit entry equals long ask minus short bid. Credit entry equals short bid minus
 
 ## Simulation
 
-Implied volatility uses provider Greeks when present and otherwise uses bisection against each option midpoint. A seeded Monte Carlo process produces terminal prices under geometric diffusion plus symmetric jump-stress tails. Payoffs are clamped to contractual maximum loss and maximum profit.
+Implied volatility uses provider Greeks when present and otherwise uses bisection against each option midpoint. Delta is derived from the same leg-level volatility when the provider does not supply it. A seeded Monte Carlo process produces terminal prices under geometric diffusion plus symmetric jump-stress tails. Payoffs are clamped to contractual maximum loss and maximum profit.
 
 The same candidate ID and settings produce the same simulated path sequence.
 
-## Score
+## Inference and Publication Gate
 
-Base weights:
+Each candidate is evaluated by four deterministic views: jump-stress simulation, market-implied terminal probability at breakeven, a horizon-confirmed regime estimate and a fat-tail case. Every view is converted to expected one-lot value using the spread's contractual maximum profit and loss. The median probability is the consensus probability; the lowest expected value is the conservative expected value.
 
-- 26% probability of profit
-- 22% positive expected-value efficiency
-- 18% liquidity quality
-- 14% reward relative to risk
-- 10% Black-Scholes spread edge
-- 10% directional signal strength
+The unadjusted eligibility score combines probability quality, conservative expected-value efficiency, probability margin, two-leg liquidity, 5/15/60-session alignment, expected-move coverage and stability under fixed probability perturbations. Production requires:
 
-Resolved expiration outcomes update beta-binomial strategy-style posteriors. Credit-to-width, short-strike location, quote economics and debit-lottery behavior add transparent adjustments or risk flags.
+- eligibility score of at least 70
+- conservative expected value of at least zero
+- at least three positive models
+- consensus probability at least five percentage points above the payoff hurdle
+- liquidity score of at least 0.80
+- complete bid, ask, volume, open interest, timestamp and derived-Greek data on both legs
+- current-session movement in the trade direction
+- at least half of the 5/15/60-session horizons aligned with the trade direction
+
+Resolved expiration outcomes update bounded strategy-style and feature adjustments only after deterministic eligibility. Learned adjustments can reorder candidates that already passed; they cannot clear a failed gate.
 
 ## Outcome-Trained Policy
 
@@ -88,7 +92,7 @@ The publication basket:
 - targets at least one credit and two debit structures when qualifying candidates exist
 - ranks selected ideas by score, then expected value, then stable candidate ID
 
-The surface targets five ranked ideas. When fewer than five candidates clear the primary score buckets, the remaining slots use the highest-ranked structures that already passed freshness, liquidity, two-leg construction and defined-risk gates. Those additions are labeled conditional and cannot carry a low modeled probability or a hard strike, credit-width or maximum-risk flag. If five candidates cannot satisfy those rules and the basket cap, the edition remains shorter rather than weakening a hard gate.
+The surface publishes up to five ranked ideas. It never fills an empty slot from watch, conditional or rejected candidates. If no candidate clears every gate, the system publishes a fresh no-trade edition and retains the complete ranked candidate set and failure reasons in the run dataset.
 
 ## Outcome Accountability
 

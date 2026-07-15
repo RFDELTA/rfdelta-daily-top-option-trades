@@ -42,7 +42,9 @@ export type AdvancedMarketMetrics = {
   historyConfidence: number;
   return1d: number;
   return5d: number;
+  return15d: number;
   return20d: number;
+  return60d: number;
   sma5Distance: number;
   sma20Distance: number;
   emaTrend: number;
@@ -94,6 +96,34 @@ export type TradeCandidate = {
   realizedVolatility?: number;
 };
 
+export type InferenceModelResult = {
+  name: "jump_stress" | "market_implied" | "shrunk_regime" | "fat_tail";
+  probability: number;
+  expectedValueDollars: number;
+  positive: boolean;
+};
+
+export type CandidateInference = {
+  inferenceVersion: "rfdelta-inference-v3";
+  eligibilityScore: number;
+  requiredProbability: number;
+  consensusProbability: number;
+  probabilityMargin: number;
+  positiveModelCount: number;
+  conservativeExpectedValueDollars: number;
+  expectedMoveCoverage: number;
+  multiHorizonAlignment: number;
+  sessionConfirmation: boolean;
+  scenarioStability: number;
+  selectionFrequencyUnderPerturbation: number;
+  twoSidedQuotes: boolean;
+  completeLegData: boolean;
+  modelResults: InferenceModelResult[];
+  hardGateFailures: string[];
+  eligibleBeforeSessionGate: boolean;
+  publicationEligible: boolean;
+};
+
 export type TradeIdeaScore = {
   rank: number;
   id: string;
@@ -123,6 +153,8 @@ export type TradeIdeaScore = {
   impliedVolUsed: number;
   liquidityScore: number;
   score: number;
+  inference: CandidateInference;
+  publicationEligible: boolean;
   riskFlags: string[];
   thesis: string;
   longLeg: OptionLeg;

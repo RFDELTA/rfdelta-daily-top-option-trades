@@ -5,6 +5,13 @@ import { buildReport } from "../lib/report/generator";
 import { applyClosingPrintsToReport } from "../lib/report/closingPrints";
 
 async function main() {
+  process.env.MODEL_MIN_PUBLICATION_SCORE = "0";
+  process.env.MODEL_MIN_PROBABILITY_MARGIN = "-1";
+  process.env.MODEL_MIN_CONSERVATIVE_EV_DOLLARS = "-10000";
+  process.env.MODEL_MIN_POSITIVE_MODELS = "0";
+  process.env.MODEL_MIN_LIQUIDITY_SCORE = "0";
+  process.env.MODEL_MIN_MULTI_HORIZON_ALIGNMENT = "0";
+  process.env.MODEL_REQUIRE_SESSION_CONFIRMATION = "false";
   const snapshot = await new HistoricalFixtureProvider().getSnapshot({ reportDate: "2026-06-19", universe: [] });
   const report = await buildReport(snapshot);
   const expiration = report.topTrades.map((idea) => idea.expiration).sort().at(-1) ?? "2026-07-03";

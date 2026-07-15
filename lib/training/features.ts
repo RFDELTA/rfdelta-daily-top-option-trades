@@ -6,7 +6,7 @@ import type { MarketFeatureDataset } from "@/lib/training/types";
 export function computeMarketFeatureDataset(snapshot: MarketSnapshot): MarketFeatureDataset {
   return {
     schemaVersion: "1.0",
-    featureVersion: "rfdelta-market-features-v1",
+    featureVersion: "rfdelta-market-features-v2",
     reportDate: snapshot.reportDate,
     dataAsOfUtc: snapshot.asOfUtc,
     ...(snapshot.sourceFingerprint ? { sourceFingerprint: snapshot.sourceFingerprint } : {}),
@@ -27,7 +27,9 @@ export function computeSymbolMetrics(symbolData: MarketSymbolSnapshot): Advanced
   const spot = symbolData.quote.last;
   const return1d = periodReturn(closes, 1, symbolData.quote.changePct);
   const return5d = periodReturn(closes, 5, return1d);
+  const return15d = periodReturn(closes, 15, return5d);
   const return20d = periodReturn(closes, 20, return5d);
+  const return60d = periodReturn(closes, 60, return20d);
   const sma5 = mean(closes.slice(-5)) || spot;
   const sma20 = mean(closes.slice(-20)) || spot;
   const ema5 = ema(closes, 5) || spot;
@@ -61,7 +63,9 @@ export function computeSymbolMetrics(symbolData: MarketSymbolSnapshot): Advanced
     historyConfidence,
     return1d,
     return5d,
+    return15d,
     return20d,
+    return60d,
     sma5Distance: spot / Math.max(sma5, 0.01) - 1,
     sma20Distance: spot / Math.max(sma20, 0.01) - 1,
     emaTrend: ema5 / Math.max(ema20, 0.01) - 1,
