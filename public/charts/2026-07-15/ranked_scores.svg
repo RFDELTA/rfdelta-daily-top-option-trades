@@ -1,50 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="672" viewBox="0 0 1200 672" role="img" aria-label="RFDELTA ranked option trade scores">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="112" viewBox="0 0 1200 112" role="img" aria-label="RFDELTA ranked option trade scores">
   <defs>
     <linearGradient id="background" x1="0" x2="1"><stop stop-color="#061b19"/><stop offset="1" stop-color="#0a2d28"/></linearGradient>
     <linearGradient id="scoreBar" x1="0" x2="1"><stop stop-color="#18e59c"/><stop offset="0.7" stop-color="#5bd7f4"/><stop offset="1" stop-color="#f4c95d"/></linearGradient>
     <style>.title{fill:#f4fff9;font:700 18px Arial,sans-serif}.rank,.score{fill:#f4fff9;font:800 18px Arial,sans-serif}.meta{fill:#9fc4bb;font:13px Arial,sans-serif}.head{fill:#f4fff9;font:800 28px Georgia,serif}.sub{fill:#9fc4bb;font:14px Arial,sans-serif}</style>
   </defs>
-  <rect width="1200" height="672" fill="url(#background)"/>
+  <rect width="1200" height="112" fill="url(#background)"/>
   <text x="34" y="42" class="head">RFDELTA Top Option Trades</text>
   <text x="34" y="69" class="sub">Deterministic ranking for 2026-07-15. Labels and scores are separated from payoff bars for legibility.</text>
-  <g>
-      <text x="34" y="105" class="rank">1</text>
-      <text x="78" y="105" class="title"><tspan x="78" dy="0">F 7/31 14/13 Put Credit Spread</tspan></text>
-      <text x="1166" y="105" class="score" text-anchor="end">51.07</text>
-      <text x="78" y="144" class="meta">consumer and communications demand | credit | 63% modeled probability</text>
-      <rect x="78" y="161" width="1070" height="16" rx="3" fill="#143b36"/>
-      <rect x="78" y="161" width="546.4" height="16" rx="3" fill="url(#scoreBar)"/>
-    </g>
-<g>
-      <text x="34" y="217" class="rank">2</text>
-      <text x="78" y="217" class="title"><tspan x="78" dy="0">SMCI 7/31 28.5/29 Call Credit Spread</tspan></text>
-      <text x="1166" y="217" class="score" text-anchor="end">49.19</text>
-      <text x="78" y="256" class="meta">semiconductors and compute infrastructure | credit | 69% modeled probability</text>
-      <rect x="78" y="273" width="1070" height="16" rx="3" fill="#143b36"/>
-      <rect x="78" y="273" width="526.3" height="16" rx="3" fill="url(#scoreBar)"/>
-    </g>
-<g>
-      <text x="34" y="329" class="rank">3</text>
-      <text x="78" y="329" class="title"><tspan x="78" dy="0">UBER 7/31 73/72 Put Credit Spread</tspan></text>
-      <text x="1166" y="329" class="score" text-anchor="end">36.69</text>
-      <text x="78" y="368" class="meta">technology and AI leadership | credit | 57% modeled probability</text>
-      <rect x="78" y="385" width="1070" height="16" rx="3" fill="#143b36"/>
-      <rect x="78" y="385" width="392.6" height="16" rx="3" fill="url(#scoreBar)"/>
-    </g>
-<g>
-      <text x="34" y="441" class="rank">4</text>
-      <text x="78" y="441" class="title"><tspan x="78" dy="0">BAC 7/31 61/62 Call Debit Spread</tspan></text>
-      <text x="1166" y="441" class="score" text-anchor="end">36.45</text>
-      <text x="78" y="480" class="meta">financial and digital-market structure | debit | 53% modeled probability</text>
-      <rect x="78" y="497" width="1070" height="16" rx="3" fill="#143b36"/>
-      <rect x="78" y="497" width="390.0" height="16" rx="3" fill="url(#scoreBar)"/>
-    </g>
-<g>
-      <text x="34" y="553" class="rank">5</text>
-      <text x="78" y="553" class="title"><tspan x="78" dy="0">T 7/31 22/21 Put Debit Spread</tspan></text>
-      <text x="1166" y="553" class="score" text-anchor="end">34.55</text>
-      <text x="78" y="592" class="meta">consumer and communications demand | debit | 51% modeled probability</text>
-      <rect x="78" y="609" width="1070" height="16" rx="3" fill="#143b36"/>
-      <rect x="78" y="609" width="369.7" height="16" rx="3" fill="url(#scoreBar)"/>
-    </g>
+  
   </svg>
