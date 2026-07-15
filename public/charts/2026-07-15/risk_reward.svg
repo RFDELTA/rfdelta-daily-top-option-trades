@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628" role="img" aria-label="RFDELTA option trade risk and reward comparison">
+  <rect width="1200" height="628" fill="#071f1c"/>
+  <style>.head{fill:#f4fff9;font:800 28px Georgia,serif}.sub{fill:#9fc4bb;font:14px Arial,sans-serif}.label,.ratio{fill:#f4fff9;font:700 16px Arial,sans-serif}.lossText{fill:#f2b17b;font:800 12px Arial,sans-serif}.profitText{fill:#7ce3f4;font:800 12px Arial,sans-serif}</style>
+  <text x="34" y="42" class="head">Defined Risk Versus Maximum Payoff</text>
+  <text x="34" y="68" class="sub">One contract per spread, excluding commissions and assignment costs.</text>
+  <g>
+      <text x="34" y="100" class="label">1. F Put Credit</text>
+      <text x="1166" y="100" class="ratio" text-anchor="end">0.41x reward/risk</text>
+      <text x="34" y="131" class="lossText">MAX LOSS $71</text>
+      <rect x="180" y="118" width="335.8" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="131" class="profitText">MAX PROFIT $29</text>
+      <rect x="800" y="118" width="137.2" height="18" rx="3" fill="#58d8ee"/>
+      <line x1="34" x2="1166" y1="162" y2="162" stroke="#1e4a43"/>
+    </g>
+<g>
+      <text x="34" y="204" class="label">2. SMCI Call Credit</text>
+      <text x="1166" y="204" class="ratio" text-anchor="end">0.28x reward/risk</text>
+      <text x="34" y="235" class="lossText">MAX LOSS $39</text>
+      <rect x="180" y="222" width="184.5" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="235" class="profitText">MAX PROFIT $11</text>
+      <rect x="800" y="222" width="52.0" height="18" rx="3" fill="#58d8ee"/>
+      <line x1="34" x2="1166" y1="266" y2="266" stroke="#1e4a43"/>
+    </g>
+<g>
+      <text x="34" y="308" class="label">3. UBER Put Credit</text>
+      <text x="1166" y="308" class="ratio" text-anchor="end">0.35x reward/risk</text>
+      <text x="34" y="339" class="lossText">MAX LOSS $74</text>
+      <rect x="180" y="326" width="350.0" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="339" class="profitText">MAX PROFIT $26</text>
+      <rect x="800" y="326" width="123.0" height="18" rx="3" fill="#58d8ee"/>
+      <line x1="34" x2="1166" y1="370" y2="370" stroke="#1e4a43"/>
+    </g>
+<g>
+      <text x="34" y="412" class="label">4. BAC Call Debit</text>
+      <text x="1166" y="412" class="ratio" text-anchor="end">0.69x reward/risk</text>
+      <text x="34" y="443" class="lossText">MAX LOSS $59</text>
+      <rect x="180" y="430" width="279.1" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="443" class="profitText">MAX PROFIT $41</text>
+      <rect x="800" y="430" width="193.9" height="18" rx="3" fill="#58d8ee"/>
+      <line x1="34" x2="1166" y1="474" y2="474" stroke="#1e4a43"/>
+    </g>
+<g>
+      <text x="34" y="516" class="label">5. T Put Debit</text>
+      <text x="1166" y="516" class="ratio" text-anchor="end">0.79x reward/risk</text>
+      <text x="34" y="547" class="lossText">MAX LOSS $56</text>
+      <rect x="180" y="534" width="264.9" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="547" class="profitText">MAX PROFIT $44</text>
+      <rect x="800" y="534" width="208.1" height="18" rx="3" fill="#58d8ee"/>
+      <line x1="34" x2="1166" y1="578" y2="578" stroke="#1e4a43"/>
+    </g>
+  </svg>

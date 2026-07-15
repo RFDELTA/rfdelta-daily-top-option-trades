@@ -1,0 +1,6 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","F","F 7/31 14/13 Put Credit Spread","put_credit","2026-07-31","16","14.245","Credit","0.29","0.627","-3.21","71","29","0.41","13.71","-3.76","51.07","0.8432","0.5033"
+"2","SMCI","SMCI 7/31 28.5/29 Call Credit Spread","call_credit","2026-07-31","16","26.56","Credit","0.11","0.6878","-4.13","39","11","0.28","28.61","7.72","49.19","0.8294","0.8581"
+"3","UBER","UBER 7/31 73/72 Put Credit Spread","put_credit","2026-07-31","16","73.815","Credit","0.26","0.5668","-15.75","74","26","0.35","72.74","-1.46","36.69","0.6823","0.379"
+"4","BAC","BAC 7/31 61/62 Call Debit Spread","call_debit","2026-07-31","16","61.75","Debit","0.59","0.5294","-4.78","59","41","0.69","61.59","-0.26","36.45","0.9459","0.2183"
+"5","T","T 7/31 22/21 Put Debit Spread","put_debit","2026-07-31","16","21.405","Debit","0.56","0.5131","-3.35","56","44","0.79","21.44","0.16","34.55","0.7199","0.3636"
