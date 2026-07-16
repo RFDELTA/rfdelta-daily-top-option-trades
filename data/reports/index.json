@@ -3,12 +3,12 @@
   "reports": [
     {
       "date": "2026-07-16",
-      "title": "No defined-risk option setup cleared the publication gate",
+      "title": "2 defined-risk option setups lead the Jul 16, 2026 board",
       "edition": "Daily market edition",
-      "dataAsOfUtc": "2026-07-16T16:06:48.767Z",
-      "topSymbol": "Cash",
-      "ideaCount": 0,
-      "topScore": 0
+      "dataAsOfUtc": "2026-07-16T17:41:09.660Z",
+      "topSymbol": "TLT",
+      "ideaCount": 2,
+      "topScore": 93.61
     },
     {
       "date": "2026-07-15",
