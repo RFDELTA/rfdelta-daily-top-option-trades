@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { renderRankedScoresSvg, renderRiskRewardSvg, renderUnderlyingPriceSvg } from "@/lib/report/charts";
@@ -25,6 +26,19 @@ export async function getLatestReport() {
   const index = await getReportIndex();
   if (!index.latest) throw new Error("No published report is available.");
   return getReport(index.latest);
+}
+
+export async function getReportArchiveRevision() {
+  const index = await getReportIndex();
+  const dates = index.reports.map((entry) => entry.date).sort();
+  const reports = await Promise.all(dates.map((date) =>
+    fs.readFile(path.join(REPORTS_ROOT, date, "report.json"), "utf8")
+  ));
+  const hash = createHash("sha256");
+  for (let index = 0; index < dates.length; index += 1) {
+    hash.update(dates[index] ?? "").update("\0").update(reports[index] ?? "").update("\0");
+  }
+  return hash.digest("hex");
 }
 
 export async function reportExists(date: string) {

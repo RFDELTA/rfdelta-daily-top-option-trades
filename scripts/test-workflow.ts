@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { HistoricalFixtureProvider } from "../lib/market/fixture";
 import { buildReport } from "../lib/report/generator";
 import { currentReportDate, resolveReportDate } from "../lib/report/dates";
+import { getReportArchiveRevision } from "../lib/report/store";
 
 async function main() {
   assert.equal(resolveReportDate(["--date", "2026-06-19"]), "2026-06-19");
@@ -23,6 +24,7 @@ async function main() {
   assert.ok(first.marketRead);
   assert.equal(first.marketRead?.commentary.length, 4);
   assert.equal(first.marketRead?.watchItems.length, 5);
+  assert.match(await getReportArchiveRevision(), /^[a-f0-9]{64}$/u);
   const workflow = await readFile(".github/workflows/daily-options-report.yml", "utf8");
   for (const cron of ["45 10 * * 1-5", "5 11 * * 1-5", "20 16 * * 1-5", "5 17 * * 1-5"]) {
     assert.match(workflow, new RegExp(`cron: [\"']${cron.replaceAll("*", "\\*")}[\"']`, "u"));
@@ -30,6 +32,8 @@ async function main() {
   assert.equal(workflow.match(/timezone: ["']America\/New_York["']/gu)?.length, 4);
   assert.match(workflow, /npm run collect:closes/u);
   assert.match(workflow, /published_report_id.*expected_report_id/u);
+  assert.match(workflow, /publication=1/u);
+  assert.match(workflow, /published_revision.*expected_revision/u);
   console.log(`[test:workflow] hash=${first.runMetadata.selectionHash.slice(0, 12)} ideas=${first.topTrades.length}`);
 }
 

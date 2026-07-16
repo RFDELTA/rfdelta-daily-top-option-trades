@@ -238,13 +238,25 @@ jobs:
         if: steps.commit.outputs.changed == 'true'
         env:
           PRODUCTION_URL: ${{ vars.PRODUCTION_URL }}
-          EXPECTED_DATE: ${{ steps.report.outputs.date }}
         run: |
           base_url="${PRODUCTION_URL:-https://rfdelta-daily-top-option-trades.vercel.app}"
+          expected_revision="$(node <<'NODE'
+          const { createHash } = require("node:crypto");
+          const fs = require("node:fs");
+          const path = require("node:path");
+          const index = JSON.parse(fs.readFileSync("data/reports/index.json", "utf8"));
+          const dates = index.reports.map((entry) => entry.date).sort();
+          const hash = createHash("sha256");
+          for (const date of dates) {
+            hash.update(date).update("\0").update(fs.readFileSync(path.join("data", "reports", date, "report.json"), "utf8")).update("\0");
+          }
+          console.log(hash.digest("hex"));
+          NODE
+          )"
           for attempt in $(seq 1 30); do
-            state="$(curl -fsS "$base_url/api/latest?close_attempt=$attempt" | node -e 'let d="";process.stdin.on("data",c=>d+=c);process.stdin.on("end",()=>{try{const r=JSON.parse(d),date=process.env.EXPECTED_DATE,active=(r.topTrades||[]).filter(x=>x.expiration>=date);console.log(!active.length?"complete":active.every(x=>(x.dailyCloses||[]).some(p=>p.date===date))?"captured":"")}catch{console.log("")}})')" || true
-            if [ "$state" = "captured" ] || [ "$state" = "complete" ]; then
-              echo "Production close state: $state"
+            published_revision="$(curl -fsS "$base_url/api/latest?publication=1&close_attempt=$attempt" | node -e 'let d="";process.stdin.on("data",c=>d+=c);process.stdin.on("end",()=>{try{console.log(JSON.parse(d).archiveRevision??"")}catch{console.log("")}})')" || true
+            if [ "$published_revision" = "$expected_revision" ]; then
+              echo "Production report archive revision: $published_revision"
               exit 0
             fi
             sleep 10
