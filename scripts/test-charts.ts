@@ -1,5 +1,9 @@
 import assert from "node:assert/strict";
+import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import { HistoricalFixtureProvider } from "../lib/market/fixture";
+import { listSvgArtifacts } from "../lib/report/archive";
 import { renderRankedScoresSvg, renderRiskRewardSvg, renderUnderlyingPriceSvg } from "../lib/report/charts";
 import { buildReport } from "../lib/report/generator";
 
@@ -35,6 +39,21 @@ async function main() {
       }
     });
     assert.match(closedSvg, /EXPIRATION CLOSE \|/u);
+  }
+  const archiveRoot = await mkdtemp(path.join(tmpdir(), "rfdelta-chart-archive-"));
+  try {
+    const missingDirectory = path.join(archiveRoot, "missing");
+    assert.deepEqual(await listSvgArtifacts(missingDirectory), []);
+    const chartDirectory = path.join(archiveRoot, "underlying");
+    await mkdir(chartDirectory);
+    await Promise.all([
+      writeFile(path.join(chartDirectory, "02-second.svg"), "<svg />"),
+      writeFile(path.join(chartDirectory, "01-first.svg"), "<svg />"),
+      writeFile(path.join(chartDirectory, "notes.txt"), "not a chart")
+    ]);
+    assert.deepEqual(await listSvgArtifacts(chartDirectory), ["01-first.svg", "02-second.svg"]);
+  } finally {
+    await rm(archiveRoot, { recursive: true, force: true });
   }
   console.log(`[test:charts] ideas=${report.topTrades.length} bounds=ok`);
 }

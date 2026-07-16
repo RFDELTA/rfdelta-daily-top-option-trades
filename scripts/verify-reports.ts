@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { listSvgArtifacts } from "../lib/report/archive";
 import { getReport, getReportIndex } from "../lib/report/store";
 
 const forbiddenPublicPatterns = [
@@ -112,9 +113,7 @@ async function main() {
       .map((idea) => path.basename(idea.underlyingChart?.assetPath ?? ""))
       .filter(Boolean)
       .sort();
-    const actualCharts = (await fs.readdir(underlyingDirectory))
-      .filter((file) => file.endsWith(".svg"))
-      .sort();
+    const actualCharts = await listSvgArtifacts(underlyingDirectory);
     if (JSON.stringify(actualCharts) !== JSON.stringify(expectedCharts)) {
       throw new Error("Underlying chart archive contains missing or stale assets.");
     }
