@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","QQQ","QQQ 7/30 700/705 Call Credit Spread","call_credit","2026-07-30","13","698.11","Credit","2.56","0.5481","23.63","244","256","1.05","702.56","0.64","78.63","0.8642","0.254"

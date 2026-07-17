@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="224" viewBox="0 0 1200 224" role="img" aria-label="RFDELTA ranked option trade scores">
+  <defs>
+    <linearGradient id="background" x1="0" x2="1"><stop stop-color="#061b19"/><stop offset="1" stop-color="#0a2d28"/></linearGradient>
+    <linearGradient id="scoreBar" x1="0" x2="1"><stop stop-color="#18e59c"/><stop offset="0.7" stop-color="#5bd7f4"/><stop offset="1" stop-color="#f4c95d"/></linearGradient>
+    <style>.title{fill:#f4fff9;font:700 18px Arial,sans-serif}.rank,.score{fill:#f4fff9;font:800 18px Arial,sans-serif}.meta{fill:#9fc4bb;font:13px Arial,sans-serif}.head{fill:#f4fff9;font:800 28px Georgia,serif}.sub{fill:#9fc4bb;font:14px Arial,sans-serif}</style>
+  </defs>
+  <rect width="1200" height="224" fill="url(#background)"/>
+  <text x="34" y="42" class="head">RFDELTA Top Option Trades</text>
+  <text x="34" y="69" class="sub">Deterministic ranking for 2026-07-17. Labels and scores are separated from payoff bars for legibility.</text>
+  <g>
+      <text x="34" y="105" class="rank">1</text>
+      <text x="78" y="105" class="title"><tspan x="78" dy="0">QQQ 7/30 700/705 Call Credit Spread</tspan></text>
+      <text x="1166" y="105" class="score" text-anchor="end">78.63</text>
+      <text x="78" y="144" class="meta">large-cap growth | credit | 55% modeled probability</text>
+      <rect x="78" y="161" width="1070" height="16" rx="3" fill="#143b36"/>
+      <rect x="78" y="161" width="841.3" height="16" rx="3" fill="url(#scoreBar)"/>
+    </g>
+  </svg>
