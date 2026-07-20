@@ -32,7 +32,7 @@ NKE supplies the counterweight. Its put credit structure scores 49.55 and carrie
 
 BAC enters with -1.4% five-session momentum and +7.1% over twenty sessions. Realized volatility is 21.1%, placing the underlying in a mean reversion regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [BAC entry and open-position history](/charts/2026-07-13/underlying/01-bac.svg) at $59.05; latest official close $61.27 on 2026-07-17.
+**Underlying chart:** [BAC entry and open-position history](/charts/2026-07-13/underlying/01-bac.svg) at $59.05; latest official close $60.42 on 2026-07-20.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 59.5; MACD spread -0.08%; ATR(14) 1.87%; realized volatility 21.1%; ATM implied volatility 31.3%; expected move 4.3%. Outcome-trained score adjustment: +0.00.
 
@@ -48,7 +48,7 @@ BAC enters with -1.4% five-session momentum and +7.1% over twenty sessions. Real
 
 NKE enters with +2.1% five-session momentum and -3.7% over twenty sessions. Realized volatility is 35.4%, placing the underlying in a mean reversion regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [NKE entry and open-position history](/charts/2026-07-13/underlying/02-nke.svg) at $44.25; latest official close $43.76 on 2026-07-17.
+**Underlying chart:** [NKE entry and open-position history](/charts/2026-07-13/underlying/02-nke.svg) at $44.25; latest official close $43.47 on 2026-07-20.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 55.5; MACD spread 0.56%; ATR(14) 3.25%; realized volatility 35.4%; ATM implied volatility 36.0%; expected move 5.0%. Outcome-trained score adjustment: +0.00.
 
@@ -64,7 +64,7 @@ NKE enters with +2.1% five-session momentum and -3.7% over twenty sessions. Real
 
 ORCL enters with -4.9% five-session momentum and -25.8% over twenty sessions. Realized volatility is 41.5%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [ORCL entry and open-position history](/charts/2026-07-13/underlying/03-orcl.svg) at $136.66; latest official close $126.41 on 2026-07-17.
+**Underlying chart:** [ORCL entry and open-position history](/charts/2026-07-13/underlying/03-orcl.svg) at $136.66; latest official close $121.38 on 2026-07-20.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 13.7; MACD spread -0.75%; ATR(14) 5.37%; realized volatility 41.5%; ATM implied volatility 60.6%; expected move 8.4%. Outcome-trained score adjustment: +0.00.
 
@@ -80,7 +80,7 @@ ORCL enters with -4.9% five-session momentum and -25.8% over twenty sessions. Re
 
 QQQ enters with -0.7% five-session momentum and +0.1% over twenty sessions. Realized volatility is 27.9%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [QQQ entry and open-position history](/charts/2026-07-13/underlying/04-qqq.svg) at $717.77; latest official close $695.33 on 2026-07-17.
+**Underlying chart:** [QQQ entry and open-position history](/charts/2026-07-13/underlying/04-qqq.svg) at $717.77; latest official close $696.06 on 2026-07-20.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 43.0; MACD spread -0.17%; ATR(14) 2.17%; realized volatility 27.9%; ATM implied volatility 22.8%; expected move 3.2%. Outcome-trained score adjustment: +0.00.
 
@@ -96,7 +96,7 @@ QQQ enters with -0.7% five-session momentum and +0.1% over twenty sessions. Real
 
 IWM enters with -1.5% five-session momentum and +1.4% over twenty sessions. Realized volatility is 13.3%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-07-13/underlying/05-iwm.svg) at $294.51; latest official close $294.04 on 2026-07-17.
+**Underlying chart:** [IWM entry and open-position history](/charts/2026-07-13/underlying/05-iwm.svg) at $294.51; latest official close $292.31 on 2026-07-20.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 42.9; MACD spread -0.31%; ATR(14) 1.54%; realized volatility 13.3%; ATM implied volatility 18.2%; expected move 2.5%. Outcome-trained score adjustment: +0.00.
 
