@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","TLT","TLT 8/3 83/84 Call Credit Spread","call_credit","2026-08-03","13","83.665","Credit","0.59","0.4775","5.54","41","59","1.44","83.59","-0.09","85.18","0.8179","0.18"

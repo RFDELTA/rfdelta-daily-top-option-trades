@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "policyVersion": "rfdelta-online-policy-v1",
+  "trainedAtUtc": "2026-07-21T16:00:53.418Z",
+  "trainingThroughDate": "2026-07-21",
+  "resolvedTradeCount": 5,
+  "minimumTrainingSamples": 8,
+  "active": false,
+  "regularization": 2,
+  "maximumScoreAdjustment": 8,
+  "featureWeights": {
+    "trendAlignment": 0,
+    "meanReversion": 0,
+    "volatilityQuality": 0,
+    "optionsSkew": 0,
+    "liquidity": 0,
+    "riskAdjustedMomentum": 0
+  },
+  "featureStats": {
+    "trendAlignment": {
+      "sampleCount": 5,
+      "sumX2": 0.258884,
+      "sumXY": -0.387265,
+      "coefficient": -0.171441
+    },
+    "meanReversion": {
+      "sampleCount": 5,
+      "sumX2": 0.505529,
+      "sumXY": 0.096921,
+      "coefficient": 0.038683
+    },
+    "volatilityQuality": {
+      "sampleCount": 5,
+      "sumX2": 1.694104,
+      "sumXY": -1.746207,
+      "coefficient": -0.35
+    },
+    "optionsSkew": {
+      "sampleCount": 5,
+      "sumX2": 0,
+      "sumXY": 0,
+      "coefficient": 0
+    },
+    "liquidity": {
+      "sampleCount": 5,
+      "sumX2": 3.761246,
+      "sumXY": -2.545048,
+      "coefficient": -0.35
+    },
+    "riskAdjustedMomentum": {
+      "sampleCount": 5,
+      "sumX2": 0.516899,
+      "sumXY": -0.491288,
+      "coefficient": -0.195196
+    }
+  },
+  "sourceReportIds": [
+    "rfdelta-options-2026-06-19-3bc1cabccc13"
+  ]
+}

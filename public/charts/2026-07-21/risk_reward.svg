@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="212" viewBox="0 0 1200 212" role="img" aria-label="RFDELTA option trade risk and reward comparison">
+  <rect width="1200" height="212" fill="#071f1c"/>
+  <style>.head{fill:#f4fff9;font:800 28px Georgia,serif}.sub{fill:#9fc4bb;font:14px Arial,sans-serif}.label,.ratio{fill:#f4fff9;font:700 16px Arial,sans-serif}.lossText{fill:#f2b17b;font:800 12px Arial,sans-serif}.profitText{fill:#7ce3f4;font:800 12px Arial,sans-serif}</style>
+  <text x="34" y="42" class="head">Defined Risk Versus Maximum Payoff</text>
+  <text x="34" y="68" class="sub">One contract per spread, excluding commissions and assignment costs.</text>
+  <g>
+      <text x="34" y="100" class="label">1. TLT Call Credit</text>
+      <text x="1166" y="100" class="ratio" text-anchor="end">1.44x reward/risk</text>
+      <text x="34" y="131" class="lossText">MAX LOSS $41</text>
+      <rect x="180" y="118" width="243.2" height="18" rx="3" fill="#f29e5b"/>
+      <text x="620" y="131" class="profitText">MAX PROFIT $59</text>
+      <rect x="800" y="118" width="350.0" height="18" rx="3" fill="#58d8ee"/>
+      <line x1="34" x2="1166" y1="162" y2="162" stroke="#1e4a43"/>
+    </g>
+  </svg>
