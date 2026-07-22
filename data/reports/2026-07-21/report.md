@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 TLT enters with -0.5% five-session momentum and -2.8% over twenty sessions. Realized volatility is 9.2%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-21/underlying/01-tlt.svg) at $83.67; latest official close $83.66 on 2026-07-21.
+**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-21/underlying/01-tlt.svg) at $83.67; latest official close $83.44 on 2026-07-22.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 17.0; MACD spread -0.18%; ATR(14) 0.66%; realized volatility 9.2%; ATM implied volatility 10.3%; expected move 1.6%. Outcome-trained score adjustment: +0.00.
 

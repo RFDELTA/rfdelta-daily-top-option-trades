@@ -32,7 +32,7 @@ T supplies the counterweight. Its call credit structure scores 46.72 and carries
 
 NFLX enters with -5.5% five-session momentum and -10.5% over twenty sessions. Realized volatility is 41.9%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [NFLX entry and open-position history](/charts/2026-07-10/underlying/01-nflx.svg) at $73.40; latest official close $68.67 on 2026-07-21.
+**Underlying chart:** [NFLX entry and open-position history](/charts/2026-07-10/underlying/01-nflx.svg) at $73.40; latest official close $68.53 on 2026-07-22.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 41.2; MACD spread 0.72%; ATR(14) 3.67%; realized volatility 41.9%; ATM implied volatility 57.9%; expected move 9.0%. Outcome-trained score adjustment: +0.00.
 
@@ -48,7 +48,7 @@ NFLX enters with -5.5% five-session momentum and -10.5% over twenty sessions. Re
 
 T enters with +2.7% five-session momentum and -9.0% over twenty sessions. Realized volatility is 33.7%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [T entry and open-position history](/charts/2026-07-10/underlying/02-t.svg) at $21.13; latest official close $22.26 on 2026-07-21.
+**Underlying chart:** [T entry and open-position history](/charts/2026-07-10/underlying/02-t.svg) at $21.13; latest official close $23.04 on 2026-07-22.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 40.5; MACD spread 0.10%; ATR(14) 3.42%; realized volatility 33.7%; ATM implied volatility 38.3%; expected move 6.0%. Outcome-trained score adjustment: +0.00.
 
@@ -64,7 +64,7 @@ T enters with +2.7% five-session momentum and -9.0% over twenty sessions. Realiz
 
 WFC enters with +1.9% five-session momentum and +6.3% over twenty sessions. Realized volatility is 24.7%, placing the underlying in a trend regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [WFC entry and open-position history](/charts/2026-07-10/underlying/03-wfc.svg) at $87.11; latest official close $87.74 on 2026-07-21.
+**Underlying chart:** [WFC entry and open-position history](/charts/2026-07-10/underlying/03-wfc.svg) at $87.11; latest official close $86.42 on 2026-07-22.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 67.9; MACD spread 0.13%; ATR(14) 2.17%; realized volatility 24.7%; ATM implied volatility 36.5%; expected move 5.7%. Outcome-trained score adjustment: +0.00.
 
@@ -80,7 +80,7 @@ WFC enters with +1.9% five-session momentum and +6.3% over twenty sessions. Real
 
 TLT enters with -1.1% five-session momentum and -0.4% over twenty sessions. Realized volatility is 10.6%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-10/underlying/04-tlt.svg) at $84.55; latest official close $83.66 on 2026-07-21.
+**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-10/underlying/04-tlt.svg) at $84.55; latest official close $83.44 on 2026-07-22.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 29.5; MACD spread -0.33%; ATR(14) 0.71%; realized volatility 10.6%; ATM implied volatility 8.1%; expected move 1.3%. Outcome-trained score adjustment: +0.00.
 
@@ -96,7 +96,7 @@ TLT enters with -1.1% five-session momentum and -0.4% over twenty sessions. Real
 
 PLTR enters with -2.1% five-session momentum and -2.8% over twenty sessions. Realized volatility is 58.1%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [PLTR entry and open-position history](/charts/2026-07-10/underlying/05-pltr.svg) at $126.55; latest official close $132.66 on 2026-07-21.
+**Underlying chart:** [PLTR entry and open-position history](/charts/2026-07-10/underlying/05-pltr.svg) at $126.55; latest official close $124.57 on 2026-07-22.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 48.3; MACD spread 1.29%; ATR(14) 5.58%; realized volatility 58.1%; ATM implied volatility 49.1%; expected move 7.7%. Outcome-trained score adjustment: +0.00.
 
