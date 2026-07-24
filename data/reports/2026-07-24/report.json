@@ -1,0 +1,387 @@
+{
+  "schemaVersion": "1.0",
+  "reportId": "rfdelta-options-2026-07-24-48b445f6b365",
+  "runMetadata": {
+    "reportDate": "2026-07-24",
+    "marketSessionDate": "2026-07-24",
+    "generatedAtUtc": "2026-07-24T08:59:03.902Z",
+    "dataAsOfUtc": "2026-07-24T08:58:46.211Z",
+    "edition": "Daily market edition",
+    "methodologyVersion": "rfdelta-options-v3",
+    "selectionHash": "48b445f6b3656a11fc6a30fe95a3f2a8e9ed7bc17071618e423c2a4c39162ee5",
+    "datasetRunId": "run-56a13754682b0109",
+    "featureVersion": "rfdelta-market-features-v2",
+    "selectionPolicyVersion": "rfdelta-online-policy-v1",
+    "trainingSampleCount": 5
+  },
+  "executiveSummary": {
+    "headline": "No defined-risk option setup cleared the publication gate",
+    "standfirst": "The screen found quoted verticals, but none met the combined liquidity, risk and ranking threshold required for publication.",
+    "marketCommentary": [
+      "A blank board is information. It means the price of optionality, the available liquidity and the directional signal did not line up cleanly enough to justify turning motion into a recommendation.",
+      "The next edition will rerun the same universe and rules after the next valid market session. The methodology does not fill empty slots with weaker trades."
+    ],
+    "selectionCommentary": [
+      "Capital not committed to a weak spread remains available for a better one."
+    ],
+    "riskCommentary": "No trade is preferable to accepting a structurally poor entry."
+  },
+  "marketContext": {
+    "providerAttribution": "RFDELTA normalized U.S. equity and options market data",
+    "universeCount": 105,
+    "quotedSymbolCount": 105,
+    "chainSymbolCount": 40,
+    "includedSymbolCount": 40,
+    "excludedSymbolCount": 35,
+    "candidateCount": 16,
+    "bullishCandidateCount": 8,
+    "bearishCandidateCount": 8,
+    "regimeCounts": {
+      "mean_reversion": 6,
+      "risk_off": 3,
+      "mixed": 1,
+      "risk_on": 2,
+      "vol_expansion": 3,
+      "trend": 1
+    }
+  },
+  "analytics": {
+    "publishedIdeaCount": 0,
+    "topScore": 0,
+    "averageProbabilityProfit": 0,
+    "totalExpectedValueDollars": 0,
+    "totalMaxLossDollars": 0,
+    "totalMaxProfitDollars": 0,
+    "debitIdeaCount": 0,
+    "creditIdeaCount": 0
+  },
+  "topTrades": [],
+  "accountability": {
+    "sourceReportDate": "2026-07-22",
+    "sourceEdition": "Daily market edition",
+    "evaluatedThrough": "2026-07-24",
+    "status": "complete",
+    "wins": 0,
+    "losses": 0,
+    "nearBreakeven": 0,
+    "open": 0,
+    "resolvedPnlDollars": 0,
+    "read": "The Jul 22, 2026 basket has no scored expiration result yet.",
+    "trades": []
+  },
+  "accountabilityHistory": [
+    {
+      "sourceReportDate": "2026-07-22",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-07-24",
+      "status": "complete",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 0,
+      "resolvedPnlDollars": 0,
+      "read": "The Jul 22, 2026 basket has no scored expiration result yet.",
+      "trades": []
+    },
+    {
+      "sourceReportDate": "2026-07-21",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-07-24",
+      "status": "open",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 1,
+      "resolvedPnlDollars": 0,
+      "read": "The Jul 21, 2026 basket has no scored expiration result yet. 1 position remains open.",
+      "trades": [
+        {
+          "tradeId": "tlt-2026-08-03-call_credit-84-83",
+          "name": "TLT 8/3 83/84 Call Credit Spread",
+          "symbol": "TLT",
+          "style": "call_credit",
+          "expiration": "2026-08-03",
+          "status": "open",
+          "read": "The spread remains open through Aug 3, 2026; no expiration result is assigned."
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-07-20",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-07-24",
+      "status": "complete",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 0,
+      "resolvedPnlDollars": 0,
+      "read": "The Jul 20, 2026 basket has no scored expiration result yet.",
+      "trades": []
+    },
+    {
+      "sourceReportDate": "2026-07-17",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-07-24",
+      "status": "open",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 1,
+      "resolvedPnlDollars": 0,
+      "read": "The Jul 17, 2026 basket has no scored expiration result yet. 1 position remains open.",
+      "trades": [
+        {
+          "tradeId": "qqq-2026-07-30-call_credit-705-700",
+          "name": "QQQ 7/30 700/705 Call Credit Spread",
+          "symbol": "QQQ",
+          "style": "call_credit",
+          "expiration": "2026-07-30",
+          "status": "open",
+          "read": "The spread remains open through Jul 30, 2026; no expiration result is assigned."
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-07-16",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-07-24",
+      "status": "open",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 2,
+      "resolvedPnlDollars": 0,
+      "read": "The Jul 16, 2026 basket has no scored expiration result yet. 2 positions remain open.",
+      "trades": [
+        {
+          "tradeId": "tlt-2026-07-29-call_credit-84-80.5",
+          "name": "TLT 7/29 80.5/84 Call Credit Spread",
+          "symbol": "TLT",
+          "style": "call_credit",
+          "expiration": "2026-07-29",
+          "status": "open",
+          "read": "The spread remains open through Jul 29, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "iwm-2026-07-29-call_credit-295-292",
+          "name": "IWM 7/29 292/295 Call Credit Spread",
+          "symbol": "IWM",
+          "style": "call_credit",
+          "expiration": "2026-07-29",
+          "status": "open",
+          "read": "The spread remains open through Jul 29, 2026; no expiration result is assigned."
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-07-15",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-07-24",
+      "status": "complete",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 0,
+      "resolvedPnlDollars": 0,
+      "read": "The Jul 15, 2026 basket has no scored expiration result yet.",
+      "trades": []
+    },
+    {
+      "sourceReportDate": "2026-07-14",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-07-24",
+      "status": "open",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 5,
+      "resolvedPnlDollars": 0,
+      "read": "The Jul 14, 2026 basket has no scored expiration result yet. 5 positions remain open.",
+      "trades": [
+        {
+          "tradeId": "tlt-2026-07-27-put_debit-84-82",
+          "name": "TLT 7/27 84/82 Put Debit Spread",
+          "symbol": "TLT",
+          "style": "put_debit",
+          "expiration": "2026-07-27",
+          "status": "open",
+          "read": "The spread remains open through Jul 27, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "bac-2026-07-31-put_credit-59-60",
+          "name": "BAC 7/31 60/59 Put Credit Spread",
+          "symbol": "BAC",
+          "style": "put_credit",
+          "expiration": "2026-07-31",
+          "status": "open",
+          "read": "The spread remains open through Jul 31, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "c-2026-07-31-call_credit-142-140",
+          "name": "C 7/31 140/142 Call Credit Spread",
+          "symbol": "C",
+          "style": "call_credit",
+          "expiration": "2026-07-31",
+          "status": "open",
+          "read": "The spread remains open through Jul 31, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "t-2026-07-31-put_debit-21-20",
+          "name": "T 7/31 21/20 Put Debit Spread",
+          "symbol": "T",
+          "style": "put_debit",
+          "expiration": "2026-07-31",
+          "status": "open",
+          "read": "The spread remains open through Jul 31, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "f-2026-07-31-put_debit-14-13.5",
+          "name": "F 7/31 14/13.5 Put Debit Spread",
+          "symbol": "F",
+          "style": "put_debit",
+          "expiration": "2026-07-31",
+          "status": "open",
+          "read": "The spread remains open through Jul 31, 2026; no expiration result is assigned."
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-07-13",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-07-24",
+      "status": "open",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 5,
+      "resolvedPnlDollars": 0,
+      "read": "The Jul 13, 2026 basket has no scored expiration result yet. 5 positions remain open.",
+      "trades": [
+        {
+          "tradeId": "bac-2026-07-24-put_credit-58-59",
+          "name": "BAC 7/24 59/58 Put Credit Spread",
+          "symbol": "BAC",
+          "style": "put_credit",
+          "expiration": "2026-07-24",
+          "status": "open",
+          "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "nke-2026-07-24-put_credit-42-43",
+          "name": "NKE 7/24 43/42 Put Credit Spread",
+          "symbol": "NKE",
+          "style": "put_credit",
+          "expiration": "2026-07-24",
+          "status": "open",
+          "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "orcl-2026-07-24-call_credit-148-145",
+          "name": "ORCL 7/24 145/148 Call Credit Spread",
+          "symbol": "ORCL",
+          "style": "call_credit",
+          "expiration": "2026-07-24",
+          "status": "open",
+          "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "qqq-2026-07-24-put_debit-715-708",
+          "name": "QQQ 7/24 715/708 Put Debit Spread",
+          "symbol": "QQQ",
+          "style": "put_debit",
+          "expiration": "2026-07-24",
+          "status": "open",
+          "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "iwm-2026-07-24-put_debit-294-291",
+          "name": "IWM 7/24 294/291 Put Debit Spread",
+          "symbol": "IWM",
+          "style": "put_debit",
+          "expiration": "2026-07-24",
+          "status": "open",
+          "read": "The spread remains open through Jul 24, 2026; no expiration result is assigned."
+        }
+      ]
+    }
+  ],
+  "marketRead": {
+    "asOfUtc": "2026-07-24T08:58:46.211Z",
+    "lookbackSessionDates": [
+      "2026-07-24",
+      "2026-07-22",
+      "2026-07-21",
+      "2026-07-20",
+      "2026-07-17"
+    ],
+    "headline": "The cleanest option trade today is patience",
+    "standfirst": "The screen evaluated 16 defined-risk spreads across 40 current option chains. None cleared the complete price, probability, liquidity and confirmation standard at the quoted terms.",
+    "commentary": [
+      "A no-trade board does not mean the market is quiet. It means the available spreads asked for too much risk, offered too little probability margin or lacked enough follow-through to justify an entry at the displayed bid and ask.",
+      "The important distinction is between an interesting ticker and an executable spread. Today produced candidates worth monitoring, but not one with enough room between its modeled probability and the payoff hurdle after conservative pricing.",
+      "That leaves the daily posture in cash rather than forcing a fifth-best idea into a portfolio. A later move can improve the setup, but it would need a fresh option-chain evaluation because both price and volatility will have changed.",
+      "The headline tape remains active, but fresh news only matters when the underlying and option market confirm it together. Today that confirmation was incomplete."
+    ],
+    "newsRadar": [
+      {
+        "headline": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Wednesday Ahead of Major Tech Earnings",
+        "publisher": "MT Newswires",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130102621.html",
+        "publishedAtUtc": "2026-07-22T13:01:02.000Z",
+        "topic": "earnings"
+      }
+    ],
+    "watchItems": [
+      {
+        "label": "Probability margin",
+        "signal": "No spread cleared the full hurdle",
+        "read": "A stronger move or better option price can widen the gap between modeled probability and the break-even requirement."
+      },
+      {
+        "label": "Liquidity",
+        "signal": "40 current chains reviewed",
+        "read": "Tighter two-sided quotes can materially improve a vertical spread without changing the underlying thesis."
+      },
+      {
+        "label": "Session follow-through",
+        "signal": "Direction remains unconfirmed",
+        "read": "A durable move through the session reference level matters more than an opening burst that fades."
+      },
+      {
+        "label": "Volatility",
+        "signal": "No favorable risk-price combination",
+        "read": "Watch whether implied volatility reprices faster than the underlying. Better structure can emerge even when direction stays unchanged."
+      },
+      {
+        "label": "Risk budget",
+        "signal": "$0 of new one-lot maximum loss",
+        "read": "No new exposure is preferable to accepting a spread that failed the same publication standard applied to every candidate."
+      }
+    ],
+    "basis": "Rolling comparison covers 5 retained market sessions: Jul 24, 2026, Jul 22, 2026, Jul 21, 2026, Jul 20, 2026, Jul 17, 2026. Market evidence is timestamped Jul 24, 2026, 4:58 AM EDT."
+  },
+  "methodology": {
+    "selectionCriteria": [
+      "A broad liquid-symbol quote universe is intersected with the source's fingerprinted universe. Core market anchors, the largest percentage movers, the most active names and a date-seeded rotation sleeve determine which option chains are evaluated.",
+      "The nearest expiration inside the configured 7-to-35-day window is chosen by distance from a 14-day target.",
+      "Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.",
+      "Both legs must clear bid, ask, open-interest, volume, derived-Greek, timestamp and relative quote-width gates.",
+      "The current session and five-, fifteen- and sixty-session price structure must confirm the trade direction.",
+      "A trade publishes only when every hard gate clears; the basket is never filled with a rejected or negative-expectancy setup.",
+      "Resolved trades train bounded feature adjustments only after the minimum sample threshold; every policy and input dataset is versioned with the report."
+    ],
+    "rankingFramework": [
+      "Four deterministic views estimate the payoff: jump-stress simulation, market-implied terminal probability, a horizon-confirmed regime estimate and a fat-tail case.",
+      "Publication requires at least 3 positive models, 5 percentage points of probability margin and nonnegative conservative expected value.",
+      "Liquidity must score at least 0.80, and the unadjusted eligibility score must reach 70.",
+      "Scenario perturbations measure whether the setup remains viable when probability assumptions move in either direction.",
+      "Resolved prior outcomes may reorder candidates that already passed every deterministic gate; they cannot promote a failed candidate.",
+      "The advanced feature layer contributes at most 8 score points and currently contains 5 fully resolved training examples."
+    ],
+    "executionAssumption": "Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.",
+    "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
+    "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 24, 2026, 4:58 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
+    "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  }
+}
