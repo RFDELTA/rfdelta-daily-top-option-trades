@@ -32,7 +32,7 @@ NKE supplies the counterweight. Its put credit structure scores 49.55 and carrie
 
 BAC enters with -1.4% five-session momentum and +7.1% over twenty sessions. Realized volatility is 21.1%, placing the underlying in a mean reversion regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [BAC entry and open-position history](/charts/2026-07-13/underlying/01-bac.svg) at $59.05; latest official close $61.28 on 2026-07-23.
+**Underlying chart:** [BAC entry through expiration close](/charts/2026-07-13/underlying/01-bac.svg) at $59.05; expiration close $62.05.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 59.5; MACD spread -0.08%; ATR(14) 1.87%; realized volatility 21.1%; ATM implied volatility 31.3%; expected move 4.3%. Outcome-trained score adjustment: +0.00.
 
@@ -48,7 +48,7 @@ BAC enters with -1.4% five-session momentum and +7.1% over twenty sessions. Real
 
 NKE enters with +2.1% five-session momentum and -3.7% over twenty sessions. Realized volatility is 35.4%, placing the underlying in a mean reversion regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [NKE entry and open-position history](/charts/2026-07-13/underlying/02-nke.svg) at $44.25; latest official close $40.99 on 2026-07-23.
+**Underlying chart:** [NKE entry through expiration close](/charts/2026-07-13/underlying/02-nke.svg) at $44.25; expiration close $41.70.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 55.5; MACD spread 0.56%; ATR(14) 3.25%; realized volatility 35.4%; ATM implied volatility 36.0%; expected move 5.0%. Outcome-trained score adjustment: +0.00.
 
@@ -64,7 +64,7 @@ NKE enters with +2.1% five-session momentum and -3.7% over twenty sessions. Real
 
 ORCL enters with -4.9% five-session momentum and -25.8% over twenty sessions. Realized volatility is 41.5%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [ORCL entry and open-position history](/charts/2026-07-13/underlying/03-orcl.svg) at $136.66; latest official close $120.04 on 2026-07-23.
+**Underlying chart:** [ORCL entry through expiration close](/charts/2026-07-13/underlying/03-orcl.svg) at $136.66; expiration close $114.99.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 13.7; MACD spread -0.75%; ATR(14) 5.37%; realized volatility 41.5%; ATM implied volatility 60.6%; expected move 8.4%. Outcome-trained score adjustment: +0.00.
 
@@ -80,7 +80,7 @@ ORCL enters with -4.9% five-session momentum and -25.8% over twenty sessions. Re
 
 QQQ enters with -0.7% five-session momentum and +0.1% over twenty sessions. Realized volatility is 27.9%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [QQQ entry and open-position history](/charts/2026-07-13/underlying/04-qqq.svg) at $717.77; latest official close $691.96 on 2026-07-23.
+**Underlying chart:** [QQQ entry through expiration close](/charts/2026-07-13/underlying/04-qqq.svg) at $717.77; expiration close $684.23.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 43.0; MACD spread -0.17%; ATR(14) 2.17%; realized volatility 27.9%; ATM implied volatility 22.8%; expected move 3.2%. Outcome-trained score adjustment: +0.00.
 
@@ -96,7 +96,7 @@ QQQ enters with -0.7% five-session momentum and +0.1% over twenty sessions. Real
 
 IWM enters with -1.5% five-session momentum and +1.4% over twenty sessions. Realized volatility is 13.3%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-07-13/underlying/05-iwm.svg) at $294.51; latest official close $292.09 on 2026-07-23.
+**Underlying chart:** [IWM entry through expiration close](/charts/2026-07-13/underlying/05-iwm.svg) at $294.51; expiration close $291.17.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 42.9; MACD spread -0.31%; ATR(14) 1.54%; realized volatility 13.3%; ATM implied volatility 18.2%; expected move 2.5%. Outcome-trained score adjustment: +0.00.
 
@@ -105,6 +105,24 @@ IWM enters with -1.5% five-session momentum and +1.4% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $112.00. Breakeven is $292.88 and requires a 0.6% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $188.00, or 1.68 times maximum risk. The simulation assigns 35.4% probability to finishing near maximum profit and uses 19.4% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Jul 13, 2026 basket closes with $645.00 final P/L**
+
+The 5-trade basket finished with 4 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a gain of $645.00, equal to +87.4% of the maximum capital at risk.
+
+QQQ 7/24 715/708 Put Debit Spread was the strongest contributor at $452.00. NKE 7/24 43/42 Put Credit Spread was the largest detractor at -$77.00.
+
+What worked: put credit, call credit, put debit. What needs tighter gating: put credit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| BAC 7/24 59/58 Put Credit Spread | win | $39.00 | BAC closed at $62.05 for expiration settlement, producing $39.00 on the one-lot spread. |
+| NKE 7/24 43/42 Put Credit Spread | loss | -$77.00 | NKE closed at $41.70 for expiration settlement, producing -$77.00 on the one-lot spread. |
+| ORCL 7/24 145/148 Call Credit Spread | win | $60.00 | ORCL closed at $114.99 for expiration settlement, producing $60.00 on the one-lot spread. |
+| QQQ 7/24 715/708 Put Debit Spread | win | $452.00 | QQQ closed at $684.23 for expiration settlement, producing $452.00 on the one-lot spread. |
+| IWM 7/24 294/291 Put Debit Spread | win | $171.00 | IWM closed at $291.17 for expiration settlement, producing $171.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

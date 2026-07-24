@@ -165,11 +165,9 @@
         "assetPath": "/charts/2026-07-13/underlying/01-bac.svg",
         "entryDate": "2026-07-13",
         "entryPrice": 59.055,
+        "closeDate": "2026-07-24",
+        "closePrice": 62.05,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 47.06
-          },
           {
             "date": "2026-03-17",
             "close": 47.28
@@ -525,6 +523,10 @@
           {
             "date": "2026-07-23",
             "close": 61.28
+          },
+          {
+            "date": "2026-07-24",
+            "close": 62.05
           }
         ]
       },
@@ -564,6 +566,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 61.28
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 62.05
         }
       ]
     },
@@ -675,11 +681,9 @@
         "assetPath": "/charts/2026-07-13/underlying/02-nke.svg",
         "entryDate": "2026-07-13",
         "entryPrice": 44.25,
+        "closeDate": "2026-07-24",
+        "closePrice": 41.7,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 54.79
-          },
           {
             "date": "2026-03-17",
             "close": 55.12
@@ -1035,6 +1039,10 @@
           {
             "date": "2026-07-23",
             "close": 40.99
+          },
+          {
+            "date": "2026-07-24",
+            "close": 41.7
           }
         ]
       },
@@ -1074,6 +1082,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 40.99
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 41.7
         }
       ]
     },
@@ -1187,11 +1199,9 @@
         "assetPath": "/charts/2026-07-13/underlying/03-orcl.svg",
         "entryDate": "2026-07-13",
         "entryPrice": 136.66,
+        "closeDate": "2026-07-24",
+        "closePrice": 114.99,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 155.97
-          },
           {
             "date": "2026-03-17",
             "close": 154.69
@@ -1547,6 +1557,10 @@
           {
             "date": "2026-07-23",
             "close": 120.04
+          },
+          {
+            "date": "2026-07-24",
+            "close": 114.99
           }
         ]
       },
@@ -1586,6 +1600,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 120.04
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 114.99
         }
       ]
     },
@@ -1697,11 +1715,9 @@
         "assetPath": "/charts/2026-07-13/underlying/04-qqq.svg",
         "entryDate": "2026-07-13",
         "entryPrice": 717.77,
+        "closeDate": "2026-07-24",
+        "closePrice": 684.23,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 600.38
-          },
           {
             "date": "2026-03-17",
             "close": 603.31
@@ -2057,6 +2073,10 @@
           {
             "date": "2026-07-23",
             "close": 691.96
+          },
+          {
+            "date": "2026-07-24",
+            "close": 684.23
           }
         ]
       },
@@ -2096,6 +2116,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 691.96
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 684.23
         }
       ]
     },
@@ -2207,11 +2231,9 @@
         "assetPath": "/charts/2026-07-13/underlying/05-iwm.svg",
         "entryDate": "2026-07-13",
         "entryPrice": 294.51,
+        "closeDate": "2026-07-24",
+        "closePrice": 291.17,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 248.92
-          },
           {
             "date": "2026-03-17",
             "close": 250.05
@@ -2567,6 +2589,10 @@
           {
             "date": "2026-07-23",
             "close": 292.09
+          },
+          {
+            "date": "2026-07-24",
+            "close": 291.17
           }
         ]
       },
@@ -2606,6 +2632,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 292.09
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 291.17
         }
       ]
     }
@@ -2904,5 +2934,92 @@
       }
     ],
     "basis": "Rolling comparison uses 2 retained published market sessions: Jul 13, 2026, Jul 10, 2026. The current screen ranked 32 candidates across 39 included symbols. Headline ranking uses publication time, market relevance, source quality, symbol relevance and topic diversity. Market evidence is timestamped Jul 13, 2026, 11:31 AM EDT."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-07-24",
+    "evaluatedAtUtc": "2026-07-24T21:32:54.804Z",
+    "tradeCount": 5,
+    "wins": 4,
+    "losses": 1,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 738,
+    "finalPnlDollars": 645,
+    "returnOnRisk": 0.873984,
+    "bestTradeId": "qqq-2026-07-24-put_debit-715-708",
+    "worstTradeId": "nke-2026-07-24-put_credit-42-43",
+    "headline": "Jul 13, 2026 basket closes with $645.00 final P/L",
+    "commentary": [
+      "The 5-trade basket finished with 4 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a gain of $645.00, equal to +87.4% of the maximum capital at risk.",
+      "QQQ 7/24 715/708 Put Debit Spread was the strongest contributor at $452.00. NKE 7/24 43/42 Put Credit Spread was the largest detractor at -$77.00.",
+      "What worked: put credit, call credit, put debit. What needs tighter gating: put credit."
+    ],
+    "trades": [
+      {
+        "tradeId": "bac-2026-07-24-put_credit-58-59",
+        "name": "BAC 7/24 59/58 Put Credit Spread",
+        "symbol": "BAC",
+        "style": "put_credit",
+        "expiration": "2026-07-24",
+        "status": "win",
+        "read": "BAC closed at $62.05 for expiration settlement, producing $39.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 62.05,
+        "settlementValue": 0,
+        "realizedPnlDollars": 39
+      },
+      {
+        "tradeId": "nke-2026-07-24-put_credit-42-43",
+        "name": "NKE 7/24 43/42 Put Credit Spread",
+        "symbol": "NKE",
+        "style": "put_credit",
+        "expiration": "2026-07-24",
+        "status": "loss",
+        "read": "NKE closed at $41.70 for expiration settlement, producing -$77.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 41.7,
+        "settlementValue": 1,
+        "realizedPnlDollars": -77
+      },
+      {
+        "tradeId": "orcl-2026-07-24-call_credit-148-145",
+        "name": "ORCL 7/24 145/148 Call Credit Spread",
+        "symbol": "ORCL",
+        "style": "call_credit",
+        "expiration": "2026-07-24",
+        "status": "win",
+        "read": "ORCL closed at $114.99 for expiration settlement, producing $60.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 114.99,
+        "settlementValue": 0,
+        "realizedPnlDollars": 60
+      },
+      {
+        "tradeId": "qqq-2026-07-24-put_debit-715-708",
+        "name": "QQQ 7/24 715/708 Put Debit Spread",
+        "symbol": "QQQ",
+        "style": "put_debit",
+        "expiration": "2026-07-24",
+        "status": "win",
+        "read": "QQQ closed at $684.23 for expiration settlement, producing $452.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 684.23,
+        "settlementValue": 7,
+        "realizedPnlDollars": 452
+      },
+      {
+        "tradeId": "iwm-2026-07-24-put_debit-294-291",
+        "name": "IWM 7/24 294/291 Put Debit Spread",
+        "symbol": "IWM",
+        "style": "put_debit",
+        "expiration": "2026-07-24",
+        "status": "win",
+        "read": "IWM closed at $291.17 for expiration settlement, producing $171.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 291.17,
+        "settlementValue": 2.83,
+        "realizedPnlDollars": 171
+      }
+    ]
   }
 }

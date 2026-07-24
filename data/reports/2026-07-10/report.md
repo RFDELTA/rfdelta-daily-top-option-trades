@@ -32,7 +32,7 @@ T supplies the counterweight. Its call credit structure scores 46.72 and carries
 
 NFLX enters with -5.5% five-session momentum and -10.5% over twenty sessions. Realized volatility is 41.9%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [NFLX entry and open-position history](/charts/2026-07-10/underlying/01-nflx.svg) at $73.40; latest official close $68.89 on 2026-07-23.
+**Underlying chart:** [NFLX entry through expiration close](/charts/2026-07-10/underlying/01-nflx.svg) at $73.40; expiration close $70.09.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 41.2; MACD spread 0.72%; ATR(14) 3.67%; realized volatility 41.9%; ATM implied volatility 57.9%; expected move 9.0%. Outcome-trained score adjustment: +0.00.
 
@@ -48,7 +48,7 @@ NFLX enters with -5.5% five-session momentum and -10.5% over twenty sessions. Re
 
 T enters with +2.7% five-session momentum and -9.0% over twenty sessions. Realized volatility is 33.7%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [T entry and open-position history](/charts/2026-07-10/underlying/02-t.svg) at $21.13; latest official close $22.96 on 2026-07-23.
+**Underlying chart:** [T entry through expiration close](/charts/2026-07-10/underlying/02-t.svg) at $21.13; expiration close $24.13.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 40.5; MACD spread 0.10%; ATR(14) 3.42%; realized volatility 33.7%; ATM implied volatility 38.3%; expected move 6.0%. Outcome-trained score adjustment: +0.00.
 
@@ -64,7 +64,7 @@ T enters with +2.7% five-session momentum and -9.0% over twenty sessions. Realiz
 
 WFC enters with +1.9% five-session momentum and +6.3% over twenty sessions. Realized volatility is 24.7%, placing the underlying in a trend regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [WFC entry and open-position history](/charts/2026-07-10/underlying/03-wfc.svg) at $87.11; latest official close $86.19 on 2026-07-23.
+**Underlying chart:** [WFC entry through expiration close](/charts/2026-07-10/underlying/03-wfc.svg) at $87.11; expiration close $86.31.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 67.9; MACD spread 0.13%; ATR(14) 2.17%; realized volatility 24.7%; ATM implied volatility 36.5%; expected move 5.7%. Outcome-trained score adjustment: +0.00.
 
@@ -80,7 +80,7 @@ WFC enters with +1.9% five-session momentum and +6.3% over twenty sessions. Real
 
 TLT enters with -1.1% five-session momentum and -0.4% over twenty sessions. Realized volatility is 10.6%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-10/underlying/04-tlt.svg) at $84.55; latest official close $83.17 on 2026-07-23.
+**Underlying chart:** [TLT entry through expiration close](/charts/2026-07-10/underlying/04-tlt.svg) at $84.55; expiration close $83.25.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 29.5; MACD spread -0.33%; ATR(14) 0.71%; realized volatility 10.6%; ATM implied volatility 8.1%; expected move 1.3%. Outcome-trained score adjustment: +0.00.
 
@@ -96,7 +96,7 @@ TLT enters with -1.1% five-session momentum and -0.4% over twenty sessions. Real
 
 PLTR enters with -2.1% five-session momentum and -2.8% over twenty sessions. Realized volatility is 58.1%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [PLTR entry and open-position history](/charts/2026-07-10/underlying/05-pltr.svg) at $126.55; latest official close $123.37 on 2026-07-23.
+**Underlying chart:** [PLTR entry through expiration close](/charts/2026-07-10/underlying/05-pltr.svg) at $126.55; expiration close $122.92.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 48.3; MACD spread 1.29%; ATR(14) 5.58%; realized volatility 58.1%; ATM implied volatility 49.1%; expected move 7.7%. Outcome-trained score adjustment: +0.00.
 
@@ -105,6 +105,24 @@ PLTR enters with -2.1% five-session momentum and -2.8% over twenty sessions. Rea
 **Risk:** Maximum one-lot loss is $187.00. Breakeven is $123.13 and requires a 2.7% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $313.00, or 1.67 times maximum risk. The simulation assigns 30.3% probability to finishing near maximum profit and uses 50.4% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Jul 10, 2026 basket closes with $59.00 final P/L**
+
+The 5-trade basket finished with 4 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a gain of $59.00, equal to +14.8% of the maximum capital at risk.
+
+NFLX 7/24 76/77 Call Credit Spread was the strongest contributor at $30.00. T 7/24 21.5/22 Call Credit Spread was the largest detractor at -$35.00.
+
+What worked: call credit, put credit, put debit. What needs tighter gating: call credit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| NFLX 7/24 76/77 Call Credit Spread | win | $30.00 | NFLX closed at $70.09 for expiration settlement, producing $30.00 on the one-lot spread. |
+| T 7/24 21.5/22 Call Credit Spread | loss | -$35.00 | T closed at $24.13 for expiration settlement, producing -$35.00 on the one-lot spread. |
+| WFC 7/24 85/84 Put Credit Spread | win | $22.00 | WFC closed at $86.31 for expiration settlement, producing $22.00 on the one-lot spread. |
+| TLT 7/24 85/84.5 Put Debit Spread | win | $21.00 | TLT closed at $83.25 for expiration settlement, producing $21.00 on the one-lot spread. |
+| PLTR 7/24 125/120 Put Debit Spread | win | $21.00 | PLTR closed at $122.92 for expiration settlement, producing $21.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

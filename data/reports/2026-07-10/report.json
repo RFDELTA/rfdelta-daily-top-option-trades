@@ -166,11 +166,9 @@
         "assetPath": "/charts/2026-07-10/underlying/01-nflx.svg",
         "entryDate": "2026-07-10",
         "entryPrice": 73.4,
+        "closeDate": "2026-07-24",
+        "closePrice": 70.09,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 95.2
-          },
           {
             "date": "2026-03-17",
             "close": 94.36
@@ -526,6 +524,10 @@
           {
             "date": "2026-07-23",
             "close": 68.89
+          },
+          {
+            "date": "2026-07-24",
+            "close": 70.09
           }
         ]
       },
@@ -569,6 +571,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 68.89
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 70.09
         }
       ]
     },
@@ -680,11 +686,9 @@
         "assetPath": "/charts/2026-07-10/underlying/02-t.svg",
         "entryDate": "2026-07-10",
         "entryPrice": 21.13,
+        "closeDate": "2026-07-24",
+        "closePrice": 24.13,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 27.73
-          },
           {
             "date": "2026-03-17",
             "close": 27.85
@@ -1040,6 +1044,10 @@
           {
             "date": "2026-07-23",
             "close": 22.96
+          },
+          {
+            "date": "2026-07-24",
+            "close": 24.13
           }
         ]
       },
@@ -1083,6 +1091,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 22.96
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 24.13
         }
       ]
     },
@@ -1196,11 +1208,9 @@
         "assetPath": "/charts/2026-07-10/underlying/03-wfc.svg",
         "entryDate": "2026-07-10",
         "entryPrice": 87.11,
+        "closeDate": "2026-07-24",
+        "closePrice": 86.31,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 75.75
-          },
           {
             "date": "2026-03-17",
             "close": 76.23
@@ -1556,6 +1566,10 @@
           {
             "date": "2026-07-23",
             "close": 86.19
+          },
+          {
+            "date": "2026-07-24",
+            "close": 86.31
           }
         ]
       },
@@ -1599,6 +1613,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 86.19
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 86.31
         }
       ]
     },
@@ -1710,11 +1728,9 @@
         "assetPath": "/charts/2026-07-10/underlying/04-tlt.svg",
         "entryDate": "2026-07-10",
         "entryPrice": 84.55,
+        "closeDate": "2026-07-24",
+        "closePrice": 83.25,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 87.21
-          },
           {
             "date": "2026-03-17",
             "close": 87.45
@@ -2070,6 +2086,10 @@
           {
             "date": "2026-07-23",
             "close": 83.17
+          },
+          {
+            "date": "2026-07-24",
+            "close": 83.25
           }
         ]
       },
@@ -2113,6 +2133,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 83.17
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 83.25
         }
       ]
     },
@@ -2224,11 +2248,9 @@
         "assetPath": "/charts/2026-07-10/underlying/05-pltr.svg",
         "entryDate": "2026-07-10",
         "entryPrice": 126.5502,
+        "closeDate": "2026-07-24",
+        "closePrice": 122.92,
         "points": [
-          {
-            "date": "2026-03-16",
-            "close": 152.72
-          },
           {
             "date": "2026-03-17",
             "close": 155.08
@@ -2584,6 +2606,10 @@
           {
             "date": "2026-07-23",
             "close": 123.37
+          },
+          {
+            "date": "2026-07-24",
+            "close": 122.92
           }
         ]
       },
@@ -2627,6 +2653,10 @@
         {
           "date": "2026-07-23",
           "underlyingClose": 123.37
+        },
+        {
+          "date": "2026-07-24",
+          "underlyingClose": 122.92
         }
       ]
     }
@@ -2730,5 +2760,92 @@
     "publicationCadence": "A single weekday workflow runs after the U.S. options session opens. If same-session quotes are unavailable, the most recent valid edition remains published.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 11, 2026, 6:38 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-07-24",
+    "evaluatedAtUtc": "2026-07-24T21:32:54.804Z",
+    "tradeCount": 5,
+    "wins": 4,
+    "losses": 1,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 399,
+    "finalPnlDollars": 59,
+    "returnOnRisk": 0.14787,
+    "bestTradeId": "nflx-2026-07-24-call_credit-77-76",
+    "worstTradeId": "t-2026-07-24-call_credit-22-21.5",
+    "headline": "Jul 10, 2026 basket closes with $59.00 final P/L",
+    "commentary": [
+      "The 5-trade basket finished with 4 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a gain of $59.00, equal to +14.8% of the maximum capital at risk.",
+      "NFLX 7/24 76/77 Call Credit Spread was the strongest contributor at $30.00. T 7/24 21.5/22 Call Credit Spread was the largest detractor at -$35.00.",
+      "What worked: call credit, put credit, put debit. What needs tighter gating: call credit."
+    ],
+    "trades": [
+      {
+        "tradeId": "nflx-2026-07-24-call_credit-77-76",
+        "name": "NFLX 7/24 76/77 Call Credit Spread",
+        "symbol": "NFLX",
+        "style": "call_credit",
+        "expiration": "2026-07-24",
+        "status": "win",
+        "read": "NFLX closed at $70.09 for expiration settlement, producing $30.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 70.09,
+        "settlementValue": 0,
+        "realizedPnlDollars": 30
+      },
+      {
+        "tradeId": "t-2026-07-24-call_credit-22-21.5",
+        "name": "T 7/24 21.5/22 Call Credit Spread",
+        "symbol": "T",
+        "style": "call_credit",
+        "expiration": "2026-07-24",
+        "status": "loss",
+        "read": "T closed at $24.13 for expiration settlement, producing -$35.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 24.13,
+        "settlementValue": 0.5,
+        "realizedPnlDollars": -35
+      },
+      {
+        "tradeId": "wfc-2026-07-24-put_credit-84-85",
+        "name": "WFC 7/24 85/84 Put Credit Spread",
+        "symbol": "WFC",
+        "style": "put_credit",
+        "expiration": "2026-07-24",
+        "status": "win",
+        "read": "WFC closed at $86.31 for expiration settlement, producing $22.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 86.31,
+        "settlementValue": 0,
+        "realizedPnlDollars": 22
+      },
+      {
+        "tradeId": "tlt-2026-07-24-put_debit-85-84.5",
+        "name": "TLT 7/24 85/84.5 Put Debit Spread",
+        "symbol": "TLT",
+        "style": "put_debit",
+        "expiration": "2026-07-24",
+        "status": "win",
+        "read": "TLT closed at $83.25 for expiration settlement, producing $21.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 83.25,
+        "settlementValue": 0.5,
+        "realizedPnlDollars": 21
+      },
+      {
+        "tradeId": "pltr-2026-07-24-put_debit-125-120",
+        "name": "PLTR 7/24 125/120 Put Debit Spread",
+        "symbol": "PLTR",
+        "style": "put_debit",
+        "expiration": "2026-07-24",
+        "status": "win",
+        "read": "PLTR closed at $122.92 for expiration settlement, producing $21.00 on the one-lot spread.",
+        "settlementDate": "2026-07-24",
+        "settlementUnderlying": 122.92,
+        "settlementValue": 2.08,
+        "realizedPnlDollars": 21
+      }
+    ]
   }
 }
