@@ -93,7 +93,7 @@ The Jul 13, 2026 basket has no scored expiration result yet. 5 positions remain 
 
 **The cleanest option trade today is patience**
 
-The screen evaluated 16 defined-risk spreads across 40 current option chains. None cleared the complete price, probability, liquidity and confirmation standard at the quoted terms.
+The screen evaluated 12 defined-risk spreads across 40 current option chains. None cleared the complete price, probability, liquidity and confirmation standard at the quoted terms.
 
 A no-trade board does not mean the market is quiet. It means the available spreads asked for too much risk, offered too little probability margin or lacked enough follow-through to justify an entry at the displayed bid and ask.
 
@@ -105,7 +105,8 @@ The headline tape remains active, but fresh news only matters when the underlyin
 
 ### Market News Radar
 
-- [Exchange-Traded Funds, Equity Futures Lower Pre-Bell Wednesday Ahead of Major Tech Earnings](https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130102621.html) - MT Newswires, 2026-07-22T13:01:02.000Z
+- [Stock Market Today: Dow Rises As Oil Prices Fall; Intel Shares Surge On Earnings (Live Coverage)](https://finance.yahoo.com/m/ade5d14e-80ed-362c-af6a-6db848708217/stock-market-today%3A-dow-rises.html) - Investor's Business Daily, 2026-07-24T12:54:29.000Z
+- [Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday Amid New US Tariffs](https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-132354336.html) - MT Newswires, 2026-07-24T13:23:54.000Z
 
 ### What to Watch
 
@@ -115,6 +116,6 @@ The headline tape remains active, but fresh news only matters when the underlyin
 - **Volatility: No favorable risk-price combination.** Watch whether implied volatility reprices faster than the underlying. Better structure can emerge even when direction stays unchanged.
 - **Risk budget: $0 of new one-lot maximum loss.** No new exposure is preferable to accepting a spread that failed the same publication standard applied to every candidate.
 
-Rolling comparison covers 5 retained market sessions: Jul 24, 2026, Jul 22, 2026, Jul 21, 2026, Jul 20, 2026, Jul 17, 2026. Market evidence is timestamped Jul 24, 2026, 4:58 AM EDT.
+Rolling comparison covers 5 retained market sessions: Jul 24, 2026, Jul 22, 2026, Jul 21, 2026, Jul 20, 2026, Jul 17, 2026. Market evidence is timestamped Jul 24, 2026, 9:46 AM EDT.
 
 RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled.

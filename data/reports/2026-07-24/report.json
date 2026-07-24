@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
-  "reportId": "rfdelta-options-2026-07-24-48b445f6b365",
+  "reportId": "rfdelta-options-2026-07-24-78d58324e8f3",
   "runMetadata": {
     "reportDate": "2026-07-24",
     "marketSessionDate": "2026-07-24",
-    "generatedAtUtc": "2026-07-24T08:59:03.902Z",
-    "dataAsOfUtc": "2026-07-24T08:58:46.211Z",
+    "generatedAtUtc": "2026-07-24T13:46:39.853Z",
+    "dataAsOfUtc": "2026-07-24T13:46:32.739Z",
     "edition": "Daily market edition",
     "methodologyVersion": "rfdelta-options-v3",
-    "selectionHash": "48b445f6b3656a11fc6a30fe95a3f2a8e9ed7bc17071618e423c2a4c39162ee5",
-    "datasetRunId": "run-56a13754682b0109",
+    "selectionHash": "78d58324e8f31c880c0f955f79810cfdcc5ebd2ed89bcc3102d03498ea360112",
+    "datasetRunId": "run-93dbf301fa0b1a12",
     "featureVersion": "rfdelta-market-features-v2",
     "selectionPolicyVersion": "rfdelta-online-policy-v1",
     "trainingSampleCount": 5
@@ -33,16 +33,16 @@
     "chainSymbolCount": 40,
     "includedSymbolCount": 40,
     "excludedSymbolCount": 35,
-    "candidateCount": 16,
-    "bullishCandidateCount": 8,
-    "bearishCandidateCount": 8,
+    "candidateCount": 12,
+    "bullishCandidateCount": 7,
+    "bearishCandidateCount": 5,
     "regimeCounts": {
-      "mean_reversion": 6,
-      "risk_off": 3,
+      "risk_off": 2,
+      "mean_reversion": 3,
       "mixed": 1,
-      "risk_on": 2,
-      "vol_expansion": 3,
-      "trend": 1
+      "trend": 1,
+      "vol_expansion": 2,
+      "risk_on": 3
     }
   },
   "analytics": {
@@ -307,7 +307,7 @@
     }
   ],
   "marketRead": {
-    "asOfUtc": "2026-07-24T08:58:46.211Z",
+    "asOfUtc": "2026-07-24T13:46:32.739Z",
     "lookbackSessionDates": [
       "2026-07-24",
       "2026-07-22",
@@ -316,7 +316,7 @@
       "2026-07-17"
     ],
     "headline": "The cleanest option trade today is patience",
-    "standfirst": "The screen evaluated 16 defined-risk spreads across 40 current option chains. None cleared the complete price, probability, liquidity and confirmation standard at the quoted terms.",
+    "standfirst": "The screen evaluated 12 defined-risk spreads across 40 current option chains. None cleared the complete price, probability, liquidity and confirmation standard at the quoted terms.",
     "commentary": [
       "A no-trade board does not mean the market is quiet. It means the available spreads asked for too much risk, offered too little probability margin or lacked enough follow-through to justify an entry at the displayed bid and ask.",
       "The important distinction is between an interesting ticker and an executable spread. Today produced candidates worth monitoring, but not one with enough room between its modeled probability and the payoff hurdle after conservative pricing.",
@@ -325,11 +325,18 @@
     ],
     "newsRadar": [
       {
-        "headline": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Wednesday Ahead of Major Tech Earnings",
-        "publisher": "MT Newswires",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130102621.html",
-        "publishedAtUtc": "2026-07-22T13:01:02.000Z",
+        "headline": "Stock Market Today: Dow Rises As Oil Prices Fall; Intel Shares Surge On Earnings (Live Coverage)",
+        "publisher": "Investor's Business Daily",
+        "url": "https://finance.yahoo.com/m/ade5d14e-80ed-362c-af6a-6db848708217/stock-market-today%3A-dow-rises.html",
+        "publishedAtUtc": "2026-07-24T12:54:29.000Z",
         "topic": "earnings"
+      },
+      {
+        "headline": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday Amid New US Tariffs",
+        "publisher": "MT Newswires",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-132354336.html",
+        "publishedAtUtc": "2026-07-24T13:23:54.000Z",
+        "topic": "broad_market"
       }
     ],
     "watchItems": [
@@ -359,7 +366,7 @@
         "read": "No new exposure is preferable to accepting a spread that failed the same publication standard applied to every candidate."
       }
     ],
-    "basis": "Rolling comparison covers 5 retained market sessions: Jul 24, 2026, Jul 22, 2026, Jul 21, 2026, Jul 20, 2026, Jul 17, 2026. Market evidence is timestamped Jul 24, 2026, 4:58 AM EDT."
+    "basis": "Rolling comparison covers 5 retained market sessions: Jul 24, 2026, Jul 22, 2026, Jul 21, 2026, Jul 20, 2026, Jul 17, 2026. Market evidence is timestamped Jul 24, 2026, 9:46 AM EDT."
   },
   "methodology": {
     "selectionCriteria": [
@@ -381,7 +388,7 @@
     ],
     "executionAssumption": "Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.",
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
-    "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 24, 2026, 4:58 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
+    "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 24, 2026, 9:46 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
   }
 }
