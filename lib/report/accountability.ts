@@ -17,7 +17,7 @@ export function buildAccountabilityHistory(
     .slice(0, Math.max(1, limit));
 
   const ledgers = priorReports.map((report) => summarizeOutcomes(
-    report.postTradeReview?.trades ?? evaluateReportOutcomes(report, snapshot, retainedHistory),
+    outcomesAsOfSnapshot(report, snapshot, retainedHistory),
     report.runMetadata.reportDate,
     snapshot.sessionDate,
     report.runMetadata.edition
@@ -30,6 +30,29 @@ export function buildAccountabilityHistory(
     snapshot.sessionDate,
     "Historical calibration edition"
   )];
+}
+
+
+function outcomesAsOfSnapshot(
+  report: OptionsReport,
+  snapshot: MarketSnapshot,
+  retainedHistory: Record<string, DailyBar[]>
+): TradeOutcome[] {
+  const review = report.postTradeReview;
+  const reviewEvaluatedAt = review ? Date.parse(review.evaluatedAtUtc) : Number.NaN;
+  const snapshotAsOf = Date.parse(snapshot.asOfUtc);
+
+  if (
+    review &&
+    review.completedOn < snapshot.sessionDate &&
+    Number.isFinite(reviewEvaluatedAt) &&
+    Number.isFinite(snapshotAsOf) &&
+    reviewEvaluatedAt <= snapshotAsOf
+  ) {
+    return review.trades;
+  }
+
+  return evaluateReportOutcomes(report, snapshot, retainedHistory);
 }
 
 export function summarizeOutcomes(
