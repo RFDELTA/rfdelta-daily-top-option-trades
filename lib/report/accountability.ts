@@ -12,7 +12,10 @@ export function buildAccountabilityHistory(
   limit = DEFAULT_LEDGER_LIMIT
 ): AccountabilityLedger[] {
   const priorReports = archiveReports
-    .filter((report) => report.runMetadata.reportDate < snapshot.reportDate)
+    .filter((report) => (
+      report.runMetadata.reportDate < snapshot.reportDate &&
+      report.topTrades.length > 0
+    ))
     .sort((a, b) => b.runMetadata.reportDate.localeCompare(a.runMetadata.reportDate))
     .slice(0, Math.max(1, limit));
 
@@ -31,7 +34,6 @@ export function buildAccountabilityHistory(
     "Historical calibration edition"
   )];
 }
-
 
 function outcomesAsOfSnapshot(
   report: OptionsReport,
