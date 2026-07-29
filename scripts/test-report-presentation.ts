@@ -15,7 +15,22 @@ async function main() {
   assert.ok((report.marketRead?.lookbackSessionDates.length ?? 0) <= 5);
   assert.equal(report.marketRead?.commentary.length, 4);
   assert.equal(report.marketRead?.watchItems.length, 5);
-  console.log(`[test:presentation] ledgers=${ledgers.length} sessions=${report.marketRead?.lookbackSessionDates.length}`);
+  const recentReport = await getPresentationReport("2026-07-29");
+  const recentLedgers = recentReport.accountabilityHistory ?? [];
+  assert.ok(recentLedgers.length >= 5);
+  assert.ok(recentLedgers.every((ledger) => ledger.trades.length > 0));
+  const july14Ledger = recentLedgers.find((ledger) => ledger.sourceReportDate === "2026-07-14");
+  assert.equal(july14Ledger?.status, "partially_resolved");
+  assert.equal(july14Ledger?.losses, 1);
+  assert.equal(july14Ledger?.open, 4);
+  assert.equal(july14Ledger?.resolvedPnlDollars, -18);
+  assert.ok(recentLedgers.some((ledger) => (
+    ledger.sourceReportDate === "2026-07-13" &&
+    ledger.status === "complete"
+  )));
+  console.log(
+    `[test:presentation] historical_ledgers=${ledgers.length} recent_ledgers=${recentLedgers.length} sessions=${report.marketRead?.lookbackSessionDates.length}`
+  );
 }
 
 main().catch((error) => {
