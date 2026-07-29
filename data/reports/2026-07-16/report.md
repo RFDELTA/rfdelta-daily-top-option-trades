@@ -29,7 +29,7 @@ IWM supplies the counterweight. Its call credit structure scores 83.26 and carri
 
 TLT enters with -0.5% five-session momentum and -2.4% over twenty sessions. Realized volatility is 9.3%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-16/underlying/01-tlt.svg) at $84.09; latest official close $84.24 on 2026-07-28.
+**Underlying chart:** [TLT entry through expiration close](/charts/2026-07-16/underlying/01-tlt.svg) at $84.09; expiration close $82.85.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 11.7; MACD spread -0.26%; ATR(14) 0.63%; realized volatility 9.3%; ATM implied volatility 8.3%; expected move 1.3%. Outcome-trained score adjustment: +0.00.
 
@@ -45,7 +45,7 @@ TLT enters with -0.5% five-session momentum and -2.4% over twenty sessions. Real
 
 IWM enters with -0.6% five-session momentum and +1.1% over twenty sessions. Realized volatility is 12.8%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-07-16/underlying/02-iwm.svg) at $295.32; latest official close $293.37 on 2026-07-28.
+**Underlying chart:** [IWM entry through expiration close](/charts/2026-07-16/underlying/02-iwm.svg) at $295.32; expiration close $288.57.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 42.2; MACD spread -0.29%; ATR(14) 1.42%; realized volatility 12.8%; ATM implied volatility 17.1%; expected move 2.6%. Outcome-trained score adjustment: +0.00.
 
@@ -54,6 +54,21 @@ IWM enters with -0.6% five-session momentum and +1.1% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $108.00. Breakeven is $293.92 and requires a 0.5% decline from the source mark. Primary watch: low credit probability; call short strike at/below spot. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $192.00, or 1.78 times maximum risk. The simulation assigns 35.9% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Jul 16, 2026 basket closes with $262.00 final P/L**
+
+The 2-trade basket finished with 2 wins, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $262.00, equal to +171.2% of the maximum capital at risk.
+
+IWM 7/29 292/295 Call Credit Spread was the strongest contributor at $192.00. TLT 7/29 80.5/84 Call Credit Spread was the largest detractor at $70.00.
+
+What worked: call credit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| TLT 7/29 80.5/84 Call Credit Spread | win | $70.00 | TLT closed at $82.85 for expiration settlement, producing $70.00 on the one-lot spread. |
+| IWM 7/29 292/295 Call Credit Spread | win | $192.00 | IWM closed at $288.57 for expiration settlement, producing $192.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

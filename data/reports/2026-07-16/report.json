@@ -221,11 +221,9 @@
         "assetPath": "/charts/2026-07-16/underlying/01-tlt.svg",
         "entryDate": "2026-07-16",
         "entryPrice": 84.09,
+        "closeDate": "2026-07-29",
+        "closePrice": 82.85,
         "points": [
-          {
-            "date": "2026-03-19",
-            "close": 87.49
-          },
           {
             "date": "2026-03-20",
             "close": 85.83
@@ -581,6 +579,10 @@
           {
             "date": "2026-07-28",
             "close": 84.24
+          },
+          {
+            "date": "2026-07-29",
+            "close": 82.85
           }
         ]
       },
@@ -620,6 +622,10 @@
         {
           "date": "2026-07-28",
           "underlyingClose": 84.24
+        },
+        {
+          "date": "2026-07-29",
+          "underlyingClose": 82.85
         }
       ]
     },
@@ -786,11 +792,9 @@
         "assetPath": "/charts/2026-07-16/underlying/02-iwm.svg",
         "entryDate": "2026-07-16",
         "entryPrice": 295.32,
+        "closeDate": "2026-07-29",
+        "closePrice": 288.57,
         "points": [
-          {
-            "date": "2026-03-19",
-            "close": 247.63
-          },
           {
             "date": "2026-03-20",
             "close": 242.22
@@ -1146,6 +1150,10 @@
           {
             "date": "2026-07-28",
             "close": 293.37
+          },
+          {
+            "date": "2026-07-29",
+            "close": 288.57
           }
         ]
       },
@@ -1185,6 +1193,10 @@
         {
           "date": "2026-07-28",
           "underlyingClose": 293.37
+        },
+        {
+          "date": "2026-07-29",
+          "underlyingClose": 288.57
         }
       ]
     }
@@ -1550,5 +1562,53 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 16, 2026, 1:41 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-07-29",
+    "evaluatedAtUtc": "2026-07-29T21:15:54.701Z",
+    "tradeCount": 2,
+    "wins": 2,
+    "losses": 0,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 153,
+    "finalPnlDollars": 262,
+    "returnOnRisk": 1.712418,
+    "bestTradeId": "iwm-2026-07-29-call_credit-295-292",
+    "worstTradeId": "tlt-2026-07-29-call_credit-84-80.5",
+    "headline": "Jul 16, 2026 basket closes with $262.00 final P/L",
+    "commentary": [
+      "The 2-trade basket finished with 2 wins, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $262.00, equal to +171.2% of the maximum capital at risk.",
+      "IWM 7/29 292/295 Call Credit Spread was the strongest contributor at $192.00. TLT 7/29 80.5/84 Call Credit Spread was the largest detractor at $70.00.",
+      "What worked: call credit."
+    ],
+    "trades": [
+      {
+        "tradeId": "tlt-2026-07-29-call_credit-84-80.5",
+        "name": "TLT 7/29 80.5/84 Call Credit Spread",
+        "symbol": "TLT",
+        "style": "call_credit",
+        "expiration": "2026-07-29",
+        "status": "win",
+        "read": "TLT closed at $82.85 for expiration settlement, producing $70.00 on the one-lot spread.",
+        "settlementDate": "2026-07-29",
+        "settlementUnderlying": 82.85,
+        "settlementValue": 2.35,
+        "realizedPnlDollars": 70
+      },
+      {
+        "tradeId": "iwm-2026-07-29-call_credit-295-292",
+        "name": "IWM 7/29 292/295 Call Credit Spread",
+        "symbol": "IWM",
+        "style": "call_credit",
+        "expiration": "2026-07-29",
+        "status": "win",
+        "read": "IWM closed at $288.57 for expiration settlement, producing $192.00 on the one-lot spread.",
+        "settlementDate": "2026-07-29",
+        "settlementUnderlying": 288.57,
+        "settlementValue": 0,
+        "realizedPnlDollars": 192
+      }
+    ]
   }
 }
