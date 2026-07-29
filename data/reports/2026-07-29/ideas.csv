@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","SPY","SPY 8/11 735/730 Put Debit Spread","put_debit","2026-08-11","13","732.07","Debit","2.04","0.5037","41.11","204","296","1.45","732.96","0.12","100","0.885","0.18"

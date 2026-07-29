@@ -1,6 +1,15 @@
 {
-  "latest": "2026-07-28",
+  "latest": "2026-07-29",
   "reports": [
+    {
+      "date": "2026-07-29",
+      "title": "1 defined-risk option setups lead the Jul 29, 2026 board",
+      "edition": "Daily market edition",
+      "dataAsOfUtc": "2026-07-29T16:19:48.178Z",
+      "topSymbol": "SPY",
+      "ideaCount": 1,
+      "topScore": 100
+    },
     {
       "date": "2026-07-28",
       "title": "No defined-risk option setup cleared the publication gate",
