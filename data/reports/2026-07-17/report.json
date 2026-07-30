@@ -218,11 +218,9 @@
         "assetPath": "/charts/2026-07-17/underlying/01-qqq.svg",
         "entryDate": "2026-07-17",
         "entryPrice": 698.11,
+        "closeDate": "2026-07-30",
+        "closePrice": 683.55,
         "points": [
-          {
-            "date": "2026-03-20",
-            "close": 582.06
-          },
           {
             "date": "2026-03-23",
             "close": 588
@@ -578,6 +576,10 @@
           {
             "date": "2026-07-29",
             "close": 661.73
+          },
+          {
+            "date": "2026-07-30",
+            "close": 683.55
           }
         ]
       },
@@ -617,6 +619,10 @@
         {
           "date": "2026-07-29",
           "underlyingClose": 661.73
+        },
+        {
+          "date": "2026-07-30",
+          "underlyingClose": 683.55
         }
       ]
     }
@@ -1033,5 +1039,40 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 17, 2026, 12:07 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-07-30",
+    "evaluatedAtUtc": "2026-07-30T21:36:23.195Z",
+    "tradeCount": 1,
+    "wins": 1,
+    "losses": 0,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 244,
+    "finalPnlDollars": 256,
+    "returnOnRisk": 1.04918,
+    "bestTradeId": "qqq-2026-07-30-call_credit-705-700",
+    "worstTradeId": "qqq-2026-07-30-call_credit-705-700",
+    "headline": "Jul 17, 2026 basket closes with $256.00 final P/L",
+    "commentary": [
+      "The 1-trade basket finished with 1 win, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $256.00, equal to +104.9% of the maximum capital at risk.",
+      "QQQ 7/30 700/705 Call Credit Spread was the strongest contributor at $256.00.",
+      "What worked: call credit."
+    ],
+    "trades": [
+      {
+        "tradeId": "qqq-2026-07-30-call_credit-705-700",
+        "name": "QQQ 7/30 700/705 Call Credit Spread",
+        "symbol": "QQQ",
+        "style": "call_credit",
+        "expiration": "2026-07-30",
+        "status": "win",
+        "read": "QQQ closed at $683.55 for expiration settlement, producing $256.00 on the one-lot spread.",
+        "settlementDate": "2026-07-30",
+        "settlementUnderlying": 683.55,
+        "settlementValue": 0,
+        "realizedPnlDollars": 256
+      }
+    ]
   }
 }
