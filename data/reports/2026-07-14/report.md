@@ -32,7 +32,7 @@ BAC supplies the counterweight. Its put credit structure scores 44.86 and carrie
 
 TLT enters with -0.6% five-session momentum and -2.0% over twenty sessions. Realized volatility is 9.6%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-07-14/underlying/01-tlt.svg) at $84.07; latest official close $83.75 on 2026-07-27.
+**Underlying chart:** [TLT entry through expiration close](/charts/2026-07-14/underlying/01-tlt.svg) at $84.07; expiration close $83.75.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 29.3; MACD spread -0.34%; ATR(14) 0.69%; realized volatility 9.6%; ATM implied volatility 9.3%; expected move 1.4%. Outcome-trained score adjustment: +0.00.
 
@@ -48,7 +48,7 @@ TLT enters with -0.6% five-session momentum and -2.0% over twenty sessions. Real
 
 BAC enters with +1.4% five-session momentum and +8.3% over twenty sessions. Realized volatility is 21.0%, placing the underlying in a trend regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [BAC entry and open-position history](/charts/2026-07-14/underlying/02-bac.svg) at $60.68; latest official close $61.73 on 2026-07-30.
+**Underlying chart:** [BAC entry through expiration close](/charts/2026-07-14/underlying/02-bac.svg) at $60.68; expiration close $61.95.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 65.2; MACD spread 0.05%; ATR(14) 2.00%; realized volatility 21.0%; ATM implied volatility 23.4%; expected move 4.0%. Outcome-trained score adjustment: +0.00.
 
@@ -64,7 +64,7 @@ BAC enters with +1.4% five-session momentum and +8.3% over twenty sessions. Real
 
 C enters with -4.1% five-session momentum and -3.4% over twenty sessions. Realized volatility is 27.0%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [C entry and open-position history](/charts/2026-07-14/underlying/03-c.svg) at $135.02; latest official close $132.32 on 2026-07-30.
+**Underlying chart:** [C entry through expiration close](/charts/2026-07-14/underlying/03-c.svg) at $135.02; expiration close $132.45.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 32.9; MACD spread -0.83%; ATR(14) 2.88%; realized volatility 27.0%; ATM implied volatility 33.1%; expected move 5.7%. Outcome-trained score adjustment: +0.00.
 
@@ -80,7 +80,7 @@ C enters with -4.1% five-session momentum and -3.4% over twenty sessions. Realiz
 
 T enters with +1.1% five-session momentum and -9.6% over twenty sessions. Realized volatility is 33.2%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [T entry and open-position history](/charts/2026-07-14/underlying/04-t.svg) at $21.32; latest official close $23.21 on 2026-07-30.
+**Underlying chart:** [T entry through expiration close](/charts/2026-07-14/underlying/04-t.svg) at $21.32; expiration close $23.25.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 33.4; MACD spread 0.47%; ATR(14) 3.30%; realized volatility 33.2%; ATM implied volatility 36.7%; expected move 6.4%. Outcome-trained score adjustment: +0.00.
 
@@ -96,7 +96,7 @@ T enters with +1.1% five-session momentum and -9.6% over twenty sessions. Realiz
 
 F enters with +2.1% five-session momentum and -6.7% over twenty sessions. Realized volatility is 27.1%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [F entry and open-position history](/charts/2026-07-14/underlying/05-f.svg) at $13.84; latest official close $14.86 on 2026-07-30.
+**Underlying chart:** [F entry through expiration close](/charts/2026-07-14/underlying/05-f.svg) at $13.84; expiration close $14.68.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 47.0; MACD spread -0.09%; ATR(14) 3.06%; realized volatility 27.1%; ATM implied volatility 47.9%; expected move 8.3%. Outcome-trained score adjustment: +0.00.
 
@@ -105,6 +105,24 @@ F enters with +2.1% five-session momentum and -6.7% over twenty sessions. Realiz
 **Risk:** Maximum one-lot loss is $27.00. Breakeven is $13.73 and requires a 0.8% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $23.00, or 0.85 times maximum risk. The simulation assigns 42.1% probability to finishing near maximum profit and uses 48.2% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Jul 14, 2026 basket closes with -$8.00 final P/L**
+
+The 5-trade basket finished with 2 wins, 0 near-breakeven results and 3 losses. The modeled one-lot portfolio produced a loss of -$8.00, equal to -2.4% of the maximum capital at risk.
+
+C 7/31 140/142 Call Credit Spread was the strongest contributor at $42.00. T 7/31 21/20 Put Debit Spread was the largest detractor at -$32.00.
+
+What worked: put credit, call credit. What needs tighter gating: put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| TLT 7/27 84/82 Put Debit Spread | loss | -$18.00 | TLT closed at $83.75 for expiration settlement, producing -$18.00 on the one-lot spread. |
+| BAC 7/31 60/59 Put Credit Spread | win | $27.00 | BAC closed at $61.95 for expiration settlement, producing $27.00 on the one-lot spread. |
+| C 7/31 140/142 Call Credit Spread | win | $42.00 | C closed at $132.45 for expiration settlement, producing $42.00 on the one-lot spread. |
+| T 7/31 21/20 Put Debit Spread | loss | -$32.00 | T closed at $23.25 for expiration settlement, producing -$32.00 on the one-lot spread. |
+| F 7/31 14/13.5 Put Debit Spread | loss | -$27.00 | F closed at $14.68 for expiration settlement, producing -$27.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

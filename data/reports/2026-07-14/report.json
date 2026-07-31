@@ -164,6 +164,8 @@
         "assetPath": "/charts/2026-07-14/underlying/01-tlt.svg",
         "entryDate": "2026-07-14",
         "entryPrice": 84.07,
+        "closeDate": "2026-07-27",
+        "closePrice": 83.75,
         "points": [
           {
             "date": "2026-03-18",
@@ -680,11 +682,9 @@
         "assetPath": "/charts/2026-07-14/underlying/02-bac.svg",
         "entryDate": "2026-07-14",
         "entryPrice": 60.68,
+        "closeDate": "2026-07-31",
+        "closePrice": 61.95,
         "points": [
-          {
-            "date": "2026-03-23",
-            "close": 47.52
-          },
           {
             "date": "2026-03-24",
             "close": 48.14
@@ -1040,6 +1040,10 @@
           {
             "date": "2026-07-30",
             "close": 61.73
+          },
+          {
+            "date": "2026-07-31",
+            "close": 61.95
           }
         ]
       },
@@ -1095,6 +1099,10 @@
         {
           "date": "2026-07-30",
           "underlyingClose": 61.73
+        },
+        {
+          "date": "2026-07-31",
+          "underlyingClose": 61.95
         }
       ]
     },
@@ -1208,11 +1216,9 @@
         "assetPath": "/charts/2026-07-14/underlying/03-c.svg",
         "entryDate": "2026-07-14",
         "entryPrice": 135.02,
+        "closeDate": "2026-07-31",
+        "closePrice": 132.45,
         "points": [
-          {
-            "date": "2026-03-23",
-            "close": 111.64
-          },
           {
             "date": "2026-03-24",
             "close": 113.74
@@ -1568,6 +1574,10 @@
           {
             "date": "2026-07-30",
             "close": 132.32
+          },
+          {
+            "date": "2026-07-31",
+            "close": 132.45
           }
         ]
       },
@@ -1623,6 +1633,10 @@
         {
           "date": "2026-07-30",
           "underlyingClose": 132.32
+        },
+        {
+          "date": "2026-07-31",
+          "underlyingClose": 132.45
         }
       ]
     },
@@ -1734,11 +1748,9 @@
         "assetPath": "/charts/2026-07-14/underlying/04-t.svg",
         "entryDate": "2026-07-14",
         "entryPrice": 21.3166,
+        "closeDate": "2026-07-31",
+        "closePrice": 23.25,
         "points": [
-          {
-            "date": "2026-03-23",
-            "close": 28.76
-          },
           {
             "date": "2026-03-24",
             "close": 28.87
@@ -2094,6 +2106,10 @@
           {
             "date": "2026-07-30",
             "close": 23.21
+          },
+          {
+            "date": "2026-07-31",
+            "close": 23.25
           }
         ]
       },
@@ -2149,6 +2165,10 @@
         {
           "date": "2026-07-30",
           "underlyingClose": 23.21
+        },
+        {
+          "date": "2026-07-31",
+          "underlyingClose": 23.25
         }
       ]
     },
@@ -2260,11 +2280,9 @@
         "assetPath": "/charts/2026-07-14/underlying/05-f.svg",
         "entryDate": "2026-07-14",
         "entryPrice": 13.8399,
+        "closeDate": "2026-07-31",
+        "closePrice": 14.68,
         "points": [
-          {
-            "date": "2026-03-23",
-            "close": 11.76
-          },
           {
             "date": "2026-03-24",
             "close": 11.84
@@ -2620,6 +2638,10 @@
           {
             "date": "2026-07-30",
             "close": 14.86
+          },
+          {
+            "date": "2026-07-31",
+            "close": 14.68
           }
         ]
       },
@@ -2675,6 +2697,10 @@
         {
           "date": "2026-07-30",
           "underlyingClose": 14.86
+        },
+        {
+          "date": "2026-07-31",
+          "underlyingClose": 14.68
         }
       ]
     }
@@ -3033,5 +3059,92 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Jul 14, 2026, 12:06 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-07-31",
+    "evaluatedAtUtc": "2026-07-31T21:32:31.104Z",
+    "tradeCount": 5,
+    "wins": 2,
+    "losses": 3,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 333,
+    "finalPnlDollars": -8,
+    "returnOnRisk": -0.024024,
+    "bestTradeId": "c-2026-07-31-call_credit-142-140",
+    "worstTradeId": "t-2026-07-31-put_debit-21-20",
+    "headline": "Jul 14, 2026 basket closes with -$8.00 final P/L",
+    "commentary": [
+      "The 5-trade basket finished with 2 wins, 0 near-breakeven results and 3 losses. The modeled one-lot portfolio produced a loss of -$8.00, equal to -2.4% of the maximum capital at risk.",
+      "C 7/31 140/142 Call Credit Spread was the strongest contributor at $42.00. T 7/31 21/20 Put Debit Spread was the largest detractor at -$32.00.",
+      "What worked: put credit, call credit. What needs tighter gating: put debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "tlt-2026-07-27-put_debit-84-82",
+        "name": "TLT 7/27 84/82 Put Debit Spread",
+        "symbol": "TLT",
+        "style": "put_debit",
+        "expiration": "2026-07-27",
+        "status": "loss",
+        "read": "TLT closed at $83.75 for expiration settlement, producing -$18.00 on the one-lot spread.",
+        "settlementDate": "2026-07-27",
+        "settlementUnderlying": 83.75,
+        "settlementValue": 0.25,
+        "realizedPnlDollars": -18
+      },
+      {
+        "tradeId": "bac-2026-07-31-put_credit-59-60",
+        "name": "BAC 7/31 60/59 Put Credit Spread",
+        "symbol": "BAC",
+        "style": "put_credit",
+        "expiration": "2026-07-31",
+        "status": "win",
+        "read": "BAC closed at $61.95 for expiration settlement, producing $27.00 on the one-lot spread.",
+        "settlementDate": "2026-07-31",
+        "settlementUnderlying": 61.95,
+        "settlementValue": 0,
+        "realizedPnlDollars": 27
+      },
+      {
+        "tradeId": "c-2026-07-31-call_credit-142-140",
+        "name": "C 7/31 140/142 Call Credit Spread",
+        "symbol": "C",
+        "style": "call_credit",
+        "expiration": "2026-07-31",
+        "status": "win",
+        "read": "C closed at $132.45 for expiration settlement, producing $42.00 on the one-lot spread.",
+        "settlementDate": "2026-07-31",
+        "settlementUnderlying": 132.45,
+        "settlementValue": 0,
+        "realizedPnlDollars": 42
+      },
+      {
+        "tradeId": "t-2026-07-31-put_debit-21-20",
+        "name": "T 7/31 21/20 Put Debit Spread",
+        "symbol": "T",
+        "style": "put_debit",
+        "expiration": "2026-07-31",
+        "status": "loss",
+        "read": "T closed at $23.25 for expiration settlement, producing -$32.00 on the one-lot spread.",
+        "settlementDate": "2026-07-31",
+        "settlementUnderlying": 23.25,
+        "settlementValue": 0,
+        "realizedPnlDollars": -32
+      },
+      {
+        "tradeId": "f-2026-07-31-put_debit-14-13.5",
+        "name": "F 7/31 14/13.5 Put Debit Spread",
+        "symbol": "F",
+        "style": "put_debit",
+        "expiration": "2026-07-31",
+        "status": "loss",
+        "read": "F closed at $14.68 for expiration settlement, producing -$27.00 on the one-lot spread.",
+        "settlementDate": "2026-07-31",
+        "settlementUnderlying": 14.68,
+        "settlementValue": 0,
+        "realizedPnlDollars": -27
+      }
+    ]
   }
 }
