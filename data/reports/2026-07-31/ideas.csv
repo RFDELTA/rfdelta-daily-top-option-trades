@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","NFLX","NFLX 8/14 71/67 Put Debit Spread","put_debit","2026-08-14","14","71.67","Debit","1.15","0.355","22.13","115","285","2.48","69.85","-2.54","88.78","0.8251","0.3456"

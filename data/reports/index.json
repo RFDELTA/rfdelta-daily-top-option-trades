@@ -1,6 +1,15 @@
 {
-  "latest": "2026-07-30",
+  "latest": "2026-07-31",
   "reports": [
+    {
+      "date": "2026-07-31",
+      "title": "1 defined-risk option setups lead the Jul 31, 2026 board",
+      "edition": "Daily market edition",
+      "dataAsOfUtc": "2026-07-31T16:28:00.676Z",
+      "topSymbol": "NFLX",
+      "ideaCount": 1,
+      "topScore": 88.78
+    },
     {
       "date": "2026-07-30",
       "title": "No defined-risk option setup cleared the publication gate",
