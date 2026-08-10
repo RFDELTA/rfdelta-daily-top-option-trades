@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 NFLX enters with +2.2% five-session momentum and +1.5% over twenty sessions. Realized volatility is 34.7%, placing the underlying in a trend regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [NFLX entry and open-position history](/charts/2026-08-10/underlying/01-nflx.svg) at $74.97.
+**Underlying chart:** [NFLX entry and open-position history](/charts/2026-08-10/underlying/01-nflx.svg) at $74.97; latest official close $76.29 on 2026-08-10.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 77.5; MACD spread 0.97%; ATR(14) 2.83%; realized volatility 34.7%; ATM implied volatility 33.4%; expected move 4.6%. Outcome-trained score adjustment: +3.10.
 
