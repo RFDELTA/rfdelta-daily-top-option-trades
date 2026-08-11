@@ -11,7 +11,6 @@ export function AdSenseAutoAds({ report }: { report: OptionsReport }) {
     <script
       async
       crossOrigin="anonymous"
-      data-rfdelta-auto-ads="true"
       src={ADSENSE_SCRIPT_URL}
     />
   );
