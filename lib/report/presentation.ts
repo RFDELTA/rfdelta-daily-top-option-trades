@@ -1,4 +1,5 @@
 import calibrationOutcomes from "@/data/calibration/prior-outcomes-2026-06-18.json";
+import { cache } from "react";
 import { loadRetainedHistory } from "@/lib/market/history";
 import type { MarketSnapshot } from "@/lib/market/types";
 import { buildAccountabilityHistory } from "@/lib/report/accountability";
@@ -37,6 +38,8 @@ export async function getPresentationReport(date?: string): Promise<OptionsRepor
     }, archiveReports, [])
   };
 }
+
+export const getCachedPresentationReport = cache(getPresentationReport);
 
 function presentationSnapshot(report: OptionsReport): MarketSnapshot {
   return {

@@ -1,9 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getReportIndex } from "@/lib/report/store";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Report Archive" };
+export const metadata: Metadata = {
+  title: "Report Archive",
+  description: `Browse the retained ${SITE_NAME} archive. ${SITE_DESCRIPTION}`,
+  alternates: { canonical: "/archive" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    title: `${SITE_NAME} report archive`,
+    description: SITE_DESCRIPTION,
+    url: "/archive"
+  },
+  twitter: {
+    card: "summary",
+    title: `${SITE_NAME} report archive`,
+    description: SITE_DESCRIPTION
+  }
+};
 
 export default async function ArchivePage() {
   const index = await getReportIndex();
@@ -33,6 +51,7 @@ export default async function ArchivePage() {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

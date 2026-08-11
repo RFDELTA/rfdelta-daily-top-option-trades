@@ -1,5 +1,10 @@
 # RFDELTA Daily Top Option Trades
 
+The canonical public publication is `https://www.trade.rfdelta.com`. Every retained report receives canonical/social metadata,
+Article + Report structured data and sitemap discovery. Substantive report documents load Google AdSense Auto Ads for publisher
+`ca-pub-2668057120623042`; API, embed, privacy, error and unavailable-content surfaces remain ad-free. The local `ads.txt` is a
+mirror of the authoritative RFDELTA seller record at `https://rfdelta.com/ads.txt`.
+
 Production-oriented generator and public report site for the RFDELTA Top Option Trades page. A timezone-aware weekday workflow discovers current U.S. option chains, constructs defined-risk vertical spreads, applies deterministic liquidity and risk gates, simulates each candidate, ranks a diversified basket, writes an immutable report archive, generates SVG graphics and publishes the committed result through Vercel. The same workflow records finalized underlying closes after the session without replacing the morning selections. Six standalone iframe blocks are provided for the GoDaddy page at `https://rfdelta.com/delta-%7C-top-option-trades`.
 
 The repository never submits orders. It does not contain account identifiers, balances, buying power, brokerage controls or public fallback mocks.

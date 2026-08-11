@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_ORIGIN } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "RFDELTA Top Option Trades",
+    default: SITE_NAME,
     template: "%s | RFDELTA"
   },
-  description: "Daily defined-risk option spread rankings, market commentary, payoff analysis and prior-basket accountability.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://rfdelta-daily-top-option-trades.vercel.app"),
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(SITE_ORIGIN),
+  applicationName: SITE_NAME,
   openGraph: {
-    title: "RFDELTA Top Option Trades",
-    description: "Daily defined-risk option spread rankings and accountability.",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    siteName: SITE_NAME,
     type: "website"
-  }
+  },
+  twitter: { card: "summary" }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
