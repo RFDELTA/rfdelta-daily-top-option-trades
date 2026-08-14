@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 NFLX enters with +2.3% five-session momentum and -7.7% over twenty sessions. Realized volatility is 35.2%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [NFLX entry and open-position history](/charts/2026-07-31/underlying/01-nflx.svg) at $71.67; latest official close $78.24 on 2026-08-13.
+**Underlying chart:** [NFLX entry through expiration close](/charts/2026-07-31/underlying/01-nflx.svg) at $71.67; expiration close $78.16.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 43.3; MACD spread 0.83%; ATR(14) 3.68%; realized volatility 35.2%; ATM implied volatility 33.9%; expected move 5.3%. Outcome-trained score adjustment: +4.01.
 
@@ -37,6 +37,20 @@ NFLX enters with +2.3% five-session momentum and -7.7% over twenty sessions. Rea
 **Risk:** Maximum one-lot loss is $115.00. Breakeven is $69.85 and requires a 2.5% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $285.00, or 2.48 times maximum risk. The simulation assigns 16.6% probability to finishing near maximum profit and uses 34.6% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Jul 31, 2026 basket closes with -$115.00 final P/L**
+
+The 1-trade basket finished with 0 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$115.00, equal to -100.0% of the maximum capital at risk.
+
+NFLX 8/14 71/67 Put Debit Spread was the strongest contributor at -$115.00.
+
+What needs tighter gating: put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| NFLX 8/14 71/67 Put Debit Spread | loss | -$115.00 | NFLX closed at $78.16 for expiration settlement, producing -$115.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 
