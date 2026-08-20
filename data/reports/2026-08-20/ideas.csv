@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","QQQ","QQQ 9/2 715/710 Put Debit Spread","put_debit","2026-09-02","13","712.31","Debit","2.19","0.4973","23.51","219","281","1.28","712.81","0.07","79.33","0.8319","0.1949"
