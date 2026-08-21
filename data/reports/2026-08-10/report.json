@@ -217,11 +217,9 @@
         "assetPath": "/charts/2026-08-10/underlying/01-nflx.svg",
         "entryDate": "2026-08-10",
         "entryPrice": 74.965,
+        "closeDate": "2026-08-21",
+        "closePrice": 79.59,
         "points": [
-          {
-            "date": "2026-04-14",
-            "close": 106.28
-          },
           {
             "date": "2026-04-15",
             "close": 107.71
@@ -577,6 +575,10 @@
           {
             "date": "2026-08-20",
             "close": 80.14
+          },
+          {
+            "date": "2026-08-21",
+            "close": 79.59
           }
         ]
       },
@@ -616,6 +618,10 @@
         {
           "date": "2026-08-20",
           "underlyingClose": 80.14
+        },
+        {
+          "date": "2026-08-21",
+          "underlyingClose": 79.59
         }
       ]
     }
@@ -1113,5 +1119,40 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Aug 10, 2026, 11:40 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-08-21",
+    "evaluatedAtUtc": "2026-08-21T20:44:09.075Z",
+    "tradeCount": 1,
+    "wins": 1,
+    "losses": 0,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 84,
+    "finalPnlDollars": 216,
+    "returnOnRisk": 2.571429,
+    "bestTradeId": "nflx-2026-08-21-call_debit-76-79",
+    "worstTradeId": "nflx-2026-08-21-call_debit-76-79",
+    "headline": "Aug 10, 2026 basket closes with $216.00 final P/L",
+    "commentary": [
+      "The 1-trade basket finished with 1 win, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $216.00, equal to +257.1% of the maximum capital at risk.",
+      "NFLX 8/21 76/79 Call Debit Spread was the strongest contributor at $216.00.",
+      "What worked: call debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "nflx-2026-08-21-call_debit-76-79",
+        "name": "NFLX 8/21 76/79 Call Debit Spread",
+        "symbol": "NFLX",
+        "style": "call_debit",
+        "expiration": "2026-08-21",
+        "status": "win",
+        "read": "NFLX closed at $79.59 for expiration settlement, producing $216.00 on the one-lot spread.",
+        "settlementDate": "2026-08-21",
+        "settlementUnderlying": 79.59,
+        "settlementValue": 3,
+        "realizedPnlDollars": 216
+      }
+    ]
   }
 }
