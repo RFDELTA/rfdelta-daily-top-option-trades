@@ -1,6 +1,15 @@
 {
-  "latest": "2026-08-20",
+  "latest": "2026-08-21",
   "reports": [
+    {
+      "date": "2026-08-21",
+      "title": "1 defined-risk option setups lead the Aug 21, 2026 board",
+      "edition": "Daily market edition",
+      "dataAsOfUtc": "2026-08-21T15:16:20.660Z",
+      "topSymbol": "TLT",
+      "ideaCount": 1,
+      "topScore": 88.75
+    },
     {
       "date": "2026-08-20",
       "title": "1 defined-risk option setups lead the Aug 20, 2026 board",
