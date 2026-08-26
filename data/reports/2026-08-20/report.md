@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 QQQ enters with -2.7% five-session momentum and +2.9% over twenty sessions. Realized volatility is 22.7%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [QQQ entry and open-position history](/charts/2026-08-20/underlying/01-qqq.svg) at $712.31; latest official close $710.72 on 2026-08-25.
+**Underlying chart:** [QQQ entry and open-position history](/charts/2026-08-20/underlying/01-qqq.svg) at $712.31; latest official close $711.37 on 2026-08-26.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 63.3; MACD spread 0.09%; ATR(14) 1.49%; realized volatility 22.7%; ATM implied volatility 19.4%; expected move 2.9%. Outcome-trained score adjustment: +1.59.
 
