@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","IWM","IWM 9/11 290/296 Call Credit Spread","call_credit","2026-09-11","14","295.6601","Credit","4.05","0.4269","53.48","195","405","2.08","294.05","-0.54","100","0.8296","0.18"
