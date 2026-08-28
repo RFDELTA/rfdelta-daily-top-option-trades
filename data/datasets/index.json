@@ -1,7 +1,16 @@
 {
   "schemaVersion": "1.0",
-  "latestRunId": "run-f600be7b191f13ab",
+  "latestRunId": "run-0deca408872849f1",
   "runs": [
+    {
+      "runId": "run-0deca408872849f1",
+      "reportDate": "2026-08-27",
+      "reportId": "rfdelta-options-2026-08-27-2053e74b97a8",
+      "dataAsOfUtc": "2026-08-28T00:00:45.719Z",
+      "candidateCount": 13,
+      "selectedIdeaCount": 0,
+      "trainingSampleCount": 27
+    },
     {
       "runId": "run-f600be7b191f13ab",
       "reportDate": "2026-08-25",
