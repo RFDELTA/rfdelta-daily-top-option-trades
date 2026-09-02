@@ -218,11 +218,9 @@
         "assetPath": "/charts/2026-08-20/underlying/01-qqq.svg",
         "entryDate": "2026-08-20",
         "entryPrice": 712.31,
+        "closeDate": "2026-09-02",
+        "closePrice": 709.24,
         "points": [
-          {
-            "date": "2026-04-24",
-            "close": 663.88
-          },
           {
             "date": "2026-04-27",
             "close": 664.23
@@ -578,6 +576,10 @@
           {
             "date": "2026-09-01",
             "close": 707.64
+          },
+          {
+            "date": "2026-09-02",
+            "close": 709.24
           }
         ]
       },
@@ -617,6 +619,10 @@
         {
           "date": "2026-09-01",
           "underlyingClose": 707.64
+        },
+        {
+          "date": "2026-09-02",
+          "underlyingClose": 709.24
         }
       ]
     }
@@ -1052,5 +1058,40 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Aug 20, 2026, 11:18 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-09-02",
+    "evaluatedAtUtc": "2026-09-02T22:41:59.305Z",
+    "tradeCount": 1,
+    "wins": 1,
+    "losses": 0,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 219,
+    "finalPnlDollars": 281,
+    "returnOnRisk": 1.283105,
+    "bestTradeId": "qqq-2026-09-02-put_debit-715-710",
+    "worstTradeId": "qqq-2026-09-02-put_debit-715-710",
+    "headline": "Aug 20, 2026 basket closes with $281.00 final P/L",
+    "commentary": [
+      "The 1-trade basket finished with 1 win, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $281.00, equal to +128.3% of the maximum capital at risk.",
+      "QQQ 9/2 715/710 Put Debit Spread was the strongest contributor at $281.00.",
+      "What worked: put debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "qqq-2026-09-02-put_debit-715-710",
+        "name": "QQQ 9/2 715/710 Put Debit Spread",
+        "symbol": "QQQ",
+        "style": "put_debit",
+        "expiration": "2026-09-02",
+        "status": "win",
+        "read": "QQQ closed at $709.24 for expiration settlement, producing $281.00 on the one-lot spread.",
+        "settlementDate": "2026-09-02",
+        "settlementUnderlying": 709.24,
+        "settlementValue": 5,
+        "realizedPnlDollars": 281
+      }
+    ]
   }
 }

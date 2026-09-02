@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 QQQ enters with -2.7% five-session momentum and +2.9% over twenty sessions. Realized volatility is 22.7%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [QQQ entry and open-position history](/charts/2026-08-20/underlying/01-qqq.svg) at $712.31; latest official close $707.64 on 2026-09-01.
+**Underlying chart:** [QQQ entry through expiration close](/charts/2026-08-20/underlying/01-qqq.svg) at $712.31; expiration close $709.24.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 63.3; MACD spread 0.09%; ATR(14) 1.49%; realized volatility 22.7%; ATM implied volatility 19.4%; expected move 2.9%. Outcome-trained score adjustment: +1.59.
 
@@ -37,6 +37,20 @@ QQQ enters with -2.7% five-session momentum and +2.9% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $219.00. Breakeven is $712.81 and sits 0.1% above the source mark, providing an upside cushion. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $281.00, or 1.28 times maximum risk. The simulation assigns 45.6% probability to finishing near maximum profit and uses 19.5% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Aug 20, 2026 basket closes with $281.00 final P/L**
+
+The 1-trade basket finished with 1 win, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $281.00, equal to +128.3% of the maximum capital at risk.
+
+QQQ 9/2 715/710 Put Debit Spread was the strongest contributor at $281.00.
+
+What worked: put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| QQQ 9/2 715/710 Put Debit Spread | win | $281.00 | QQQ closed at $709.24 for expiration settlement, producing $281.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 
