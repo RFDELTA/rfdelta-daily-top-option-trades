@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 TLT enters with +0.0% five-session momentum and -1.4% over twenty sessions. Realized volatility is 12.0%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-08-21/underlying/01-tlt.svg) at $82.06; latest official close $82.07 on 2026-09-03.
+**Underlying chart:** [TLT entry through expiration close](/charts/2026-08-21/underlying/01-tlt.svg) at $82.06; expiration close $82.21.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 49.0; MACD spread 0.10%; ATR(14) 0.77%; realized volatility 12.0%; ATM implied volatility 11.7%; expected move 1.8%. Outcome-trained score adjustment: +0.94.
 
@@ -37,6 +37,20 @@ TLT enters with +0.0% five-session momentum and -1.4% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $36.00. Breakeven is $81.64 and requires a 0.5% decline from the source mark. Primary watch: low credit probability; call short strike at/below spot. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $64.00, or 1.78 times maximum risk. The simulation assigns 34.7% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Aug 21, 2026 basket closes with -$36.00 final P/L**
+
+The 1-trade basket finished with 0 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$36.00, equal to -100.0% of the maximum capital at risk.
+
+TLT 9/4 81/82 Call Credit Spread was the strongest contributor at -$36.00.
+
+What needs tighter gating: call credit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| TLT 9/4 81/82 Call Credit Spread | loss | -$36.00 | TLT closed at $82.21 for expiration settlement, producing -$36.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

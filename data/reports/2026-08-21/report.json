@@ -220,11 +220,9 @@
         "assetPath": "/charts/2026-08-21/underlying/01-tlt.svg",
         "entryDate": "2026-08-21",
         "entryPrice": 82.06,
+        "closeDate": "2026-09-04",
+        "closePrice": 82.21,
         "points": [
-          {
-            "date": "2026-04-28",
-            "close": 86.37
-          },
           {
             "date": "2026-04-29",
             "close": 85.7
@@ -580,6 +578,10 @@
           {
             "date": "2026-09-03",
             "close": 82.07
+          },
+          {
+            "date": "2026-09-04",
+            "close": 82.21
           }
         ]
       },
@@ -623,6 +625,10 @@
         {
           "date": "2026-09-03",
           "underlyingClose": 82.07
+        },
+        {
+          "date": "2026-09-04",
+          "underlyingClose": 82.21
         }
       ]
     }
@@ -1016,5 +1022,40 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Aug 21, 2026, 11:16 AM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-09-04",
+    "evaluatedAtUtc": "2026-09-04T22:24:29.902Z",
+    "tradeCount": 1,
+    "wins": 0,
+    "losses": 1,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 36,
+    "finalPnlDollars": -36,
+    "returnOnRisk": -1,
+    "bestTradeId": "tlt-2026-09-04-call_credit-82-81",
+    "worstTradeId": "tlt-2026-09-04-call_credit-82-81",
+    "headline": "Aug 21, 2026 basket closes with -$36.00 final P/L",
+    "commentary": [
+      "The 1-trade basket finished with 0 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$36.00, equal to -100.0% of the maximum capital at risk.",
+      "TLT 9/4 81/82 Call Credit Spread was the strongest contributor at -$36.00.",
+      "What needs tighter gating: call credit."
+    ],
+    "trades": [
+      {
+        "tradeId": "tlt-2026-09-04-call_credit-82-81",
+        "name": "TLT 9/4 81/82 Call Credit Spread",
+        "symbol": "TLT",
+        "style": "call_credit",
+        "expiration": "2026-09-04",
+        "status": "loss",
+        "read": "TLT closed at $82.21 for expiration settlement, producing -$36.00 on the one-lot spread.",
+        "settlementDate": "2026-09-04",
+        "settlementUnderlying": 82.21,
+        "settlementValue": 1,
+        "realizedPnlDollars": -36
+      }
+    ]
   }
 }
