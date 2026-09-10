@@ -1,6 +1,15 @@
 {
-  "latest": "2026-09-09",
+  "latest": "2026-09-10",
   "reports": [
+    {
+      "date": "2026-09-10",
+      "title": "2 defined-risk option setups lead the Sep 10, 2026 board",
+      "edition": "Daily market edition",
+      "dataAsOfUtc": "2026-09-10T17:55:27.569Z",
+      "topSymbol": "SPY",
+      "ideaCount": 2,
+      "topScore": 91.93
+    },
     {
       "date": "2026-09-09",
       "title": "No defined-risk option setup cleared the publication gate",
