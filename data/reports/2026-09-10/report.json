@@ -575,10 +575,16 @@
           },
           {
             "date": "2026-09-10",
-            "close": 758.34
+            "close": 757.83
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-09-10",
+          "underlyingClose": 757.83
+        }
+      ]
     },
     {
       "rank": 2,
@@ -1099,10 +1105,16 @@
           },
           {
             "date": "2026-09-10",
-            "close": 287.75
+            "close": 287.7
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-09-10",
+          "underlyingClose": 287.7
+        }
+      ]
     }
   ],
   "accountability": {
