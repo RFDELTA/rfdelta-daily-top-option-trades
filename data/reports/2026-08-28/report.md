@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 IWM enters with -1.4% five-session momentum and +1.5% over twenty sessions. Realized volatility is 14.6%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-08-28/underlying/01-iwm.svg) at $295.66; latest official close $287.70 on 2026-09-10.
+**Underlying chart:** [IWM entry through expiration close](/charts/2026-08-28/underlying/01-iwm.svg) at $295.66; expiration close $288.89.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 41.8; MACD spread -0.24%; ATR(14) 0.92%; realized volatility 14.6%; ATM implied volatility 14.4%; expected move 2.2%. Outcome-trained score adjustment: +3.85.
 
@@ -37,6 +37,20 @@ IWM enters with -1.4% five-session momentum and +1.5% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $195.00. Breakeven is $294.05 and requires a 0.5% decline from the source mark. Primary watch: low credit probability; call short strike at/below spot. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $405.00, or 2.08 times maximum risk. The simulation assigns 28.5% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Aug 28, 2026 basket closes with $405.00 final P/L**
+
+The 1-trade basket finished with 1 win, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $405.00, equal to +207.7% of the maximum capital at risk.
+
+IWM 9/11 290/296 Call Credit Spread was the strongest contributor at $405.00.
+
+What worked: call credit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| IWM 9/11 290/296 Call Credit Spread | win | $405.00 | IWM closed at $288.89 for expiration settlement, producing $405.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

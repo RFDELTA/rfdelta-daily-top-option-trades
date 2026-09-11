@@ -220,11 +220,9 @@
         "assetPath": "/charts/2026-08-28/underlying/01-iwm.svg",
         "entryDate": "2026-08-28",
         "entryPrice": 295.6601,
+        "closeDate": "2026-09-11",
+        "closePrice": 288.89,
         "points": [
-          {
-            "date": "2026-05-04",
-            "close": 277.88
-          },
           {
             "date": "2026-05-05",
             "close": 282.56
@@ -580,6 +578,10 @@
           {
             "date": "2026-09-10",
             "close": 287.7
+          },
+          {
+            "date": "2026-09-11",
+            "close": 288.89
           }
         ]
       },
@@ -619,6 +621,10 @@
         {
           "date": "2026-09-10",
           "underlyingClose": 287.7
+        },
+        {
+          "date": "2026-09-11",
+          "underlyingClose": 288.89
         }
       ]
     }
@@ -946,5 +952,40 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Aug 28, 2026, 7:43 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-09-11",
+    "evaluatedAtUtc": "2026-09-11T22:39:29.353Z",
+    "tradeCount": 1,
+    "wins": 1,
+    "losses": 0,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 195,
+    "finalPnlDollars": 405,
+    "returnOnRisk": 2.076923,
+    "bestTradeId": "iwm-2026-09-11-call_credit-296-290",
+    "worstTradeId": "iwm-2026-09-11-call_credit-296-290",
+    "headline": "Aug 28, 2026 basket closes with $405.00 final P/L",
+    "commentary": [
+      "The 1-trade basket finished with 1 win, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $405.00, equal to +207.7% of the maximum capital at risk.",
+      "IWM 9/11 290/296 Call Credit Spread was the strongest contributor at $405.00.",
+      "What worked: call credit."
+    ],
+    "trades": [
+      {
+        "tradeId": "iwm-2026-09-11-call_credit-296-290",
+        "name": "IWM 9/11 290/296 Call Credit Spread",
+        "symbol": "IWM",
+        "style": "call_credit",
+        "expiration": "2026-09-11",
+        "status": "win",
+        "read": "IWM closed at $288.89 for expiration settlement, producing $405.00 on the one-lot spread.",
+        "settlementDate": "2026-09-11",
+        "settlementUnderlying": 288.89,
+        "settlementValue": 0,
+        "realizedPnlDollars": 405
+      }
+    ]
   }
 }
