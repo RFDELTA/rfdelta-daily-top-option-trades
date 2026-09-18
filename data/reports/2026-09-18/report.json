@@ -1,0 +1,1440 @@
+{
+  "schemaVersion": "1.0",
+  "reportId": "rfdelta-options-2026-09-18-65afc489e084",
+  "runMetadata": {
+    "reportDate": "2026-09-18",
+    "marketSessionDate": "2026-09-18",
+    "generatedAtUtc": "2026-09-18T17:55:08.368Z",
+    "dataAsOfUtc": "2026-09-18T17:55:04.351Z",
+    "edition": "Daily market edition",
+    "methodologyVersion": "rfdelta-options-v3",
+    "selectionHash": "65afc489e0847d3cea019c0461d9bc0151dd8629007a9208a3397f2833f32f3b",
+    "datasetRunId": "run-469d96618f067cd0",
+    "featureVersion": "rfdelta-market-features-v2",
+    "selectionPolicyVersion": "rfdelta-online-policy-v1",
+    "trainingSampleCount": 30
+  },
+  "executiveSummary": {
+    "headline": "2 defined-risk option setups lead the Sep 18, 2026 board",
+    "standfirst": "SPY 10/1 760/755 Put Debit Spread ranks first with a 96.04 score, 46.4% modeled probability of profit and $173.00 maximum one-lot risk. The basket balances 0 bullish and 2 bearish expressions.",
+    "marketCommentary": [
+      "The option board is not rewarding indiscriminate beta. Across the published names, the mean five-session move is -0.1%, while 0 setups carry realized volatility above 65%. That combination favors defined-risk structures and hard entry limits over naked premium exposure.",
+      "The screen quotes 105 liquid underlyings and requests 40 option chains through its core, mover, volume and rotation sleeves. It accepts only same-session chains with two usable legs, then forces every idea through the same conservative mark: pay the ask for the long option and receive the bid for the short. The resulting ranking is intentionally harsher than a midpoint screen, because a trade that only works at a theoretical fill is not a durable public idea.",
+      "Direction comes from five- and twenty-session price structure rather than a headline guess. That keeps the daily board responsive to what is actually trading while the scenario engine still reserves room for jumps, volatility expansion and path-dependent failure. The result is a short list, not a promise that every liquid ticker deserves a trade."
+    ],
+    "selectionCommentary": [
+      "SPY wins the top slot because liquidity, directional alignment and bounded payoff reinforce one another. Its debit entry of 1.73 creates 1.89 dollars of maximum reward for each dollar of maximum risk, with breakeven at $758.27.",
+      "TLT supplies the counterweight. Its call credit structure scores 87.97 and carries $15.00 of one-lot maximum loss. The basket is therefore ranked as a portfolio of explicit risks, not as five unrelated ticker calls."
+    ],
+    "riskCommentary": "The basket's maximum losses are additive if every thesis fails. Quote slippage, early assignment and volatility repricing can also change the practical outcome before expiration, so the published entry is a ceiling for debits and a floor for credits, not an assurance of execution."
+  },
+  "marketContext": {
+    "providerAttribution": "RFDELTA normalized U.S. equity and options market data",
+    "universeCount": 105,
+    "quotedSymbolCount": 105,
+    "chainSymbolCount": 40,
+    "includedSymbolCount": 40,
+    "excludedSymbolCount": 35,
+    "candidateCount": 29,
+    "bullishCandidateCount": 13,
+    "bearishCandidateCount": 16,
+    "regimeCounts": {
+      "mixed": 2,
+      "mean_reversion": 7,
+      "risk_off": 9,
+      "trend": 4,
+      "risk_on": 1,
+      "vol_expansion": 6
+    }
+  },
+  "analytics": {
+    "publishedIdeaCount": 2,
+    "topScore": 96.04,
+    "averageProbabilityProfit": 0.4183,
+    "totalExpectedValueDollars": 55.72,
+    "totalMaxLossDollars": 188,
+    "totalMaxProfitDollars": 362,
+    "debitIdeaCount": 1,
+    "creditIdeaCount": 1
+  },
+  "topTrades": [
+    {
+      "rank": 1,
+      "id": "spy-2026-10-01-put_debit-760-755",
+      "name": "SPY 10/1 760/755 Put Debit Spread",
+      "symbol": "SPY",
+      "underlyingMark": 759.8301,
+      "expiration": "2026-10-01",
+      "daysToExpiry": 13,
+      "structureType": "Debit",
+      "style": "put_debit",
+      "direction": "bearish",
+      "theme": "broad-market risk",
+      "regime": "mixed",
+      "correlationBucket": "broad-market",
+      "bucket": "top_candidate",
+      "entry": 1.73,
+      "width": 5,
+      "maxLossDollars": 173,
+      "maxProfitDollars": 327,
+      "rewardToRisk": 1.89,
+      "breakeven": 758.27,
+      "requiredMovePctToBreakeven": -0.21,
+      "probabilityProfit": 0.4636,
+      "probabilityNearMaxProfit": 0.4148,
+      "expectedValueDollars": 52.69,
+      "blackScholesEdge": 0.5267,
+      "impliedVolUsed": 0.18,
+      "liquidityScore": 0.8934,
+      "score": 96.04,
+      "inference": {
+        "inferenceVersion": "rfdelta-inference-v3",
+        "eligibilityScore": 93.25,
+        "requiredProbability": 0.346,
+        "consensusProbability": 0.463628,
+        "probabilityMargin": 0.117628,
+        "positiveModelCount": 4,
+        "conservativeExpectedValueDollars": 52.69,
+        "expectedMoveCoverage": 0.876081,
+        "multiHorizonAlignment": 0.666667,
+        "sessionConfirmation": true,
+        "scenarioStability": 0.984016,
+        "selectionFrequencyUnderPerturbation": 1,
+        "twoSidedQuotes": true,
+        "completeLegData": true,
+        "modelResults": [
+          {
+            "name": "jump_stress",
+            "probability": 0.46339,
+            "expectedValueDollars": 58.69,
+            "positive": true
+          },
+          {
+            "name": "market_implied",
+            "probability": 0.463866,
+            "expectedValueDollars": 58.93,
+            "positive": true
+          },
+          {
+            "name": "shrunk_regime",
+            "probability": 0.482946,
+            "expectedValueDollars": 68.47,
+            "positive": true
+          },
+          {
+            "name": "fat_tail",
+            "probability": 0.45139,
+            "expectedValueDollars": 52.69,
+            "positive": true
+          }
+        ],
+        "hardGateFailures": [],
+        "eligibleBeforeSessionGate": true,
+        "publicationEligible": true
+      },
+      "publicationEligible": true,
+      "riskFlags": [],
+      "thesis": "SPY is expressing a bearish mixed setup: -0.6% over five sessions and -0.4% over twenty, with +9.2% annualized realized volatility. The put debit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 10/1.",
+      "longLeg": {
+        "optionSymbol": "SPY   261001P00760000",
+        "right": "P",
+        "strike": 760,
+        "bid": 5.96,
+        "ask": 6,
+        "mid": 5.98,
+        "volume": 877,
+        "openInterest": 719,
+        "quoteTimeUtc": "2026-09-18T17:54:59.867Z",
+        "impliedVolatility": 0.11353,
+        "delta": -0.470075
+      },
+      "shortLeg": {
+        "optionSymbol": "SPY   261001P00755000",
+        "right": "P",
+        "strike": 755,
+        "bid": 4.27,
+        "ask": 4.31,
+        "mid": 4.289999999999999,
+        "volume": 871,
+        "openInterest": 179,
+        "quoteTimeUtc": "2026-09-18T17:55:00.376Z",
+        "impliedVolatility": 0.120971,
+        "delta": -0.35907
+      },
+      "sourceAsOfUtc": "2026-09-18T17:55:04.351Z",
+      "marketEvidence": [
+        "Underlying $760 at the source timestamp",
+        "-0.6% over five sessions and -0.4% over twenty, with +9.2% annualized realized volatility.",
+        "1748 contracts of combined session volume and 898 contracts of combined open interest across the two legs"
+      ],
+      "historySessionCount": 260,
+      "advancedMetrics": {
+        "symbol": "SPY",
+        "historySessions": 260,
+        "historyConfidence": 1,
+        "return1d": -0.003632,
+        "return5d": -0.005835,
+        "return15d": -0.014615,
+        "return20d": -0.003632,
+        "return60d": 0.036264,
+        "sma5Distance": 0.00116,
+        "sma20Distance": -0.005732,
+        "emaTrend": -0.003591,
+        "macdPct": -0.001687,
+        "rsi14": 42.362063,
+        "atr14Pct": 0.008653,
+        "bollingerZ20": -0.906483,
+        "realizedVol5": 0.110604,
+        "realizedVol20": 0.09238,
+        "downsideVol20": 0.021207,
+        "maxDrawdown20": -0.024729,
+        "trendEfficiency20": 0.03594,
+        "volumeZScore20": 0.197813,
+        "atmImpliedVol": 0.109873,
+        "putCallIvSkew": 0.012957,
+        "putCallVolumeRatio": 3.88691,
+        "putCallOpenInterestRatio": 1.595156,
+        "expectedMovePct": 0.016569,
+        "meanQuoteWidthPct": 1.133311,
+        "liquidContractRatio": 0.166667,
+        "trendSignal": -0.165135,
+        "riskAdjustedMomentum": -0.096857
+      },
+      "trainingAdjustment": 2.79,
+      "trainingPolicyVersion": "rfdelta-online-policy-v1",
+      "fiveDayReturn": -0.005835,
+      "twentyDayReturn": -0.003632,
+      "realizedVolatility": 0.09238,
+      "lessonAdjustments": [],
+      "commentary": {
+        "convictionLabel": "Highest-conviction screen",
+        "rankingRead": "The setup scores 96.04 on the common scale. Four-model consensus places probability of profit at 46.4%, 11.8% above the payoff hurdle, with 0.89 liquidity quality and positive modeled expectancy of $52.69.",
+        "setup": "SPY enters with -0.6% five-session momentum and -0.4% over twenty sessions. Realized volatility is 9.2%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
+        "execution": "Buy the 760 put and sell the 755 put, both expiring Oct 1, 2026. The debit mark of 1.73 assumes the long ask and short bid, not a midpoint. Do not pay more than 1.73 for the spread without rerunning the payoff.",
+        "risk": "Maximum one-lot loss is $173.00. Breakeven is $758.27 and requires a 0.2% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
+        "payoffRead": "Maximum one-lot profit is $327.00, or 1.89 times maximum risk. The simulation assigns 41.5% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths."
+      },
+      "underlyingChart": {
+        "assetPath": "/charts/2026-09-18/underlying/01-spy.svg",
+        "entryDate": "2026-09-18",
+        "entryPrice": 759.8301,
+        "points": [
+          {
+            "date": "2026-05-12",
+            "close": 738.18
+          },
+          {
+            "date": "2026-05-13",
+            "close": 742.31
+          },
+          {
+            "date": "2026-05-14",
+            "close": 748.17
+          },
+          {
+            "date": "2026-05-15",
+            "close": 739.17
+          },
+          {
+            "date": "2026-05-18",
+            "close": 738.65
+          },
+          {
+            "date": "2026-05-19",
+            "close": 733.73
+          },
+          {
+            "date": "2026-05-20",
+            "close": 741.25
+          },
+          {
+            "date": "2026-05-21",
+            "close": 742.72
+          },
+          {
+            "date": "2026-05-22",
+            "close": 745.64
+          },
+          {
+            "date": "2026-05-26",
+            "close": 750.59
+          },
+          {
+            "date": "2026-05-27",
+            "close": 750.46
+          },
+          {
+            "date": "2026-05-28",
+            "close": 754.6
+          },
+          {
+            "date": "2026-05-29",
+            "close": 756.48
+          },
+          {
+            "date": "2026-06-01",
+            "close": 758.54
+          },
+          {
+            "date": "2026-06-02",
+            "close": 759.57
+          },
+          {
+            "date": "2026-06-03",
+            "close": 754.24
+          },
+          {
+            "date": "2026-06-04",
+            "close": 757.09
+          },
+          {
+            "date": "2026-06-05",
+            "close": 737.55
+          },
+          {
+            "date": "2026-06-08",
+            "close": 739.22
+          },
+          {
+            "date": "2026-06-09",
+            "close": 737.05
+          },
+          {
+            "date": "2026-06-10",
+            "close": 725.43
+          },
+          {
+            "date": "2026-06-11",
+            "close": 737.76
+          },
+          {
+            "date": "2026-06-12",
+            "close": 741.75
+          },
+          {
+            "date": "2026-06-15",
+            "close": 754.83
+          },
+          {
+            "date": "2026-06-16",
+            "close": 750.33
+          },
+          {
+            "date": "2026-06-17",
+            "close": 740.96
+          },
+          {
+            "date": "2026-06-18",
+            "close": 746.74
+          },
+          {
+            "date": "2026-06-22",
+            "close": 744.39
+          },
+          {
+            "date": "2026-06-23",
+            "close": 733.58
+          },
+          {
+            "date": "2026-06-24",
+            "close": 733.24
+          },
+          {
+            "date": "2026-06-25",
+            "close": 734.3
+          },
+          {
+            "date": "2026-06-26",
+            "close": 728.99
+          },
+          {
+            "date": "2026-06-29",
+            "close": 741
+          },
+          {
+            "date": "2026-06-30",
+            "close": 746.77
+          },
+          {
+            "date": "2026-07-01",
+            "close": 745.76
+          },
+          {
+            "date": "2026-07-02",
+            "close": 744.78
+          },
+          {
+            "date": "2026-07-06",
+            "close": 751.28
+          },
+          {
+            "date": "2026-07-07",
+            "close": 747.71
+          },
+          {
+            "date": "2026-07-08",
+            "close": 745.4
+          },
+          {
+            "date": "2026-07-09",
+            "close": 751.71
+          },
+          {
+            "date": "2026-07-10",
+            "close": 754.95
+          },
+          {
+            "date": "2026-07-13",
+            "close": 749.17
+          },
+          {
+            "date": "2026-07-14",
+            "close": 751.83
+          },
+          {
+            "date": "2026-07-15",
+            "close": 754.81
+          },
+          {
+            "date": "2026-07-16",
+            "close": 750.72
+          },
+          {
+            "date": "2026-07-17",
+            "close": 743.29
+          },
+          {
+            "date": "2026-07-20",
+            "close": 742.09
+          },
+          {
+            "date": "2026-07-21",
+            "close": 748.28
+          },
+          {
+            "date": "2026-07-22",
+            "close": 747.41
+          },
+          {
+            "date": "2026-07-23",
+            "close": 738.18
+          },
+          {
+            "date": "2026-07-24",
+            "close": 738.93
+          },
+          {
+            "date": "2026-07-27",
+            "close": 739.09
+          },
+          {
+            "date": "2026-07-28",
+            "close": 740.86
+          },
+          {
+            "date": "2026-07-29",
+            "close": 729.46
+          },
+          {
+            "date": "2026-07-30",
+            "close": 741.69
+          },
+          {
+            "date": "2026-07-31",
+            "close": 747.03
+          },
+          {
+            "date": "2026-08-03",
+            "close": 757.67
+          },
+          {
+            "date": "2026-08-04",
+            "close": 771.33
+          },
+          {
+            "date": "2026-08-05",
+            "close": 769.79
+          },
+          {
+            "date": "2026-08-06",
+            "close": 768.56
+          },
+          {
+            "date": "2026-08-07",
+            "close": 773.26
+          },
+          {
+            "date": "2026-08-10",
+            "close": 773.03
+          },
+          {
+            "date": "2026-08-11",
+            "close": 770.56
+          },
+          {
+            "date": "2026-08-12",
+            "close": 772.49
+          },
+          {
+            "date": "2026-08-13",
+            "close": 777.88
+          },
+          {
+            "date": "2026-08-14",
+            "close": 776.34
+          },
+          {
+            "date": "2026-08-17",
+            "close": 772.67
+          },
+          {
+            "date": "2026-08-18",
+            "close": 767.45
+          },
+          {
+            "date": "2026-08-19",
+            "close": 769.06
+          },
+          {
+            "date": "2026-08-20",
+            "close": 762.6
+          },
+          {
+            "date": "2026-08-21",
+            "close": 765.72
+          },
+          {
+            "date": "2026-08-24",
+            "close": 763.47
+          },
+          {
+            "date": "2026-08-25",
+            "close": 765.91
+          },
+          {
+            "date": "2026-08-26",
+            "close": 766.08
+          },
+          {
+            "date": "2026-08-27",
+            "close": 771.1
+          },
+          {
+            "date": "2026-08-28",
+            "close": 769.35
+          },
+          {
+            "date": "2026-08-31",
+            "close": 767.05
+          },
+          {
+            "date": "2026-09-01",
+            "close": 761.78
+          },
+          {
+            "date": "2026-09-02",
+            "close": 765.16
+          },
+          {
+            "date": "2026-09-03",
+            "close": 773.17
+          },
+          {
+            "date": "2026-09-04",
+            "close": 770.19
+          },
+          {
+            "date": "2026-09-08",
+            "close": 765.96
+          },
+          {
+            "date": "2026-09-09",
+            "close": 762.4
+          },
+          {
+            "date": "2026-09-10",
+            "close": 757.83
+          },
+          {
+            "date": "2026-09-11",
+            "close": 764.29
+          },
+          {
+            "date": "2026-09-14",
+            "close": 760.88
+          },
+          {
+            "date": "2026-09-15",
+            "close": 757.39
+          },
+          {
+            "date": "2026-09-16",
+            "close": 754.05
+          },
+          {
+            "date": "2026-09-17",
+            "close": 762.6
+          },
+          {
+            "date": "2026-09-18",
+            "close": 759.8301
+          }
+        ]
+      }
+    },
+    {
+      "rank": 2,
+      "id": "tlt-2026-10-02-call_credit-80.5-80",
+      "name": "TLT 10/2 80/80.5 Call Credit Spread",
+      "symbol": "TLT",
+      "underlyingMark": 81.1801,
+      "expiration": "2026-10-02",
+      "daysToExpiry": 14,
+      "structureType": "Credit",
+      "style": "call_credit",
+      "direction": "bearish",
+      "theme": "long-duration rates",
+      "regime": "mean_reversion",
+      "correlationBucket": "rates",
+      "bucket": "top_candidate",
+      "entry": 0.35,
+      "width": 0.5,
+      "maxLossDollars": 15,
+      "maxProfitDollars": 35,
+      "rewardToRisk": 2.33,
+      "breakeven": 80.35,
+      "requiredMovePctToBreakeven": -1.02,
+      "probabilityProfit": 0.373,
+      "probabilityNearMaxProfit": 0.3267,
+      "expectedValueDollars": 3.03,
+      "blackScholesEdge": 0.0307,
+      "impliedVolUsed": 0.18,
+      "liquidityScore": 0.8216,
+      "score": 87.97,
+      "inference": {
+        "inferenceVersion": "rfdelta-inference-v3",
+        "eligibilityScore": 81.83,
+        "requiredProbability": 0.3,
+        "consensusProbability": 0.373045,
+        "probabilityMargin": 0.073044,
+        "positiveModelCount": 4,
+        "conservativeExpectedValueDollars": 3.03,
+        "expectedMoveCoverage": 0.43912,
+        "multiHorizonAlignment": 0.666667,
+        "sessionConfirmation": true,
+        "scenarioStability": 0.973242,
+        "selectionFrequencyUnderPerturbation": 1,
+        "twoSidedQuotes": true,
+        "completeLegData": true,
+        "modelResults": [
+          {
+            "name": "jump_stress",
+            "probability": 0.3727,
+            "expectedValueDollars": 3.63,
+            "positive": true
+          },
+          {
+            "name": "market_implied",
+            "probability": 0.373389,
+            "expectedValueDollars": 3.67,
+            "positive": true
+          },
+          {
+            "name": "shrunk_regime",
+            "probability": 0.398389,
+            "expectedValueDollars": 4.92,
+            "positive": true
+          },
+          {
+            "name": "fat_tail",
+            "probability": 0.3607,
+            "expectedValueDollars": 3.03,
+            "positive": true
+          }
+        ],
+        "hardGateFailures": [],
+        "eligibleBeforeSessionGate": true,
+        "publicationEligible": true
+      },
+      "publicationEligible": true,
+      "riskFlags": [
+        "low credit probability",
+        "call short strike at/below spot"
+      ],
+      "thesis": "TLT is expressing a bearish mean reversion setup: +0.4% over five sessions and -1.4% over twenty, with +9.1% annualized realized volatility. The call credit contains the thesis to a defined one-lot loss while preserving a measurable payoff through 10/2.",
+      "longLeg": {
+        "optionSymbol": "TLT   261002C00080500",
+        "right": "C",
+        "strike": 80.5,
+        "bid": 1.1,
+        "ask": 1.12,
+        "mid": 1.11,
+        "volume": 74,
+        "openInterest": 211,
+        "quoteTimeUtc": "2026-09-18T17:55:00.344Z",
+        "impliedVolatility": 0.097591,
+        "delta": 0.705414
+      },
+      "shortLeg": {
+        "optionSymbol": "TLT   261002C00080000",
+        "right": "C",
+        "strike": 80,
+        "bid": 1.47,
+        "ask": 1.5,
+        "mid": 1.4849999999999999,
+        "volume": 132,
+        "openInterest": 680,
+        "quoteTimeUtc": "2026-09-18T17:55:00.697Z",
+        "impliedVolatility": 0.097513,
+        "delta": 0.806947
+      },
+      "sourceAsOfUtc": "2026-09-18T17:55:04.351Z",
+      "marketEvidence": [
+        "Underlying $81 at the source timestamp",
+        "+0.4% over five sessions and -1.4% over twenty, with +9.1% annualized realized volatility.",
+        "206 contracts of combined session volume and 891 contracts of combined open interest across the two legs"
+      ],
+      "historySessionCount": 260,
+      "advancedMetrics": {
+        "symbol": "TLT",
+        "historySessions": 260,
+        "historyConfidence": 1,
+        "return1d": -0.007336,
+        "return5d": 0.003835,
+        "return15d": -0.023456,
+        "return20d": -0.014087,
+        "return60d": -0.070953,
+        "sma5Distance": 0.001037,
+        "sma20Distance": -0.009437,
+        "emaTrend": -0.006188,
+        "macdPct": -0.000306,
+        "rsi14": 32.365817,
+        "atr14Pct": 0.008631,
+        "bollingerZ20": -0.895376,
+        "realizedVol5": 0.108286,
+        "realizedVol20": 0.091099,
+        "downsideVol20": 0.052785,
+        "maxDrawdown20": -0.033066,
+        "trendEfficiency20": 0.162909,
+        "volumeZScore20": -0.791255,
+        "atmImpliedVol": 0.1151,
+        "putCallIvSkew": 0.031166,
+        "putCallVolumeRatio": 0.460447,
+        "putCallOpenInterestRatio": 0.349489,
+        "expectedMovePct": 0.018231,
+        "meanQuoteWidthPct": 12.924103,
+        "liquidContractRatio": 0.75,
+        "trendSignal": -0.111132,
+        "riskAdjustedMomentum": -0.375645
+      },
+      "trainingAdjustment": 1.85,
+      "trainingPolicyVersion": "rfdelta-online-policy-v1",
+      "fiveDayReturn": 0.003835,
+      "twentyDayReturn": -0.014087,
+      "realizedVolatility": 0.091099,
+      "lessonAdjustments": [],
+      "commentary": {
+        "convictionLabel": "Highest-conviction screen",
+        "rankingRead": "The setup scores 87.97 on the common scale. Four-model consensus places probability of profit at 37.3%, 7.3% above the payoff hurdle, with 0.82 liquidity quality and positive modeled expectancy of $3.03.",
+        "setup": "TLT enters with +0.4% five-session momentum and -1.4% over twenty sessions. Realized volatility is 9.1%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.",
+        "execution": "Buy the 80.5 call and sell the 80 call, both expiring Oct 2, 2026. The credit mark of 0.35 assumes the long ask and short bid, not a midpoint. Do not accept less than 0.35 of credit without rerunning the payoff.",
+        "risk": "Maximum one-lot loss is $15.00. Breakeven is $80.35 and requires a 1.0% decline from the source mark. Primary watch: low credit probability; call short strike at/below spot. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.",
+        "payoffRead": "Maximum one-lot profit is $35.00, or 2.33 times maximum risk. The simulation assigns 32.7% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths."
+      },
+      "underlyingChart": {
+        "assetPath": "/charts/2026-09-18/underlying/02-tlt.svg",
+        "entryDate": "2026-09-18",
+        "entryPrice": 81.1801,
+        "points": [
+          {
+            "date": "2026-05-12",
+            "close": 84.99
+          },
+          {
+            "date": "2026-05-13",
+            "close": 84.8
+          },
+          {
+            "date": "2026-05-14",
+            "close": 84.92
+          },
+          {
+            "date": "2026-05-15",
+            "close": 83.66
+          },
+          {
+            "date": "2026-05-18",
+            "close": 83.56
+          },
+          {
+            "date": "2026-05-19",
+            "close": 83.02
+          },
+          {
+            "date": "2026-05-20",
+            "close": 83.91
+          },
+          {
+            "date": "2026-05-21",
+            "close": 84.22
+          },
+          {
+            "date": "2026-05-22",
+            "close": 84.68
+          },
+          {
+            "date": "2026-05-26",
+            "close": 85.1
+          },
+          {
+            "date": "2026-05-27",
+            "close": 85.3
+          },
+          {
+            "date": "2026-05-28",
+            "close": 85.74
+          },
+          {
+            "date": "2026-05-29",
+            "close": 85.76
+          },
+          {
+            "date": "2026-06-01",
+            "close": 85.47
+          },
+          {
+            "date": "2026-06-02",
+            "close": 85.65
+          },
+          {
+            "date": "2026-06-03",
+            "close": 85.31
+          },
+          {
+            "date": "2026-06-04",
+            "close": 85.5
+          },
+          {
+            "date": "2026-06-05",
+            "close": 85.06
+          },
+          {
+            "date": "2026-06-08",
+            "close": 84.62
+          },
+          {
+            "date": "2026-06-09",
+            "close": 85.12
+          },
+          {
+            "date": "2026-06-10",
+            "close": 84.88
+          },
+          {
+            "date": "2026-06-11",
+            "close": 85.98
+          },
+          {
+            "date": "2026-06-12",
+            "close": 85.77
+          },
+          {
+            "date": "2026-06-15",
+            "close": 85.72
+          },
+          {
+            "date": "2026-06-16",
+            "close": 86.19
+          },
+          {
+            "date": "2026-06-17",
+            "close": 86.33
+          },
+          {
+            "date": "2026-06-18",
+            "close": 86.75
+          },
+          {
+            "date": "2026-06-22",
+            "close": 86.09
+          },
+          {
+            "date": "2026-06-23",
+            "close": 86.2
+          },
+          {
+            "date": "2026-06-24",
+            "close": 87.38
+          },
+          {
+            "date": "2026-06-25",
+            "close": 87.35
+          },
+          {
+            "date": "2026-06-26",
+            "close": 87.36
+          },
+          {
+            "date": "2026-06-29",
+            "close": 87.45
+          },
+          {
+            "date": "2026-06-30",
+            "close": 86.42
+          },
+          {
+            "date": "2026-07-01",
+            "close": 85.52
+          },
+          {
+            "date": "2026-07-02",
+            "close": 85.51
+          },
+          {
+            "date": "2026-07-06",
+            "close": 85.45
+          },
+          {
+            "date": "2026-07-07",
+            "close": 84.55
+          },
+          {
+            "date": "2026-07-08",
+            "close": 84.36
+          },
+          {
+            "date": "2026-07-09",
+            "close": 84.49
+          },
+          {
+            "date": "2026-07-10",
+            "close": 84.47
+          },
+          {
+            "date": "2026-07-13",
+            "close": 83.97
+          },
+          {
+            "date": "2026-07-14",
+            "close": 84.08
+          },
+          {
+            "date": "2026-07-15",
+            "close": 84.24
+          },
+          {
+            "date": "2026-07-16",
+            "close": 84.21
+          },
+          {
+            "date": "2026-07-17",
+            "close": 84.52
+          },
+          {
+            "date": "2026-07-20",
+            "close": 83.89
+          },
+          {
+            "date": "2026-07-21",
+            "close": 83.66
+          },
+          {
+            "date": "2026-07-22",
+            "close": 83.44
+          },
+          {
+            "date": "2026-07-23",
+            "close": 83.17
+          },
+          {
+            "date": "2026-07-24",
+            "close": 83.25
+          },
+          {
+            "date": "2026-07-27",
+            "close": 83.75
+          },
+          {
+            "date": "2026-07-28",
+            "close": 84.24
+          },
+          {
+            "date": "2026-07-29",
+            "close": 82.85
+          },
+          {
+            "date": "2026-07-30",
+            "close": 82.8
+          },
+          {
+            "date": "2026-07-31",
+            "close": 82.25
+          },
+          {
+            "date": "2026-08-03",
+            "close": 82.19
+          },
+          {
+            "date": "2026-08-04",
+            "close": 82.82
+          },
+          {
+            "date": "2026-08-05",
+            "close": 83
+          },
+          {
+            "date": "2026-08-06",
+            "close": 82.52
+          },
+          {
+            "date": "2026-08-07",
+            "close": 82.76
+          },
+          {
+            "date": "2026-08-10",
+            "close": 82.06
+          },
+          {
+            "date": "2026-08-11",
+            "close": 82.19
+          },
+          {
+            "date": "2026-08-12",
+            "close": 82.11
+          },
+          {
+            "date": "2026-08-13",
+            "close": 82.59
+          },
+          {
+            "date": "2026-08-14",
+            "close": 82.04
+          },
+          {
+            "date": "2026-08-17",
+            "close": 81.35
+          },
+          {
+            "date": "2026-08-18",
+            "close": 81.66
+          },
+          {
+            "date": "2026-08-19",
+            "close": 83.02
+          },
+          {
+            "date": "2026-08-20",
+            "close": 82.34
+          },
+          {
+            "date": "2026-08-21",
+            "close": 82.05
+          },
+          {
+            "date": "2026-08-24",
+            "close": 82.56
+          },
+          {
+            "date": "2026-08-25",
+            "close": 83.47
+          },
+          {
+            "date": "2026-08-26",
+            "close": 83.3
+          },
+          {
+            "date": "2026-08-27",
+            "close": 83.13
+          },
+          {
+            "date": "2026-08-28",
+            "close": 82.88
+          },
+          {
+            "date": "2026-08-31",
+            "close": 82.52
+          },
+          {
+            "date": "2026-09-01",
+            "close": 81.87
+          },
+          {
+            "date": "2026-09-02",
+            "close": 81.95
+          },
+          {
+            "date": "2026-09-03",
+            "close": 82.07
+          },
+          {
+            "date": "2026-09-04",
+            "close": 82.21
+          },
+          {
+            "date": "2026-09-08",
+            "close": 82.2
+          },
+          {
+            "date": "2026-09-09",
+            "close": 81.73
+          },
+          {
+            "date": "2026-09-10",
+            "close": 80.78
+          },
+          {
+            "date": "2026-09-11",
+            "close": 80.87
+          },
+          {
+            "date": "2026-09-14",
+            "close": 80.93
+          },
+          {
+            "date": "2026-09-15",
+            "close": 80.71
+          },
+          {
+            "date": "2026-09-16",
+            "close": 80.88
+          },
+          {
+            "date": "2026-09-17",
+            "close": 81.78
+          },
+          {
+            "date": "2026-09-18",
+            "close": 81.1801
+          }
+        ]
+      }
+    }
+  ],
+  "accountability": {
+    "sourceReportDate": "2026-09-17",
+    "sourceEdition": "Daily market edition",
+    "evaluatedThrough": "2026-09-18",
+    "status": "open",
+    "wins": 0,
+    "losses": 0,
+    "nearBreakeven": 0,
+    "open": 1,
+    "resolvedPnlDollars": 0,
+    "read": "The Sep 17, 2026 basket has no scored expiration result yet. 1 position remains open.",
+    "trades": [
+      {
+        "tradeId": "slv-2026-09-30-call_debit-59-62",
+        "name": "SLV 9/30 59/62 Call Debit Spread",
+        "symbol": "SLV",
+        "style": "call_debit",
+        "expiration": "2026-09-30",
+        "status": "open",
+        "read": "The spread remains open through Sep 30, 2026; no expiration result is assigned."
+      }
+    ]
+  },
+  "accountabilityHistory": [
+    {
+      "sourceReportDate": "2026-09-17",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-09-18",
+      "status": "open",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 1,
+      "resolvedPnlDollars": 0,
+      "read": "The Sep 17, 2026 basket has no scored expiration result yet. 1 position remains open.",
+      "trades": [
+        {
+          "tradeId": "slv-2026-09-30-call_debit-59-62",
+          "name": "SLV 9/30 59/62 Call Debit Spread",
+          "symbol": "SLV",
+          "style": "call_debit",
+          "expiration": "2026-09-30",
+          "status": "open",
+          "read": "The spread remains open through Sep 30, 2026; no expiration result is assigned."
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-09-10",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-09-18",
+      "status": "open",
+      "wins": 0,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 2,
+      "resolvedPnlDollars": 0,
+      "read": "The Sep 10, 2026 basket has no scored expiration result yet. 2 positions remain open.",
+      "trades": [
+        {
+          "tradeId": "spy-2026-09-23-put_debit-755-750",
+          "name": "SPY 9/23 755/750 Put Debit Spread",
+          "symbol": "SPY",
+          "style": "put_debit",
+          "expiration": "2026-09-23",
+          "status": "open",
+          "read": "The spread remains open through Sep 23, 2026; no expiration result is assigned."
+        },
+        {
+          "tradeId": "iwm-2026-09-23-put_debit-284-280",
+          "name": "IWM 9/23 284/280 Put Debit Spread",
+          "symbol": "IWM",
+          "style": "put_debit",
+          "expiration": "2026-09-23",
+          "status": "open",
+          "read": "The spread remains open through Sep 23, 2026; no expiration result is assigned."
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-08-28",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-09-18",
+      "status": "complete",
+      "wins": 1,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 0,
+      "resolvedPnlDollars": 405,
+      "read": "The Aug 28, 2026 basket has 1 win, 0 near-breakeven results and 0 losses across 1 resolved spread, for modeled one-lot expiration P/L of $405.00. All listed positions are resolved.",
+      "trades": [
+        {
+          "tradeId": "iwm-2026-09-11-call_credit-296-290",
+          "name": "IWM 9/11 290/296 Call Credit Spread",
+          "symbol": "IWM",
+          "style": "call_credit",
+          "expiration": "2026-09-11",
+          "status": "win",
+          "read": "IWM closed at $288.89 for expiration settlement, producing $405.00 on the one-lot spread.",
+          "settlementDate": "2026-09-11",
+          "settlementUnderlying": 288.89,
+          "settlementValue": 0,
+          "realizedPnlDollars": 405
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-08-21",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-09-18",
+      "status": "complete",
+      "wins": 0,
+      "losses": 1,
+      "nearBreakeven": 0,
+      "open": 0,
+      "resolvedPnlDollars": -36,
+      "read": "The Aug 21, 2026 basket has 0 wins, 0 near-breakeven results and 1 loss across 1 resolved spread, for modeled one-lot expiration P/L of -$36.00. All listed positions are resolved.",
+      "trades": [
+        {
+          "tradeId": "tlt-2026-09-04-call_credit-82-81",
+          "name": "TLT 9/4 81/82 Call Credit Spread",
+          "symbol": "TLT",
+          "style": "call_credit",
+          "expiration": "2026-09-04",
+          "status": "loss",
+          "read": "TLT closed at $82.21 for expiration settlement, producing -$36.00 on the one-lot spread.",
+          "settlementDate": "2026-09-04",
+          "settlementUnderlying": 82.21,
+          "settlementValue": 1,
+          "realizedPnlDollars": -36
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-08-20",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-09-18",
+      "status": "complete",
+      "wins": 1,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 0,
+      "resolvedPnlDollars": 281,
+      "read": "The Aug 20, 2026 basket has 1 win, 0 near-breakeven results and 0 losses across 1 resolved spread, for modeled one-lot expiration P/L of $281.00. All listed positions are resolved.",
+      "trades": [
+        {
+          "tradeId": "qqq-2026-09-02-put_debit-715-710",
+          "name": "QQQ 9/2 715/710 Put Debit Spread",
+          "symbol": "QQQ",
+          "style": "put_debit",
+          "expiration": "2026-09-02",
+          "status": "win",
+          "read": "QQQ closed at $709.24 for expiration settlement, producing $281.00 on the one-lot spread.",
+          "settlementDate": "2026-09-02",
+          "settlementUnderlying": 709.24,
+          "settlementValue": 5,
+          "realizedPnlDollars": 281
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-08-10",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-09-18",
+      "status": "complete",
+      "wins": 1,
+      "losses": 0,
+      "nearBreakeven": 0,
+      "open": 0,
+      "resolvedPnlDollars": 216,
+      "read": "The Aug 10, 2026 basket has 1 win, 0 near-breakeven results and 0 losses across 1 resolved spread, for modeled one-lot expiration P/L of $216.00. All listed positions are resolved.",
+      "trades": [
+        {
+          "tradeId": "nflx-2026-08-21-call_debit-76-79",
+          "name": "NFLX 8/21 76/79 Call Debit Spread",
+          "symbol": "NFLX",
+          "style": "call_debit",
+          "expiration": "2026-08-21",
+          "status": "win",
+          "read": "NFLX closed at $79.59 for expiration settlement, producing $216.00 on the one-lot spread.",
+          "settlementDate": "2026-08-21",
+          "settlementUnderlying": 79.59,
+          "settlementValue": 3,
+          "realizedPnlDollars": 216
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-07-31",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-09-18",
+      "status": "complete",
+      "wins": 0,
+      "losses": 1,
+      "nearBreakeven": 0,
+      "open": 0,
+      "resolvedPnlDollars": -115,
+      "read": "The Jul 31, 2026 basket has 0 wins, 0 near-breakeven results and 1 loss across 1 resolved spread, for modeled one-lot expiration P/L of -$115.00. All listed positions are resolved.",
+      "trades": [
+        {
+          "tradeId": "nflx-2026-08-14-put_debit-71-67",
+          "name": "NFLX 8/14 71/67 Put Debit Spread",
+          "symbol": "NFLX",
+          "style": "put_debit",
+          "expiration": "2026-08-14",
+          "status": "loss",
+          "read": "NFLX closed at $78.16 for expiration settlement, producing -$115.00 on the one-lot spread.",
+          "settlementDate": "2026-08-14",
+          "settlementUnderlying": 78.16,
+          "settlementValue": 0,
+          "realizedPnlDollars": -115
+        }
+      ]
+    },
+    {
+      "sourceReportDate": "2026-07-29",
+      "sourceEdition": "Daily market edition",
+      "evaluatedThrough": "2026-09-18",
+      "status": "complete",
+      "wins": 0,
+      "losses": 1,
+      "nearBreakeven": 0,
+      "open": 0,
+      "resolvedPnlDollars": -204,
+      "read": "The Jul 29, 2026 basket has 0 wins, 0 near-breakeven results and 1 loss across 1 resolved spread, for modeled one-lot expiration P/L of -$204.00. All listed positions are resolved.",
+      "trades": [
+        {
+          "tradeId": "spy-2026-08-11-put_debit-735-730",
+          "name": "SPY 8/11 735/730 Put Debit Spread",
+          "symbol": "SPY",
+          "style": "put_debit",
+          "expiration": "2026-08-11",
+          "status": "loss",
+          "read": "SPY closed at $770.56 for expiration settlement, producing -$204.00 on the one-lot spread.",
+          "settlementDate": "2026-08-11",
+          "settlementUnderlying": 770.56,
+          "settlementValue": 0,
+          "realizedPnlDollars": -204
+        }
+      ]
+    }
+  ],
+  "marketRead": {
+    "asOfUtc": "2026-09-18T17:55:04.351Z",
+    "lookbackSessionDates": [
+      "2026-09-18",
+      "2026-09-17",
+      "2026-09-16",
+      "2026-09-11",
+      "2026-09-10"
+    ],
+    "headline": "The board is selling optimism, but only with defined risk",
+    "standfirst": "Today's 2-spread board is defensively tilted: 0 bullish and 2 bearish expressions, 41.8% average modeled probability of profit and $188 of aggregate one-lot maximum risk. Across 5 retained market boards, directional balance has moved more defensive; the top score is +55.00 points versus the prior-board average and modeled win probability is +22.3 percentage points.",
+    "commentary": [
+      "The market can look calm at index level while the option chain tells a less comfortable story. The published names carry -0.1% average five-session momentum and cluster most heavily in a mean reversion regime. That is not a blanket vote on the market; it is a warning that the day's best-defined payoffs are selective rather than broad.",
+      "SPY returns to the leading group, which makes follow-through more important than another round of headline enthusiasm. The top score sits at 96.04, while the basket's expected value totals $56 under conservative bid-and-ask entries. A ranking that cannot absorb the spread between theory and execution does not belong on the public board.",
+      "Average implied volatility is 18.0% against 9.2% realized volatility. The premium is visible, but expensive options are not automatically good shorts; the spread still has to survive direction and path. The structure mix is 1 credit and 1 debit spreads, so the board is neither blindly buying convexity nor mechanically selling premium. It is paying only where direction can justify the bill and collecting only where the strikes leave room for error.",
+      "The public headline radar is concentrated in broad-market positioning and rates. That is the catalyst layer, not the trade instruction: the useful question is whether those stories confirm the board's mean reversion regime or merely create an opening burst that fades after liquidity arrives."
+    ],
+    "newsRadar": [
+      {
+        "headline": "The Fed Is (Almost) Powerless Against the Bond Selloff",
+        "publisher": "Barrons.com",
+        "url": "https://finance.yahoo.com/m/35658212-404e-3714-9e40-e0d7001093af/the-fed-is-%28almost%29-powerless.html",
+        "publishedAtUtc": "2026-09-17T18:07:00.000Z",
+        "topic": "rates"
+      },
+      {
+        "headline": "Exchange-Traded Funds, Equity Futures Mixed Pre-Bell Friday as Tech Rally Continues",
+        "publisher": "MT Newswires",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-132105542.html",
+        "publishedAtUtc": "2026-09-18T13:21:05.000Z",
+        "topic": "broad_market"
+      }
+    ],
+    "watchItems": [
+      {
+        "label": "Breadth confirmation",
+        "signal": "0 bullish / 2 bearish; -0.1% mean five-session move",
+        "read": "Defensive skew needs downside follow-through. A fast reversal above entry regimes would invalidate the premise before contractual risk is reached."
+      },
+      {
+        "label": "Volatility spread",
+        "signal": "18.0% implied vs 9.2% realized",
+        "read": "Watch whether implied volatility expands with price movement or collapses after the opening catalyst. That relationship decides whether direction alone is enough."
+      },
+      {
+        "label": "Leadership durability",
+        "signal": "Repeat leaders: SPY",
+        "read": "Recurring names deserve confirmation at the published entry, not looser terms. Repetition can signal durable leadership or a crowded thesis."
+      },
+      {
+        "label": "News catalyst",
+        "signal": "2 ranked headlines across 2 themes",
+        "read": "The leading broad-market positioning and rates headlines matter only where they alter cash-flow expectations, funding costs or volatility. Price confirmation decides whether the story belongs in the trade."
+      },
+      {
+        "label": "Risk budget",
+        "signal": "$188 maximum one-lot basket loss (+$94 vs prior average)",
+        "read": "Maximum losses are additive. Correlated names can fail together even when each spread is individually defined, so basket risk matters more than the comfort of any single cap."
+      }
+    ],
+    "basis": "Rolling comparison uses 5 retained published market sessions: Sep 18, 2026, Sep 17, 2026, Sep 16, 2026, Sep 11, 2026, Sep 10, 2026. The current screen ranked 29 candidates across 40 included symbols. Headline ranking uses publication time, market relevance, source quality, symbol relevance and topic diversity. Market evidence is timestamped Sep 18, 2026, 1:55 PM EDT."
+  },
+  "methodology": {
+    "selectionCriteria": [
+      "A broad liquid-symbol quote universe is intersected with the source's fingerprinted universe. Core market anchors, the largest percentage movers, the most active names and a date-seeded rotation sleeve determine which option chains are evaluated.",
+      "The nearest expiration inside the configured 7-to-35-day window is chosen by distance from a 14-day target.",
+      "Each candidate is a two-leg, one-lot vertical spread with a known maximum loss at entry.",
+      "Both legs must clear bid, ask, open-interest, volume, derived-Greek, timestamp and relative quote-width gates.",
+      "The current session and five-, fifteen- and sixty-session price structure must confirm the trade direction.",
+      "A trade publishes only when every hard gate clears; the basket is never filled with a rejected or negative-expectancy setup.",
+      "Resolved trades train bounded feature adjustments only after the minimum sample threshold; every policy and input dataset is versioned with the report."
+    ],
+    "rankingFramework": [
+      "Four deterministic views estimate the payoff: jump-stress simulation, market-implied terminal probability, a horizon-confirmed regime estimate and a fat-tail case.",
+      "Publication requires at least 3 positive models, 5 percentage points of probability margin and nonnegative conservative expected value.",
+      "Liquidity must score at least 0.80, and the unadjusted eligibility score must reach 70.",
+      "Scenario perturbations measure whether the setup remains viable when probability assumptions move in either direction.",
+      "Resolved prior outcomes may reorder candidates that already passed every deterministic gate; they cannot promote a failed candidate.",
+      "The advanced feature layer contributes at most 8 score points and currently contains 30 fully resolved training examples."
+    ],
+    "executionAssumption": "Every entry is marked conservatively: the long leg is bought at its ask and the short leg is sold at its bid. Maximum loss and maximum profit are shown for one spread before commissions, fees, early assignment and exercise costs.",
+    "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
+    "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Sep 18, 2026, 1:55 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
+    "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  }
+}
