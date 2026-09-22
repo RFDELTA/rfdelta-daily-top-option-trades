@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 SLV enters with +2.7% five-session momentum and -1.6% over twenty sessions. Realized volatility is 39.4%, placing the underlying in a mean reversion regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SLV entry and open-position history](/charts/2026-09-17/underlying/01-slv.svg) at $59.05; latest official close $59.63 on 2026-09-21.
+**Underlying chart:** [SLV entry and open-position history](/charts/2026-09-17/underlying/01-slv.svg) at $59.05; latest official close $60.73 on 2026-09-22.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 40.0; MACD spread -0.70%; ATR(14) 3.35%; realized volatility 39.4%; ATM implied volatility 35.0%; expected move 5.3%. Outcome-trained score adjustment: +0.76.
 
