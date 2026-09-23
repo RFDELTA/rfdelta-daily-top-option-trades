@@ -216,11 +216,9 @@
         "assetPath": "/charts/2026-09-10/underlying/01-spy.svg",
         "entryDate": "2026-09-10",
         "entryPrice": 758.34,
+        "closeDate": "2026-09-23",
+        "closePrice": 767.81,
         "points": [
-          {
-            "date": "2026-05-14",
-            "close": 748.17
-          },
           {
             "date": "2026-05-15",
             "close": 739.17
@@ -576,6 +574,10 @@
           {
             "date": "2026-09-22",
             "close": 773.38
+          },
+          {
+            "date": "2026-09-23",
+            "close": 767.81
           }
         ]
       },
@@ -615,6 +617,10 @@
         {
           "date": "2026-09-22",
           "underlyingClose": 773.38
+        },
+        {
+          "date": "2026-09-23",
+          "underlyingClose": 767.81
         }
       ]
     },
@@ -778,11 +784,9 @@
         "assetPath": "/charts/2026-09-10/underlying/02-iwm.svg",
         "entryDate": "2026-09-10",
         "entryPrice": 287.75,
+        "closeDate": "2026-09-23",
+        "closePrice": 281.92,
         "points": [
-          {
-            "date": "2026-05-14",
-            "close": 284.45
-          },
           {
             "date": "2026-05-15",
             "close": 277.6
@@ -1138,6 +1142,10 @@
           {
             "date": "2026-09-22",
             "close": 287.21
+          },
+          {
+            "date": "2026-09-23",
+            "close": 281.92
           }
         ]
       },
@@ -1177,6 +1185,10 @@
         {
           "date": "2026-09-22",
           "underlyingClose": 287.21
+        },
+        {
+          "date": "2026-09-23",
+          "underlyingClose": 281.92
         }
       ]
     }
@@ -1495,5 +1507,53 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Sep 10, 2026, 1:55 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-09-23",
+    "evaluatedAtUtc": "2026-09-23T22:59:32.464Z",
+    "tradeCount": 2,
+    "wins": 1,
+    "losses": 1,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 274,
+    "finalPnlDollars": -66,
+    "returnOnRisk": -0.240876,
+    "bestTradeId": "iwm-2026-09-23-put_debit-284-280",
+    "worstTradeId": "spy-2026-09-23-put_debit-755-750",
+    "headline": "Sep 10, 2026 basket closes with -$66.00 final P/L",
+    "commentary": [
+      "The 2-trade basket finished with 1 win, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$66.00, equal to -24.1% of the maximum capital at risk.",
+      "IWM 9/23 284/280 Put Debit Spread was the strongest contributor at $96.00. SPY 9/23 755/750 Put Debit Spread was the largest detractor at -$162.00.",
+      "What worked: put debit. What needs tighter gating: put debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "spy-2026-09-23-put_debit-755-750",
+        "name": "SPY 9/23 755/750 Put Debit Spread",
+        "symbol": "SPY",
+        "style": "put_debit",
+        "expiration": "2026-09-23",
+        "status": "loss",
+        "read": "SPY closed at $767.81 for expiration settlement, producing -$162.00 on the one-lot spread.",
+        "settlementDate": "2026-09-23",
+        "settlementUnderlying": 767.81,
+        "settlementValue": 0,
+        "realizedPnlDollars": -162
+      },
+      {
+        "tradeId": "iwm-2026-09-23-put_debit-284-280",
+        "name": "IWM 9/23 284/280 Put Debit Spread",
+        "symbol": "IWM",
+        "style": "put_debit",
+        "expiration": "2026-09-23",
+        "status": "win",
+        "read": "IWM closed at $281.92 for expiration settlement, producing $96.00 on the one-lot spread.",
+        "settlementDate": "2026-09-23",
+        "settlementUnderlying": 281.92,
+        "settlementValue": 2.08,
+        "realizedPnlDollars": 96
+      }
+    ]
   }
 }
