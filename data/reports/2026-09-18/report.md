@@ -29,7 +29,7 @@ TLT supplies the counterweight. Its call credit structure scores 87.97 and carri
 
 SPY enters with -0.6% five-session momentum and -0.4% over twenty sessions. Realized volatility is 9.2%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SPY entry and open-position history](/charts/2026-09-18/underlying/01-spy.svg) at $759.83; latest official close $767.18 on 2026-09-24.
+**Underlying chart:** [SPY entry and open-position history](/charts/2026-09-18/underlying/01-spy.svg) at $759.83; latest official close $771.35 on 2026-09-25.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 42.4; MACD spread -0.17%; ATR(14) 0.87%; realized volatility 9.2%; ATM implied volatility 11.0%; expected move 1.7%. Outcome-trained score adjustment: +2.79.
 
@@ -45,7 +45,7 @@ SPY enters with -0.6% five-session momentum and -0.4% over twenty sessions. Real
 
 TLT enters with +0.4% five-session momentum and -1.4% over twenty sessions. Realized volatility is 9.1%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-09-18/underlying/02-tlt.svg) at $81.18; latest official close $79.42 on 2026-09-24.
+**Underlying chart:** [TLT entry and open-position history](/charts/2026-09-18/underlying/02-tlt.svg) at $81.18; latest official close $79.32 on 2026-09-25.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 32.4; MACD spread -0.03%; ATR(14) 0.86%; realized volatility 9.1%; ATM implied volatility 11.5%; expected move 1.8%. Outcome-trained score adjustment: +1.85.
 
