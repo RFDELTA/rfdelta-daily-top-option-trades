@@ -1,0 +1,3 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","IWM","IWM 10/9 272/280 Call Credit Spread","call_credit","2026-10-09","11","280.02","Credit","5.63","0.3975","71.2","237","563","2.38","277.63","-0.85","100","0.8875","0.2063"
+"2","SPY","SPY 10/9 766/759 Put Debit Spread","put_debit","2026-10-09","11","765.16","Debit","2.47","0.461","66.78","247","453","1.83","763.53","-0.21","95.24","0.9245","0.18"

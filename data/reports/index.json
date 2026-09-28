@@ -1,6 +1,15 @@
 {
-  "latest": "2026-09-24",
+  "latest": "2026-09-28",
   "reports": [
+    {
+      "date": "2026-09-28",
+      "title": "2 defined-risk option setups lead the Sep 28, 2026 board",
+      "edition": "Daily market edition",
+      "dataAsOfUtc": "2026-09-28T20:50:58.307Z",
+      "topSymbol": "IWM",
+      "ideaCount": 2,
+      "topScore": 100
+    },
     {
       "date": "2026-09-24",
       "title": "No defined-risk option setup cleared the publication gate",
