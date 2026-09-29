@@ -29,7 +29,7 @@ SPY supplies the counterweight. Its put debit structure scores 95.24 and carries
 
 IWM enters with -1.9% five-session momentum and -5.3% over twenty sessions. Realized volatility is 12.3%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-09-28/underlying/01-iwm.svg) at $280.02.
+**Underlying chart:** [IWM entry and open-position history](/charts/2026-09-28/underlying/01-iwm.svg) at $280.02; latest official close $279.01 on 2026-09-29.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 22.8; MACD spread -0.21%; ATR(14) 1.28%; realized volatility 12.3%; ATM implied volatility 19.2%; expected move 2.7%. Outcome-trained score adjustment: +3.47.
 
@@ -45,7 +45,7 @@ IWM enters with -1.9% five-session momentum and -5.3% over twenty sessions. Real
 
 SPY enters with -1.1% five-session momentum and -0.5% over twenty sessions. Realized volatility is 11.1%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SPY entry and open-position history](/charts/2026-09-28/underlying/02-spy.svg) at $765.16.
+**Underlying chart:** [SPY entry and open-position history](/charts/2026-09-28/underlying/02-spy.svg) at $765.16; latest official close $764.20 on 2026-09-29.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 49.4; MACD spread 0.04%; ATR(14) 0.90%; realized volatility 11.1%; ATM implied volatility 12.7%; expected move 1.8%. Outcome-trained score adjustment: +1.45.
 

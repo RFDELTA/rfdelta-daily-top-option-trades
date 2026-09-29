@@ -222,10 +222,6 @@
         "entryPrice": 280.02,
         "points": [
           {
-            "date": "2026-05-20",
-            "close": 279.87
-          },
-          {
             "date": "2026-05-21",
             "close": 282.49
           },
@@ -580,9 +576,23 @@
           {
             "date": "2026-09-28",
             "close": 280.02
+          },
+          {
+            "date": "2026-09-29",
+            "close": 279.01
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-09-28",
+          "underlyingClose": 280.02
+        },
+        {
+          "date": "2026-09-29",
+          "underlyingClose": 279.01
+        }
+      ]
     },
     {
       "rank": 2,
@@ -745,10 +755,6 @@
         "entryDate": "2026-09-28",
         "entryPrice": 765.16,
         "points": [
-          {
-            "date": "2026-05-20",
-            "close": 741.25
-          },
           {
             "date": "2026-05-21",
             "close": 742.72
@@ -1103,10 +1109,24 @@
           },
           {
             "date": "2026-09-28",
-            "close": 765.16
+            "close": 765.61
+          },
+          {
+            "date": "2026-09-29",
+            "close": 764.2
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-09-28",
+          "underlyingClose": 765.61
+        },
+        {
+          "date": "2026-09-29",
+          "underlyingClose": 764.2
+        }
+      ]
     }
   ],
   "accountability": {

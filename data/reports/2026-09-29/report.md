@@ -29,7 +29,7 @@ IWM supplies the counterweight. Its put debit structure scores 90.81 and carries
 
 VZ enters with -0.8% five-session momentum and -7.8% over twenty sessions. Realized volatility is 22.2%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [VZ entry and open-position history](/charts/2026-09-29/underlying/01-vz.svg) at $46.09.
+**Underlying chart:** [VZ entry and open-position history](/charts/2026-09-29/underlying/01-vz.svg) at $46.09; latest official close $45.98 on 2026-09-29.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 29.3; MACD spread -1.01%; ATR(14) 2.34%; realized volatility 22.2%; ATM implied volatility 24.3%; expected move 4.2%. Outcome-trained score adjustment: +3.03.
 
@@ -45,7 +45,7 @@ VZ enters with -0.8% five-session momentum and -7.8% over twenty sessions. Reali
 
 IWM enters with -2.9% five-session momentum and -5.1% over twenty sessions. Realized volatility is 12.3%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-09-29/underlying/02-iwm.svg) at $278.94.
+**Underlying chart:** [IWM entry and open-position history](/charts/2026-09-29/underlying/02-iwm.svg) at $278.94; latest official close $279.01 on 2026-09-29.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 25.6; MACD spread -0.22%; ATR(14) 1.32%; realized volatility 12.3%; ATM implied volatility 17.9%; expected move 2.7%. Outcome-trained score adjustment: +3.74.
 
