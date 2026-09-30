@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 SLV enters with +2.7% five-session momentum and -1.6% over twenty sessions. Realized volatility is 39.4%, placing the underlying in a mean reversion regime. The bullish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SLV entry and open-position history](/charts/2026-09-17/underlying/01-slv.svg) at $59.05; latest official close $55.48 on 2026-09-29.
+**Underlying chart:** [SLV entry through expiration close](/charts/2026-09-17/underlying/01-slv.svg) at $59.05; expiration close $54.51.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 40.0; MACD spread -0.70%; ATR(14) 3.35%; realized volatility 39.4%; ATM implied volatility 35.0%; expected move 5.3%. Outcome-trained score adjustment: +0.76.
 
@@ -37,6 +37,20 @@ SLV enters with +2.7% five-session momentum and -1.6% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $103.00. Breakeven is $60.03 and requires a 1.7% rise from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $197.00, or 1.91 times maximum risk. The simulation assigns 23.7% probability to finishing near maximum profit and uses 35.5% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Sep 17, 2026 basket closes with -$103.00 final P/L**
+
+The 1-trade basket finished with 0 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$103.00, equal to -100.0% of the maximum capital at risk.
+
+SLV 9/30 59/62 Call Debit Spread was the strongest contributor at -$103.00.
+
+What needs tighter gating: call debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| SLV 9/30 59/62 Call Debit Spread | loss | -$103.00 | SLV closed at $54.51 for expiration settlement, producing -$103.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 
