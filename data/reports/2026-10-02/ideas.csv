@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","TLT","TLT 10/16 78/76 Put Debit Spread","put_debit","2026-10-16","14","77.415","Debit","0.8","0.4559","8.72","80","120","1.5","77.2","-0.28","85.93","0.9634","0.18"
