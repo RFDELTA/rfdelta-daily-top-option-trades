@@ -576,10 +576,16 @@
           },
           {
             "date": "2026-10-02",
-            "close": 77.415
+            "close": 77.48
           }
         ]
-      }
+      },
+      "dailyCloses": [
+        {
+          "date": "2026-10-02",
+          "underlyingClose": 77.48
+        }
+      ]
     }
   ],
   "accountability": {

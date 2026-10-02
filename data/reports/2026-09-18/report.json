@@ -218,6 +218,8 @@
         "assetPath": "/charts/2026-09-18/underlying/01-spy.svg",
         "entryDate": "2026-09-18",
         "entryPrice": 759.8301,
+        "closeDate": "2026-10-01",
+        "closePrice": 763.99,
         "points": [
           {
             "date": "2026-05-26",
@@ -787,11 +789,9 @@
         "assetPath": "/charts/2026-09-18/underlying/02-tlt.svg",
         "entryDate": "2026-09-18",
         "entryPrice": 81.1801,
+        "closeDate": "2026-10-02",
+        "closePrice": 77.48,
         "points": [
-          {
-            "date": "2026-05-26",
-            "close": 85.1
-          },
           {
             "date": "2026-05-27",
             "close": 85.3
@@ -1147,6 +1147,10 @@
           {
             "date": "2026-10-01",
             "close": 77.71
+          },
+          {
+            "date": "2026-10-02",
+            "close": 77.48
           }
         ]
       },
@@ -1190,6 +1194,10 @@
         {
           "date": "2026-10-01",
           "underlyingClose": 77.71
+        },
+        {
+          "date": "2026-10-02",
+          "underlyingClose": 77.48
         }
       ]
     }
@@ -1520,5 +1528,53 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Sep 18, 2026, 1:55 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-10-02",
+    "evaluatedAtUtc": "2026-10-02T23:51:07.607Z",
+    "tradeCount": 2,
+    "wins": 1,
+    "losses": 1,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 188,
+    "finalPnlDollars": -138,
+    "returnOnRisk": -0.734043,
+    "bestTradeId": "tlt-2026-10-02-call_credit-80.5-80",
+    "worstTradeId": "spy-2026-10-01-put_debit-760-755",
+    "headline": "Sep 18, 2026 basket closes with -$138.00 final P/L",
+    "commentary": [
+      "The 2-trade basket finished with 1 win, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$138.00, equal to -73.4% of the maximum capital at risk.",
+      "TLT 10/2 80/80.5 Call Credit Spread was the strongest contributor at $35.00. SPY 10/1 760/755 Put Debit Spread was the largest detractor at -$173.00.",
+      "What worked: call credit. What needs tighter gating: put debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "spy-2026-10-01-put_debit-760-755",
+        "name": "SPY 10/1 760/755 Put Debit Spread",
+        "symbol": "SPY",
+        "style": "put_debit",
+        "expiration": "2026-10-01",
+        "status": "loss",
+        "read": "SPY closed at $763.99 for expiration settlement, producing -$173.00 on the one-lot spread.",
+        "settlementDate": "2026-10-01",
+        "settlementUnderlying": 763.99,
+        "settlementValue": 0,
+        "realizedPnlDollars": -173
+      },
+      {
+        "tradeId": "tlt-2026-10-02-call_credit-80.5-80",
+        "name": "TLT 10/2 80/80.5 Call Credit Spread",
+        "symbol": "TLT",
+        "style": "call_credit",
+        "expiration": "2026-10-02",
+        "status": "win",
+        "read": "TLT closed at $77.48 for expiration settlement, producing $35.00 on the one-lot spread.",
+        "settlementDate": "2026-10-02",
+        "settlementUnderlying": 77.48,
+        "settlementValue": 0,
+        "realizedPnlDollars": 35
+      }
+    ]
   }
 }

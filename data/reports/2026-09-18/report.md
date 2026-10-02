@@ -29,7 +29,7 @@ TLT supplies the counterweight. Its call credit structure scores 87.97 and carri
 
 SPY enters with -0.6% five-session momentum and -0.4% over twenty sessions. Realized volatility is 9.2%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SPY entry and open-position history](/charts/2026-09-18/underlying/01-spy.svg) at $759.83; latest official close $763.99 on 2026-10-01.
+**Underlying chart:** [SPY entry through expiration close](/charts/2026-09-18/underlying/01-spy.svg) at $759.83; expiration close $763.99.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 42.4; MACD spread -0.17%; ATR(14) 0.87%; realized volatility 9.2%; ATM implied volatility 11.0%; expected move 1.7%. Outcome-trained score adjustment: +2.79.
 
@@ -45,7 +45,7 @@ SPY enters with -0.6% five-session momentum and -0.4% over twenty sessions. Real
 
 TLT enters with +0.4% five-session momentum and -1.4% over twenty sessions. Realized volatility is 9.1%, placing the underlying in a mean reversion regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-09-18/underlying/02-tlt.svg) at $81.18; latest official close $77.71 on 2026-10-01.
+**Underlying chart:** [TLT entry through expiration close](/charts/2026-09-18/underlying/02-tlt.svg) at $81.18; expiration close $77.48.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 32.4; MACD spread -0.03%; ATR(14) 0.86%; realized volatility 9.1%; ATM implied volatility 11.5%; expected move 1.8%. Outcome-trained score adjustment: +1.85.
 
@@ -54,6 +54,21 @@ TLT enters with +0.4% five-session momentum and -1.4% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $15.00. Breakeven is $80.35 and requires a 1.0% decline from the source mark. Primary watch: low credit probability; call short strike at/below spot. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $35.00, or 2.33 times maximum risk. The simulation assigns 32.7% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Sep 18, 2026 basket closes with -$138.00 final P/L**
+
+The 2-trade basket finished with 1 win, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$138.00, equal to -73.4% of the maximum capital at risk.
+
+TLT 10/2 80/80.5 Call Credit Spread was the strongest contributor at $35.00. SPY 10/1 760/755 Put Debit Spread was the largest detractor at -$173.00.
+
+What worked: call credit. What needs tighter gating: put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| SPY 10/1 760/755 Put Debit Spread | loss | -$173.00 | SPY closed at $763.99 for expiration settlement, producing -$173.00 on the one-lot spread. |
+| TLT 10/2 80/80.5 Call Credit Spread | win | $35.00 | TLT closed at $77.48 for expiration settlement, producing $35.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 
