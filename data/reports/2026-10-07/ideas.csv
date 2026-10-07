@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","IWM","IWM 10/20 278/272 Put Debit Spread","put_debit","2026-10-20","13","277.86","Debit","2.01","0.4105","37.47","201","399","1.99","275.99","-0.67","90.05","0.8156","0.18"
