@@ -220,19 +220,9 @@
         "assetPath": "/charts/2026-09-28/underlying/01-iwm.svg",
         "entryDate": "2026-09-28",
         "entryPrice": 280.02,
+        "closeDate": "2026-10-09",
+        "closePrice": 278.94,
         "points": [
-          {
-            "date": "2026-05-29",
-            "close": 290.43
-          },
-          {
-            "date": "2026-06-01",
-            "close": 288.98
-          },
-          {
-            "date": "2026-06-02",
-            "close": 291.66
-          },
           {
             "date": "2026-06-03",
             "close": 287.67
@@ -580,6 +570,18 @@
           {
             "date": "2026-10-06",
             "close": 281.34
+          },
+          {
+            "date": "2026-10-07",
+            "close": 277.7
+          },
+          {
+            "date": "2026-10-08",
+            "close": 277.57
+          },
+          {
+            "date": "2026-10-09",
+            "close": 278.94
           }
         ]
       },
@@ -774,19 +776,9 @@
         "assetPath": "/charts/2026-09-28/underlying/02-spy.svg",
         "entryDate": "2026-09-28",
         "entryPrice": 765.16,
+        "closeDate": "2026-10-09",
+        "closePrice": 778.57,
         "points": [
-          {
-            "date": "2026-05-29",
-            "close": 756.48
-          },
-          {
-            "date": "2026-06-01",
-            "close": 758.54
-          },
-          {
-            "date": "2026-06-02",
-            "close": 759.57
-          },
           {
             "date": "2026-06-03",
             "close": 754.24
@@ -1134,6 +1126,18 @@
           {
             "date": "2026-10-06",
             "close": 779.09
+          },
+          {
+            "date": "2026-10-07",
+            "close": 777.22
+          },
+          {
+            "date": "2026-10-08",
+            "close": 773.93
+          },
+          {
+            "date": "2026-10-09",
+            "close": 778.57
           }
         ]
       },
@@ -1510,5 +1514,53 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Sep 28, 2026, 4:50 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-10-09",
+    "evaluatedAtUtc": "2026-10-12T22:16:58.076Z",
+    "tradeCount": 2,
+    "wins": 0,
+    "losses": 2,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 484,
+    "finalPnlDollars": -378,
+    "returnOnRisk": -0.780992,
+    "bestTradeId": "iwm-2026-10-09-call_credit-280-272",
+    "worstTradeId": "spy-2026-10-09-put_debit-766-759",
+    "headline": "Sep 28, 2026 basket closes with -$378.00 final P/L",
+    "commentary": [
+      "The 2-trade basket finished with 0 wins, 0 near-breakeven results and 2 losses. The modeled one-lot portfolio produced a loss of -$378.00, equal to -78.1% of the maximum capital at risk.",
+      "IWM 10/9 272/280 Call Credit Spread was the strongest contributor at -$131.00. SPY 10/9 766/759 Put Debit Spread was the largest detractor at -$247.00.",
+      "What needs tighter gating: call credit, put debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "iwm-2026-10-09-call_credit-280-272",
+        "name": "IWM 10/9 272/280 Call Credit Spread",
+        "symbol": "IWM",
+        "style": "call_credit",
+        "expiration": "2026-10-09",
+        "status": "loss",
+        "read": "IWM closed at $278.94 for expiration settlement, producing -$131.00 on the one-lot spread.",
+        "settlementDate": "2026-10-09",
+        "settlementUnderlying": 278.94,
+        "settlementValue": 6.94,
+        "realizedPnlDollars": -131
+      },
+      {
+        "tradeId": "spy-2026-10-09-put_debit-766-759",
+        "name": "SPY 10/9 766/759 Put Debit Spread",
+        "symbol": "SPY",
+        "style": "put_debit",
+        "expiration": "2026-10-09",
+        "status": "loss",
+        "read": "SPY closed at $778.57 for expiration settlement, producing -$247.00 on the one-lot spread.",
+        "settlementDate": "2026-10-09",
+        "settlementUnderlying": 778.57,
+        "settlementValue": 0,
+        "realizedPnlDollars": -247
+      }
+    ]
   }
 }

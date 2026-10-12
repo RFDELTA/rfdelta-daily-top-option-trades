@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0",
+  "policyVersion": "rfdelta-online-policy-v1",
+  "trainedAtUtc": "2026-10-12T22:16:58.076Z",
+  "trainingThroughDate": "2026-10-12",
+  "resolvedTradeCount": 37,
+  "minimumTrainingSamples": 8,
+  "active": true,
+  "regularization": 2,
+  "maximumScoreAdjustment": 8,
+  "featureWeights": {
+    "trendAlignment": 0.083009,
+    "meanReversion": -0.236964,
+    "volatilityQuality": 0.007978,
+    "optionsSkew": -0.000777,
+    "liquidity": -0.078611,
+    "riskAdjustedMomentum": -0.134737
+  },
+  "featureStats": {
+    "trendAlignment": {
+      "sampleCount": 37,
+      "sumX2": 9.206975,
+      "sumXY": 0.930279,
+      "coefficient": 0.083009
+    },
+    "meanReversion": {
+      "sampleCount": 37,
+      "sumX2": 6.054807,
+      "sumXY": -1.908703,
+      "coefficient": -0.236964
+    },
+    "volatilityQuality": {
+      "sampleCount": 37,
+      "sumX2": 20.408538,
+      "sumXY": 0.178765,
+      "coefficient": 0.007978
+    },
+    "optionsSkew": {
+      "sampleCount": 37,
+      "sumX2": 0.214374,
+      "sumXY": -0.00172,
+      "coefficient": -0.000777
+    },
+    "liquidity": {
+      "sampleCount": 37,
+      "sumX2": 17.203953,
+      "sumXY": -1.509642,
+      "coefficient": -0.078611
+    },
+    "riskAdjustedMomentum": {
+      "sampleCount": 37,
+      "sumX2": 14.845665,
+      "sumXY": -2.269731,
+      "coefficient": -0.134737
+    }
+  },
+  "sourceReportIds": [
+    "rfdelta-options-2026-06-19-3bc1cabccc13",
+    "rfdelta-options-2026-07-10-a9d31b860654",
+    "rfdelta-options-2026-07-13-8ea70f664a68",
+    "rfdelta-options-2026-07-14-cc69dd62a9b1",
+    "rfdelta-options-2026-07-16-2707c0e0007b",
+    "rfdelta-options-2026-07-17-4366a563bfca",
+    "rfdelta-options-2026-07-21-e505b4e430b0",
+    "rfdelta-options-2026-07-29-98590f0ff77f",
+    "rfdelta-options-2026-07-31-0603fc8cc3d9",
+    "rfdelta-options-2026-08-10-982a3fefa834",
+    "rfdelta-options-2026-08-20-ad636b441d41",
+    "rfdelta-options-2026-08-21-738d05718e21",
+    "rfdelta-options-2026-08-28-010a0291261d",
+    "rfdelta-options-2026-09-10-e6a9b190812b",
+    "rfdelta-options-2026-09-17-61347abd9b9d",
+    "rfdelta-options-2026-09-18-65afc489e084",
+    "rfdelta-options-2026-09-28-642fa15684f7"
+  ]
+}

@@ -29,7 +29,7 @@ SPY supplies the counterweight. Its put debit structure scores 95.24 and carries
 
 IWM enters with -1.9% five-session momentum and -5.3% over twenty sessions. Realized volatility is 12.3%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-09-28/underlying/01-iwm.svg) at $280.02; latest official close $281.34 on 2026-10-06.
+**Underlying chart:** [IWM entry through expiration close](/charts/2026-09-28/underlying/01-iwm.svg) at $280.02; expiration close $278.94.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 22.8; MACD spread -0.21%; ATR(14) 1.28%; realized volatility 12.3%; ATM implied volatility 19.2%; expected move 2.7%. Outcome-trained score adjustment: +3.47.
 
@@ -45,7 +45,7 @@ IWM enters with -1.9% five-session momentum and -5.3% over twenty sessions. Real
 
 SPY enters with -1.1% five-session momentum and -0.5% over twenty sessions. Realized volatility is 11.1%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SPY entry and open-position history](/charts/2026-09-28/underlying/02-spy.svg) at $765.16; latest official close $779.09 on 2026-10-06.
+**Underlying chart:** [SPY entry through expiration close](/charts/2026-09-28/underlying/02-spy.svg) at $765.16; expiration close $778.57.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 49.4; MACD spread 0.04%; ATR(14) 0.90%; realized volatility 11.1%; ATM implied volatility 12.7%; expected move 1.8%. Outcome-trained score adjustment: +1.45.
 
@@ -54,6 +54,21 @@ SPY enters with -1.1% five-session momentum and -0.5% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $247.00. Breakeven is $763.53 and requires a 0.2% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $453.00, or 1.83 times maximum risk. The simulation assigns 38.7% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Sep 28, 2026 basket closes with -$378.00 final P/L**
+
+The 2-trade basket finished with 0 wins, 0 near-breakeven results and 2 losses. The modeled one-lot portfolio produced a loss of -$378.00, equal to -78.1% of the maximum capital at risk.
+
+IWM 10/9 272/280 Call Credit Spread was the strongest contributor at -$131.00. SPY 10/9 766/759 Put Debit Spread was the largest detractor at -$247.00.
+
+What needs tighter gating: call credit, put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| IWM 10/9 272/280 Call Credit Spread | loss | -$131.00 | IWM closed at $278.94 for expiration settlement, producing -$131.00 on the one-lot spread. |
+| SPY 10/9 766/759 Put Debit Spread | loss | -$247.00 | SPY closed at $778.57 for expiration settlement, producing -$247.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

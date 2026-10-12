@@ -1,57 +1,57 @@
 {
   "schemaVersion": "1.0",
   "policyVersion": "rfdelta-online-policy-v1",
-  "trainedAtUtc": "2026-10-09T19:49:22.767Z",
-  "trainingThroughDate": "2026-10-09",
-  "resolvedTradeCount": 35,
+  "trainedAtUtc": "2026-10-12T22:16:58.076Z",
+  "trainingThroughDate": "2026-10-12",
+  "resolvedTradeCount": 37,
   "minimumTrainingSamples": 8,
   "active": true,
   "regularization": 2,
   "maximumScoreAdjustment": 8,
   "featureWeights": {
-    "trendAlignment": 0.174961,
-    "meanReversion": -0.281949,
-    "volatilityQuality": 0.073339,
-    "optionsSkew": 0.00831,
-    "liquidity": -0.002558,
-    "riskAdjustedMomentum": -0.099324
+    "trendAlignment": 0.083009,
+    "meanReversion": -0.236964,
+    "volatilityQuality": 0.007978,
+    "optionsSkew": -0.000777,
+    "liquidity": -0.078611,
+    "riskAdjustedMomentum": -0.134737
   },
   "featureStats": {
     "trendAlignment": {
-      "sampleCount": 35,
-      "sumX2": 8.123883,
-      "sumXY": 1.77128,
-      "coefficient": 0.174961
+      "sampleCount": 37,
+      "sumX2": 9.206975,
+      "sumXY": 0.930279,
+      "coefficient": 0.083009
     },
     "meanReversion": {
-      "sampleCount": 35,
-      "sumX2": 5.784616,
-      "sumXY": -2.194866,
-      "coefficient": -0.281949
+      "sampleCount": 37,
+      "sumX2": 6.054807,
+      "sumXY": -1.908703,
+      "coefficient": -0.236964
     },
     "volatilityQuality": {
-      "sampleCount": 35,
-      "sumX2": 18.895105,
-      "sumXY": 1.532417,
-      "coefficient": 0.073339
+      "sampleCount": 37,
+      "sumX2": 20.408538,
+      "sumXY": 0.178765,
+      "coefficient": 0.007978
     },
     "optionsSkew": {
-      "sampleCount": 35,
-      "sumX2": 0.213403,
-      "sumXY": 0.018393,
-      "coefficient": 0.00831
+      "sampleCount": 37,
+      "sumX2": 0.214374,
+      "sumXY": -0.00172,
+      "coefficient": -0.000777
     },
     "liquidity": {
-      "sampleCount": 35,
-      "sumX2": 15.445273,
-      "sumXY": -0.044627,
-      "coefficient": -0.002558
+      "sampleCount": 37,
+      "sumX2": 17.203953,
+      "sumXY": -1.509642,
+      "coefficient": -0.078611
     },
     "riskAdjustedMomentum": {
-      "sampleCount": 35,
-      "sumX2": 13.824573,
-      "sumXY": -1.571758,
-      "coefficient": -0.099324
+      "sampleCount": 37,
+      "sumX2": 14.845665,
+      "sumXY": -2.269731,
+      "coefficient": -0.134737
     }
   },
   "sourceReportIds": [
@@ -70,6 +70,7 @@
     "rfdelta-options-2026-08-28-010a0291261d",
     "rfdelta-options-2026-09-10-e6a9b190812b",
     "rfdelta-options-2026-09-17-61347abd9b9d",
-    "rfdelta-options-2026-09-18-65afc489e084"
+    "rfdelta-options-2026-09-18-65afc489e084",
+    "rfdelta-options-2026-09-28-642fa15684f7"
   ]
 }
