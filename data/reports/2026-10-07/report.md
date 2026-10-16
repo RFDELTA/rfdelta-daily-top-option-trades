@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 IWM enters with -0.0% five-session momentum and -4.4% over twenty sessions. Realized volatility is 11.7%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-10-07/underlying/01-iwm.svg) at $277.86; latest official close $275.08 on 2026-10-15.
+**Underlying chart:** [IWM entry and open-position history](/charts/2026-10-07/underlying/01-iwm.svg) at $277.86; latest official close $270.44 on 2026-10-16.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 35.1; MACD spread 0.05%; ATR(14) 1.32%; realized volatility 11.7%; ATM implied volatility 16.8%; expected move 2.5%. Outcome-trained score adjustment: +2.56.
 

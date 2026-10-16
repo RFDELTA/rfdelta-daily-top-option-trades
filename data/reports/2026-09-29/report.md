@@ -29,7 +29,7 @@ IWM supplies the counterweight. Its put debit structure scores 90.81 and carries
 
 VZ enters with -0.8% five-session momentum and -7.8% over twenty sessions. Realized volatility is 22.2%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [VZ entry and open-position history](/charts/2026-09-29/underlying/01-vz.svg) at $46.09; latest official close $44.40 on 2026-10-15.
+**Underlying chart:** [VZ entry through expiration close](/charts/2026-09-29/underlying/01-vz.svg) at $46.09; expiration close $44.79.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 29.3; MACD spread -1.01%; ATR(14) 2.34%; realized volatility 22.2%; ATM implied volatility 24.3%; expected move 4.2%. Outcome-trained score adjustment: +3.03.
 
@@ -45,7 +45,7 @@ VZ enters with -0.8% five-session momentum and -7.8% over twenty sessions. Reali
 
 IWM enters with -2.9% five-session momentum and -5.1% over twenty sessions. Realized volatility is 12.3%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-09-29/underlying/02-iwm.svg) at $278.94; latest official close $277.90 on 2026-10-12.
+**Underlying chart:** [IWM entry through expiration close](/charts/2026-09-29/underlying/02-iwm.svg) at $278.94; expiration close $277.90.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 25.6; MACD spread -0.22%; ATR(14) 1.32%; realized volatility 12.3%; ATM implied volatility 17.9%; expected move 2.7%. Outcome-trained score adjustment: +3.74.
 
@@ -54,6 +54,21 @@ IWM enters with -2.9% five-session momentum and -5.1% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $126.00. Breakeven is $274.74 and requires a 1.5% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $374.00, or 2.97 times maximum risk. The simulation assigns 21.2% probability to finishing near maximum profit and uses 19.6% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Sep 29, 2026 basket closes with -$77.00 final P/L**
+
+The 2-trade basket finished with 1 win, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$77.00, equal to -38.9% of the maximum capital at risk.
+
+VZ 10/16 43/46 Call Credit Spread was the strongest contributor at $49.00. IWM 10/12 276/271 Put Debit Spread was the largest detractor at -$126.00.
+
+What worked: call credit. What needs tighter gating: put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| VZ 10/16 43/46 Call Credit Spread | win | $49.00 | VZ closed at $44.79 for expiration settlement, producing $49.00 on the one-lot spread. |
+| IWM 10/12 276/271 Put Debit Spread | loss | -$126.00 | IWM closed at $277.90 for expiration settlement, producing -$126.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

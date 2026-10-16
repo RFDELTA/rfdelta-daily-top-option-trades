@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 TLT enters with -2.4% five-session momentum and -5.7% over twenty sessions. Realized volatility is 10.3%, placing the underlying in a risk off regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [TLT entry and open-position history](/charts/2026-10-02/underlying/01-tlt.svg) at $77.42; latest official close $79.97 on 2026-10-15.
+**Underlying chart:** [TLT entry through expiration close](/charts/2026-10-02/underlying/01-tlt.svg) at $77.42; expiration close $80.05.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 24.0; MACD spread -0.42%; ATR(14) 1.11%; realized volatility 10.3%; ATM implied volatility 15.1%; expected move 2.4%. Outcome-trained score adjustment: +3.06.
 
@@ -37,6 +37,20 @@ TLT enters with -2.4% five-session momentum and -5.7% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $80.00. Breakeven is $77.20 and requires a 0.3% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $120.00, or 1.50 times maximum risk. The simulation assigns 29.4% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Oct 2, 2026 basket closes with -$80.00 final P/L**
+
+The 1-trade basket finished with 0 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$80.00, equal to -100.0% of the maximum capital at risk.
+
+TLT 10/16 78/76 Put Debit Spread was the strongest contributor at -$80.00.
+
+What needs tighter gating: put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| TLT 10/16 78/76 Put Debit Spread | loss | -$80.00 | TLT closed at $80.05 for expiration settlement, producing -$80.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

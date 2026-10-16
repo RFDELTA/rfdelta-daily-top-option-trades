@@ -221,11 +221,9 @@
         "assetPath": "/charts/2026-09-29/underlying/01-vz.svg",
         "entryDate": "2026-09-29",
         "entryPrice": 46.095,
+        "closeDate": "2026-10-16",
+        "closePrice": 44.79,
         "points": [
-          {
-            "date": "2026-06-09",
-            "close": 45.78
-          },
           {
             "date": "2026-06-10",
             "close": 46.95
@@ -581,6 +579,10 @@
           {
             "date": "2026-10-15",
             "close": 44.4
+          },
+          {
+            "date": "2026-10-16",
+            "close": 44.79
           }
         ]
       },
@@ -636,6 +638,10 @@
         {
           "date": "2026-10-15",
           "underlyingClose": 44.4
+        },
+        {
+          "date": "2026-10-16",
+          "underlyingClose": 44.79
         }
       ]
     },
@@ -799,6 +805,8 @@
         "assetPath": "/charts/2026-09-29/underlying/02-iwm.svg",
         "entryDate": "2026-09-29",
         "entryPrice": 278.935,
+        "closeDate": "2026-10-12",
+        "closePrice": 277.9,
         "points": [
           {
             "date": "2026-06-04",
@@ -1559,5 +1567,53 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Sep 29, 2026, 3:41 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-10-16",
+    "evaluatedAtUtc": "2026-10-16T22:53:38.766Z",
+    "tradeCount": 2,
+    "wins": 1,
+    "losses": 1,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 198,
+    "finalPnlDollars": -77,
+    "returnOnRisk": -0.388889,
+    "bestTradeId": "vz-2026-10-16-call_credit-46-43",
+    "worstTradeId": "iwm-2026-10-12-put_debit-276-271",
+    "headline": "Sep 29, 2026 basket closes with -$77.00 final P/L",
+    "commentary": [
+      "The 2-trade basket finished with 1 win, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$77.00, equal to -38.9% of the maximum capital at risk.",
+      "VZ 10/16 43/46 Call Credit Spread was the strongest contributor at $49.00. IWM 10/12 276/271 Put Debit Spread was the largest detractor at -$126.00.",
+      "What worked: call credit. What needs tighter gating: put debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "vz-2026-10-16-call_credit-46-43",
+        "name": "VZ 10/16 43/46 Call Credit Spread",
+        "symbol": "VZ",
+        "style": "call_credit",
+        "expiration": "2026-10-16",
+        "status": "win",
+        "read": "VZ closed at $44.79 for expiration settlement, producing $49.00 on the one-lot spread.",
+        "settlementDate": "2026-10-16",
+        "settlementUnderlying": 44.79,
+        "settlementValue": 1.79,
+        "realizedPnlDollars": 49
+      },
+      {
+        "tradeId": "iwm-2026-10-12-put_debit-276-271",
+        "name": "IWM 10/12 276/271 Put Debit Spread",
+        "symbol": "IWM",
+        "style": "put_debit",
+        "expiration": "2026-10-12",
+        "status": "loss",
+        "read": "IWM closed at $277.90 for expiration settlement, producing -$126.00 on the one-lot spread.",
+        "settlementDate": "2026-10-12",
+        "settlementUnderlying": 277.9,
+        "settlementValue": 0,
+        "realizedPnlDollars": -126
+      }
+    ]
   }
 }

@@ -217,11 +217,9 @@
         "assetPath": "/charts/2026-10-02/underlying/01-tlt.svg",
         "entryDate": "2026-10-02",
         "entryPrice": 77.415,
+        "closeDate": "2026-10-16",
+        "closePrice": 80.05,
         "points": [
-          {
-            "date": "2026-06-09",
-            "close": 85.12
-          },
           {
             "date": "2026-06-10",
             "close": 84.88
@@ -577,6 +575,10 @@
           {
             "date": "2026-10-15",
             "close": 79.97
+          },
+          {
+            "date": "2026-10-16",
+            "close": 80.05
           }
         ]
       },
@@ -620,6 +622,10 @@
         {
           "date": "2026-10-15",
           "underlyingClose": 79.97
+        },
+        {
+          "date": "2026-10-16",
+          "underlyingClose": 80.05
         }
       ]
     }
@@ -990,5 +996,40 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Oct 2, 2026, 3:33 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-10-16",
+    "evaluatedAtUtc": "2026-10-16T22:53:38.766Z",
+    "tradeCount": 1,
+    "wins": 0,
+    "losses": 1,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 80,
+    "finalPnlDollars": -80,
+    "returnOnRisk": -1,
+    "bestTradeId": "tlt-2026-10-16-put_debit-78-76",
+    "worstTradeId": "tlt-2026-10-16-put_debit-78-76",
+    "headline": "Oct 2, 2026 basket closes with -$80.00 final P/L",
+    "commentary": [
+      "The 1-trade basket finished with 0 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$80.00, equal to -100.0% of the maximum capital at risk.",
+      "TLT 10/16 78/76 Put Debit Spread was the strongest contributor at -$80.00.",
+      "What needs tighter gating: put debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "tlt-2026-10-16-put_debit-78-76",
+        "name": "TLT 10/16 78/76 Put Debit Spread",
+        "symbol": "TLT",
+        "style": "put_debit",
+        "expiration": "2026-10-16",
+        "status": "loss",
+        "read": "TLT closed at $80.05 for expiration settlement, producing -$80.00 on the one-lot spread.",
+        "settlementDate": "2026-10-16",
+        "settlementUnderlying": 80.05,
+        "settlementValue": 0,
+        "realizedPnlDollars": -80
+      }
+    ]
   }
 }
