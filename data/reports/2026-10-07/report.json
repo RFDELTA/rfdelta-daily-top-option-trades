@@ -217,11 +217,9 @@
         "assetPath": "/charts/2026-10-07/underlying/01-iwm.svg",
         "entryDate": "2026-10-07",
         "entryPrice": 277.86,
+        "closeDate": "2026-10-20",
+        "closePrice": 275.78,
         "points": [
-          {
-            "date": "2026-06-11",
-            "close": 290.41
-          },
           {
             "date": "2026-06-12",
             "close": 292.95
@@ -577,6 +575,10 @@
           {
             "date": "2026-10-19",
             "close": 271.28
+          },
+          {
+            "date": "2026-10-20",
+            "close": 275.78
           }
         ]
       },
@@ -616,6 +618,10 @@
         {
           "date": "2026-10-19",
           "underlyingClose": 271.28
+        },
+        {
+          "date": "2026-10-20",
+          "underlyingClose": 275.78
         }
       ]
     }
@@ -977,5 +983,40 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Oct 7, 2026, 4:11 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-10-20",
+    "evaluatedAtUtc": "2026-10-20T23:13:54.575Z",
+    "tradeCount": 1,
+    "wins": 1,
+    "losses": 0,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 201,
+    "finalPnlDollars": 21,
+    "returnOnRisk": 0.104478,
+    "bestTradeId": "iwm-2026-10-20-put_debit-278-272",
+    "worstTradeId": "iwm-2026-10-20-put_debit-278-272",
+    "headline": "Oct 7, 2026 basket closes with $21.00 final P/L",
+    "commentary": [
+      "The 1-trade basket finished with 1 win, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $21.00, equal to +10.4% of the maximum capital at risk.",
+      "IWM 10/20 278/272 Put Debit Spread was the strongest contributor at $21.00.",
+      "What worked: put debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "iwm-2026-10-20-put_debit-278-272",
+        "name": "IWM 10/20 278/272 Put Debit Spread",
+        "symbol": "IWM",
+        "style": "put_debit",
+        "expiration": "2026-10-20",
+        "status": "win",
+        "read": "IWM closed at $275.78 for expiration settlement, producing $21.00 on the one-lot spread.",
+        "settlementDate": "2026-10-20",
+        "settlementUnderlying": 275.78,
+        "settlementValue": 2.22,
+        "realizedPnlDollars": 21
+      }
+    ]
   }
 }

@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 IWM enters with -0.0% five-session momentum and -4.4% over twenty sessions. Realized volatility is 11.7%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [IWM entry and open-position history](/charts/2026-10-07/underlying/01-iwm.svg) at $277.86; latest official close $271.28 on 2026-10-19.
+**Underlying chart:** [IWM entry through expiration close](/charts/2026-10-07/underlying/01-iwm.svg) at $277.86; expiration close $275.78.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 35.1; MACD spread 0.05%; ATR(14) 1.32%; realized volatility 11.7%; ATM implied volatility 16.8%; expected move 2.5%. Outcome-trained score adjustment: +2.56.
 
@@ -37,6 +37,20 @@ IWM enters with -0.0% five-session momentum and -4.4% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $201.00. Breakeven is $275.99 and requires a 0.7% decline from the source mark. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $399.00, or 1.99 times maximum risk. The simulation assigns 26.1% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Oct 7, 2026 basket closes with $21.00 final P/L**
+
+The 1-trade basket finished with 1 win, 0 near-breakeven results and 0 losses. The modeled one-lot portfolio produced a gain of $21.00, equal to +10.4% of the maximum capital at risk.
+
+IWM 10/20 278/272 Put Debit Spread was the strongest contributor at $21.00.
+
+What worked: put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| IWM 10/20 278/272 Put Debit Spread | win | $21.00 | IWM closed at $275.78 for expiration settlement, producing $21.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 
