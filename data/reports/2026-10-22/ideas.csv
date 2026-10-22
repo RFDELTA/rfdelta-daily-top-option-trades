@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","SPY","SPY 11/4 765/760 Put Debit Spread","put_debit","2026-11-04","13","762.165","Debit","2.09","0.4988","34.06","209","291","1.39","762.91","0.1","86.99","0.8938","0.18"
