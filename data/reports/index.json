@@ -1,6 +1,15 @@
 {
-  "latest": "2026-10-23",
+  "latest": "2026-10-26",
   "reports": [
+    {
+      "date": "2026-10-26",
+      "title": "No defined-risk option setup cleared the publication gate",
+      "edition": "Daily market edition",
+      "dataAsOfUtc": "2026-10-26T20:11:47.577Z",
+      "topSymbol": "Cash",
+      "ideaCount": 0,
+      "topScore": 0
+    },
     {
       "date": "2026-10-23",
       "title": "1 defined-risk option setups lead the Oct 23, 2026 board",

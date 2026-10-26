@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
   "policyVersion": "rfdelta-online-policy-v1",
-  "trainedAtUtc": "2026-10-23T18:46:13.823Z",
-  "trainingThroughDate": "2026-10-23",
+  "trainedAtUtc": "2026-10-26T20:11:47.577Z",
+  "trainingThroughDate": "2026-10-26",
   "resolvedTradeCount": 41,
   "minimumTrainingSamples": 8,
   "active": true,
