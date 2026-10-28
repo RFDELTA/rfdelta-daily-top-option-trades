@@ -1,6 +1,15 @@
 {
-  "latest": "2026-10-27",
+  "latest": "2026-10-28",
   "reports": [
+    {
+      "date": "2026-10-28",
+      "title": "No defined-risk option setup cleared the publication gate",
+      "edition": "Daily market edition",
+      "dataAsOfUtc": "2026-10-28T19:55:38.944Z",
+      "topSymbol": "Cash",
+      "ideaCount": 0,
+      "topScore": 0
+    },
     {
       "date": "2026-10-27",
       "title": "No defined-risk option setup cleared the publication gate",
