@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 SPY enters with -1.2% five-session momentum and -0.7% over twenty sessions. Realized volatility is 10.3%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SPY entry and open-position history](/charts/2026-10-22/underlying/01-spy.svg) at $762.16; latest official close $752.10 on 2026-11-02.
+**Underlying chart:** [SPY entry through expiration close](/charts/2026-10-22/underlying/01-spy.svg) at $762.16; expiration close $766.81.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 43.7; MACD spread -0.16%; ATR(14) 0.94%; realized volatility 10.3%; ATM implied volatility 16.3%; expected move 2.5%. Outcome-trained score adjustment: +0.70.
 
@@ -37,6 +37,20 @@ SPY enters with -1.2% five-session momentum and -0.7% over twenty sessions. Real
 **Risk:** Maximum one-lot loss is $209.00. Breakeven is $762.91 and sits 0.1% above the source mark, providing an upside cushion. Primary watch: a directional break before expiration. A break in the stated directional regime invalidates the reason for holding even when the contractual maximum loss remains unchanged.
 
 **Payoff:** Maximum one-lot profit is $291.00, or 1.39 times maximum risk. The simulation assigns 45.5% probability to finishing near maximum profit and uses 18.0% implied volatility across deterministic jump-stress paths.
+
+## Completed Basket Review
+
+**Oct 22, 2026 basket closes with -$209.00 final P/L**
+
+The 1-trade basket finished with 0 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$209.00, equal to -100.0% of the maximum capital at risk.
+
+SPY 11/4 765/760 Put Debit Spread was the strongest contributor at -$209.00.
+
+What needs tighter gating: put debit.
+
+| Trade | Outcome | Final P/L | Settlement read |
+|---|---|---:|---|
+| SPY 11/4 765/760 Put Debit Spread | loss | -$209.00 | SPY closed at $766.81 for expiration settlement, producing -$209.00 on the one-lot spread. |
 
 ## Prior Basket Accountability
 

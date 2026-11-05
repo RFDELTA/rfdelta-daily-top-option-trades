@@ -217,15 +217,9 @@
         "assetPath": "/charts/2026-10-22/underlying/01-spy.svg",
         "entryDate": "2026-10-22",
         "entryPrice": 762.165,
+        "closeDate": "2026-11-04",
+        "closePrice": 766.81,
         "points": [
-          {
-            "date": "2026-06-26",
-            "close": 728.99
-          },
-          {
-            "date": "2026-06-29",
-            "close": 741
-          },
           {
             "date": "2026-06-30",
             "close": 746.77
@@ -577,6 +571,14 @@
           {
             "date": "2026-11-02",
             "close": 752.1
+          },
+          {
+            "date": "2026-11-03",
+            "close": 754.35
+          },
+          {
+            "date": "2026-11-04",
+            "close": 766.81
           }
         ]
       },
@@ -990,5 +992,40 @@
     "publicationCadence": "The weekday edition is selected at 10:45 a.m. Eastern. Official underlying closes extend each open-position chart after the regular session, and expiration results are added only after a finalized close is available.",
     "marketDataStatement": "RFDELTA normalized U.S. equity and options market data. Historical technical series: Yahoo Finance public daily chart history. Data timestamp: Oct 22, 2026, 2:52 PM EDT. Historical calibration editions are clearly labeled and are never promoted as current market data.",
     "disclaimer": "RFDELTA Top Option Trades is market intelligence, not individualized investment advice. Options can expire worthless, spreads can be assigned early, and displayed quotes may move before an order can be filled."
+  },
+  "postTradeReview": {
+    "status": "complete",
+    "completedOn": "2026-11-04",
+    "evaluatedAtUtc": "2026-11-05T21:36:16.026Z",
+    "tradeCount": 1,
+    "wins": 0,
+    "losses": 1,
+    "nearBreakeven": 0,
+    "totalMaxRiskDollars": 209,
+    "finalPnlDollars": -209,
+    "returnOnRisk": -1,
+    "bestTradeId": "spy-2026-11-04-put_debit-765-760",
+    "worstTradeId": "spy-2026-11-04-put_debit-765-760",
+    "headline": "Oct 22, 2026 basket closes with -$209.00 final P/L",
+    "commentary": [
+      "The 1-trade basket finished with 0 wins, 0 near-breakeven results and 1 loss. The modeled one-lot portfolio produced a loss of -$209.00, equal to -100.0% of the maximum capital at risk.",
+      "SPY 11/4 765/760 Put Debit Spread was the strongest contributor at -$209.00.",
+      "What needs tighter gating: put debit."
+    ],
+    "trades": [
+      {
+        "tradeId": "spy-2026-11-04-put_debit-765-760",
+        "name": "SPY 11/4 765/760 Put Debit Spread",
+        "symbol": "SPY",
+        "style": "put_debit",
+        "expiration": "2026-11-04",
+        "status": "loss",
+        "read": "SPY closed at $766.81 for expiration settlement, producing -$209.00 on the one-lot spread.",
+        "settlementDate": "2026-11-04",
+        "settlementUnderlying": 766.81,
+        "settlementValue": 0,
+        "realizedPnlDollars": -209
+      }
+    ]
   }
 }
