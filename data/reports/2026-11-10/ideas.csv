@@ -1,0 +1,2 @@
+rank,symbol,name,style,expiration,dte,underlying_mark,entry_type,entry,probability_profit,expected_value_dollars,max_loss_dollars,max_profit_dollars,reward_to_risk,breakeven,required_move_pct,score,liquidity_score,implied_volatility
+"1","SPY","SPY 11/23 750/755 Call Credit Spread","call_credit","2026-11-23","13","750.8","Credit","2.77","0.52","30.36","223","277","1.24","752.77","0.26","91.32","0.8425","0.18"

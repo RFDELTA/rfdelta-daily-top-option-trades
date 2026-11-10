@@ -1,6 +1,15 @@
 {
-  "latest": "2026-11-09",
+  "latest": "2026-11-10",
   "reports": [
+    {
+      "date": "2026-11-10",
+      "title": "1 defined-risk option setups lead the Nov 10, 2026 board",
+      "edition": "Daily market edition",
+      "dataAsOfUtc": "2026-11-10T21:27:47.038Z",
+      "topSymbol": "SPY",
+      "ideaCount": 1,
+      "topScore": 91.32
+    },
     {
       "date": "2026-11-09",
       "title": "No defined-risk option setup cleared the publication gate",
