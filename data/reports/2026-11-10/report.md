@@ -28,7 +28,7 @@ Only one setup cleared the full gate, so the edition publishes one rather than l
 
 SPY enters with -0.5% five-session momentum and -3.5% over twenty sessions. Realized volatility is 22.3%, placing the underlying in a mixed regime. The bearish structure expresses that tape without allowing the loss to expand beyond the spread debit or defined credit width.
 
-**Underlying chart:** [SPY entry and open-position history](/charts/2026-11-10/underlying/01-spy.svg) at $750.80.
+**Underlying chart:** [SPY entry and open-position history](/charts/2026-11-10/underlying/01-spy.svg) at $750.80; latest official close $749.92 on 2026-11-10.
 
 **Advanced metrics:** 260 retained sessions; RSI(14) 40.4; MACD spread -0.26%; ATR(14) 1.56%; realized volatility 22.3%; ATM implied volatility 15.0%; expected move 2.3%. Outcome-trained score adjustment: -0.52.
 
